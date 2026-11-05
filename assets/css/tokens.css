@@ -1,0 +1,113 @@
+/* Igreja Kemuel — tokens próprios. O vermelho é PROVISÓRIO até o código oficial.
+   Amostra: 161 pixels internos do círculo, margem de 2px das bordas cromáticas.
+   Média RGB 234.8323 / 48.6398 / 59.6149 → #EB313C (arredondado).
+   Ajuste uniforme de luminosidade sRGB: fator .947 → #DE2E38.
+   Branco sobre o vermelho final: 4.6115:1, AA para texto normal. */
+@font-face {
+  font-family: "Outfit";
+  src: url("../fonts/outfit-latin-variable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Public Sans";
+  src: url("../fonts/publicsans-latin-variable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+  --color-red: #de2e38; /* PROVISÓRIO: substituir após confirmação da marca. */
+  --color-red-hover: #c1232c;
+  --color-red-active: #a51d25;
+  --color-primary: var(--color-red);
+  --color-accent: var(--color-red);
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-neutral: #555555;
+  --color-neutral-light: #c5c5c5;
+  --color-surface: #ffffff;
+  --color-surface-soft: #f4f4f4;
+  --color-surface-dark: #111111;
+  --color-surface-raised: #1f1f1f;
+  --color-text: #171717;
+  --color-text-muted: #555555;
+  --color-on-dark: #ffffff;
+  --color-on-dark-muted: #c5c5c5;
+  --color-border: #d4d4d4;
+  --color-border-control: #767676;
+  --color-border-dark: #616161;
+  --color-focus: var(--color-red);
+  --color-disabled: #595959;
+  --color-disabled-surface: #e5e5e5;
+  --color-success: #17613d;
+  --color-success-surface: #ecf6ef;
+  --color-warning: #765000;
+  --color-warning-surface: #fff5dc;
+  --color-error: #a51d25;
+  --color-error-surface: #fef1f2;
+  --color-red-a08: rgba(222, 46, 56, .08);
+  --color-red-a16: rgba(222, 46, 56, .16);
+  --color-black-a08: rgba(0, 0, 0, .08);
+  --color-black-a60: rgba(0, 0, 0, .60);
+  --color-white-a12: rgba(255, 255, 255, .12);
+  --color-white-a06: rgba(255, 255, 255, .06);
+
+  --font-heading: "Outfit", "Arial", sans-serif;
+  --font-body: "Public Sans", "Arial", sans-serif;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-heavy: 800;
+  --text-display: clamp(3.75rem, 8.5vw, 8.5rem);
+  --text-h1: clamp(2.75rem, 5.2vw, 5rem);
+  --text-h2: clamp(2.125rem, 3.8vw, 3.5rem);
+  --text-h3: clamp(1.75rem, 2.5vw, 2.5rem);
+  --text-h4: clamp(1.375rem, 1.9vw, 1.875rem);
+  --text-h5: clamp(1.1875rem, 1.5vw, 1.5rem);
+  --text-h6: clamp(1.0625rem, 1.2vw, 1.125rem);
+  --text-body-lg: clamp(1.125rem, 1.5vw, 1.375rem);
+  --text-body: clamp(1rem, 1.1vw, 1.0625rem);
+  --text-body-sm: clamp(.875rem, 1vw, .9375rem);
+  --text-caption: clamp(.75rem, .9vw, .8125rem);
+  --text-label: clamp(.8125rem, 1vw, .875rem);
+  --text-eyebrow: clamp(.6875rem, .9vw, .75rem);
+  --text-quote: clamp(1.5rem, 3vw, 2.5rem);
+  --leading-display: 1.02;
+  --leading-heading: 1.12;
+  --leading-body: 1.65;
+  --leading-label: 1.4;
+  --tracking-display: -.055em;
+  --tracking-heading: -.035em;
+  --tracking-body: 0em;
+  --tracking-label: .06em;
+  --tracking-eyebrow: .18em;
+
+  --space-1: clamp(.375rem, .5vw, .5rem);
+  --space-2: clamp(.75rem, 1vw, 1rem);
+  --space-3: clamp(1rem, 1.5vw, 1.5rem);
+  --space-4: clamp(1.5rem, 2.5vw, 2.5rem);
+  --space-5: clamp(2rem, 4vw, 4rem);
+  --space-6: clamp(3rem, 6vw, 6rem);
+  --space-section: clamp(4.5rem, 8vw, 8rem);
+  --gutter: clamp(1.25rem, 4.2vw, 4rem);
+  --container: 80rem;
+  --reading: 65ch;
+  --radius-sm: .375rem;
+  --radius-md: .75rem;
+  --radius-lg: 1.25rem;
+  --radius-pill: 999px;
+  --border-width: 1px;
+  --shadow-soft: 0 6px 24px rgba(0, 0, 0, .06);
+  --shadow-hover: 0 12px 32px rgba(0, 0, 0, .10);
+  --shadow-modal: 0 24px 80px rgba(0, 0, 0, .24);
+  --header-height: 5rem;
+  --duration-short: 140ms;
+  --duration-medium: 260ms;
+  --duration-long: 480ms;
+  --ease: cubic-bezier(.22, 1, .36, 1);
+}
