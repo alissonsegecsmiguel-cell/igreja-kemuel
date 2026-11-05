@@ -2,7 +2,7 @@
 
 ## 1. Última sessão
 
-- 05/11/2026: base do projeto criada (AGENTS.md, CLAUDE.md, HANDOFF.md, README.md, .gitignore, .vercelignore). Envio ao GitHub feito manualmente.
+- 05/11/2026: referência do blog extraída (estudo local, fora do Git). Identificação neutra para não registrar nomes pessoais. Biblioteca de padrões e notas concluídas; teste leve em 1440 px e 390 px, sem erros no console.
 
 ## 2. Estado atual
 
@@ -15,8 +15,10 @@
 
 ## 4. Próximas tarefas
 
-1. Extrair referências visuais em referencias/ (estudo local, fora do Git).
-2. Criar o design system da Kemuel em assets/design_system.html, antes de qualquer página.
+1. Concluir as extrações locais: faltam 2 pastas sem design-system.html em referencias/:
+   - Clube de Literatura Clássica_files
+   - Cursos exclusivos sobre a fé, doutrina e espiritualidade católica_files
+2. Depois das extrações, prioridade: criar o design system da Kemuel em assets/design_system.html, antes de qualquer página. Usar apenas inspiração conceitual, sem copiar arquivos de terceiros.
 
 ## 5. Backlog
 
@@ -32,6 +34,7 @@
 ## 7. Concluído
 
 - Base do projeto.
+- Extração local da referência do blog: design-system.html, notas e evidências de teste, todos em referencias/ e fora do Git/deploy.
 
 ## 8. Decisões registradas
 
