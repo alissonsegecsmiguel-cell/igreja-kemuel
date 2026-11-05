@@ -20,6 +20,7 @@ Regras fixas do projeto do site da Igreja Kemuel.
 - Nunca usar git add . sem antes conferir o git status.
 - Commit errado ainda não enviado: corrigir com amend, não com commit novo por cima.
 - A pasta referencias/ guarda sites de terceiros só para estudo. Nunca entra no Git nem no deploy. Nada de lá (imagens, textos, código) é copiado para o site.
+- Toda extração em referencias/ entrega, no primeiro nível da pasta do site, somente: design-system__RESUMO.html, notas.md e a pasta arquivos/ com todo o resto. RESUMO tem de 2 a 5 palavras sobre o estilo visual, em minúsculas, sem acentos, com hífens, diferente dos já existentes.
 - Imagens no site: só da igreja ou com licença. Imagens geradas por IA só como provisórias, nunca representando pessoas ou eventos reais da igreja. Letras de louvor não são publicadas.
 
 ## Forma de trabalho
