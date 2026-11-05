@@ -2,7 +2,7 @@
 
 ## 1. Última sessão
 
-- 05/11/2026: estrutura de pastas e dobras da página principal. Criados quem-somos.html, contribua.html, 404.html (provisórias), vercel.json com URLs limpas e redirecionamentos, assets/img/ e favicon provisório. SEO básico e noindex em todas as páginas. Teste leve em Chrome e Edge, 4 páginas, 1440 px e 390 px: 16 de 16 aprovadas; 9 redirecionamentos conferidos em servidor local que imita o vercel.json.
+- 05/11/2026: copy da hero aplicada e horários reais incluídos com o componente k-schedule (hero, dobra Venha nos visitar e rodapé resumido). Bateria da hero em Chrome e Edge: 8 de 8; teste leve das páginas: 16 de 16.
 
 ## 2. Estado atual
 
@@ -16,7 +16,7 @@
 
 ## 4. Próximas tarefas
 
-1. Montar as dobras restantes: copy e horários, Primeira visita, Para sua caminhada.
+1. Montar as dobras restantes: Primeira visita, Para sua caminhada.
 2. Validar o design system e substituir os provisórios quando chegarem o logo e o código oficial do vermelho.
 
 ## 5. Backlog
@@ -28,11 +28,12 @@
 - Arquivo oficial do logo em SVG ou PNG transparente, com versão para fundo claro, para substituir os espaços reservados "LOGO". Não recriar nem vetorizar a partir do print.
 - Código oficial do vermelho para substituir --color-red PROVISÓRIO (#DE2E38). Média medida no print: RGB 234,8323 / 48,6398 / 59,6149, arredondada para #EB313C; ajuste uniforme de canais por fator 0,947 para AA com branco (4,61:1).
 - Confirmar o registro do domínio igrejakemuel.com.br e em nome de quem está.
-- Conteúdo institucional: endereço, horários dos cultos, quem somos, contatos.
+- Conteúdo institucional: endereço, quem somos, contatos.
 - Fotos da igreja.
 - Definir quem escreve o blog e a frequência.
 - Definir a plataforma dos cursos e se serão gratuitos ou pagos.
 - Perfil da Empresa no Google da igreja.
+- Validar a frase da hero com o pastor.
 
 ## 7. Concluído
 
@@ -68,6 +69,8 @@
 - Site contemporâneo, com objetivo de informar membros e atrair visitantes.
 - 05/11/2026: URLs limpas (/quem-somos, /contribua), sem barra final; erros comuns redirecionam pelo vercel.json.
 - 05/11/2026: ordem das dobras da página principal: Cabeçalho, Hero, Venha nos visitar, Primeira visita, Quem somos, Contribua, Acompanhe, Rodapé.
+- 05/11/2026: cultos às quintas-feiras, 19h, e aos domingos, 18h, confirmados pelo Alisson. Sem nomes próprios: usar apenas "Culto".
+- 05/11/2026: copy da hero: "Bem-vindo à" (sólida), "casa de Deus." (vazada) e subtítulo "Uma comunidade de fé de portas abertas para você e sua família viverem mais perto de Deus."
 - Site em 3 fases.
 - Fase 1 (lançamento): Início, Quem somos, Contribua (PIX institucional com botão copiar e QR Code).
 - Fase 2 (conteúdo): Materiais (PDFs públicos por categoria), Blog, Agenda opcional.

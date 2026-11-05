@@ -64,9 +64,9 @@
       <div class="k-container k-hero-led__content">
         <div class="k-hero-led__copy">
           <p class="k-eyebrow k-enter">[Copy a definir]</p>
-          <h1 class="k-hero-led__title k-enter k-enter--2" id="hero-titulo">[Copy a definir]<span class="k-lettering">[Copy a definir]</span></h1>
-          <p class="k-body-lg k-hero__intro k-enter k-enter--3">[Subtítulo a definir]</p>
-          <p class="k-body-sm k-muted k-enter k-enter--3">[Dia do culto principal] · [Horário]</p>
+          <h1 class="k-hero-led__title k-enter k-enter--2" id="hero-titulo">Bem-vindo à <span class="k-lettering">casa de Deus.</span></h1>
+          <p class="k-body-lg k-hero__intro k-enter k-enter--3">Uma comunidade de fé de portas abertas para você e sua família viverem mais perto de Deus.</p>
+          <div class="k-enter k-enter--3 k-hero-led__schedule"><ul class="k-schedule k-schedule--dark" aria-label="Horários dos cultos"><li class="k-schedule__item"><span class="k-schedule__head"><svg class="k-icon" aria-hidden="true"><use href="#k-clock"/></svg><span class="k-schedule__mark"></span></span><span class="k-eyebrow k-schedule__day">Quinta-feira</span><span class="k-schedule__time">19h</span><span class="k-schedule__label">Culto</span></li><li class="k-schedule__item"><span class="k-schedule__head"><svg class="k-icon" aria-hidden="true"><use href="#k-clock"/></svg><span class="k-schedule__mark"></span></span><span class="k-eyebrow k-schedule__day">Domingo</span><span class="k-schedule__time">18h</span><span class="k-schedule__label">Culto</span></li></ul></div>
           <div class="k-row k-hero-led__actions k-enter k-enter--3"><a class="k-button" href="#visite">Planeje sua visita<svg class="k-icon" aria-hidden="true"><use href="#k-arrow"/></svg></a><a class="k-button k-button--secondary" href="#endereco">Como chegar</a></div>
         </div>
       </div>
@@ -127,6 +127,15 @@
           <ul class="k-body-sm"><li><code>assets/video/hero.webm</code> e <code>assets/video/hero.mp4</code>: desktop, 1280px de largura, até 3 MB por arquivo.</li><li><code>assets/video/hero-mobile.mp4</code>: abaixo de 768px, 720px de largura, até 1,5 MB.</li><li>8 a 15 segundos, horizontal, sem som, movimento lento e loop sem corte perceptível. WebM e MP4; sem pista de áudio.</li><li>Só filmagens reais da igreja, nunca IA. Nenhuma criança identificável; pessoas filmadas precisam autorizar.</li></ul>
           <p class="k-body-sm">O vídeo substitui a luz e mantém palavra, nuvem, pontos, filtro monocromático e proteção do texto. Só aparece depois de começar a tocar; falha ou bloqueio de autoplay preserva o CSS. IntersectionObserver pausa luz e vídeo fora da tela; aba oculta pausa também. Movimento reduzido mantém palavra e malha estáticas, sem iniciar nem carregar vídeo. Sem IntersectionObserver, o fundo permanece estático.</p>
           <p class="k-caption k-muted">Regra: loop contínuo permitido somente no fundo da hero. Título e ações permanecem legíveis com CSS estático, sem vídeo ou sem JavaScript. Os textos entre colchetes são pendências, não informações reais da igreja.</p>
+        </section>
+        <section class="k-demo k-stack" id="schedule-documentacao" aria-labelledby="schedule-doc-titulo">
+          <p class="k-eyebrow">Componente · k-schedule</p><h3 id="schedule-doc-titulo">Horários que se leem de longe.</h3>
+          <p class="k-body-sm">Dois blocos lado a lado, ou um embaixo do outro quando cada bloco ficaria abaixo de <code>--schedule-item-min</code>. Cada bloco: ícone k-clock e tracinho vermelho decorativo, dia no estilo k-eyebrow, horário em Outfit (<code>--text-schedule-time</code>) no formato brasileiro, como 19h, e rótulo. O vermelho fica só no tracinho, conforme a regra da cor. Use apenas horários confirmados e não invente nomes de culto.</p>
+          <div class="k-grid k-grid--2">
+            <div class="k-stack"><p class="k-label">Variante clara · k-schedule</p><ul class="k-schedule" aria-label="Horários dos cultos"><li class="k-schedule__item"><span class="k-schedule__head"><svg class="k-icon" aria-hidden="true"><use href="#k-clock"/></svg><span class="k-schedule__mark"></span></span><span class="k-eyebrow k-schedule__day">Quinta-feira</span><span class="k-schedule__time">19h</span><span class="k-schedule__label">Culto</span></li><li class="k-schedule__item"><span class="k-schedule__head"><svg class="k-icon" aria-hidden="true"><use href="#k-clock"/></svg><span class="k-schedule__mark"></span></span><span class="k-eyebrow k-schedule__day">Domingo</span><span class="k-schedule__time">18h</span><span class="k-schedule__label">Culto</span></li></ul></div>
+            <div class="k-dark k-layout-preview__band k-stack"><p class="k-label">Variante escura · k-schedule--dark</p><ul class="k-schedule k-schedule--dark" aria-label="Horários dos cultos"><li class="k-schedule__item"><span class="k-schedule__head"><svg class="k-icon" aria-hidden="true"><use href="#k-clock"/></svg><span class="k-schedule__mark"></span></span><span class="k-eyebrow k-schedule__day">Quinta-feira</span><span class="k-schedule__time">19h</span><span class="k-schedule__label">Culto</span></li><li class="k-schedule__item"><span class="k-schedule__head"><svg class="k-icon" aria-hidden="true"><use href="#k-clock"/></svg><span class="k-schedule__mark"></span></span><span class="k-eyebrow k-schedule__day">Domingo</span><span class="k-schedule__time">18h</span><span class="k-schedule__label">Culto</span></li></ul></div>
+          </div>
+          <p class="k-caption k-muted">Contraste: texto #171717 e apoio #555555 sobre branco; branco e apoio #C5C5C5 sobre #111111. Todos acima de AA.</p>
         </section>
         <div class="k-stack">
           <h3>Ações e estados</h3>

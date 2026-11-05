@@ -49,7 +49,7 @@ h6, .k-h6 { font-size: var(--text-h6); }
 .k-caption { font-size: var(--text-caption); line-height: var(--leading-label); }
 .k-label { font-size: var(--text-label); line-height: var(--leading-label); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-label); text-transform: uppercase; }
 .k-eyebrow { display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-eyebrow); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-eyebrow); line-height: var(--leading-label); text-transform: uppercase; }
-.k-eyebrow::before { content: ""; width: 1.5rem; height: 2px; flex: 0 0 auto; background: var(--color-red); }
+.k-eyebrow::before { content: ""; width: var(--marker-width); height: var(--marker-height); flex: 0 0 auto; background: var(--color-red); }
 .k-quote { padding-left: var(--space-3); border-left: 3px solid var(--color-red); font-family: var(--font-heading); font-weight: var(--weight-medium); font-size: var(--text-quote); letter-spacing: var(--tracking-heading); line-height: 1.35; }
 .k-section-heading { display: grid; gap: var(--space-3); margin-bottom: var(--space-5); max-width: 52rem; }
 .k-section-number { font: var(--weight-medium) var(--text-caption)/1 var(--font-body); color: var(--color-text-muted); letter-spacing: var(--tracking-eyebrow); }
@@ -194,6 +194,18 @@ textarea.k-input { resize: vertical; min-height: 8rem; }
 .k-info-list { margin: 0; padding: 0; list-style: none; }
 .k-info-list li { display: grid; grid-template-columns: 1.5rem minmax(0, 1fr); gap: var(--space-2); padding-block: var(--space-3); border-bottom: 1px solid var(--color-border); }
 .k-info-list strong { display: block; }
+/* k-schedule — horários em destaque. Claro por padrão; --dark sobre hero e rodapé. */
+.k-schedule { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--schedule-item-min)), 1fr)); gap: var(--space-2); width: 100%; margin: 0; padding: 0; list-style: none; }
+.k-schedule__item { display: grid; align-content: start; justify-items: start; gap: var(--space-1); min-width: 0; padding: var(--space-3); border: var(--border-width) solid var(--color-border); border-radius: var(--radius-md); background: var(--color-white); color: var(--color-text); }
+.k-schedule__head { display: flex; align-items: center; gap: var(--space-2); }
+.k-schedule__mark { width: var(--marker-width); height: var(--marker-height); background: var(--color-red); }
+.k-schedule__day::before { content: none; }
+.k-schedule__time { font: var(--weight-heavy) var(--text-schedule-time)/var(--leading-heading) var(--font-heading); letter-spacing: var(--tracking-display); }
+.k-schedule__label { font-size: var(--text-caption); line-height: var(--leading-label); color: var(--color-text-muted); }
+.k-schedule--dark .k-schedule__item { border-color: var(--color-border-dark); background: var(--color-surface-dark); color: var(--color-on-dark); }
+.k-schedule--dark .k-schedule__label { color: var(--color-on-dark-muted); }
+.k-hero-led__schedule { width: min(100%, var(--schedule-max-width)); }
+.k-hero-led__schedule .k-schedule__item { justify-items: center; text-align: center; }
 .k-pix { display: grid; gap: var(--space-4); align-items: center; }
 .k-faq { border-bottom: 1px solid var(--color-border); }
 .k-faq summary { list-style: none; display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); min-height: 64px; padding-block: var(--space-3); font-family: var(--font-heading); font-size: var(--text-h6); font-weight: var(--weight-semibold); line-height: 1.4; }

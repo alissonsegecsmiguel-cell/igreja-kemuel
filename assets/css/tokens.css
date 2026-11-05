@@ -85,6 +85,7 @@
   --text-caption: clamp(.75rem, .9vw, .8125rem);
   --text-label: clamp(.8125rem, 1vw, .875rem);
   --text-eyebrow: clamp(.6875rem, .9vw, .75rem);
+  --text-schedule-time: clamp(2.25rem, 3.4vw, 3rem);
   --text-quote: clamp(1.5rem, 3vw, 2.5rem);
   --leading-display: 1.02;
   --leading-heading: 1.12;
@@ -115,6 +116,10 @@
   --shadow-hover: 0 12px 32px rgba(0, 0, 0, .10);
   --shadow-modal: 0 24px 80px rgba(0, 0, 0, .24);
   --header-height: 5rem;
+  --marker-width: 1.5rem;
+  --marker-height: 2px;
+  --schedule-item-min: 8.5rem; /* Abaixo disso, um bloco embaixo do outro. */
+  --schedule-max-width: 28rem;
   --whatsapp-clearance: 5rem; /* Altura reservada para o botão flutuante não cobrir o fim da página. */
   --duration-short: 140ms;
   --duration-medium: 260ms;
