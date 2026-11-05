@@ -8,7 +8,10 @@ Regras fixas do projeto do site da Igreja Kemuel.
 - Atualizar o HANDOFF.md antes de todo commit.
 - Usar sempre o design system do projeto (assets/design_system.html). Nunca criar visual do zero. Exceção: tarefas de estudo dentro de referencias/.
 - O projeto usa apenas a branch main. Commit e push da main ao final de toda tarefa, para o HANDOFF sempre ir para o GitHub.
-- A Vercel só é conectada quando o Alisson escrever "publica". Antes disso, revisar com ele se o projeto volta a usar uma branch dev, porque depois da conexão todo push na main vai para o ar.
+- A Vercel está conectada à main. Todo push na main vai para o ar em igrejakemuel.com.br.
+- Até a Fase 1 ser aprovada, o index.html é a página "Em breve" e não pode ser substituído. Páginas novas podem ser criadas, mas não podem ser linkadas a partir do index.html.
+- Os tokens e estilos compartilhados ficam em arquivos próprios (por exemplo assets/css/), nunca só dentro do design_system.html, porque ele não vai para o ar.
+- Antes de começar as páginas da Fase 1, revisar com o Alisson se o projeto volta a usar uma branch dev.
 
 ## Segurança (repositório público)
 
