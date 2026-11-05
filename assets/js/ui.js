@@ -80,6 +80,15 @@
     mobileVideo.addEventListener('change', updateAtmospheres);
     document.addEventListener('visibilitychange', updateAtmospheres);
   }
+  // Cabeçalho sobre a hero: sólido assim que a hero sai de trás dele.
+  const overHeader = document.querySelector('.k-header--over');
+  if (overHeader) {
+    if ('IntersectionObserver' in window && heroes.length) {
+      new IntersectionObserver(([entry]) => {
+        overHeader.classList.toggle('is-solid', !entry.isIntersecting);
+      }, { rootMargin: `-${overHeader.offsetHeight}px 0px 0px 0px` }).observe(heroes[0]);
+    } else overHeader.classList.add('is-solid');
+  }
   let toastTimer;
   function announce(message) {
     const toast = document.querySelector('[data-toast]');

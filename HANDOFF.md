@@ -2,11 +2,12 @@
 
 ## 1. Última sessão
 
-- 05/11/2026: dobra "Para sua caminhada" incluída na página principal; páginas provisórias de blog e materiais, com novos redirecionamentos. Teste leve em Chrome e Edge, 6 páginas, 1440 px e 390 px, com ordem e fundos das dobras e cards compactos no celular.
+- 05/11/2026: cabeçalho minimalista, transparente sobre a hero e sólido ao rolar; primeira dobra com todos os elementos essenciais visíveis sem rolar, medida em 13 telas de 320x568 a 1920x1080 e também em 844x390. Bateria da hero e teste das 6 páginas aprovados.
 
 ## 2. Estado atual
 
 - Repositório conectado ao GitHub, só branch main. Todo push vai para o ar.
+- Blog e Materiais existem como páginas provisórias, fora do menu.
 - No ar: a página principal em construção, com marcadores entre colchetes e noindex. O design system permanece excluído do deploy por .vercelignore.
 - Design system oficial criado; logo oficial pendente e vermelho provisório. Tokens, componentes, JavaScript e fontes ficam em arquivos compartilhados em assets/.
 
@@ -16,7 +17,7 @@
 
 ## 4. Próximas tarefas
 
-1. Cabeçalho minimalista e primeira dobra; depois, animação da aurora.
+1. Animação da aurora no fundo da hero.
 2. Validar o design system e substituir os provisórios quando chegarem o logo e o código oficial do vermelho.
 
 ## 5. Backlog
@@ -37,6 +38,7 @@
 - Validar a frase da hero com o pastor.
 - Respostas do FAQ: duração e estrutura do culto, costume de vestimenta, ministério infantil e faixa etária, como a igreja recebe visitantes, estacionamento.
 - Número oficial do WhatsApp.
+- Logo oficial em versão clara e escura.
 
 ## 7. Concluído
 
@@ -76,6 +78,8 @@
 - 05/11/2026: cultos às quintas-feiras, 19h, e aos domingos, 18h, confirmados pelo Alisson. Sem nomes próprios: usar apenas "Culto".
 - 05/11/2026: copy da hero: "Bem-vindo à" (sólida), "casa de Deus." (vazada) e subtítulo "Uma comunidade de fé de portas abertas para você e sua família viverem mais perto de Deus."
 - 05/11/2026: FAQ da Primeira visita com 5 perguntas, sem pergunta de horários, que já aparecem na hero e em Venha nos visitar.
+- 05/11/2026: cabeçalho transparente na página principal, sólido ao rolar além da hero; sólido direto nas demais páginas. Altura de 56 px no celular e 64 px no computador. Sem o nome ao lado do logo: o logo oficial já o contém.
+- 05/11/2026: regra da primeira dobra no AGENTS: logo e menu, título, subtítulo, horários e os dois botões sempre visíveis sem rolar, em qualquer tela. A k-hero-led ocupa 100svh, com KEMUEL no fundo e o conteúdo centralizado à frente.
 - Site em 3 fases.
 - Fase 1 (lançamento): Início, Quem somos, Contribua (PIX institucional com botão copiar e QR Code).
 - Fase 2 (conteúdo): Materiais (PDFs públicos por categoria), Blog, Agenda opcional.

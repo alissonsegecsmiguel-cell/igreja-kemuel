@@ -28,6 +28,7 @@ Regras fixas do projeto do site da Igreja Kemuel.
 ## Forma de trabalho
 
 - Mobile primeiro.
+- Primeira dobra da página principal: logo e menu, título, subtítulo, horários dos cultos (k-schedule) e os dois botões ("Planeje sua visita" e "Como chegar") ficam SEMPRE visíveis sem rolar, em qualquer tela.
 - MODO FILA: prompt que começa com "FILA: execute somente depois de terminar a tarefa atual." espera a tarefa atual terminar.
 - Backlog: "Coloque isso no Backlog" pausa um item. "Retome o item [nome] do Backlog" retoma.
 - Prompts longos podem vir em Parte 1 e Parte 2. Ao receber a Parte 1 com "AGUARDE A PARTE 2", só confirmar que entendeu.
