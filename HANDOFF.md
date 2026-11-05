@@ -2,7 +2,7 @@
 
 ## 1. Última sessão
 
-- 05/11/2026: referência Cursos exclusivos sobre a fé, doutrina e espiritualidade católica_files extraída (estudo local, fora do Git). Biblioteca de padrões e notas concluídas; teste leve em 1440 px e 390 px, incluindo abertura direta do arquivo, sem erros no console.
+- 05/11/2026: plano do site em três fases registrado, com escopo do lançamento, conteúdo e cursos externos; componentes das três fases definidos para o design system e novas pendências registradas. Alteração somente documental.
 
 ## 2. Estado atual
 
@@ -28,6 +28,9 @@
 - Registro do domínio igrejakemuel.com.br no CNPJ da igreja.
 - Conteúdo institucional: endereço, horários dos cultos, quem somos, contatos.
 - Fotos da igreja.
+- Definir quem escreve o blog e a frequência.
+- Definir a plataforma dos cursos e se serão gratuitos ou pagos.
+- Perfil da Empresa no Google da igreja.
 
 ## 7. Concluído
 
@@ -45,3 +48,8 @@
 - Design system antes de qualquer página.
 - Domínio: igrejakemuel.com.br.
 - Site contemporâneo, com objetivo de informar membros e atrair visitantes.
+- Site em 3 fases.
+- Fase 1 (lançamento): Início, Quem somos, Contribua (PIX institucional com botão copiar e QR Code).
+- Fase 2 (conteúdo): Materiais (PDFs públicos por categoria), Blog, Agenda opcional.
+- Fase 3 (cursos): cursos em plataforma externa; o site só mostra cards com links.
+- O design system nasce com os componentes das 3 fases: hero, menu mobile, bloco de horários, bloco de endereço com mapa, bloco de PIX, botão flutuante de WhatsApp, rodapé, card de post, página de texto longo, card de material, filtro por categoria, card de evento, card de curso.
