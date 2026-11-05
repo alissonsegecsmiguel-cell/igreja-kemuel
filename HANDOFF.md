@@ -2,7 +2,7 @@
 
 ## 1. Última sessão
 
-- 05/11/2026: referência Clube de Literatura Clássica_files extraída (estudo local, fora do Git). Biblioteca de padrões e notas concluídas; teste leve em 1440 px e 390 px, incluindo abertura direta do arquivo, sem erros no console.
+- 05/11/2026: referência Cursos exclusivos sobre a fé, doutrina e espiritualidade católica_files extraída (estudo local, fora do Git). Biblioteca de padrões e notas concluídas; teste leve em 1440 px e 390 px, incluindo abertura direta do arquivo, sem erros no console.
 
 ## 2. Estado atual
 
@@ -15,9 +15,8 @@
 
 ## 4. Próximas tarefas
 
-1. Concluir as extrações locais: falta 1 pasta sem design-system.html em referencias/:
-   - Cursos exclusivos sobre a fé, doutrina e espiritualidade católica_files
-2. Depois das extrações, prioridade: criar o design system da Kemuel em assets/design_system.html, antes de qualquer página. Usar apenas inspiração conceitual, sem copiar arquivos de terceiros.
+1. Extrações locais concluídas: nenhuma pasta de referencias/ sem design-system.html (0 pendentes).
+2. Prioridade após as extrações: criar o design system da Kemuel em assets/design_system.html, antes de qualquer página. Usar apenas inspiração conceitual, sem copiar arquivos de terceiros.
 
 ## 5. Backlog
 
@@ -35,6 +34,7 @@
 - Base do projeto.
 - Extração local da referência do blog: design-system.html, notas e evidências de teste, todos em referencias/ e fora do Git/deploy.
 - Extração local de Clube de Literatura Clássica_files: design-system.html, notas, recursos e evidências de teste, todos em referencias/ e fora do Git/deploy.
+- Extração local da referência de cursos: design-system.html, notas, recursos e evidências de teste, todos em referencias/ e fora do Git/deploy.
 
 ## 8. Decisões registradas
 
