@@ -1,0 +1,10 @@
+.env
+.env.*
+.vercel/
+node_modules/
+.DS_Store
+Thumbs.db
+referencias/
+relatorios/
+prints/
+*.log
