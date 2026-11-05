@@ -2,7 +2,7 @@
 
 ## 1. Última sessão
 
-- 05/11/2026: design system da Kemuel criado em assets/design_system.html, com tokens e componentes próprios para as três fases. Testes em 1440 px e 390 px: fontes locais, contraste AA, teclado e interações conferidos; sem rolagem horizontal, erros de console ou chamadas externas. Movimento reduzido desliga animações e transições. index.html preservado.
+- 05/11/2026: ajustes na hero do design system: lettering Outfit estático 800 com contornos unidos, movimento lento da luz e respiro do título pelo token --tracking-display (-0.015em). Chrome e Edge em 1440 px e 390 px aprovados: sem rolagem horizontal, erros no console ou chamadas externas; loop de 24s pausa fora da hero e desliga com movimento reduzido. Referência do logo organizada em referencias/marca-kemuel/. index.html preservado.
 
 ## 2. Estado atual
 
@@ -57,9 +57,10 @@
 - Até a aprovação da Fase 1, preservar o index.html provisório e não incluir links para páginas novas nele.
 - assets/design_system.html fora do deploy; tokens e estilos compartilhados em arquivos próprios, por exemplo assets/css/.
 - Opção A: base branca, blocos pretos e vermelho somente em ações principais, marcadores, detalhes e estados; sem grandes superfícies vermelhas. Verde e âmbar ficam restritos ao feedback semântico.
-- Fontes: Outfit para títulos, pelas formas geométricas e pelo peso próximo ao lettering observado; Public Sans para texto e interface, pelo desenho neutro e pela leitura confortável. Ambas SIL OFL 1.1, hospedadas localmente, sem fontes copiadas das referências. Nenhuma terceira família.
-- Tokens em assets/css/tokens.css; componentes em assets/css/components.css; interações em assets/js/ui.js. Um easing e durações de 140ms, 260ms e 480ms. Sem frameworks, rastreamento ou animações contínuas.
-- --color-red #DE2E38 é PROVISÓRIO até o código oficial chegar. Print apenas observado e medido; não incorporado ao site. O caminho informado para a marca não existia; a imagem correspondente foi encontrada em referencias/logo-referencia.jfif.jfif.
+- Fontes: Outfit para títulos, pelas formas geométricas e pelo peso próximo ao lettering observado; Public Sans para texto e interface, pelo desenho neutro e pela leitura confortável. Ambas SIL OFL 1.1, hospedadas localmente, sem fontes copiadas das referências. Somente o lettering vazado usa o derivado Outfit Kemuel Static 800, com contornos unidos para eliminar as costuras expostas por text-stroke; métricas preservadas e licença OFL ao lado.
+- Tokens em assets/css/tokens.css; componentes em assets/css/components.css; interações em assets/js/ui.js. Easing único de interface e durações de 140ms, 260ms e 480ms. Sem frameworks ou rastreamento.
+- Loop contínuo permitido SOMENTE na atmosfera da hero: ciclo de 24s, linear, animando apenas transform e opacity. O arco é estático; a luz faz deslocamento mínimo. Pausar fora da tela ou com aba oculta e desligar com prefers-reduced-motion. Todos os demais movimentos são finitos.
+- --color-red #DE2E38 é PROVISÓRIO até o código oficial chegar. Print apenas observado e medido; não incorporado ao site. A referência está em referencias/marca-kemuel/logo-referencia.jfif; essa pasta guarda somente a referência de identidade e não é uma extração de site.
 - Domínio: igrejakemuel.com.br.
 - Site contemporâneo, com objetivo de informar membros e atrair visitantes.
 - Site em 3 fases.

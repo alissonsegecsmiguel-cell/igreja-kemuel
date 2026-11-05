@@ -73,12 +73,13 @@ h6, .k-h6 { font-size: var(--text-h6); }
 .k-mobile-panel.is-closing { animation-name: k-menu-out; }
 .k-hero { position: relative; isolation: isolate; overflow: clip; color: var(--color-white); background: var(--color-black); margin-top: var(--header-height); padding-block: var(--space-5) var(--space-6); }
 .k-hero__ambience { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
-.k-hero__ambience::before { content: ""; position: absolute; width: 75%; aspect-ratio: 1; right: -25%; top: -15%; border: 1px solid var(--color-border-dark); border-radius: 50%; opacity: .55; transform: rotate(-20deg) scaleX(1.4); animation: k-atmosphere var(--duration-long) var(--ease) both; }
-.k-hero__ambience::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 85% 35%, var(--color-white-a12), transparent 60%); animation: k-atmosphere var(--duration-long) var(--ease) both; }
+.k-hero__ambience::before { content: ""; position: absolute; width: 75%; aspect-ratio: 1; right: -25%; top: -15%; border: 1px solid var(--color-border-dark); border-radius: 50%; opacity: .55; transform: rotate(-20deg) scaleX(1.4); }
+.k-hero__ambience::after { content: ""; position: absolute; inset: -4%; opacity: .6; background: radial-gradient(ellipse at 85% 35%, var(--color-white-a12), transparent 60%); animation: k-atmosphere-orbit var(--duration-atmosphere) var(--ease-atmosphere) infinite; animation-play-state: paused; }
+.k-hero.is-atmosphere-active .k-hero__ambience::after { animation-play-state: running; }
 .k-hero__top { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); margin-bottom: var(--space-5); }
 .k-hero__grid { display: grid; gap: var(--space-5); align-items: end; }
 .k-hero__title { font: var(--weight-heavy) var(--text-display)/var(--leading-display) var(--font-heading); letter-spacing: var(--tracking-display); max-width: 12ch; margin-block: var(--space-3) var(--space-4); }
-.k-lettering { display: block; color: transparent; -webkit-text-stroke: 1.5px var(--color-white); }
+.k-lettering { display: block; font-family: var(--font-lettering); color: transparent; -webkit-text-stroke: 1.5px var(--color-white); }
 @supports not (-webkit-text-stroke: 1px white) { .k-lettering { color: var(--color-white); } }
 .k-hero__intro { color: var(--color-on-dark-muted); max-width: 36rem; margin-bottom: var(--space-4); }
 .k-hero__aside { border-top: 1px solid var(--color-border-dark); padding-top: var(--space-3); max-width: 23rem; }
@@ -245,7 +246,11 @@ textarea.k-input { resize: vertical; min-height: 8rem; }
 .k-motion-ready [data-reveal] { opacity: 0; transform: translateY(12px); transition: opacity var(--duration-long) var(--ease), transform var(--duration-long) var(--ease); }
 .k-motion-ready [data-reveal].is-visible { opacity: 1; transform: none; }
 @keyframes k-enter { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
-@keyframes k-atmosphere { from { opacity: 0; transform: translateX(16px); } }
+@keyframes k-atmosphere-orbit {
+  0%, 100% { opacity: .55; transform: rotate(0deg) translate(1%, 1.5%) rotate(0deg); }
+  50% { opacity: .65; }
+  100% { transform: rotate(360deg) translate(1%, 1.5%) rotate(-360deg); }
+}
 @keyframes k-menu-in { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
 @keyframes k-menu-out { to { opacity: 0; transform: translateY(-8px); } }
 @keyframes k-copy { 50% { transform: scale(1.18); } }

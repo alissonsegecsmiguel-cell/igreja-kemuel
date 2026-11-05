@@ -7,6 +7,24 @@
   const duration = name => parseFloat(tokens.getPropertyValue('--duration-' + name));
   const easing = tokens.getPropertyValue('--ease').trim();
   const faqAnimations = new Map();
+  // Única atmosfera contínua: CSS faz o movimento; IO só controla a pausa.
+  const heroes = [...document.querySelectorAll('.k-hero')];
+  if ('IntersectionObserver' in window && heroes.length) {
+    const visibleHeroes = new Set();
+    const updateAtmospheres = () => heroes.forEach(hero => {
+      hero.classList.toggle('is-atmosphere-active', visibleHeroes.has(hero) && !reduced.matches && !document.hidden);
+    });
+    const atmosphereObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) visibleHeroes.add(entry.target);
+        else visibleHeroes.delete(entry.target);
+      });
+      updateAtmospheres();
+    }, { threshold: 0 });
+    heroes.forEach(hero => atmosphereObserver.observe(hero));
+    reduced.addEventListener('change', updateAtmospheres);
+    document.addEventListener('visibilitychange', updateAtmospheres);
+  }
   let toastTimer;
   function announce(message) {
     const toast = document.querySelector('[data-toast]');

@@ -11,6 +11,14 @@
   font-display: swap;
 }
 @font-face {
+  /* Derivado estático com contornos unidos; exclusivo do lettering vazado. */
+  font-family: "Outfit Kemuel Static";
+  src: url("../fonts/outfit-static-800.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+}
+@font-face {
   font-family: "Public Sans";
   src: url("../fonts/publicsans-latin-variable.woff2") format("woff2");
   font-style: normal;
@@ -57,6 +65,7 @@
   --color-white-a06: rgba(255, 255, 255, .06);
 
   --font-heading: "Outfit", "Arial", sans-serif;
+  --font-lettering: "Outfit Kemuel Static", "Arial", sans-serif;
   --font-body: "Public Sans", "Arial", sans-serif;
   --weight-regular: 400;
   --weight-medium: 500;
@@ -81,7 +90,7 @@
   --leading-heading: 1.12;
   --leading-body: 1.65;
   --leading-label: 1.4;
-  --tracking-display: -.055em;
+  --tracking-display: -.015em;
   --tracking-heading: -.035em;
   --tracking-body: 0em;
   --tracking-label: .06em;
@@ -109,5 +118,7 @@
   --duration-short: 140ms;
   --duration-medium: 260ms;
   --duration-long: 480ms;
+  --duration-atmosphere: 24s; /* Exceção: loop somente na atmosfera da hero. */
   --ease: cubic-bezier(.22, 1, .36, 1);
+  --ease-atmosphere: linear;
 }
