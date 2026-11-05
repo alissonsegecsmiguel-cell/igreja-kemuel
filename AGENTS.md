@@ -9,9 +9,8 @@ Regras fixas do projeto do site da Igreja Kemuel.
 - Usar sempre o design system do projeto (assets/design_system.html). Nunca criar visual do zero. Exceção: tarefas de estudo dentro de referencias/.
 - O projeto usa apenas a branch main. Commit e push da main ao final de toda tarefa, para o HANDOFF sempre ir para o GitHub.
 - A Vercel está conectada à main. Todo push na main vai para o ar em igrejakemuel.com.br.
-- Até a Fase 1 ser aprovada, o index.html é a página "Em breve" e não pode ser substituído. Páginas novas podem ser criadas, mas não podem ser linkadas a partir do index.html.
+- O index.html é a página principal em construção, com marcadores entre colchetes visíveis e meta robots noindex até o lançamento.
 - Os tokens e estilos compartilhados ficam em arquivos próprios (por exemplo assets/css/), nunca só dentro do design_system.html, porque ele não vai para o ar.
-- Antes de começar as páginas da Fase 1, revisar com o Alisson se o projeto volta a usar uma branch dev.
 
 ## Segurança (repositório público)
 
@@ -20,6 +19,9 @@ Regras fixas do projeto do site da Igreja Kemuel.
 - Nunca usar git add . sem antes conferir o git status.
 - Commit errado ainda não enviado: corrigir com amend, não com commit novo por cima.
 - A pasta referencias/ guarda sites de terceiros só para estudo. Nunca entra no Git nem no deploy. Nada de lá (imagens, textos, código) é copiado para o site.
+- Extrações usam SOMENTE os arquivos que o Alisson salvou. É proibido baixar qualquer arquivo dos sites de referência ou de seus servidores, mesmo que esteja faltando.
+- É proibido contornar recusas de servidor (403, 401 ou similares), alterar cabeçalhos para se passar por navegador ou usar links temporários e assinados.
+- Se faltar algum arquivo, documentar como ausente e seguir sem ele.
 - Toda extração em referencias/ entrega, no primeiro nível da pasta do site, somente: design-system__RESUMO.html, notas.md e a pasta arquivos/ com todo o resto. RESUMO tem de 2 a 5 palavras sobre o estilo visual, em minúsculas, sem acentos, com hífens, diferente dos já existentes.
 - Imagens no site: só da igreja ou com licença. Imagens geradas por IA só como provisórias, nunca representando pessoas ou eventos reais da igreja. Letras de louvor não são publicadas.
 

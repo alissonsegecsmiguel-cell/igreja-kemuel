@@ -1,42 +1,64 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Site oficial da Igreja Kemuel. Em breve.">
-    <title>Igreja Kemuel</title>
-    <style>
-      body {
-        box-sizing: border-box;
-        margin: 0;
-        min-height: 100vh;
-        min-height: 100svh;
-        display: grid;
-        place-items: center;
-        padding: 24px;
-        background: #000000;
-        color: #ffffff;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        text-align: center;
-      }
-
-      h1 {
-        margin: 0 0 16px;
-        font-size: 2rem;
-        line-height: 1.2;
-      }
-
-      p {
-        margin: 0;
-        font-size: 1.125rem;
-        line-height: 1.5;
-      }
-    </style>
-  </head>
-  <body>
-    <main>
-      <h1>Igreja Kemuel</h1>
-      <p>Nosso site está chegando.</p>
-    </main>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Site oficial da Igreja Kemuel. Conteúdo em preparação.">
+  <meta name="robots" content="noindex">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Igreja Kemuel</title>
+  <link rel="icon" href="data:,">
+  <link rel="preload" href="assets/fonts/outfit-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/outfit-static-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/publicsans-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <script src="assets/js/ui.js" defer></script>
+</head>
+<body>
+  <svg class="k-symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="k-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
+    <symbol id="k-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="k-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+  </defs></svg>
+  <a class="k-skip" href="#conteudo">Pular para o conteúdo</a>
+  <header class="k-header">
+    <div class="k-container k-header__inner">
+      <a class="k-brand" href="#hero" aria-label="Igreja Kemuel, início"><span class="k-logo-slot">LOGO</span><span>Igreja Kemuel</span></a>
+      <nav class="k-doc-nav" aria-label="Navegação principal"><a href="#visita">Planeje sua visita</a><a href="#endereco">Como chegar</a></nav>
+      <button class="k-menu-toggle" type="button" data-menu-toggle="menu-principal" data-overlay-menu aria-controls="menu-principal" aria-expanded="false"><svg class="k-icon" aria-hidden="true"><use href="#k-menu"/></svg><span data-menu-label>Menu</span></button>
+    </div>
+    <nav class="k-mobile-panel" id="menu-principal" aria-label="Navegação mobile" hidden inert><a href="#visita">Planeje sua visita</a><a href="#endereco">Como chegar</a></nav>
+  </header>
+  <main id="conteudo">
+    <section class="k-hero k-hero-led k-dark" id="hero" aria-labelledby="hero-titulo">
+      <div class="k-hero__ambience" aria-hidden="true">
+        <div class="k-hero-led__cloud">
+          <div class="k-hero-led__mesh">
+            <span class="k-hero-led__word">KEMUEL</span>
+            <div class="k-hero-led__light"></div>
+            <!-- Inerte por padrão. Ativar data-video-enabled só após instalar os três vídeos locais. -->
+            <template data-hero-video><video class="k-hero-led__video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video></template>
+          </div>
+        </div>
+      </div>
+      <div class="k-container k-hero-led__content">
+        <div class="k-hero-led__copy">
+          <p class="k-eyebrow k-enter">[Copy a definir]</p>
+          <h1 class="k-hero-led__title k-enter k-enter--2" id="hero-titulo">[Copy a definir]<span class="k-lettering">[Copy a definir]</span></h1>
+          <p class="k-body-lg k-hero__intro k-enter k-enter--3">[Subtítulo a definir]</p>
+          <p class="k-body-sm k-muted k-enter k-enter--3">[Dia do culto principal] · [Horário]</p>
+          <div class="k-row k-hero-led__actions k-enter k-enter--3"><a class="k-button" href="#visita">Planeje sua visita<svg class="k-icon" aria-hidden="true"><use href="#k-arrow"/></svg></a><a class="k-button k-button--secondary" href="#endereco">Como chegar</a></div>
+        </div>
+      </div>
+    </section>
+    <section class="k-section" aria-label="Informações em preparação" data-reveal>
+      <div class="k-container k-grid k-grid--2">
+        <article class="k-demo k-stack" id="visita" aria-labelledby="visita-titulo"><p class="k-eyebrow">Planeje sua visita</p><h2 class="k-h4" id="visita-titulo">[Informações para a primeira visita]</h2><p class="k-muted">[Dia do culto principal] · [Horário]</p><p class="k-caption k-muted">Conteúdo em preparação.</p></article>
+        <article class="k-demo k-stack" id="endereco" aria-labelledby="endereco-titulo"><p class="k-eyebrow">Como chegar</p><h2 class="k-h4" id="endereco-titulo">[Endereço da igreja]</h2><div class="k-placeholder">MAPA<br><span class="k-caption">Espaço reservado</span></div></article>
+      </div>
+    </section>
+  </main>
+  <footer class="k-endnote"><div class="k-container"><p class="k-caption k-muted">Igreja Kemuel · Conteúdo em preparação.</p></div></footer>
+</body>
 </html>

@@ -1,4 +1,4 @@
-/* Interações próprias, sem bibliotecas, rastreamento ou pedidos de rede. */
+/* Interações próprias. Vídeo local é opt-in; o padrão não faz pedidos de mídia. */
 (() => {
   'use strict';
   const root = document.documentElement;
@@ -7,12 +7,66 @@
   const duration = name => parseFloat(tokens.getPropertyValue('--duration-' + name));
   const easing = tokens.getPropertyValue('--ease').trim();
   const faqAnimations = new Map();
-  // Única atmosfera contínua: CSS faz o movimento; IO só controla a pausa.
+  // Loop somente no fundo da hero. Vídeo opt-in após os arquivos serem instalados.
+  const assetBase = new URL('../', document.currentScript.src);
+  const mobileVideo = matchMedia(`(max-width: ${parseFloat(tokens.getPropertyValue('--hero-led-media-mobile')) - .01}px)`);
   const heroes = [...document.querySelectorAll('.k-hero')];
   if ('IntersectionObserver' in window && heroes.length) {
     const visibleHeroes = new Set();
+    const videos = new Map();
+    function updateVideo(hero, active) {
+      if (!hero.hasAttribute('data-video-enabled')) return;
+      let state = videos.get(hero);
+      // Sem preferência de movimento, visibilidade ou ativação: nenhuma requisição.
+      if (!state && !active) return;
+      if (!state) {
+        const template = hero.querySelector('[data-hero-video]');
+        if (!template) return;
+        const video = template.content.firstElementChild.cloneNode(true);
+        video.muted = true;
+        state = { video, mobile: null, failed: false, playing: false };
+        videos.set(hero, state);
+        template.after(video);
+        video.addEventListener('playing', () => {
+          state.playing = true;
+          hero.classList.toggle('is-video-ready', visibleHeroes.has(hero) && !reduced.matches && !document.hidden);
+        });
+        video.addEventListener('error', () => {
+          state.failed = true;
+          hero.classList.remove('is-video-ready');
+        });
+      }
+      const { video } = state;
+      if (!active) {
+        video.pause();
+        if (reduced.matches) hero.classList.remove('is-video-ready');
+        return;
+      }
+      if (state.mobile !== mobileVideo.matches) {
+        video.pause();
+        video.replaceChildren();
+        state.mobile = mobileVideo.matches;
+        state.failed = false;
+        state.playing = false;
+        hero.classList.remove('is-video-ready');
+        const sources = state.mobile ? [['hero-mobile.mp4', 'video/mp4']] : [['hero.webm', 'video/webm'], ['hero.mp4', 'video/mp4']];
+        sources.forEach(([file, type]) => {
+          const source = document.createElement('source');
+          source.src = new URL('video/' + file, assetBase).href;
+          source.type = type;
+          video.append(source);
+        });
+        video.load();
+      }
+      if (!state.failed) video.play().catch(() => {
+        // Autoplay recusado ou pausa concorrente: o fundo CSS continua disponível.
+        if (!state.playing) hero.classList.remove('is-video-ready');
+      });
+    }
     const updateAtmospheres = () => heroes.forEach(hero => {
-      hero.classList.toggle('is-atmosphere-active', visibleHeroes.has(hero) && !reduced.matches && !document.hidden);
+      const active = visibleHeroes.has(hero) && !reduced.matches && !document.hidden;
+      hero.classList.toggle('is-atmosphere-active', active);
+      updateVideo(hero, active);
     });
     const atmosphereObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -23,6 +77,7 @@
     }, { threshold: 0 });
     heroes.forEach(hero => atmosphereObserver.observe(hero));
     reduced.addEventListener('change', updateAtmospheres);
+    mobileVideo.addEventListener('change', updateAtmospheres);
     document.addEventListener('visibilitychange', updateAtmospheres);
   }
   let toastTimer;
