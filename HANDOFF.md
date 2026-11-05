@@ -2,7 +2,7 @@
 
 ## 1. Última sessão
 
-- 05/11/2026: copy da hero aplicada e horários reais incluídos com o componente k-schedule (hero, dobra Venha nos visitar e rodapé resumido). Bateria da hero em Chrome e Edge: 8 de 8; teste leve das páginas: 16 de 16.
+- 05/11/2026: dobra "Primeira visita" montada com a variação k-faq-split do design system e FAQ de 5 perguntas. Teste leve em Chrome e Edge, 1440 px e 390 px: sem rolagem horizontal ou erros, sanfona com mouse e teclado, primeira pergunta aberta, ordem correta no celular.
 
 ## 2. Estado atual
 
@@ -16,7 +16,7 @@
 
 ## 4. Próximas tarefas
 
-1. Montar as dobras restantes: Primeira visita, Para sua caminhada.
+1. Montar a dobra restante: Para sua caminhada.
 2. Validar o design system e substituir os provisórios quando chegarem o logo e o código oficial do vermelho.
 
 ## 5. Backlog
@@ -34,6 +34,8 @@
 - Definir a plataforma dos cursos e se serão gratuitos ou pagos.
 - Perfil da Empresa no Google da igreja.
 - Validar a frase da hero com o pastor.
+- Respostas do FAQ: duração e estrutura do culto, costume de vestimenta, ministério infantil e faixa etária, como a igreja recebe visitantes, estacionamento.
+- Número oficial do WhatsApp.
 
 ## 7. Concluído
 
@@ -71,6 +73,7 @@
 - 05/11/2026: ordem das dobras da página principal: Cabeçalho, Hero, Venha nos visitar, Primeira visita, Quem somos, Contribua, Acompanhe, Rodapé.
 - 05/11/2026: cultos às quintas-feiras, 19h, e aos domingos, 18h, confirmados pelo Alisson. Sem nomes próprios: usar apenas "Culto".
 - 05/11/2026: copy da hero: "Bem-vindo à" (sólida), "casa de Deus." (vazada) e subtítulo "Uma comunidade de fé de portas abertas para você e sua família viverem mais perto de Deus."
+- 05/11/2026: FAQ da Primeira visita com 5 perguntas, sem pergunta de horários, que já aparecem na hero e em Venha nos visitar.
 - Site em 3 fases.
 - Fase 1 (lançamento): Início, Quem somos, Contribua (PIX institucional com botão copiar e QR Code).
 - Fase 2 (conteúdo): Materiais (PDFs públicos por categoria), Blog, Agenda opcional.

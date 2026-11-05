@@ -137,6 +137,15 @@
           </div>
           <p class="k-caption k-muted">Contraste: texto #171717 e apoio #555555 sobre branco; branco e apoio #C5C5C5 sobre #111111. Todos acima de AA.</p>
         </section>
+        <section class="k-demo k-stack" id="faq-split-documentacao" aria-labelledby="faq-split-titulo">
+          <p class="k-eyebrow">Variação · k-faq-split</p><h3 id="faq-split-titulo">Introdução de um lado, perguntas do outro.</h3>
+          <p class="k-body-sm">A partir de 60rem, duas colunas (<code>--faq-split-columns</code>): introdução e ação à esquerda, sanfona à direita. No celular, uma coluna na ordem da marcação: introdução, perguntas e ação. Reutiliza k-eyebrow, k-faq e k-button. A primeira pergunta pode vir aberta com o atributo open.</p>
+          <div class="k-faq-split">
+            <header class="k-faq-split__intro k-stack"><p class="k-eyebrow">[Eyebrow]</p><h4 class="k-h3">[Título da dobra]</h4><p class="k-muted">[Texto curto.]</p></header>
+            <div class="k-faq-split__list"><details class="k-faq" open><summary>[Pergunta aberta]</summary><div class="k-faq__body"><p>[Resposta confirmada.]</p></div></details><details class="k-faq"><summary>[Outra pergunta]</summary><div class="k-faq__body"><p>[Resposta confirmada.]</p></div></details></div>
+            <div class="k-faq-split__action"><button class="k-button" type="button" data-example>Ação · exemplo</button></div>
+          </div>
+        </section>
         <div class="k-stack">
           <h3>Ações e estados</h3>
           <div class="k-demo"><h4 class="k-demo__title">Primário · uma ação principal por bloco</h4><div class="k-states" data-states><template><button class="k-button" type="button">Ação principal</button></template></div></div>
