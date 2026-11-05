@@ -121,6 +121,7 @@
   --schedule-item-min: 8.5rem; /* Abaixo disso, um bloco embaixo do outro. */
   --schedule-max-width: 28rem;
   --faq-split-columns: minmax(0, 2fr) minmax(0, 3fr);
+  --card-compact-thumb: 6.5rem; /* Imagem do card horizontal no celular. */
   --whatsapp-clearance: 5rem; /* Altura reservada para o botão flutuante não cobrir o fim da página. */
   --duration-short: 140ms;
   --duration-medium: 260ms;

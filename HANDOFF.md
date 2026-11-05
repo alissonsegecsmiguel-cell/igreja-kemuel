@@ -2,7 +2,7 @@
 
 ## 1. Última sessão
 
-- 05/11/2026: dobra "Primeira visita" montada com a variação k-faq-split do design system e FAQ de 5 perguntas. Teste leve em Chrome e Edge, 1440 px e 390 px: sem rolagem horizontal ou erros, sanfona com mouse e teclado, primeira pergunta aberta, ordem correta no celular.
+- 05/11/2026: dobra "Para sua caminhada" incluída na página principal; páginas provisórias de blog e materiais, com novos redirecionamentos. Teste leve em Chrome e Edge, 6 páginas, 1440 px e 390 px, com ordem e fundos das dobras e cards compactos no celular.
 
 ## 2. Estado atual
 
@@ -16,7 +16,7 @@
 
 ## 4. Próximas tarefas
 
-1. Montar a dobra restante: Para sua caminhada.
+1. Cabeçalho minimalista e primeira dobra; depois, animação da aurora.
 2. Validar o design system e substituir os provisórios quando chegarem o logo e o código oficial do vermelho.
 
 ## 5. Backlog
@@ -31,6 +31,7 @@
 - Conteúdo institucional: endereço, quem somos, contatos.
 - Fotos da igreja.
 - Definir quem escreve o blog e a frequência.
+- Primeiros materiais em PDF.
 - Definir a plataforma dos cursos e se serão gratuitos ou pagos.
 - Perfil da Empresa no Google da igreja.
 - Validar a frase da hero com o pastor.
@@ -70,7 +71,8 @@
 - Domínio: igrejakemuel.com.br.
 - Site contemporâneo, com objetivo de informar membros e atrair visitantes.
 - 05/11/2026: URLs limpas (/quem-somos, /contribua), sem barra final; erros comuns redirecionam pelo vercel.json.
-- 05/11/2026: ordem das dobras da página principal: Cabeçalho, Hero, Venha nos visitar, Primeira visita, Quem somos, Contribua, Acompanhe, Rodapé.
+- 05/11/2026: ordem e fundos das dobras da página principal: Cabeçalho branco; Hero preto; Venha nos visitar branco; Primeira visita branco suave; Quem somos preto; Para sua caminhada branco; Contribua branco suave; Acompanhe branco; Rodapé preto.
+- 05/11/2026: Blog e Materiais ficam fora do menu e do rodapé até a Fase 2; páginas provisórias em /blog e /materiais.
 - 05/11/2026: cultos às quintas-feiras, 19h, e aos domingos, 18h, confirmados pelo Alisson. Sem nomes próprios: usar apenas "Culto".
 - 05/11/2026: copy da hero: "Bem-vindo à" (sólida), "casa de Deus." (vazada) e subtítulo "Uma comunidade de fé de portas abertas para você e sua família viverem mais perto de Deus."
 - 05/11/2026: FAQ da Primeira visita com 5 perguntas, sem pergunta de horários, que já aparecem na hero e em Venha nos visitar.

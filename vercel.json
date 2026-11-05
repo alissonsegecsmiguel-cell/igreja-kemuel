@@ -10,6 +10,11 @@
     { "source": "/oferta", "destination": "/contribua", "permanent": true },
     { "source": "/pix", "destination": "/contribua", "permanent": true },
     { "source": "/inicio", "destination": "/", "permanent": true },
-    { "source": "/home", "destination": "/", "permanent": true }
+    { "source": "/home", "destination": "/", "permanent": true },
+    { "source": "/artigos", "destination": "/blog", "permanent": true },
+    { "source": "/reflexoes", "destination": "/blog", "permanent": true },
+    { "source": "/posts", "destination": "/blog", "permanent": true },
+    { "source": "/downloads", "destination": "/materiais", "permanent": true },
+    { "source": "/material", "destination": "/materiais", "permanent": true }
   ]
 }

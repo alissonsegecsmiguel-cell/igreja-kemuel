@@ -189,13 +189,19 @@ textarea.k-input { resize: vertical; min-height: 8rem; }
 .k-photo--contrast { position: relative; background: var(--color-border-control); color: var(--color-white); isolation: isolate; }
 .k-photo--contrast::before { position: absolute; content: ""; inset: 0; z-index: -1; background: linear-gradient(180deg, var(--color-black-a60), var(--color-black)); }
 .k-photo--contrast strong { align-self: end; font: var(--weight-bold) var(--text-h4)/1.2 var(--font-heading); letter-spacing: var(--tracking-heading); }
+/* k-material-strip — lista no celular; faixa de três colunas a partir de 60rem. */
+.k-material-strip { display: grid; gap: var(--space-2); padding: 0; list-style: none; }
+.k-material-strip__item { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); min-width: 0; padding: var(--space-3); border: var(--border-width) solid var(--color-border); border-radius: var(--radius-md); }
+.k-material-strip__text { display: grid; flex: 1; min-width: 0; }
 .k-placeholder { display: grid; place-items: center; gap: var(--space-2); min-height: 13rem; padding: var(--space-3); border: 1px dashed var(--color-border-control); border-radius: var(--radius-sm); background: var(--color-surface-soft); color: var(--color-text-muted); text-align: center; }
 .k-placeholder--qr { aspect-ratio: 1; min-height: 0; width: min(100%, 12rem); }
 .k-info-list { margin: 0; padding: 0; list-style: none; }
 .k-info-list li { display: grid; grid-template-columns: 1.5rem minmax(0, 1fr); gap: var(--space-2); padding-block: var(--space-3); border-bottom: 1px solid var(--color-border); }
 .k-info-list strong { display: block; }
+/* :where mantém especificidade zero para .k-stack controlar o espaço acima das listas. */
+:where(.k-schedule, .k-material-strip) { margin: 0; }
 /* k-schedule — horários em destaque. Claro por padrão; --dark sobre hero e rodapé. */
-.k-schedule { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--schedule-item-min)), 1fr)); gap: var(--space-2); width: 100%; margin: 0; padding: 0; list-style: none; }
+.k-schedule { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--schedule-item-min)), 1fr)); gap: var(--space-2); width: 100%; padding: 0; list-style: none; }
 .k-schedule__item { display: grid; align-content: start; justify-items: start; gap: var(--space-1); min-width: 0; padding: var(--space-3); border: var(--border-width) solid var(--color-border); border-radius: var(--radius-md); background: var(--color-white); color: var(--color-text); }
 .k-schedule__head { display: flex; align-items: center; gap: var(--space-2); }
 .k-schedule__mark { width: var(--marker-width); height: var(--marker-height); background: var(--color-red); }
@@ -300,6 +306,11 @@ textarea.k-input { resize: vertical; min-height: 8rem; }
 @keyframes k-menu-in { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
 @keyframes k-menu-out { to { opacity: 0; transform: translateY(-8px); } }
 @keyframes k-copy { 50% { transform: scale(1.18); } }
+@media (max-width: 39.99rem) {
+  /* k-card--compact — horizontal no celular; no restante, o card padrão. */
+  .k-card--compact { flex-direction: row; }
+  .k-card--compact .k-photo { flex: 0 0 var(--card-compact-thumb); min-height: 0; aspect-ratio: auto; padding: var(--space-1); }
+}
 @media (min-width: 40rem) {
   .k-whatsapp__label { display: inline; }
   .k-grid--2, .k-grid--3, .k-grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -311,6 +322,7 @@ textarea.k-input { resize: vertical; min-height: 8rem; }
 @media (min-width: 60rem) {
   .k-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .k-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .k-material-strip { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .k-faq-split { grid-template-columns: var(--faq-split-columns); grid-template-rows: auto 1fr; grid-template-areas: "intro list" "action list"; column-gap: var(--space-6); }
   .k-faq-split__intro { grid-area: intro; }
   .k-faq-split__list { grid-area: list; }
