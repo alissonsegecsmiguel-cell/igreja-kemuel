@@ -2,7 +2,7 @@
 
 ## 1. Última sessão
 
-- 05/11/2026: cabeçalho minimalista, transparente sobre a hero e sólido ao rolar; primeira dobra com todos os elementos essenciais visíveis sem rolar, medida em 13 telas de 320x568 a 1920x1080 e também em 844x390. Bateria da hero e teste das 6 páginas aprovados.
+- 05/11/2026: página sem estilos ao abrir por arquivo; causa encontrada e correção aplicada. Publicado continuava com estilo. Testes por arquivo e publicado em index, quem-somos e design_system, 1440x900 e 390x844.
 
 ## 2. Estado atual
 
@@ -80,6 +80,9 @@
 - 05/11/2026: FAQ da Primeira visita com 5 perguntas, sem pergunta de horários, que já aparecem na hero e em Venha nos visitar.
 - 05/11/2026: cabeçalho transparente na página principal, sólido ao rolar além da hero; sólido direto nas demais páginas. Altura de 56 px no celular e 64 px no computador. Sem o nome ao lado do logo: o logo oficial já o contém.
 - 05/11/2026: regra da primeira dobra no AGENTS: logo e menu, título, subtítulo, horários e os dois botões sempre visíveis sem rolar, em qualquer tela. A k-hero-led ocupa 100svh, com KEMUEL no fundo e o conteúdo centralizado à frente.
+- 05/11/2026: causa da página sem estilos: o commit 516b5c4 trocou os caminhos do index.html para /assets/..., que em file:// aponta para a raiz do disco. A CSP não bloqueou nada e continua nas páginas. O servidor local de testes usava a raiz do projeto, por isso não pegou o erro.
+- 05/11/2026: correção: páginas públicas com caminhos relativos a assets/; 404.html mantém /assets/ porque é servida em qualquer profundidade. Removido o preload de fontes, que gerava erros de CORS em file://. Os links entre páginas seguem como URLs limpas e só navegam no endereço publicado.
+- 05/11/2026: nova regra de conferência: antes de todo push, abrir o index.html publicado e conferir no console; abrir também por file://, e repetir no publicado após o deploy.
 - Site em 3 fases.
 - Fase 1 (lançamento): Início, Quem somos, Contribua (PIX institucional com botão copiar e QR Code).
 - Fase 2 (conteúdo): Materiais (PDFs públicos por categoria), Blog, Agenda opcional.

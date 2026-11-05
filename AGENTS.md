@@ -16,6 +16,7 @@ Regras fixas do projeto do site da Igreja Kemuel.
 
 - Nunca registrar dados pessoais, dados de membros, pedidos de oração, dados financeiros, credenciais, links privados ou falhas de segurança em nenhum arquivo. Itens sensíveis são acompanhados fora do repositório.
 - Antes de todo push, conferir que nada sensível entrou nos commits.
+- Antes de todo push, abrir o index.html publicado e conferir no console que nenhum CSS ou JS deu erro. Abrir também os arquivos locais por file://, pois a versão nova só é publicada depois do push, e repetir a conferência no endereço publicado ao final do deploy.
 - Nunca usar git add . sem antes conferir o git status.
 - Commit errado ainda não enviado: corrigir com amend, não com commit novo por cima.
 - A pasta referencias/ guarda sites de terceiros só para estudo. Nunca entra no Git nem no deploy. Nada de lá (imagens, textos, código) é copiado para o site.
