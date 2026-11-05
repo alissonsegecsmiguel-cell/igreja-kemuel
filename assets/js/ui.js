@@ -118,7 +118,7 @@
       }
       if (overlay) {
         document.body.classList.toggle('k-menu-open', open);
-        document.querySelectorAll('main, .k-whatsapp, .k-endnote').forEach(el => { el.inert = open; });
+        document.querySelectorAll('main, .k-whatsapp, .k-endnote, .k-footer--page').forEach(el => { el.inert = open; });
       }
       panel.classList.remove('is-closing');
       if (open) {

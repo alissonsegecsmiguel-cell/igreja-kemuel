@@ -1,0 +1,15 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/quemsomos", "destination": "/quem-somos", "permanent": true },
+    { "source": "/sobre", "destination": "/quem-somos", "permanent": true },
+    { "source": "/historia", "destination": "/quem-somos", "permanent": true },
+    { "source": "/contribuir", "destination": "/contribua", "permanent": true },
+    { "source": "/dizimo", "destination": "/contribua", "permanent": true },
+    { "source": "/oferta", "destination": "/contribua", "permanent": true },
+    { "source": "/pix", "destination": "/contribua", "permanent": true },
+    { "source": "/inicio", "destination": "/", "permanent": true },
+    { "source": "/home", "destination": "/", "permanent": true }
+  ]
+}

@@ -2,7 +2,7 @@
 
 ## 1. Última sessão
 
-- 05/11/2026: k-hero-led concluída e aplicada no index.html e no design system: palavra KEMUEL visível e inteira com respiro, sombra radial atrás do texto no lugar da proteção de 80%, sem LOGO nem nome repetido dentro da hero, meta robots noindex. Regras de extração e decisões do Alisson registradas no AGENTS e aqui. Bateria em Chrome e Edge, index.html e design_system.html, 1440 px e 390 px: 8 de 8 aprovadas.
+- 05/11/2026: estrutura de pastas e dobras da página principal. Criados quem-somos.html, contribua.html, 404.html (provisórias), vercel.json com URLs limpas e redirecionamentos, assets/img/ e favicon provisório. SEO básico e noindex em todas as páginas. Teste leve em Chrome e Edge, 4 páginas, 1440 px e 390 px: 16 de 16 aprovadas; 9 redirecionamentos conferidos em servidor local que imita o vercel.json.
 
 ## 2. Estado atual
 
@@ -16,7 +16,7 @@
 
 ## 4. Próximas tarefas
 
-1. Estruturar as dobras e as páginas do site (estrutura, copy e horários, Primeira visita, Para sua caminhada).
+1. Montar as dobras restantes: copy e horários, Primeira visita, Para sua caminhada.
 2. Validar o design system e substituir os provisórios quando chegarem o logo e o código oficial do vermelho.
 
 ## 5. Backlog
@@ -66,8 +66,19 @@
 - --color-red #DE2E38 é PROVISÓRIO até o código oficial chegar. Print apenas observado e medido; não incorporado ao site. A referência está em referencias/marca-kemuel/logo-referencia.jfif; essa pasta guarda somente a referência de identidade e não é uma extração de site.
 - Domínio: igrejakemuel.com.br.
 - Site contemporâneo, com objetivo de informar membros e atrair visitantes.
+- 05/11/2026: URLs limpas (/quem-somos, /contribua), sem barra final; erros comuns redirecionam pelo vercel.json.
+- 05/11/2026: ordem das dobras da página principal: Cabeçalho, Hero, Venha nos visitar, Primeira visita, Quem somos, Contribua, Acompanhe, Rodapé.
 - Site em 3 fases.
 - Fase 1 (lançamento): Início, Quem somos, Contribua (PIX institucional com botão copiar e QR Code).
 - Fase 2 (conteúdo): Materiais (PDFs públicos por categoria), Blog, Agenda opcional.
 - Fase 3 (cursos): cursos em plataforma externa; o site só mostra cards com links.
 - O design system nasce com os componentes das 3 fases: hero, menu mobile, bloco de horários, bloco de endereço com mapa, bloco de PIX, botão flutuante de WhatsApp, rodapé, card de post, página de texto longo, card de material, filtro por categoria, card de evento, card de curso.
+
+## 9. Checklist de lançamento
+
+- [ ] Nenhum marcador [ ] restante nas páginas.
+- [ ] Logo oficial e vermelho oficial aplicados.
+- [ ] Meta robots noindex removido.
+- [ ] Links reais de WhatsApp, redes e mapa conferidos.
+- [ ] Dobra "Para sua caminhada" só visível com pelo menos 3 posts e 3 materiais reais.
+- [ ] Teste completo em 1440 px e 390 px.

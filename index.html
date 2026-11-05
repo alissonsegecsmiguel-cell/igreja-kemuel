@@ -7,28 +7,40 @@
   <meta name="robots" content="noindex">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
   <title>Igreja Kemuel</title>
-  <link rel="icon" href="data:,">
-  <link rel="preload" href="assets/fonts/outfit-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/fonts/outfit-static-800.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/fonts/publicsans-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/tokens.css">
-  <link rel="stylesheet" href="assets/css/components.css">
-  <script src="assets/js/ui.js" defer></script>
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Igreja Kemuel">
+  <meta property="og:title" content="Igreja Kemuel">
+  <meta property="og:description" content="Site oficial da Igreja Kemuel. Conteúdo em preparação.">
+  <meta property="og:url" content="https://www.igrejakemuel.com.br/">
+  <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/assets/fonts/outfit-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/outfit-static-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/publicsans-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <script src="/assets/js/ui.js" defer></script>
 </head>
 <body>
   <svg class="k-symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
     <symbol id="k-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
     <symbol id="k-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
     <symbol id="k-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="k-chat" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 1-8 8H8l-5 3 1-6a8 8 0 1 1 16-5Z"/><path d="M8 10h8m-8 4h5"/></symbol>
+    <symbol id="k-external" viewBox="0 0 24 24"><path d="M13 5h6v6m0-6-9 9M9 5H5v14h14v-4"/></symbol>
+    <symbol id="k-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="k-pin" viewBox="0 0 24 24"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2"/></symbol>
+    <symbol id="k-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V4H4v12h4"/></symbol>
   </defs></svg>
   <a class="k-skip" href="#conteudo">Pular para o conteúdo</a>
   <header class="k-header">
     <div class="k-container k-header__inner">
-      <a class="k-brand" href="#hero" aria-label="Igreja Kemuel, início"><span class="k-logo-slot">LOGO</span><span>Igreja Kemuel</span></a>
-      <nav class="k-doc-nav" aria-label="Navegação principal"><a href="#visita">Planeje sua visita</a><a href="#endereco">Como chegar</a></nav>
+      <a class="k-brand" href="/" aria-label="Igreja Kemuel, início"><span class="k-logo-slot">LOGO</span><span>Igreja Kemuel</span></a>
+      <nav class="k-doc-nav" aria-label="Navegação principal"><a href="/" aria-current="page">Início</a><a href="/quem-somos">Quem somos</a><a href="/contribua">Contribua</a></nav>
+      <a class="k-button k-header__cta" href="#visite">Planeje sua visita</a>
       <button class="k-menu-toggle" type="button" data-menu-toggle="menu-principal" data-overlay-menu aria-controls="menu-principal" aria-expanded="false"><svg class="k-icon" aria-hidden="true"><use href="#k-menu"/></svg><span data-menu-label>Menu</span></button>
     </div>
-    <nav class="k-mobile-panel" id="menu-principal" aria-label="Navegação mobile" hidden inert><a href="#visita">Planeje sua visita</a><a href="#endereco">Como chegar</a></nav>
+    <nav class="k-mobile-panel" id="menu-principal" aria-label="Navegação mobile" hidden inert><a href="/" aria-current="page">Início</a><a href="/quem-somos">Quem somos</a><a href="/contribua">Contribua</a><a href="#visite">Planeje sua visita</a></nav>
   </header>
   <main id="conteudo">
     <section class="k-hero k-hero-led k-dark" id="hero" aria-labelledby="hero-titulo">
@@ -48,17 +60,60 @@
           <h1 class="k-hero-led__title k-enter k-enter--2" id="hero-titulo">[Copy a definir]<span class="k-lettering">[Copy a definir]</span></h1>
           <p class="k-body-lg k-hero__intro k-enter k-enter--3">[Subtítulo a definir]</p>
           <p class="k-body-sm k-muted k-enter k-enter--3">[Dia do culto principal] · [Horário]</p>
-          <div class="k-row k-hero-led__actions k-enter k-enter--3"><a class="k-button" href="#visita">Planeje sua visita<svg class="k-icon" aria-hidden="true"><use href="#k-arrow"/></svg></a><a class="k-button k-button--secondary" href="#endereco">Como chegar</a></div>
+          <div class="k-row k-hero-led__actions k-enter k-enter--3"><a class="k-button" href="#visite">Planeje sua visita<svg class="k-icon" aria-hidden="true"><use href="#k-arrow"/></svg></a><a class="k-button k-button--secondary" href="#endereco">Como chegar</a></div>
         </div>
       </div>
     </section>
-    <section class="k-section" aria-label="Informações em preparação" data-reveal>
-      <div class="k-container k-grid k-grid--2">
-        <article class="k-demo k-stack" id="visita" aria-labelledby="visita-titulo"><p class="k-eyebrow">Planeje sua visita</p><h2 class="k-h4" id="visita-titulo">[Informações para a primeira visita]</h2><p class="k-muted">[Dia do culto principal] · [Horário]</p><p class="k-caption k-muted">Conteúdo em preparação.</p></article>
-        <article class="k-demo k-stack" id="endereco" aria-labelledby="endereco-titulo"><p class="k-eyebrow">Como chegar</p><h2 class="k-h4" id="endereco-titulo">[Endereço da igreja]</h2><div class="k-placeholder">MAPA<br><span class="k-caption">Espaço reservado</span></div></article>
+    <section class="k-section" id="visite" data-reveal aria-labelledby="visite-titulo">
+      <div class="k-container">
+        <header class="k-section-heading"><h2 id="visite-titulo">Venha nos visitar</h2></header>
+        <div class="k-grid k-grid--2">
+          <article class="k-demo k-stack" aria-labelledby="horarios-titulo"><p class="k-eyebrow">Horários</p><h3 class="k-h4" id="horarios-titulo">Quando nos encontramos</h3><ul class="k-info-list"><li><svg class="k-icon" aria-hidden="true"><use href="#k-clock"/></svg><div><strong>[Nome do culto]</strong><span class="k-body-sm k-muted">[Dia da semana] · [Horário do culto]</span></div></li><li><svg class="k-icon" aria-hidden="true"><use href="#k-clock"/></svg><div><strong>[Nome do culto]</strong><span class="k-body-sm k-muted">[Dia da semana] · [Horário do culto]</span></div></li></ul></article>
+          <article class="k-demo k-stack" id="endereco" aria-labelledby="endereco-titulo"><p class="k-eyebrow">Endereço</p><h3 class="k-h4" id="endereco-titulo">Como chegar</h3><p>[Endereço da igreja]<br><span class="k-muted">[Bairro] · [Cidade / UF]</span></p><div class="k-placeholder"><svg class="k-icon k-icon--large" aria-hidden="true"><use href="#k-pin"/></svg><span>MAPA<br><span class="k-caption">Espaço reservado</span></span></div><button class="k-button k-button--secondary" type="button" data-example>Ver rota no mapa<svg class="k-icon" aria-hidden="true"><use href="#k-external"/></svg></button></article>
+        </div>
+      </div>
+    </section>
+    <section class="k-section k-section--soft" id="primeira-visita" data-reveal aria-labelledby="primeira-visita-titulo">
+      <div class="k-container k-stack">
+        <h2 id="primeira-visita-titulo">Primeira visita</h2>
+        <p class="k-body-lg k-muted">[Dobra em construção]</p>
+      </div>
+    </section>
+    <section class="k-section k-section--black k-dark" id="quem-somos" data-reveal aria-labelledby="quem-somos-titulo">
+      <div class="k-container k-grid k-grid--2 k-grid--center">
+        <div class="k-stack">
+          <h2 id="quem-somos-titulo">Quem somos</h2>
+          <p class="k-body-lg k-muted">[Texto: quem somos]</p>
+          <a class="k-link" href="/quem-somos">Conheça nossa história<svg class="k-icon k-icon--small" aria-hidden="true"><use href="#k-arrow"/></svg></a>
+        </div>
+        <div class="k-photo">FOTO DA IGREJA</div>
+      </div>
+    </section>
+    <section class="k-section k-section--soft" id="contribua" data-reveal aria-labelledby="contribua-titulo">
+      <div class="k-container k-stack">
+        <header class="k-section-heading"><h2 id="contribua-titulo">Contribua</h2><p class="k-body-lg k-muted">[Frase sobre contribuição]</p></header>
+        <article class="k-demo k-pix" aria-labelledby="pix-titulo"><div class="k-stack"><h3 class="k-h4" id="pix-titulo">PIX institucional</h3><div class="k-field"><label for="pix-chave">Chave PIX</label><input class="k-input" id="pix-chave" type="text" value="[Chave PIX institucional]" readonly></div><button class="k-button" type="button" data-copy="pix-chave"><svg class="k-icon" aria-hidden="true"><use href="#k-copy"/></svg><span data-copy-label>Copiar chave · exemplo</span></button><p class="k-caption k-muted">[Nome do titular institucional]</p></div><div class="k-placeholder k-placeholder--qr"><span>QR CODE<br><span class="k-caption">Espaço reservado</span></span></div></article>
+        <a class="k-link" href="/contribua">Outras formas de contribuir<svg class="k-icon k-icon--small" aria-hidden="true"><use href="#k-arrow"/></svg></a>
+      </div>
+    </section>
+    <section class="k-section" id="acompanhe" data-reveal aria-labelledby="acompanhe-titulo">
+      <div class="k-container k-stack">
+        <h2 id="acompanhe-titulo">Acompanhe</h2>
+        <div class="k-row"><a class="k-button k-button--secondary" href="https://example.invalid/instagram" rel="noopener noreferrer" data-example>Instagram · [Link do Instagram]<svg class="k-icon" aria-hidden="true"><use href="#k-external"/></svg></a><a class="k-button k-button--secondary" href="https://example.invalid/youtube" rel="noopener noreferrer" data-example>YouTube · [Link do YouTube]<svg class="k-icon" aria-hidden="true"><use href="#k-external"/></svg></a><a class="k-button k-button--secondary" href="https://example.invalid/whatsapp" rel="noopener noreferrer" data-example>WhatsApp · [Link do WhatsApp]<svg class="k-icon" aria-hidden="true"><use href="#k-external"/></svg></a></div>
       </div>
     </section>
   </main>
-  <footer class="k-endnote"><div class="k-container"><p class="k-caption k-muted">Igreja Kemuel · Conteúdo em preparação.</p></div></footer>
+  <footer class="k-footer k-footer--page k-dark">
+    <div class="k-container">
+      <div class="k-grid k-grid--3">
+        <div class="k-stack"><span class="k-logo-slot">LOGO</span><p class="k-body-sm k-muted">[Endereço da igreja]<br>[Horário do culto]</p></div>
+        <nav class="k-stack" aria-label="Páginas"><p class="k-label">Páginas</p><div class="k-footer__links"><a href="/">Início</a><a href="/quem-somos">Quem somos</a><a href="/contribua">Contribua</a></div></nav>
+        <nav class="k-stack" aria-label="Redes"><p class="k-label">Redes</p><div class="k-footer__links"><a href="https://example.invalid/instagram" rel="noopener noreferrer" data-example>Instagram · [Link do Instagram]</a><a href="https://example.invalid/youtube" rel="noopener noreferrer" data-example>YouTube · [Link do YouTube]</a><a href="https://example.invalid/whatsapp" rel="noopener noreferrer" data-example>WhatsApp · [Link do WhatsApp]</a></div></nav>
+      </div>
+      <p class="k-footer__bottom k-caption">Igreja Kemuel · Conteúdo em preparação.</p>
+    </div>
+  </footer>
+  <a class="k-whatsapp" href="https://example.invalid/whatsapp" rel="noopener noreferrer" data-example aria-label="WhatsApp, link de exemplo sem número real"><svg class="k-icon" aria-hidden="true"><use href="#k-chat"/></svg><span><span class="k-whatsapp__label">WhatsApp · </span>exemplo</span></a>
+  <div class="k-toast" role="status" aria-live="polite" data-toast hidden></div>
 </body>
 </html>
