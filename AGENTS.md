@@ -24,6 +24,7 @@ Regras fixas do projeto do site da Igreja Kemuel.
 - É proibido contornar recusas de servidor (403, 401 ou similares), alterar cabeçalhos para se passar por navegador ou usar links temporários e assinados.
 - Se faltar algum arquivo, documentar como ausente e seguir sem ele.
 - Toda extração em referencias/ entrega, no primeiro nível da pasta do site, somente: design-system__RESUMO.html, notas.md e a pasta arquivos/ com todo o resto. RESUMO tem de 2 a 5 palavras sobre o estilo visual, em minúsculas, sem acentos, com hífens, diferente dos já existentes.
+- Exceção autorizada pelo Alisson: redesenhar SOMENTE o símbolo (cruz e círculo) para os ícones do site em assets/icons/, como aproximação PROVISÓRIA até o arquivo oficial do logo chegar. A regra de não recriar o logo continua valendo para todo o resto do site.
 - Imagens no site: só da igreja ou com licença. Imagens geradas por IA só como provisórias, nunca representando pessoas ou eventos reais da igreja. Letras de louvor não são publicadas.
 
 ## Forma de trabalho
@@ -33,7 +34,7 @@ Regras fixas do projeto do site da Igreja Kemuel.
 - MODO FILA: prompt que começa com "FILA: execute somente depois de terminar a tarefa atual." espera a tarefa atual terminar.
 - Backlog: "Coloque isso no Backlog" pausa um item. "Retome o item [nome] do Backlog" retoma.
 - Prompts longos podem vir em Parte 1 e Parte 2. Ao receber a Parte 1 com "AGUARDE A PARTE 2", só confirmar que entendeu.
-- Toda mudança no cabeçalho ou no rodapé é feita em partials/ e aplicada com node scripts/montar-paginas.mjs antes do commit. Proibido editar o cabeçalho ou o rodapé direto nas páginas.
+- Toda mudança no cabeçalho, no rodapé ou nos ícones do head é feita em partials/ e aplicada com node scripts/montar-paginas.mjs antes do commit. Proibido editá-los direto nas páginas.
 - Conferência por file:// mantida apenas para checar que os estilos carregam. Os demais testes seguem pelo site publicado ou por servidor local.
 - Testes leves: só o que foi alterado, em 1440 px e 390 px. Bateria completa só antes de publicar, quando pedido.
 - Diagnóstico antes de correção: em qualquer problema, explicar a causa antes de corrigir.

@@ -2,7 +2,7 @@
 
 ## 1. Última sessão
 
-- 05/11/2026: defeito do CSS corrigido, cabeçalho e rodapé centralizados com script, fases atualizadas. Medidas soltas de components.css viraram tokens, com comparação de estilos calculados em 3.874 elementos. Páginas montadas idênticas às anteriores, tirando os marcadores.
+- 05/11/2026: favicon com o símbolo da igreja (cruz sobre círculo vermelho) e conjunto de ícones, aplicados pelo script em todas as páginas. Folha de comparação em relatorios/kemuel-favicon/, fora do Git.
 
 ## 2. Estado atual
 
@@ -26,7 +26,7 @@
 
 ## 6. Pendências que dependem de pessoas
 
-- Arquivo oficial do logo em SVG ou PNG transparente, com versão para fundo claro, para substituir os espaços reservados "LOGO". Não recriar nem vetorizar a partir do print.
+- Arquivo oficial do logo em SVG ou PNG transparente, com versão para fundo claro, para substituir os espaços reservados "LOGO". Não recriar nem vetorizar a partir do print; única exceção: ícones do site em assets/icons/, provisórios, a substituir pelo arquivo oficial.
 - Código oficial do vermelho para substituir --color-red PROVISÓRIO (#DE2E38). Média medida no print: RGB 234,8323 / 48,6398 / 59,6149, arredondada para #EB313C; ajuste uniforme de canais por fator 0,947 para AA com branco (4,61:1).
 - Confirmar o registro do domínio igrejakemuel.com.br e em nome de quem está.
 - Conteúdo institucional: endereço, quem somos, contatos.
@@ -41,6 +41,7 @@
 - Número oficial do WhatsApp.
 - Logo oficial em versão clara e escura.
 - Confirmar que todos os cursos e materiais serão gratuitos, por causa do texto do botão da hero.
+- Substituir os ícones provisórios quando chegarem o arquivo oficial do logo e o código oficial do vermelho.
 
 ## 7. Concluído
 
@@ -96,6 +97,8 @@
 - 05/11/2026: partials e script de montagem: cabeçalho e rodapé têm código único em partials/, aplicado por node scripts/montar-paginas.mjs, sem dependências. O resultado continua HTML estático; a Vercel não roda o script e partials/ e scripts/ ficam fora do deploy.
 - 05/11/2026: regra de edição: toda mudança no cabeçalho ou no rodapé é feita em partials/ e aplicada pelo script antes do commit; proibido editar direto nas páginas. Conferência por file:// só para checar que os estilos carregam.
 - 05/11/2026: medidas fixas de componentes são tokens em tokens.css; breakpoints ficam nos @media, onde CSS não aceita var().
+- 05/11/2026: o Alisson autorizou redesenhar SOMENTE o símbolo (cruz e círculo) para os ícones do site, como aproximação PROVISÓRIA até o arquivo oficial do logo. Exceção registrada no AGENTS.
+- 05/11/2026: favicon sobre quadrado preto de cantos arredondados: a cruz branca sumiria em aba clara, e assim cruz e círculo aparecem em abas claras e escuras. Em 16 px, haste mais curta e anel maior, mantendo as peças deslocadas e os vãos. Ícones de 180, 192 e 512 px ficam mais fiéis à referência, com fundo no quadrado inteiro.
 - Site em 3 fases.
 - Fase 1 (lançamento): Início, com Quem somos como dobra, e Contribua (PIX institucional com botão copiar e QR Code).
 - Fase 2 (conteúdo): Blog e Materiais e cursos (PDFs públicos por categoria) já estão no menu, com páginas provisórias, antecipados da Fase 2 por decisão do Alisson. Agenda opcional segue na Fase 2.

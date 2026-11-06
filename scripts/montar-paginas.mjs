@@ -17,6 +17,9 @@ function header(page) {
   return html;
 }
 
+// A 404 é servida em qualquer profundidade; as demais ficam na raiz e abrem também por file://.
+const icons = page => page === '404' ? partial('head-icons.html').replaceAll('"assets/', '"/assets/') : partial('head-icons.html');
+
 function apply(html, block, content, file) {
   const pattern = new RegExp(`(<!-- ${block}:start -->\\n)[\\s\\S]*?(\\n[ \\t]*<!-- ${block}:end -->)`);
   if (!pattern.test(html)) throw new Error(`${file}: marcadores de ${block} não encontrados`);
@@ -27,7 +30,8 @@ const pages = readdirSync(root).filter(file => file.endsWith('.html'));
 for (const file of pages) {
   const page = file.replace(/\.html$/, '');
   const before = read(join(root, file));
-  let html = apply(before, 'header', header(page), file);
+  let html = apply(before, 'icons', icons(page), file);
+  html = apply(html, 'header', header(page), file);
   html = apply(html, 'footer', partial('footer.html'), file);
   writeFileSync(join(root, file), html);
   console.log(`${html === before ? 'igual   ' : 'alterada'} ${file}`);

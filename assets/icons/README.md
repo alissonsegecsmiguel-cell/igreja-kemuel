@@ -2,7 +2,7 @@
 
 kemuel.svg contém os símbolos SVG desenhados do zero para os componentes deste sistema. Não contém nem pretende representar o logo da igreja. Nenhum caminho SVG veio de referencias/ ou de uma biblioteca externa.
 
-favicon.svg é provisório, uma letra K original sobre preto, até chegar o logo oficial.
+favicon.svg, favicon.ico, apple-touch-icon.png, icon-192.png e icon-512.png são uma aproximação PROVISÓRIA do símbolo da Igreja Kemuel, autorizada só para os ícones do site, até chegar o arquivo oficial. Eles derivam da marca da igreja e não estão cobertos pela licença MIT abaixo.
 
 Licença MIT em LICENSE.txt. ViewBox de 24 × 24, preenchimento vazio, traço 1,7 com currentColor e pontas arredondadas, definidos por .k-icon em components.css. Tamanhos: 16, 20 e 32px.
 
