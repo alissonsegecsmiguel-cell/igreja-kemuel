@@ -16,7 +16,7 @@ Regras fixas do projeto do site da Igreja Kemuel.
 
 - Nunca registrar dados pessoais, dados de membros, pedidos de oração, dados financeiros, credenciais, links privados ou falhas de segurança em nenhum arquivo. Itens sensíveis são acompanhados fora do repositório.
 - Antes de todo push, conferir que nada sensível entrou nos commits.
-- Antes de todo push, abrir o index.html publicado e conferir no console que nenhum CSS ou JS deu erro. Abrir também os arquivos locais por file://, pois a versão nova só é publicada depois do push, e repetir a conferência no endereço publicado ao final do deploy.
+- Antes de todo push, abrir o index.html publicado e conferir no console que nenhum CSS ou JS deu erro. Repetir a conferência no endereço publicado ao final do deploy.
 - Nunca usar git add . sem antes conferir o git status.
 - Commit errado ainda não enviado: corrigir com amend, não com commit novo por cima.
 - A pasta referencias/ guarda sites de terceiros só para estudo. Nunca entra no Git nem no deploy. Nada de lá (imagens, textos, código) é copiado para o site.
@@ -33,6 +33,8 @@ Regras fixas do projeto do site da Igreja Kemuel.
 - MODO FILA: prompt que começa com "FILA: execute somente depois de terminar a tarefa atual." espera a tarefa atual terminar.
 - Backlog: "Coloque isso no Backlog" pausa um item. "Retome o item [nome] do Backlog" retoma.
 - Prompts longos podem vir em Parte 1 e Parte 2. Ao receber a Parte 1 com "AGUARDE A PARTE 2", só confirmar que entendeu.
+- Toda mudança no cabeçalho ou no rodapé é feita em partials/ e aplicada com node scripts/montar-paginas.mjs antes do commit. Proibido editar o cabeçalho ou o rodapé direto nas páginas.
+- Conferência por file:// mantida apenas para checar que os estilos carregam. Os demais testes seguem pelo site publicado ou por servidor local.
 - Testes leves: só o que foi alterado, em 1440 px e 390 px. Bateria completa só antes de publicar, quando pedido.
 - Diagnóstico antes de correção: em qualquer problema, explicar a causa antes de corrigir.
 - Ações irreversíveis (reescrever histórico, apagar arquivos, apagar deploys): primeiro só diagnóstico e plano. Executar apenas depois de aprovação, com backup.

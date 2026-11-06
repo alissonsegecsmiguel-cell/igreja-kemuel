@@ -2,7 +2,7 @@
 
 ## 1. Última sessão
 
-- 05/11/2026: luz de vitral e cruz de luz no fundo da hero. Bateria da hero em Chrome e Edge com AA em 11 momentos do ciclo, primeira dobra em 14 telas, 6 páginas, efeito de água com taxa de quadros medida, e conferência no endereço publicado.
+- 05/11/2026: defeito do CSS corrigido, cabeçalho e rodapé centralizados com script, fases atualizadas. Medidas soltas de components.css viraram tokens, com comparação de estilos calculados em 3.874 elementos. Páginas montadas idênticas às anteriores, tirando os marcadores.
 
 ## 2. Estado atual
 
@@ -45,6 +45,7 @@
 ## 7. Concluído
 
 - Base do projeto.
+- Parte "No celular" da tarefa do cabeçalho: horários compactos, botão principal com largura total e o secundário abaixo, subtítulo menor sem ser cortado, conferidos em 390x844 e 360x740.
 - Página provisória "Em breve" e regras para a conexão com a Vercel.
 - Design system da Kemuel: tokens, componentes das três fases, fontes locais com licenças OFL e ícones SVG próprios com licença MIT. Evidências de testes locais em relatorios/kemuel-design-system/, fora do Git/deploy.
 - Extração local da referência do blog: design-system.html, notas e evidências de teste, todos em referencias/ e fora do Git/deploy.
@@ -92,10 +93,13 @@
 - 05/11/2026: efeito de água em filtro SVG (feTurbulence e feDisplacementMap), não na lente CSS: a medição em 1366x768 por 10 s deu cerca de 60 quadros por segundo, acima do limite de 50, no Chrome com aceleração de hardware desta máquina. Efeito só em telas com mouse, desligado com movimento reduzido e com a hero fora da tela.
 - 05/11/2026: token âmbar (--hero-led-amber) restrito à atmosfera da hero: não é cor de interface, botão ou texto; o vermelho continua sendo o único acento. Os feixes de vitral, em ciclos de 12s e 14s, substituem a mancha branca da aurora; a mancha de leve tom vermelho permanece. No celular, um feixe só.
 - 05/11/2026: cruz de luz genérica, com hastes alinhadas, diferente da cruz do logo, atrás da palavra KEMUEL, respirando em 8s.
+- 05/11/2026: partials e script de montagem: cabeçalho e rodapé têm código único em partials/, aplicado por node scripts/montar-paginas.mjs, sem dependências. O resultado continua HTML estático; a Vercel não roda o script e partials/ e scripts/ ficam fora do deploy.
+- 05/11/2026: regra de edição: toda mudança no cabeçalho ou no rodapé é feita em partials/ e aplicada pelo script antes do commit; proibido editar direto nas páginas. Conferência por file:// só para checar que os estilos carregam.
+- 05/11/2026: medidas fixas de componentes são tokens em tokens.css; breakpoints ficam nos @media, onde CSS não aceita var().
 - Site em 3 fases.
 - Fase 1 (lançamento): Início, com Quem somos como dobra, e Contribua (PIX institucional com botão copiar e QR Code).
-- Fase 2 (conteúdo): Materiais (PDFs públicos por categoria), Blog, Agenda opcional.
-- Fase 3 (cursos): cursos em plataforma externa; o site só mostra cards com links.
+- Fase 2 (conteúdo): Blog e Materiais e cursos (PDFs públicos por categoria) já estão no menu, com páginas provisórias, antecipados da Fase 2 por decisão do Alisson. Agenda opcional segue na Fase 2.
+- Fase 3 (cursos): os cursos continuam em plataforma externa; o site só mostra cards com links, em /materiais#cursos.
 - O design system nasce com os componentes das 3 fases: hero, menu mobile, bloco de horários, bloco de endereço com mapa, bloco de PIX, botão flutuante de WhatsApp, rodapé, card de post, página de texto longo, card de material, filtro por categoria, card de evento, card de curso.
 
 ## 9. Checklist de lançamento
