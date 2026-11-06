@@ -2,7 +2,7 @@
 
 ## 1. Última sessão
 
-- 05/11/2026: botões da hero trocados e eyebrow removido. Primeira dobra medida em 14 telas, incluindo 1440x900, 1366x768, 390x844 e 360x740.
+- 05/11/2026: efeito de água ao passar o mouse no fundo da hero, com filtro SVG só na malha. 60 quadros por segundo medidos em 1366x768, movendo o mouse por 10 s. Acalma em cerca de 1,3 s; parado, nenhum cálculo roda; não existe no celular.
 
 ## 2. Estado atual
 
@@ -89,6 +89,7 @@
 - 05/11/2026: Quem somos só na página principal: quem-somos.html removida, e /quem-somos, /quemsomos, /sobre e /historia redirecionam para /#quem-somos.
 - 05/11/2026: materiais e cursos na mesma página, em /materiais, com as âncoras #materiais e #cursos.
 - 05/11/2026: botões da hero: "Como chegar" (primário) e "Cursos e materiais gratuitos" (secundário); "Planeje sua visita" só no cabeçalho; hero sem eyebrow.
+- 05/11/2026: efeito de água em filtro SVG (feTurbulence e feDisplacementMap), não na lente CSS: a medição em 1366x768 por 10 s deu cerca de 60 quadros por segundo, acima do limite de 50, no Chrome com aceleração de hardware desta máquina. Efeito só em telas com mouse, desligado com movimento reduzido e com a hero fora da tela.
 - Site em 3 fases.
 - Fase 1 (lançamento): Início, com Quem somos como dobra, e Contribua (PIX institucional com botão copiar e QR Code).
 - Fase 2 (conteúdo): Materiais (PDFs públicos por categoria), Blog, Agenda opcional.

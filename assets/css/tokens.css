@@ -176,6 +176,15 @@
   --hero-led-aurora-horizontal: 12s;
   --hero-led-aurora-offset: -5s; /* Defasagem entre as duas manchas. */
   --hero-led-breath: 6s;
+  /* Água: lidos por ui.js. O cinza médio é o repouso do mapa: deslocamento zero. */
+  --hero-led-water-scale: 36;
+  --hero-led-water-radius: 220px;
+  --hero-led-water-calm: 1200ms;
+  --hero-led-water-frequency: .011;
+  --hero-led-water-flow: .08;
+  --hero-led-water-flow-period: 420ms;
+  --hero-led-water-gain: .012; /* Energia ganha por pixel de movimento. */
+  --hero-led-water-rest: rgb(128, 128, 128);
   --hero-led-center: 50%;
   --hero-led-center-shift: -50%;
   --hero-led-fill: 100%;

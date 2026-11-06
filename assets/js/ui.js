@@ -13,6 +13,7 @@
   const heroes = [...document.querySelectorAll('.k-hero')];
   if ('IntersectionObserver' in window && heroes.length) {
     const visibleHeroes = new Set();
+    const calmWater = new Map();
     const videos = new Map();
     function updateVideo(hero, active) {
       if (!hero.hasAttribute('data-video-enabled')) return;
@@ -67,6 +68,7 @@
       const active = visibleHeroes.has(hero) && !reduced.matches && !document.hidden;
       hero.classList.toggle('is-atmosphere-active', active);
       updateVideo(hero, active);
+      if (!active) calmWater.get(hero)?.();
     });
     const atmosphereObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -76,6 +78,56 @@
       updateAtmospheres();
     }, { threshold: 0 });
     heroes.forEach(hero => atmosphereObserver.observe(hero));
+    // Água: filtro só na malha; requestAnimationFrame só enquanto há ondulação.
+    const fineMouse = matchMedia('(hover: hover) and (pointer: fine)');
+    const waterToken = name => parseFloat(tokens.getPropertyValue('--hero-led-water-' + name));
+    heroes.forEach(hero => {
+      const mesh = hero.querySelector('.k-hero-led__mesh');
+      const filter = hero.querySelector('[data-hero-water]');
+      if (!mesh || !filter) return;
+      const noise = filter.querySelector('[data-water-noise]');
+      const area = filter.querySelector('[data-water-area]');
+      const soft = filter.querySelector('[data-water-soft]');
+      const map = filter.querySelector('[data-water-map]');
+      const radius = waterToken('radius'), calm = waterToken('calm') / 4, frequency = waterToken('frequency');
+      let frame = 0, energy = 0, last = 0, lastX = null, lastY = null;
+      soft.setAttribute('stdDeviation', radius / 3);
+      function stop() {
+        cancelAnimationFrame(frame);
+        frame = 0; energy = 0; lastX = lastY = null;
+        map.setAttribute('scale', 0);
+        mesh.style.removeProperty('filter');
+      }
+      calmWater.set(hero, stop);
+      function tick(now) {
+        energy *= Math.exp(-(now - last) / calm);
+        last = now;
+        if (energy < .01) { stop(); return; }
+        map.setAttribute('scale', waterToken('scale') * energy);
+        noise.setAttribute('baseFrequency', frequency * (1 + waterToken('flow') * Math.sin(now / waterToken('flow-period'))));
+        frame = requestAnimationFrame(tick);
+      }
+      hero.addEventListener('pointermove', event => {
+        if (event.pointerType !== 'mouse' || !fineMouse.matches || reduced.matches || !hero.classList.contains('is-atmosphere-active')) return;
+        const box = mesh.getBoundingClientRect();
+        const x = event.clientX - box.left, y = event.clientY - box.top;
+        if (lastX !== null) energy = Math.min(1, energy + Math.hypot(x - lastX, y - lastY) * waterToken('gain'));
+        lastX = x; lastY = y;
+        // A sombra precisa da margem do desfoque; o resto do mapa fica em repouso.
+        const bleed = radius * 2;
+        filter.setAttribute('x', 0); filter.setAttribute('y', 0);
+        filter.setAttribute('width', box.width); filter.setAttribute('height', box.height);
+        [[noise, bleed], [area, radius]].forEach(([node, reach]) => {
+          node.setAttribute('x', x - reach); node.setAttribute('y', y - reach);
+          node.setAttribute('width', reach * 2); node.setAttribute('height', reach * 2);
+        });
+        if (!frame && energy > 0) {
+          mesh.style.setProperty('filter', 'url(#k-hero-water)');
+          last = performance.now();
+          frame = requestAnimationFrame(tick);
+        }
+      });
+    });
     reduced.addEventListener('change', updateAtmospheres);
     mobileVideo.addEventListener('change', updateAtmospheres);
     document.addEventListener('visibilitychange', updateAtmospheres);

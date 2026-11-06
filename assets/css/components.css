@@ -106,8 +106,12 @@ h6, .k-h6 { font-size: var(--text-h6); }
 .k-hero-led__light--white { background: var(--hero-led-spot-white); opacity: var(--hero-led-spot-opacity-static); transform: translateX(var(--hero-led-spot-x-static)); animation-name: k-hero-led-aurora-diagonal; animation-duration: var(--hero-led-aurora-diagonal); }
 .k-hero-led__light--red { background: var(--hero-led-spot-red); opacity: 0; animation-name: k-hero-led-aurora-horizontal; animation-duration: var(--hero-led-aurora-horizontal); animation-delay: var(--hero-led-aurora-offset); }
 .k-hero-led.is-atmosphere-active .k-hero-led__light, .k-hero-led.is-atmosphere-active .k-hero-led__word { animation-play-state: running; }
+.k-hero-led__water-rest { flood-color: var(--hero-led-water-rest); }
+.k-hero-led__water-area { flood-color: var(--color-white); }
 .k-hero-led__video { position: absolute; inset: 0; width: var(--hero-led-fill); height: var(--hero-led-fill); object-fit: cover; filter: var(--hero-led-video-filter); visibility: hidden; }
-.k-hero-led.is-video-ready .k-hero-led__video { visibility: visible; }
+.k-hero-led.is-video-ready .k-hero-led__water-rest { flood-color: var(--hero-led-water-rest); }
+.k-hero-led__water-area { flood-color: var(--color-white); }
+.k-hero-led__video { visibility: visible; }
 .k-hero-led.is-video-ready .k-hero-led__light { visibility: hidden; animation-play-state: paused; }
 .k-hero-led__content { position: relative; z-index: 2; }
 .k-hero-led__copy { position: relative; isolation: isolate; display: grid; justify-items: center; text-align: center; gap: var(--hero-led-gap); }
@@ -386,7 +390,9 @@ textarea.k-input { resize: vertical; min-height: 8rem; }
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   .k-motion-ready [data-reveal] { opacity: 1; transform: none; }
   .k-button:hover, .k-chip:hover, .k-card:hover, .k-whatsapp:hover { transform: none; }
-  .k-hero-led.is-video-ready .k-hero-led__video { visibility: hidden; }
+  .k-hero-led.is-video-ready .k-hero-led__water-rest { flood-color: var(--hero-led-water-rest); }
+.k-hero-led__water-area { flood-color: var(--color-white); }
+.k-hero-led__video { visibility: hidden; }
   .k-hero-led.is-video-ready .k-hero-led__light { visibility: visible; }
 }
 @media (forced-colors: active) {
