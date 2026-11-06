@@ -138,7 +138,7 @@
   --hero-led-outline-size: clamp(1.875rem, min(11vw, 9svh), 6.5rem);
   --hero-led-intro-size: clamp(.9375rem, 2.2svh, 1.375rem);
   --hero-led-pad-y: clamp(.5rem, 2.4svh, 2rem);
-  --hero-led-gap: clamp(.375rem, 1.5svh, 1rem);
+  --hero-led-gap: clamp(.5rem, 2.2svh, 1.5rem);
   --hero-led-schedule-pad: clamp(.375rem, 1.1svh, .875rem);
   --hero-led-schedule-gap: clamp(.125rem, .5svh, .375rem);
   --hero-led-schedule-time: clamp(1.375rem, 3.6svh, 2.5rem);
@@ -153,9 +153,11 @@
   --hero-led-dot-feather: .3px;
   --hero-led-mesh-opacity: 1;
   --hero-led-scrim: rgba(0, 0, 0, .15); /* Leve: a proteção do texto é a sombra localizada. */
-  --hero-led-text-shade: radial-gradient(ellipse closest-side, rgba(0, 0, 0, .74) 84%, rgba(0, 0, 0, 0) 100%);
-  --hero-led-text-shade-width: clamp(26rem, 66vw, 60rem);
+  --hero-led-text-shade: radial-gradient(ellipse closest-side, rgba(0, 0, 0, .68) 84%, rgba(0, 0, 0, 0) 100%);
+  --hero-led-text-shade-width: clamp(34rem, 66vw, 60rem);
   --hero-led-text-shade-bleed: var(--space-6);
+  --hero-led-title-shade-bleed: calc(var(--hero-led-title-size) * -.6);
+  --hero-led-button-compact: 2.75rem; /* Botões em telas deitadas e baixas. */
   --hero-led-clear: rgba(0, 0, 0, 0);
   --hero-led-cloud-mask: radial-gradient(ellipse 58% calc(var(--hero-led-word-size) * .95) at 50% var(--hero-led-word-center), #000 62%, transparent 100%), radial-gradient(ellipse 24% calc(var(--hero-led-word-size) * .8) at 14% var(--hero-led-word-center), #000 45%, transparent 100%), radial-gradient(ellipse 24% calc(var(--hero-led-word-size) * .8) at 86% var(--hero-led-word-center), #000 45%, transparent 100%);
   /* Aurora: a luz fica na malha, então só os pontos acendem por onde ela passa. */

@@ -2,7 +2,7 @@
 
 ## 1. Última sessão
 
-- 05/11/2026: menu atualizado; Quem somos passa a existir só na página principal; páginas de Blog, Materiais e cursos e Discipulado provisórias. Teste leve em Chrome e Edge, 6 páginas, 1366x768 e 390x844, com redirecionamentos.
+- 05/11/2026: botões da hero trocados e eyebrow removido. Primeira dobra medida em 14 telas, incluindo 1440x900, 1366x768, 390x844 e 360x740.
 
 ## 2. Estado atual
 
@@ -40,6 +40,7 @@
 - Respostas do FAQ: duração e estrutura do culto, costume de vestimenta, ministério infantil e faixa etária, como a igreja recebe visitantes, estacionamento.
 - Número oficial do WhatsApp.
 - Logo oficial em versão clara e escura.
+- Confirmar que todos os cursos e materiais serão gratuitos, por causa do texto do botão da hero.
 
 ## 7. Concluído
 
@@ -87,6 +88,7 @@
 - 05/11/2026: menu: Discipulado, Materiais e cursos, Blog, Contribua e botão Planeje sua visita. Sem Início e sem Quem somos: o logo leva à página inicial.
 - 05/11/2026: Quem somos só na página principal: quem-somos.html removida, e /quem-somos, /quemsomos, /sobre e /historia redirecionam para /#quem-somos.
 - 05/11/2026: materiais e cursos na mesma página, em /materiais, com as âncoras #materiais e #cursos.
+- 05/11/2026: botões da hero: "Como chegar" (primário) e "Cursos e materiais gratuitos" (secundário); "Planeje sua visita" só no cabeçalho; hero sem eyebrow.
 - Site em 3 fases.
 - Fase 1 (lançamento): Início, com Quem somos como dobra, e Contribua (PIX institucional com botão copiar e QR Code).
 - Fase 2 (conteúdo): Materiais (PDFs públicos por categoria), Blog, Agenda opcional.
