@@ -2,12 +2,12 @@
 
 ## 1. Última sessão
 
-- 05/11/2026: animação da aurora no fundo da hero. Bateria da hero em Chrome e Edge (contraste AA em 11 momentos do ciclo e no pior caso de fundo branco), primeira dobra em 13 telas, 6 páginas e conferência por file:// e no endereço publicado.
+- 05/11/2026: menu atualizado; Quem somos passa a existir só na página principal; páginas de Blog, Materiais e cursos e Discipulado provisórias. Teste leve em Chrome e Edge, 6 páginas, 1366x768 e 390x844, com redirecionamentos.
 
 ## 2. Estado atual
 
 - Repositório conectado ao GitHub, só branch main. Todo push vai para o ar.
-- Blog e Materiais existem como páginas provisórias, fora do menu.
+- Blog, Materiais e cursos e Discipulado existem como páginas provisórias, no menu.
 - No ar: a página principal em construção, com marcadores entre colchetes e noindex. O design system permanece excluído do deploy por .vercelignore.
 - Design system oficial criado; logo oficial pendente e vermelho provisório. Tokens, componentes, JavaScript e fontes ficam em arquivos compartilhados em assets/.
 
@@ -34,6 +34,7 @@
 - Definir quem escreve o blog e a frequência.
 - Primeiros materiais em PDF.
 - Definir a plataforma dos cursos e se serão gratuitos ou pagos.
+- Conteúdo de Discipulado, Materiais e cursos e Blog.
 - Perfil da Empresa no Google da igreja.
 - Validar a frase da hero com o pastor.
 - Respostas do FAQ: duração e estrutura do culto, costume de vestimenta, ministério infantil e faixa etária, como a igreja recebe visitantes, estacionamento.
@@ -72,9 +73,8 @@
 - --color-red #DE2E38 é PROVISÓRIO até o código oficial chegar. Print apenas observado e medido; não incorporado ao site. A referência está em referencias/marca-kemuel/logo-referencia.jfif; essa pasta guarda somente a referência de identidade e não é uma extração de site.
 - Domínio: igrejakemuel.com.br.
 - Site contemporâneo, com objetivo de informar membros e atrair visitantes.
-- 05/11/2026: URLs limpas (/quem-somos, /contribua), sem barra final; erros comuns redirecionam pelo vercel.json.
+- 05/11/2026: URLs limpas (/discipulado, /materiais, /blog, /contribua), sem barra final; erros comuns redirecionam pelo vercel.json.
 - 05/11/2026: ordem e fundos das dobras da página principal: Cabeçalho branco; Hero preto; Venha nos visitar branco; Primeira visita branco suave; Quem somos preto; Para sua caminhada branco; Contribua branco suave; Acompanhe branco; Rodapé preto.
-- 05/11/2026: Blog e Materiais ficam fora do menu e do rodapé até a Fase 2; páginas provisórias em /blog e /materiais.
 - 05/11/2026: cultos às quintas-feiras, 19h, e aos domingos, 18h, confirmados pelo Alisson. Sem nomes próprios: usar apenas "Culto".
 - 05/11/2026: copy da hero: "Bem-vindo à" (sólida), "casa de Deus." (vazada) e subtítulo "Uma comunidade de fé de portas abertas para você e sua família viverem mais perto de Deus."
 - 05/11/2026: FAQ da Primeira visita com 5 perguntas, sem pergunta de horários, que já aparecem na hero e em Venha nos visitar.
@@ -84,8 +84,11 @@
 - 05/11/2026: correção: páginas públicas com caminhos relativos a assets/; 404.html mantém /assets/ porque é servida em qualquer profundidade. Removido o preload de fontes, que gerava erros de CORS em file://. Os links entre páginas seguem como URLs limpas e só navegam no endereço publicado.
 - 05/11/2026: nova regra de conferência: antes de todo push, abrir o index.html publicado e conferir no console; abrir também por file://, e repetir no publicado após o deploy.
 - 05/11/2026: aurora em ciclo de 8 a 12 segundos (diagonal branca de 10s e horizontal vermelha de 12s, defasadas), com pontos que acendem por onde a luz passa e respiração da palavra em 6s; uma mancha só no celular. O pico da mancha branca fica abaixo do cinza da palavra, para as letras seguirem legíveis.
+- 05/11/2026: menu: Discipulado, Materiais e cursos, Blog, Contribua e botão Planeje sua visita. Sem Início e sem Quem somos: o logo leva à página inicial.
+- 05/11/2026: Quem somos só na página principal: quem-somos.html removida, e /quem-somos, /quemsomos, /sobre e /historia redirecionam para /#quem-somos.
+- 05/11/2026: materiais e cursos na mesma página, em /materiais, com as âncoras #materiais e #cursos.
 - Site em 3 fases.
-- Fase 1 (lançamento): Início, Quem somos, Contribua (PIX institucional com botão copiar e QR Code).
+- Fase 1 (lançamento): Início, com Quem somos como dobra, e Contribua (PIX institucional com botão copiar e QR Code).
 - Fase 2 (conteúdo): Materiais (PDFs públicos por categoria), Blog, Agenda opcional.
 - Fase 3 (cursos): cursos em plataforma externa; o site só mostra cards com links.
 - O design system nasce com os componentes das 3 fases: hero, menu mobile, bloco de horários, bloco de endereço com mapa, bloco de PIX, botão flutuante de WhatsApp, rodapé, card de post, página de texto longo, card de material, filtro por categoria, card de evento, card de curso.
@@ -97,4 +100,5 @@
 - [ ] Meta robots noindex removido.
 - [ ] Links reais de WhatsApp, redes e mapa conferidos.
 - [ ] Dobra "Para sua caminhada" só visível com pelo menos 3 posts e 3 materiais reais.
+- [ ] Só ficam no menu as páginas com conteúdo real. Páginas ainda provisórias saem do menu no lançamento e voltam quando tiverem conteúdo.
 - [ ] Teste completo em 1440 px e 390 px.

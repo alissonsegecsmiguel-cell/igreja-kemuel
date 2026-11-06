@@ -71,11 +71,13 @@ h6, .k-h6 { font-size: var(--text-h6); }
 .k-logo-slot { display: inline-grid; place-items: center; min-width: 3.25rem; min-height: 2.5rem; padding: .5rem; border: 1px dashed currentColor; border-radius: var(--radius-sm); font: var(--weight-semibold) .625rem/1 var(--font-body); letter-spacing: .12em; }
 .k-logo-slot--hero { min-width: 5rem; min-height: 3.5rem; }
 .k-doc-nav { display: none; gap: var(--space-3); }
-.k-doc-nav a { padding-block: .75rem; font-size: var(--text-body-sm); color: var(--color-text); text-decoration: none; }
+.k-doc-nav a { white-space: nowrap; padding-block: .75rem; font-size: var(--text-body-sm); color: var(--color-text); text-decoration: none; }
 .k-doc-nav a:hover, .k-doc-nav a[aria-current] { color: var(--color-red-hover); }
 .k-menu-toggle { display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; border: 1px solid var(--color-border-control); border-radius: var(--radius-sm); background: var(--color-white); color: var(--color-text); padding: .5rem .75rem; font-size: var(--text-body-sm); }
 .k-mobile-panel { background: var(--color-white); border-top: 1px solid var(--color-border); max-height: calc(100svh - var(--header-height)); overflow: auto; padding: var(--space-2) var(--gutter) var(--space-4); animation: k-menu-in var(--duration-medium) var(--ease) both; }
 .k-mobile-panel a { display: block; padding-block: var(--space-2); border-bottom: 1px solid var(--color-border); color: var(--color-text); text-decoration: none; }
+.k-mobile-panel a[aria-current] { color: var(--color-red-hover); font-weight: var(--weight-semibold); }
+.k-mobile-panel .k-button { display: flex; margin-top: var(--space-3); color: var(--color-white); border-bottom: 0; }
 .k-mobile-panel.is-closing { animation-name: k-menu-out; }
 .k-hero { position: relative; isolation: isolate; overflow: clip; color: var(--color-white); background: var(--color-black); margin-top: var(--header-height); padding-block: var(--space-5) var(--space-6); }
 .k-hero__ambience { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
