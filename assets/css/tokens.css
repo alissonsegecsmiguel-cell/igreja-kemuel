@@ -160,21 +160,45 @@
   --hero-led-button-compact: 2.75rem; /* Botões em telas deitadas e baixas. */
   --hero-led-clear: rgba(0, 0, 0, 0);
   --hero-led-cloud-mask: radial-gradient(ellipse 58% calc(var(--hero-led-word-size) * .95) at 50% var(--hero-led-word-center), #000 62%, transparent 100%), radial-gradient(ellipse 24% calc(var(--hero-led-word-size) * .8) at 14% var(--hero-led-word-center), #000 45%, transparent 100%), radial-gradient(ellipse 24% calc(var(--hero-led-word-size) * .8) at 86% var(--hero-led-word-center), #000 45%, transparent 100%);
-  /* Aurora: a luz fica na malha, então só os pontos acendem por onde ela passa. */
+  /* Vitral: a luz fica na malha, então só os pontos acendem por onde ela passa. */
+  --hero-led-amber: 240, 176, 96; /* Restrito à atmosfera da hero. Não é cor de interface, botão ou texto. */
+  --hero-led-beam-fill: linear-gradient(90deg, rgba(var(--hero-led-amber), 0), rgba(var(--hero-led-amber), .85) 50%, rgba(var(--hero-led-amber), 0));
+  --hero-led-beam-width: clamp(4.5rem, 10vw, 10rem);
+  --hero-led-beam-width-narrow: clamp(3rem, 5.5vw, 5.5rem);
+  --hero-led-beam-angle: 20deg;
+  --hero-led-beam-blur: clamp(.375rem, .8vw, .875rem); /* Estático: só transform e opacity animam. */
+  --hero-led-beam-x-start: -30vw;
+  --hero-led-beam-x-end: 115vw;
+  --hero-led-beam-a-static: 26vw;
+  --hero-led-beam-b-static: 62vw;
+  --hero-led-beam-high: 1;
+  --hero-led-beam-mid: .55;
+  --hero-led-beam-a-static-opacity: .75;
+  --hero-led-beam-b-static-opacity: .5;
+  --hero-led-beam-a: 12s;
+  --hero-led-beam-b: 14s;
+  --hero-led-beam-offset: -6s; /* Defasagem entre os feixes. */
   --hero-led-spot-size: clamp(16rem, 44vw, 44rem);
-  --hero-led-spot-blur: clamp(1rem, 2.4vw, 2.5rem); /* Estático: só transform e opacity animam. */
-  --hero-led-spot-white: radial-gradient(closest-side, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0)); /* Abaixo do cinza da palavra: as letras seguem legíveis. */
-  --hero-led-spot-red: radial-gradient(closest-side, rgba(222, 46, 56, .6), rgba(222, 46, 56, 0));
+  --hero-led-spot-blur: clamp(1rem, 2.4vw, 2.5rem);
+  --hero-led-spot-red: radial-gradient(closest-side, rgba(222, 46, 56, .42), rgba(222, 46, 56, 0));
   --hero-led-spot-opacity: 1;
-  --hero-led-spot-opacity-static: .7; /* Brilho parado com movimento reduzido. */
-  --hero-led-spot-x-static: 12vw;
   --hero-led-spot-x-start: calc(var(--hero-led-spot-size) * -.7);
   --hero-led-spot-x-end: calc(100vw - var(--hero-led-spot-size) * .3);
-  --hero-led-spot-y-start: -32%;
-  --hero-led-spot-y-end: 32%;
-  --hero-led-aurora-diagonal: 10s;
   --hero-led-aurora-horizontal: 12s;
-  --hero-led-aurora-offset: -5s; /* Defasagem entre as duas manchas. */
+  --hero-led-aurora-offset: -5s;
+  /* Cruz de luz genérica, com hastes alinhadas. Não é a cruz do logo. */
+  --hero-led-cross-top: calc(var(--hero-led-word-center) - var(--hero-led-word-size) * .32);
+  --hero-led-cross-thickness: clamp(1.5rem, 3vw, 3.25rem);
+  --hero-led-cross-arm: clamp(12rem, 44vw, 40rem);
+  --hero-led-cross-rise: clamp(5rem, 16svh, 12rem); /* Haste acima do cruzamento. */
+  --hero-led-cross-fall: clamp(12rem, 46svh, 34rem); /* Haste abaixo do cruzamento. */
+  --hero-led-cross-blur: clamp(.25rem, .5vw, .625rem);
+  --hero-led-cross-vertical: linear-gradient(90deg, rgba(var(--hero-led-amber), 0), rgba(var(--hero-led-amber), .9) 50%, rgba(var(--hero-led-amber), 0));
+  --hero-led-cross-horizontal: linear-gradient(180deg, rgba(var(--hero-led-amber), 0), rgba(var(--hero-led-amber), .9) 50%, rgba(var(--hero-led-amber), 0));
+  --hero-led-cross-low: .55;
+  --hero-led-cross-high: 1;
+  --hero-led-cross-static: .8; /* Parada, com movimento reduzido. */
+  --hero-led-cross-breath: 8s;
   --hero-led-breath: 6s;
   /* Água: lidos por ui.js. O cinza médio é o repouso do mapa: deslocamento zero. */
   --hero-led-water-scale: 36;

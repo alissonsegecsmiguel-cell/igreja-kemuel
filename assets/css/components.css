@@ -102,10 +102,16 @@ h6, .k-h6 { font-size: var(--text-h6); }
 .k-hero-led__cloud { mask-image: var(--hero-led-cloud-mask); }
 .k-hero-led__mesh { opacity: var(--hero-led-mesh-opacity); mask-image: radial-gradient(circle, var(--color-black) var(--hero-led-dot-radius), var(--hero-led-clear) calc(var(--hero-led-dot-radius) + var(--hero-led-dot-feather))); mask-size: var(--hero-led-dot-pitch) var(--hero-led-dot-pitch); }
 .k-hero-led__word { position: absolute; z-index: 1; top: var(--hero-led-word-top); left: var(--hero-led-center); transform: translate(var(--hero-led-center-shift), var(--hero-led-center-shift)); opacity: var(--hero-led-word-opacity); font: var(--weight-heavy) var(--hero-led-word-size)/var(--hero-led-leading-word) var(--font-heading); letter-spacing: var(--tracking-display); color: var(--hero-led-word-color); white-space: nowrap; animation: k-hero-led-breath var(--hero-led-breath) var(--ease-atmosphere) infinite; animation-play-state: paused; }
-.k-hero-led__light { position: absolute; z-index: 2; top: calc(var(--hero-led-word-center) - var(--hero-led-spot-size) / 2); left: 0; width: var(--hero-led-spot-size); aspect-ratio: 1; filter: blur(var(--hero-led-spot-blur)); animation-timing-function: var(--ease-atmosphere); animation-iteration-count: infinite; animation-play-state: paused; }
-.k-hero-led__light--white { background: var(--hero-led-spot-white); opacity: var(--hero-led-spot-opacity-static); transform: translateX(var(--hero-led-spot-x-static)); animation-name: k-hero-led-aurora-diagonal; animation-duration: var(--hero-led-aurora-diagonal); }
-.k-hero-led__light--red { background: var(--hero-led-spot-red); opacity: 0; animation-name: k-hero-led-aurora-horizontal; animation-duration: var(--hero-led-aurora-horizontal); animation-delay: var(--hero-led-aurora-offset); }
-.k-hero-led.is-atmosphere-active .k-hero-led__light, .k-hero-led.is-atmosphere-active .k-hero-led__word { animation-play-state: running; }
+.k-hero-led__light { position: absolute; z-index: 2; animation-timing-function: var(--ease-atmosphere); animation-iteration-count: infinite; animation-play-state: paused; }
+.k-hero-led__light--beam-a, .k-hero-led__light--beam-b { top: calc(var(--hero-led-fill) * -.3); left: 0; height: calc(var(--hero-led-fill) * 1.6); background: var(--hero-led-beam-fill); filter: blur(var(--hero-led-beam-blur)); animation-name: k-hero-led-beam; }
+.k-hero-led__light--beam-a { width: var(--hero-led-beam-width); opacity: var(--hero-led-beam-a-static-opacity); transform: rotate(var(--hero-led-beam-angle)) translateX(var(--hero-led-beam-a-static)); animation-duration: var(--hero-led-beam-a); }
+.k-hero-led__light--beam-b { width: var(--hero-led-beam-width-narrow); opacity: var(--hero-led-beam-b-static-opacity); transform: rotate(var(--hero-led-beam-angle)) translateX(var(--hero-led-beam-b-static)); animation-duration: var(--hero-led-beam-b); animation-delay: var(--hero-led-beam-offset); }
+.k-hero-led__light--red { top: calc(var(--hero-led-word-center) - var(--hero-led-spot-size) / 2); left: 0; width: var(--hero-led-spot-size); aspect-ratio: 1; background: var(--hero-led-spot-red); filter: blur(var(--hero-led-spot-blur)); opacity: 0; animation-name: k-hero-led-aurora-horizontal; animation-duration: var(--hero-led-aurora-horizontal); animation-delay: var(--hero-led-aurora-offset); }
+.k-hero-led__cross { position: absolute; z-index: 0; inset: 0; opacity: var(--hero-led-cross-static); animation: k-hero-led-cross var(--hero-led-cross-breath) var(--ease-atmosphere) infinite; animation-play-state: paused; }
+.k-hero-led__cross::before, .k-hero-led__cross::after { content: ""; position: absolute; left: var(--hero-led-center); transform: translateX(var(--hero-led-center-shift)); }
+.k-hero-led__cross::before { top: calc(var(--hero-led-cross-top) - var(--hero-led-cross-rise)); width: var(--hero-led-cross-thickness); height: calc(var(--hero-led-cross-rise) + var(--hero-led-cross-fall)); background: var(--hero-led-cross-vertical); filter: blur(var(--hero-led-cross-blur)); }
+.k-hero-led__cross::after { top: calc(var(--hero-led-cross-top) - var(--hero-led-cross-thickness) / 2); width: var(--hero-led-cross-arm); height: var(--hero-led-cross-thickness); background: var(--hero-led-cross-horizontal); filter: blur(var(--hero-led-cross-blur)); }
+.k-hero-led.is-atmosphere-active .k-hero-led__light, .k-hero-led.is-atmosphere-active .k-hero-led__word, .k-hero-led.is-atmosphere-active .k-hero-led__cross { animation-play-state: running; }
 .k-hero-led__water-rest { flood-color: var(--hero-led-water-rest); }
 .k-hero-led__water-area { flood-color: var(--color-white); }
 .k-hero-led__video { position: absolute; inset: 0; width: var(--hero-led-fill); height: var(--hero-led-fill); object-fit: cover; filter: var(--hero-led-video-filter); visibility: hidden; }
@@ -123,10 +129,16 @@ h6, .k-h6 { font-size: var(--text-h6); }
 .k-hero-led__actions { justify-content: center; flex-wrap: nowrap; }
 .k-hero-led__actions .k-button { white-space: nowrap; }
 .k-hero-led__title .k-lettering { white-space: nowrap; }
-@keyframes k-hero-led-aurora-diagonal {
-  0% { transform: translate(var(--hero-led-spot-x-start), var(--hero-led-spot-y-start)); opacity: 0; }
-  15%, 85% { opacity: var(--hero-led-spot-opacity); }
-  100% { transform: translate(var(--hero-led-spot-x-end), var(--hero-led-spot-y-end)); opacity: 0; }
+@keyframes k-hero-led-beam {
+  0% { transform: rotate(var(--hero-led-beam-angle)) translateX(var(--hero-led-beam-x-start)); opacity: 0; }
+  20% { opacity: var(--hero-led-beam-high); }
+  50% { opacity: var(--hero-led-beam-mid); }
+  80% { opacity: var(--hero-led-beam-high); }
+  100% { transform: rotate(var(--hero-led-beam-angle)) translateX(var(--hero-led-beam-x-end)); opacity: 0; }
+}
+@keyframes k-hero-led-cross {
+  0%, 100% { opacity: var(--hero-led-cross-low); }
+  50% { opacity: var(--hero-led-cross-high); }
 }
 @keyframes k-hero-led-aurora-horizontal {
   0% { transform: translateX(var(--hero-led-spot-x-end)); opacity: 0; }
@@ -341,9 +353,9 @@ textarea.k-input { resize: vertical; min-height: 8rem; }
   body:not(.k-menu-open) .k-header--over:not(.is-solid) .k-logo-slot--light { display: inline-grid; }
   body:not(.k-menu-open) .k-header--over:not(.is-solid) .k-logo-slot--dark { display: none; }
 }
-/* Celular: uma mancha só, para poupar bateria e processamento. */
+/* Celular: um feixe só, para poupar bateria e processamento; a cruz permanece. */
 @media (max-width: 47.99rem) {
-  .k-hero-led__light--red { display: none; }
+  .k-hero-led__light--red, .k-hero-led__light--beam-b { display: none; }
 }
 @media (max-width: 39.99rem) {
   .k-hero-led__actions { flex-direction: column; align-items: stretch; width: 100%; }
