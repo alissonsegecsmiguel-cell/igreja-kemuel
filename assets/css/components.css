@@ -99,9 +99,11 @@ h6, .k-h6 { font-size: var(--text-h6); }
 .k-hero-led__cloud, .k-hero-led__mesh { position: absolute; inset: 0; }
 .k-hero-led__cloud { mask-image: var(--hero-led-cloud-mask); }
 .k-hero-led__mesh { opacity: var(--hero-led-mesh-opacity); mask-image: radial-gradient(circle, var(--color-black) var(--hero-led-dot-radius), var(--hero-led-clear) calc(var(--hero-led-dot-radius) + var(--hero-led-dot-feather))); mask-size: var(--hero-led-dot-pitch) var(--hero-led-dot-pitch); }
-.k-hero-led__word { position: absolute; z-index: 1; top: var(--hero-led-word-top); left: var(--hero-led-center); transform: translate(var(--hero-led-center-shift), var(--hero-led-center-shift)); opacity: var(--hero-led-word-opacity); font: var(--weight-heavy) var(--hero-led-word-size)/var(--hero-led-leading-word) var(--font-heading); letter-spacing: var(--tracking-display); color: var(--color-white); white-space: nowrap; }
-.k-hero-led__light { position: absolute; inset: var(--hero-led-light-inset); background: var(--hero-led-light-fill); opacity: var(--hero-led-light-opacity-low); animation: k-hero-led-drift var(--duration-atmosphere) var(--ease-atmosphere) infinite; animation-play-state: paused; }
-.k-hero-led.is-atmosphere-active .k-hero-led__light { animation-play-state: running; }
+.k-hero-led__word { position: absolute; z-index: 1; top: var(--hero-led-word-top); left: var(--hero-led-center); transform: translate(var(--hero-led-center-shift), var(--hero-led-center-shift)); opacity: var(--hero-led-word-opacity); font: var(--weight-heavy) var(--hero-led-word-size)/var(--hero-led-leading-word) var(--font-heading); letter-spacing: var(--tracking-display); color: var(--hero-led-word-color); white-space: nowrap; animation: k-hero-led-breath var(--hero-led-breath) var(--ease-atmosphere) infinite; animation-play-state: paused; }
+.k-hero-led__light { position: absolute; z-index: 2; top: calc(var(--hero-led-word-center) - var(--hero-led-spot-size) / 2); left: 0; width: var(--hero-led-spot-size); aspect-ratio: 1; filter: blur(var(--hero-led-spot-blur)); animation-timing-function: var(--ease-atmosphere); animation-iteration-count: infinite; animation-play-state: paused; }
+.k-hero-led__light--white { background: var(--hero-led-spot-white); opacity: var(--hero-led-spot-opacity-static); transform: translateX(var(--hero-led-spot-x-static)); animation-name: k-hero-led-aurora-diagonal; animation-duration: var(--hero-led-aurora-diagonal); }
+.k-hero-led__light--red { background: var(--hero-led-spot-red); opacity: 0; animation-name: k-hero-led-aurora-horizontal; animation-duration: var(--hero-led-aurora-horizontal); animation-delay: var(--hero-led-aurora-offset); }
+.k-hero-led.is-atmosphere-active .k-hero-led__light, .k-hero-led.is-atmosphere-active .k-hero-led__word { animation-play-state: running; }
 .k-hero-led__video { position: absolute; inset: 0; width: var(--hero-led-fill); height: var(--hero-led-fill); object-fit: cover; filter: var(--hero-led-video-filter); visibility: hidden; }
 .k-hero-led.is-video-ready .k-hero-led__video { visibility: visible; }
 .k-hero-led.is-video-ready .k-hero-led__light { visibility: hidden; animation-play-state: paused; }
@@ -114,9 +116,19 @@ h6, .k-h6 { font-size: var(--text-h6); }
 .k-hero-led__copy .k-hero__intro { margin: 0; font-size: var(--hero-led-intro-size); line-height: var(--leading-label); }
 .k-hero-led__actions { justify-content: center; flex-wrap: nowrap; }
 .k-hero-led__title .k-lettering { white-space: nowrap; }
-@keyframes k-hero-led-drift {
-  0%, 100% { transform: translate(var(--hero-led-light-x-start), var(--hero-led-light-y-start)); opacity: var(--hero-led-light-opacity-low); }
-  50% { transform: translate(var(--hero-led-light-x-end), var(--hero-led-light-y-end)); opacity: var(--hero-led-light-opacity-high); }
+@keyframes k-hero-led-aurora-diagonal {
+  0% { transform: translate(var(--hero-led-spot-x-start), var(--hero-led-spot-y-start)); opacity: 0; }
+  15%, 85% { opacity: var(--hero-led-spot-opacity); }
+  100% { transform: translate(var(--hero-led-spot-x-end), var(--hero-led-spot-y-end)); opacity: 0; }
+}
+@keyframes k-hero-led-aurora-horizontal {
+  0% { transform: translateX(var(--hero-led-spot-x-end)); opacity: 0; }
+  15%, 85% { opacity: var(--hero-led-spot-opacity); }
+  100% { transform: translateX(var(--hero-led-spot-x-start)); opacity: 0; }
+}
+@keyframes k-hero-led-breath {
+  0%, 100% { opacity: var(--hero-led-breath-low); }
+  50% { opacity: var(--hero-led-breath-high); }
 }
 .k-enter { animation: k-enter var(--duration-long) var(--ease) both; }
 .k-enter--2 { animation-delay: var(--duration-short); }
@@ -321,6 +333,10 @@ textarea.k-input { resize: vertical; min-height: 8rem; }
   body:not(.k-menu-open) .k-header--over:not(.is-solid) :focus-visible { outline-color: var(--color-white); }
   body:not(.k-menu-open) .k-header--over:not(.is-solid) .k-logo-slot--light { display: inline-grid; }
   body:not(.k-menu-open) .k-header--over:not(.is-solid) .k-logo-slot--dark { display: none; }
+}
+/* Celular: uma mancha só, para poupar bateria e processamento. */
+@media (max-width: 47.99rem) {
+  .k-hero-led__light--red { display: none; }
 }
 @media (max-width: 39.99rem) {
   .k-hero-led__actions { width: 100%; }

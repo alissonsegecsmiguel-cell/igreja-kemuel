@@ -144,27 +144,36 @@
   --hero-led-schedule-time: clamp(1.375rem, 3.6svh, 2.5rem);
   --hero-led-word-top: 38%;
   --hero-led-word-center: var(--hero-led-word-top);
-  --hero-led-word-opacity: .85;
+  --hero-led-word-color: rgba(255, 255, 255, .72); /* Cinza dos pontos em repouso. */
+  --hero-led-word-opacity: .9;
+  --hero-led-breath-low: .8;
+  --hero-led-breath-high: 1;
   --hero-led-dot-radius: clamp(.8px, calc(2px - .15vw), 1.2px); /* Maior no celular. */
   --hero-led-dot-pitch: clamp(3px, calc(6px - .4vw), 4px);
   --hero-led-dot-feather: .3px;
-  --hero-led-mesh-opacity: .9;
+  --hero-led-mesh-opacity: 1;
   --hero-led-scrim: rgba(0, 0, 0, .15); /* Leve: a proteção do texto é a sombra localizada. */
   --hero-led-text-shade: radial-gradient(ellipse closest-side, rgba(0, 0, 0, .74) 84%, rgba(0, 0, 0, 0) 100%);
   --hero-led-text-shade-width: clamp(26rem, 66vw, 60rem);
   --hero-led-text-shade-bleed: var(--space-6);
-  --hero-led-light-color: rgba(255, 255, 255, .3);
-  --hero-led-reflection: var(--color-red-a08);
   --hero-led-clear: rgba(0, 0, 0, 0);
   --hero-led-cloud-mask: radial-gradient(ellipse 58% calc(var(--hero-led-word-size) * .95) at 50% var(--hero-led-word-center), #000 62%, transparent 100%), radial-gradient(ellipse 24% calc(var(--hero-led-word-size) * .8) at 14% var(--hero-led-word-center), #000 45%, transparent 100%), radial-gradient(ellipse 24% calc(var(--hero-led-word-size) * .8) at 86% var(--hero-led-word-center), #000 45%, transparent 100%);
-  --hero-led-light-fill: radial-gradient(ellipse at center, var(--hero-led-light-color), var(--hero-led-clear) 62%), radial-gradient(ellipse at 72% 48%, var(--hero-led-reflection), var(--hero-led-clear) 70%);
-  --hero-led-light-inset: -20%;
-  --hero-led-light-opacity-low: .55;
-  --hero-led-light-opacity-high: .75;
-  --hero-led-light-x-start: -12%;
-  --hero-led-light-y-start: -4%;
-  --hero-led-light-x-end: 12%;
-  --hero-led-light-y-end: 4%;
+  /* Aurora: a luz fica na malha, então só os pontos acendem por onde ela passa. */
+  --hero-led-spot-size: clamp(16rem, 44vw, 44rem);
+  --hero-led-spot-blur: clamp(1rem, 2.4vw, 2.5rem); /* Estático: só transform e opacity animam. */
+  --hero-led-spot-white: radial-gradient(closest-side, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0)); /* Abaixo do cinza da palavra: as letras seguem legíveis. */
+  --hero-led-spot-red: radial-gradient(closest-side, rgba(222, 46, 56, .6), rgba(222, 46, 56, 0));
+  --hero-led-spot-opacity: 1;
+  --hero-led-spot-opacity-static: .7; /* Brilho parado com movimento reduzido. */
+  --hero-led-spot-x-static: 12vw;
+  --hero-led-spot-x-start: calc(var(--hero-led-spot-size) * -.7);
+  --hero-led-spot-x-end: calc(100vw - var(--hero-led-spot-size) * .3);
+  --hero-led-spot-y-start: -32%;
+  --hero-led-spot-y-end: 32%;
+  --hero-led-aurora-diagonal: 10s;
+  --hero-led-aurora-horizontal: 12s;
+  --hero-led-aurora-offset: -5s; /* Defasagem entre as duas manchas. */
+  --hero-led-breath: 6s;
   --hero-led-center: 50%;
   --hero-led-center-shift: -50%;
   --hero-led-fill: 100%;

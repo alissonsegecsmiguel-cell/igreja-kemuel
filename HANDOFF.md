@@ -2,7 +2,7 @@
 
 ## 1. Última sessão
 
-- 05/11/2026: página sem estilos ao abrir por arquivo; causa encontrada e correção aplicada. Publicado continuava com estilo. Testes por arquivo e publicado em index, quem-somos e design_system, 1440x900 e 390x844.
+- 05/11/2026: animação da aurora no fundo da hero. Bateria da hero em Chrome e Edge (contraste AA em 11 momentos do ciclo e no pior caso de fundo branco), primeira dobra em 13 telas, 6 páginas e conferência por file:// e no endereço publicado.
 
 ## 2. Estado atual
 
@@ -17,7 +17,7 @@
 
 ## 4. Próximas tarefas
 
-1. Animação da aurora no fundo da hero.
+1. Preencher os marcadores conforme chegarem os dados da igreja e seguir o checklist de lançamento.
 2. Validar o design system e substituir os provisórios quando chegarem o logo e o código oficial do vermelho.
 
 ## 5. Backlog
@@ -68,7 +68,7 @@
 - Opção A: base branca, blocos pretos e vermelho somente em ações principais, marcadores, detalhes e estados; sem grandes superfícies vermelhas. Verde e âmbar ficam restritos ao feedback semântico.
 - Fontes: Outfit para títulos, pelas formas geométricas e pelo peso próximo ao lettering observado; Public Sans para texto e interface, pelo desenho neutro e pela leitura confortável. Ambas SIL OFL 1.1, hospedadas localmente, sem fontes copiadas das referências. Somente o lettering vazado usa o derivado Outfit Kemuel Static 800, com contornos unidos para eliminar as costuras expostas por text-stroke; métricas preservadas e licença OFL ao lado.
 - Tokens em assets/css/tokens.css; componentes em assets/css/components.css; interações em assets/js/ui.js. Easing único de interface e durações de 140ms, 260ms e 480ms. Sem frameworks ou rastreamento.
-- Loop contínuo permitido SOMENTE no fundo da hero: ciclo de 24s, linear, animando apenas transform e opacity. Pausar fora da tela ou com aba oculta e desligar com prefers-reduced-motion. Todos os demais movimentos são finitos.
+- Loop contínuo permitido SOMENTE no fundo da hero, em linear, animando apenas transform e opacity. Pausar fora da tela ou com aba oculta e desligar com prefers-reduced-motion. Todos os demais movimentos são finitos.
 - --color-red #DE2E38 é PROVISÓRIO até o código oficial chegar. Print apenas observado e medido; não incorporado ao site. A referência está em referencias/marca-kemuel/logo-referencia.jfif; essa pasta guarda somente a referência de identidade e não é uma extração de site.
 - Domínio: igrejakemuel.com.br.
 - Site contemporâneo, com objetivo de informar membros e atrair visitantes.
@@ -83,6 +83,7 @@
 - 05/11/2026: causa da página sem estilos: o commit 516b5c4 trocou os caminhos do index.html para /assets/..., que em file:// aponta para a raiz do disco. A CSP não bloqueou nada e continua nas páginas. O servidor local de testes usava a raiz do projeto, por isso não pegou o erro.
 - 05/11/2026: correção: páginas públicas com caminhos relativos a assets/; 404.html mantém /assets/ porque é servida em qualquer profundidade. Removido o preload de fontes, que gerava erros de CORS em file://. Os links entre páginas seguem como URLs limpas e só navegam no endereço publicado.
 - 05/11/2026: nova regra de conferência: antes de todo push, abrir o index.html publicado e conferir no console; abrir também por file://, e repetir no publicado após o deploy.
+- 05/11/2026: aurora em ciclo de 8 a 12 segundos (diagonal branca de 10s e horizontal vermelha de 12s, defasadas), com pontos que acendem por onde a luz passa e respiração da palavra em 6s; uma mancha só no celular. O pico da mancha branca fica abaixo do cinza da palavra, para as letras seguirem legíveis.
 - Site em 3 fases.
 - Fase 1 (lançamento): Início, Quem somos, Contribua (PIX institucional com botão copiar e QR Code).
 - Fase 2 (conteúdo): Materiais (PDFs públicos por categoria), Blog, Agenda opcional.
