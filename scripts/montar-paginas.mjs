@@ -4,10 +4,13 @@
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { loadData, fillData, fillHead, jsonLd } from './dados-igreja.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const read = file => readFileSync(file, 'utf8').replace(/\r\n/g, '\n');
 const partial = name => read(join(root, 'partials', name)).trimEnd();
+// Endereço, horários e dados da igreja vêm só de dados/igreja.json.
+const church = loadData(root);
 
 function header(page) {
   let html = partial('header.html');
@@ -46,7 +49,8 @@ function shared(html, file) {
   if (html.includes('<!-- story-scenes:start -->')) html = apply(html, 'story-scenes', partial('story-scenes.html'), file);
   html = apply(html, 'symbols', symbols(html, file), file);
   html = apply(html, 'whatsapp', partial('whatsapp.html'), file);
-  return apply(html, 'toast', partial('toast.html'), file);
+  html = apply(html, 'toast', partial('toast.html'), file);
+  return fillData(html, church, file);
 }
 
 const pages = readdirSync(root).filter(file => file.endsWith('.html'));
@@ -57,6 +61,8 @@ for (const file of pages) {
   let html = apply(before, 'icons', icons(page), file);
   html = apply(html, 'header', header(page), file);
   html = apply(html, 'footer', partial('footer.html'), file);
+  html = fillHead(html, church, page, file);
+  if (html.includes('<!-- jsonld:start -->')) html = apply(html, 'jsonld', jsonLd(church), file);
   outputs.push({ file, before, html: shared(html, file) });
 }
 // O manual tem navegação própria; compartilha apenas ícones, WhatsApp e toast.

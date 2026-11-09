@@ -2,6 +2,8 @@
 
 ## 1. Última sessão
 
+- 09/11/2026 (fila 01): dados reais da igreja aplicados em todas as páginas, a partir de dados/igreja.json. Hero, Bíblia, tabela de cultos, linha do tempo, rodapé (partial), FAQ de demonstração do manual, títulos, descriptions, Open Graph e JSON-LD Church gerados pelo script de montagem (scripts/dados-igreja.mjs), idempotente. Botões “Ver rota no mapa” agora abrem o Google Maps em nova aba. Testes por servidor local em 1366x768 e 390x844 nas seis páginas: dados corretos, rodapé idêntico, mapa com o endereço certo, JSON-LD válido, sem erros de console; primeira dobra em 14 telas, com 19h30 sem quebra em 360 px.
+
 - 09/11/2026: início da fila sem o Alisson. Trabalho pendente da linha do tempo “Quem somos” (descrito abaixo) conferido e publicado: fumaça em /, /blog e 404 em 1440x900 e 390x844 sem rolagem horizontal, erros de console ou requisições com falha; quatro capítulos, um aberto por vez, cenas montadas e sem erros nas duas larguras.
 
 - 09/11/2026: dobra “Quem somos” refeita como linha do tempo com quatro capítulos de exemplo e ilustrações animadas. k-timeline, k-timeline-card, k-story-stage e k-story-scene criados no design system, com documentação e galeria de movimento. Textos e SVGs reaproveitados por autorização explícita do protótipo aprovado; CSS/JS reescritos com tokens --timeline-*. Aviso “Prévia”, fontes remotas e orientações de preenchimento não foram publicados; as orientações ficaram em comentários HTML.
@@ -41,6 +43,9 @@
 
 ## 6. Pendências que dependem de pessoas
 
+- Número do endereço da sede (hoje [número] visível no site).
+- Confirmar se há congregações em outras cidades.
+- Corrigir a ficha do Google da igreja, se algum dado estiver diferente.
 - História real da igreja em capítulos: ano, título e 2 a 4 frases por capítulo; fotos por capítulo, se houver; aprovação pastoral. Decidir entre manter as ilustrações ou usar fotos reais autorizadas em cada capítulo.
 - Foto real da entrada ou da recepção e pontos reais das etiquetas [RECEPÇÃO] e [ESPAÇO INFANTIL]. As posições atuais são provisórias; ao inserir a foto, retirar aria-hidden da colagem e incluir alt descritivo.
 - Visita editorial: confirmar endereço completo e observação de estacionamento/acesso.
@@ -50,7 +55,7 @@
 - Arquivo oficial do logo em SVG ou PNG transparente, com versão para fundo claro, para substituir os espaços reservados "LOGO". Não recriar nem vetorizar a partir do print; única exceção: ícones do site em assets/icons/, provisórios, a substituir pelo arquivo oficial.
 - Código oficial do vermelho para substituir --color-red PROVISÓRIO (#DE2E38). Média medida no print: RGB 234,8323 / 48,6398 / 59,6149, arredondada para #EB313C; ajuste uniforme de canais por fator 0,947 para AA com branco (4,61:1).
 - Confirmar o registro do domínio igrejakemuel.com.br e em nome de quem está.
-- Conteúdo institucional: endereço, quem somos, contatos.
+- Conteúdo institucional: quem somos, contatos.
 - Fotos da igreja.
 - Definir quem escreve o blog e a frequência.
 - Primeiros materiais em PDF.
@@ -77,6 +82,9 @@
 
 ## 8. Decisões registradas
 
+- 09/11/2026: Igreja Kemuel em Iguatu - CE; sede na Av. Dr. José Holanda Montenegro, [número], Centro. Fonte única de dados em dados/igreja.json (fora do deploy), aplicada pelo script de montagem por meio de data-dado e data-dado-href; títulos no formato “[Página] · Igreja Kemuel · Iguatu, CE”.
+- 09/11/2026: o grupo musical gospel Kemuel (Itu, SP) não tem relação com a igreja e não deve ser citado. Congregações em outras cidades (como Crato) não são citadas sem confirmação.
+- 09/11/2026: JSON-LD Church com streetAddress “Av. Dr. José Holanda Montenegro, Centro” enquanto o número for marcador; bairro incluído no streetAddress porque PostalAddress não tem campo próprio (decidido sem o Alisson, revisar). Horários em openingHoursSpecification.
 - 09/11/2026: k-timeline, k-timeline-card, k-story-stage e k-story-scene usam o protótipo aprovado de referencias/linha-do-tempo/ como base principal de composição, interação, textos e SVGs, estes dois últimos explicitamente autorizados. Nenhum arquivo dessa pasta entrou no Git/deploy; somente as ilustrações autorizadas foram adaptadas para o partial canônico. Sem faixa “Prévia”, fontes externas ou texto de orientação visível.
 - 09/11/2026: capítulos manuais, primeiro ativo ao carregar, palco dentro do card no celular e na coluna fixa no computador. Cenas finitas de 1,6s por ativação; retorno a capítulo visto repete a cena. Único loop da história: brilho de fundo, opacity em 12s, com easing único, pausado fora do palco/aba e desligado com movimento reduzido. Esta autorização amplia a regra anterior de loop somente na hero; nada mudou no movimento da hero.
 - 09/11/2026: k-spec-section, k-spec-faq, k-photo-collage e k-callout compõem a ficha de primeira visita. Papel --paper-warm (#F4F0E8), grão discreto em CSS, colagem à esquerda com cerca de 45% e conteúdo à direita; no celular, colagem depois da ação. Primeira pergunta aberta, demais fechadas; detalhes semânticos e lógica comum de animação, com movimento reduzido imediato. Etiquetas reveladas uma vez, sem loop. k-faq-split removido por não haver usos restantes, inclusive seu token; não havia comportamento específico dele no JavaScript.
@@ -114,7 +122,7 @@
 - Site contemporâneo, com objetivo de informar membros e atrair visitantes.
 - 05/11/2026: URLs limpas (/discipulado, /materiais, /blog, /contribua), sem barra final; erros comuns redirecionam pelo vercel.json.
 - 05/11/2026: ordem e fundos das dobras da página principal: Cabeçalho branco; Hero preto; Venha nos visitar branco; Primeira visita branco suave; Quem somos preto; Para sua caminhada branco; Contribua branco suave; Acompanhe branco; Rodapé preto.
-- 05/11/2026: cultos às quintas-feiras, 19h, e aos domingos, 18h, confirmados pelo Alisson. Sem nomes próprios: usar apenas "Culto".
+- 09/11/2026: cultos na sede às quintas-feiras, às 19h30, e aos domingos, às 18h, confirmados pelo Alisson. Substitui a decisão de 05/11/2026 (quinta às 19h). Sem nomes próprios: usar apenas "Culto".
 - 05/11/2026: copy da hero: "Bem-vindo à" (sólida), "casa de Deus." (vazada) e subtítulo "Uma comunidade de fé de portas abertas para você e sua família viverem mais perto de Deus."
 - 05/11/2026: FAQ da Primeira visita com 5 perguntas, sem pergunta de horários, que já aparecem na hero e em Venha nos visitar.
 - 05/11/2026: cabeçalho transparente na página principal, sólido ao rolar além da hero; sólido direto nas demais páginas. Altura de 56 px no celular e 64 px no computador. Sem o nome ao lado do logo: o logo oficial já o contém.

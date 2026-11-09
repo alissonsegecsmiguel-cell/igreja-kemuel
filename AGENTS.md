@@ -36,6 +36,7 @@ Regras fixas do projeto do site da Igreja Kemuel.
 - Backlog: "Coloque isso no Backlog" pausa um item. "Retome o item [nome] do Backlog" retoma.
 - Prompts longos podem vir em Parte 1 e Parte 2. Ao receber a Parte 1 com "AGUARDE A PARTE 2", só confirmar que entendeu.
 - Toda mudança no cabeçalho, no rodapé ou nos ícones do head é feita em partials/ e aplicada com node scripts/montar-paginas.mjs antes do commit. Proibido editá-los direto nas páginas.
+- Endereço, horários e dados da igreja só mudam em dados/igreja.json, aplicados com node scripts/montar-paginas.mjs antes do commit. O grupo musical gospel Kemuel (Itu, SP) não tem relação com a igreja e não deve ser citado.
 - Conferência por file:// mantida apenas para checar que os estilos carregam. Os demais testes seguem pelo site publicado ou por servidor local.
 - Testes leves: só o que foi alterado, em 1440 px e 390 px. Bateria completa só antes de publicar, quando pedido.
 - Diagnóstico antes de correção: em qualquer problema, explicar a causa antes de corrigir.

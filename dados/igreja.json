@@ -1,0 +1,62 @@
+{
+  "nome": "Igreja Kemuel",
+  "cidade": "Iguatu",
+  "estado": "Ceará",
+  "uf": "CE",
+  "pais": "BR",
+  "site": "https://www.igrejakemuel.com.br",
+  "endereco": {
+    "rua": "Av. Dr. José Holanda Montenegro",
+    "numero": "[número]",
+    "bairro": "Centro",
+    "cidade": "Iguatu",
+    "uf": "CE"
+  },
+  "cultos": [
+    {
+      "dia": "Quinta-feira",
+      "diaPlural": "quintas-feiras",
+      "diaCurto": "quintas",
+      "hora": "19h30",
+      "horaISO": "19:30",
+      "diaSchema": "Thursday",
+      "nome": "Culto"
+    },
+    {
+      "dia": "Domingo",
+      "diaPlural": "domingos",
+      "diaCurto": "domingos",
+      "hora": "18h",
+      "horaISO": "18:00",
+      "diaSchema": "Sunday",
+      "nome": "Culto"
+    }
+  ],
+  "mapa": "https://www.google.com/maps/search/?api=1&query=Igreja%20Kemuel%2C%20Av.%20Dr.%20Jos%C3%A9%20Holanda%20Montenegro%2C%20Centro%2C%20Iguatu%20-%20CE",
+  "paginas": {
+    "404": {
+      "titulo": "Página não encontrada",
+      "descricao": "Esta página não foi encontrada no site da Igreja Kemuel, em Iguatu, Ceará."
+    },
+    "index": {
+      "titulo": null,
+      "descricao": "Igreja Kemuel em Iguatu, Ceará. Cultos às quintas, 19h30, e aos domingos, 18h. Venha nos visitar."
+    },
+    "discipulado": {
+      "titulo": "Discipulado",
+      "descricao": "Discipulado da Igreja Kemuel, em Iguatu, Ceará. Página em construção."
+    },
+    "materiais": {
+      "titulo": "Materiais e cursos",
+      "descricao": "Materiais em PDF e cursos da Igreja Kemuel, em Iguatu, Ceará. Conteúdo em preparação."
+    },
+    "blog": {
+      "titulo": "Blog",
+      "descricao": "Blog da Igreja Kemuel, em Iguatu, Ceará. Conteúdo em preparação."
+    },
+    "contribua": {
+      "titulo": "Contribua",
+      "descricao": "Formas de contribuir com a Igreja Kemuel, em Iguatu, Ceará. Página em construção."
+    }
+  }
+}
