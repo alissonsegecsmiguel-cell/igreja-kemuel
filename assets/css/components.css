@@ -245,8 +245,57 @@ textarea.k-input { resize: vertical; min-height: var(--textarea-min-height); }
 .k-faq summary::after { content: "+"; flex: 0 0 auto; width: var(--size-2xl); text-align: center; font-size: var(--size-2xl); font-weight: var(--weight-regular); transition: transform var(--duration-medium) var(--ease); }
 .k-faq[open] summary::after { transform: rotate(45deg); }
 .k-faq__body { padding: 0 0 var(--space-3); max-width: var(--reading); }
-/* k-faq-split — intro e ação ao lado da sanfona; no celular, a ação fecha a coluna. */
-.k-faq-split { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); }
+/* Ficha editorial: componentes próprios, sobre os fundamentos do k-faq. */
+.k-spec-section { color: var(--color-text); background-color: var(--paper-warm); background-image: var(--paper-grain); background-size: var(--paper-grain-size); background-position: var(--paper-grain-position); }
+.k-spec-section__layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-5); align-items: center; }
+.k-spec-section__copy { display: grid; gap: var(--spec-copy-gap); min-width: 0; }
+.k-spec-section__intro { display: grid; gap: var(--space-3); }
+.k-spec-section__eyebrow { color: var(--spec-eyebrow-color); }
+.k-spec-section__title { font-family: var(--spec-font-accent); font-size: var(--spec-title-size); font-weight: var(--weight-regular); line-height: var(--spec-title-leading); letter-spacing: var(--spec-title-tracking); text-transform: uppercase; }
+.k-spec-section__title span { display: block; white-space: nowrap; }
+.k-spec-section__action { display: grid; justify-items: start; gap: var(--space-2); }
+.k-spec-section__action p { margin: 0; }
+.k-spec-faq-list { border-top: var(--spec-rule-width) solid var(--color-black); }
+.k-spec-faq { border-bottom: var(--spec-rule-width) solid var(--spec-rule); }
+.k-spec-faq > summary { display: grid; grid-template-columns: minmax(0, 1fr) var(--spec-indicator-size); gap: var(--space-1) var(--spec-faq-gap); padding-block: var(--spec-summary-pad); min-height: var(--faq-summary-height); font-family: var(--font-body); font-size: var(--text-body-sm); font-weight: var(--weight-semibold); line-height: var(--leading-label); }
+.k-spec-faq > summary::after { content: none; }
+.k-spec-faq__label { grid-column: 1 / -1; color: var(--spec-label-color); }
+.k-spec-faq__label::before { content: none; }
+.k-spec-faq__question { min-width: 0; }
+.k-spec-faq__indicator { align-self: center; text-align: center; font-size: var(--spec-indicator-size); font-weight: var(--weight-regular); }
+.k-spec-faq__indicator::before { content: "+"; }
+.k-spec-faq[open] .k-spec-faq__indicator::before { content: "−"; }
+.k-spec-faq__answer { max-width: none; padding-bottom: var(--spec-answer-pad); font-size: var(--text-body-sm); line-height: var(--leading-body); }
+.k-photo-collage { position: relative; min-width: 0; width: 100%; margin: 0; padding: var(--spec-collage-inset); }
+.k-photo-collage__paper { position: relative; aspect-ratio: var(--spec-collage-ratio); background: var(--spec-collage-bg); clip-path: var(--spec-tear-shape); }
+.k-photo-collage__image { display: block; width: 100%; height: 100%; object-fit: cover; filter: var(--spec-photo-filter); }
+.k-photo-collage__paper::after { content: ""; position: absolute; inset: 0; background-image: radial-gradient(circle, var(--spec-photo-dot-color) var(--spec-photo-dot-radius), transparent var(--spec-photo-dot-radius)); background-size: var(--spec-photo-dot-pitch) var(--spec-photo-dot-pitch); pointer-events: none; }
+.k-photo-collage__frame { position: absolute; z-index: 1; inset: var(--spec-frame-inset); border: var(--spec-frame-width) solid var(--color-white); transform: translate(var(--spec-frame-offset), var(--spec-frame-offset)); pointer-events: none; }
+.k-photo-collage__placeholder { position: absolute; z-index: 2; inset: 0; display: grid; place-items: center; padding: var(--space-3); }
+.k-photo-collage__placeholder span { max-width: var(--spec-photo-label-width); padding: var(--spec-photo-label-pad); color: var(--color-text); background: var(--spec-photo-label-bg); font: var(--weight-semibold) var(--text-caption)/var(--leading-label) var(--font-body); letter-spacing: var(--tracking-eyebrow); text-align: center; }
+.k-photo-collage__brush { position: absolute; z-index: 3; top: var(--space-2); right: var(--space-2); width: var(--spec-brush-width); height: var(--spec-brush-height); fill: none; stroke: var(--color-red); stroke-width: var(--spec-brush-stroke); stroke-linecap: round; pointer-events: none; }
+.k-callout { position: absolute; z-index: 4; top: var(--spec-callout-top); left: 0; max-width: var(--spec-callout-width); padding: var(--space-1) var(--space-2); border: var(--border-width) solid var(--color-black); color: var(--spec-label-color); background: var(--spec-callout-bg); font-family: var(--font-body); font-size: var(--text-eyebrow); font-weight: var(--weight-semibold); line-height: var(--leading-label); letter-spacing: var(--tracking-eyebrow); text-transform: uppercase; }
+.k-callout--end { top: auto; left: auto; bottom: var(--spec-callout-bottom); right: 0; }
+.k-callout__leader { position: absolute; top: 50%; left: 100%; width: var(--spec-callout-line); height: var(--border-width); background: var(--color-black); transform: rotate(var(--spec-callout-angle)); transform-origin: left center; }
+.k-callout--end .k-callout__leader { right: 100%; left: auto; transform-origin: right center; }
+.k-callout__leader::after { content: ""; position: absolute; right: 0; top: 50%; width: var(--spec-callout-dot); height: var(--spec-callout-dot); border-radius: var(--radius-pill); background: var(--color-black); transform: translateY(-50%); }
+.k-callout--end .k-callout__leader::after { right: auto; left: 0; }
+.k-motion-ready .k-photo-collage[data-reveal] .k-callout { opacity: 0; transform: translateY(var(--spec-callout-offset)); transition: opacity var(--spec-callout-duration) var(--ease) var(--spec-callout-delay), transform var(--spec-callout-duration) var(--ease) var(--spec-callout-delay); }
+.k-motion-ready .k-photo-collage[data-reveal] .k-callout--end { transition-delay: var(--spec-callout-delay-second); }
+.k-motion-ready .k-photo-collage[data-reveal].is-visible .k-callout { opacity: 1; transform: none; }
+@media (min-width: 60rem) {
+  .k-spec-section__layout { grid-template-columns: var(--spec-columns); column-gap: var(--spec-column-gap); }
+  .k-spec-section__copy { grid-column: 2; grid-row: 1; }
+  .k-spec-section__layout > .k-photo-collage { grid-column: 1; grid-row: 1; align-self: center; }
+  .k-spec-faq > summary { grid-template-columns: var(--spec-faq-columns); }
+  .k-spec-faq__label { grid-column: auto; }
+  .k-spec-faq__question { text-align: right; }
+  .k-spec-faq__answer { display: grid; grid-template-columns: var(--spec-faq-columns); gap: var(--spec-faq-gap); }
+  .k-spec-faq__answer > p { grid-column: 2; text-align: right; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .k-motion-ready .k-photo-collage[data-reveal] .k-callout { opacity: 1; transform: none; }
+}
 .k-preview-nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-3); padding-block: var(--space-3); border-bottom: var(--border-width) solid var(--color-border); }
 .k-preview-nav nav { display: flex; gap: var(--space-3); flex-wrap: wrap; }
 .k-preview-nav a { min-height: var(--touch-min); display: inline-flex; align-items: center; color: var(--color-text); font-size: var(--text-body-sm); }
@@ -462,10 +511,6 @@ textarea.k-input { resize: vertical; min-height: var(--textarea-min-height); }
   .k-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .k-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .k-material-strip { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .k-faq-split { grid-template-columns: var(--faq-split-columns); grid-template-rows: auto 1fr; grid-template-areas: "intro list" "action list"; column-gap: var(--space-6); }
-  .k-faq-split__intro { grid-area: intro; }
-  .k-faq-split__list { grid-area: list; }
-  .k-faq-split__action { grid-area: action; }
   .k-hero__grid { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: var(--space-6); }
   .k-hero { padding-block: var(--space-4) var(--space-5); }
 }

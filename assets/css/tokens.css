@@ -43,7 +43,65 @@
   font-display: swap;
 }
 
+/* Anton: Google Fonts / The Anton Project Authors, SIL OFL 1.1, latino. */
+@font-face {
+  font-family: "Anton";
+  src: url("../fonts/anton-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 :root {
+  /* Ficha editorial: papel quente, colagem e perguntas de primeira visita. */
+  --paper-warm: #f4f0e8;
+  --paper-grain: radial-gradient(circle, rgba(0, 0, 0, .025) .45px, transparent .75px), radial-gradient(circle, rgba(0, 0, 0, .02) .4px, transparent .7px);
+  --paper-grain-size: 3px 3px, 5px 5px;
+  --paper-grain-position: 0 0, 1px 2px;
+  --spec-font-accent: "Anton", "Arial Narrow", sans-serif;
+  --spec-title-size: clamp(2.125rem, 10vw, 4rem);
+  --spec-title-leading: 1;
+  --spec-title-tracking: -.015em;
+  --spec-eyebrow-color: var(--color-red-hover); /* Texto AA sobre papel quente. */
+  --spec-label-color: var(--color-text-muted);
+  --spec-columns: minmax(0, 45fr) minmax(0, 55fr);
+  --spec-column-gap: var(--space-5);
+  --spec-copy-gap: var(--space-4);
+  --spec-faq-columns: minmax(0, 1fr) minmax(0, 2fr) var(--icon-md);
+  --spec-faq-gap: var(--space-2);
+  --spec-rule: rgba(0, 0, 0, .2);
+  --spec-rule-width: var(--border-width);
+  --spec-summary-pad: var(--space-3);
+  --spec-answer-pad: var(--space-3);
+  --spec-indicator-size: var(--icon-md);
+  --spec-collage-ratio: 16 / 9;
+  --spec-collage-inset: var(--space-2);
+  --spec-collage-bg: #d7d5cf;
+  --spec-photo-filter: grayscale(1) contrast(1.08);
+  --spec-photo-dot-color: rgba(0, 0, 0, .16);
+  --spec-photo-dot-radius: .65px;
+  --spec-photo-dot-pitch: 4px;
+  --spec-photo-label-width: 15rem;
+  --spec-photo-label-pad: var(--space-2);
+  --spec-photo-label-bg: rgba(255, 255, 255, .94);
+  --spec-frame-inset: 10%;
+  --spec-frame-offset: var(--space-2);
+  --spec-frame-width: var(--border-width-strong);
+  --spec-tear-shape: polygon(0 0, 75% 0, 77% 3%, 79% 1%, 81% 4%, 84% 2%, 87% 4%, 91% 1%, 94% 3%, 100% 0, 100% 92%, 97% 94%, 94% 92%, 90% 96%, 87% 94%, 83% 98%, 80% 95%, 77% 99%, 74% 97%, 70% 100%, 0 100%);
+  --spec-brush-width: 28%;
+  --spec-brush-height: 18%;
+  --spec-brush-stroke: 7;
+  --spec-callout-bg: var(--color-white);
+  --spec-callout-width: min(70%, 14rem);
+  --spec-callout-top: 12%;
+  --spec-callout-bottom: 12%;
+  --spec-callout-line: clamp(2.5rem, 7vw, 5rem);
+  --spec-callout-dot: var(--size-2xs);
+  --spec-callout-angle: 18deg;
+  --spec-callout-offset: var(--space-1);
+  --spec-callout-delay: var(--duration-short);
+  --spec-callout-delay-second: var(--duration-medium);
+  --spec-callout-duration: var(--duration-medium);
   /* Papel: somente a seção editorial de visita. */
   --paper-bg: #e9e9e9;
   --paper-grid-color: rgba(0, 0, 0, .1);
@@ -263,7 +321,6 @@
   --marker-height: 2px;
   --schedule-item-min: 7.5rem; /* Abaixo disso, um bloco embaixo do outro. */
   --schedule-max-width: 28rem;
-  --faq-split-columns: minmax(0, 2fr) minmax(0, 3fr);
   --card-compact-thumb: 6.5rem; /* Imagem do card horizontal no celular. */
   --whatsapp-clearance: 5rem; /* Altura reservada para o botão flutuante não cobrir o fim da página. */
   --duration-short: 140ms;

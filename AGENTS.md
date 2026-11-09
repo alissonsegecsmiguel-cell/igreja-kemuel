@@ -11,6 +11,7 @@ Regras fixas do projeto do site da Igreja Kemuel.
 - A Vercel está conectada à main. Todo push na main vai para o ar em igrejakemuel.com.br.
 - O index.html é a página principal em construção, com marcadores entre colchetes visíveis e meta robots noindex até o lançamento.
 - Os tokens e estilos compartilhados ficam em arquivos próprios (por exemplo assets/css/), nunca só dentro do design_system.html, porque ele não vai para o ar.
+- Famílias autorizadas: Outfit (títulos e números), Public Sans (texto e interface), Anton (terceira família, somente títulos grandes condensados em caixa alta) e Newsreader (quarta família, restrita à visita editorial, às páginas da Bíblia e a citações). A vaga serifada está ocupada; nenhuma quinta família pode entrar. Preservar a Bíblia já publicada.
 
 ## Segurança (repositório público)
 

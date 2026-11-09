@@ -87,7 +87,7 @@
 
     <section class="k-section" id="tipografia" data-reveal aria-labelledby="titulo-tipografia">
       <div class="k-container">
-        <header class="k-section-heading"><p class="k-section-number">01 / TIPOGRAFIA</p><h2 id="titulo-tipografia">Personalidade no título.<br>Calma na leitura.</h2><p class="k-muted">Outfit desenha a hierarquia com formas geométricas. Public Sans acompanha o conteúdo e a interface. Newsreader é a terceira e última família: restrita à dobra editorial de visita, às páginas da Bíblia e a citações. As três têm licença OFL, arquivos locais e font-display: swap.</p><p class="k-body-sm">Outfit aproxima a construção geométrica e o peso do lettering observado, sem substituir nem recriar o logo. Newsreader foi desenhada para leitura em tela e acrescenta um ritmo editorial sereno; não substitui Public Sans na interface nem no corpo geral do site.</p></header>
+        <header class="k-section-heading"><p class="k-section-number">01 / TIPOGRAFIA</p><h2 id="titulo-tipografia">Personalidade no título.<br>Calma na leitura.</h2><p class="k-muted">Quatro famílias autorizadas: Outfit para títulos e números; Public Sans para texto e interface; Anton, terceira família, somente para títulos grandes condensados em caixa alta; Newsreader, quarta família, restrita à visita editorial, às páginas da Bíblia e a citações. A vaga serifada já está ocupada: nenhuma quinta família pode entrar. Todas têm licença OFL, arquivos locais e font-display: swap.</p><p class="k-body-sm">Outfit aproxima a construção geométrica e o peso do lettering observado, sem substituir nem recriar o logo. Anton acrescenta hierarquia condensada à ficha de primeira visita. Newsreader foi desenhada para leitura em tela e preserva o ritmo da Bíblia já publicada; não substitui Public Sans na interface nem no corpo geral do site.</p></header>
         <p class="k-caption k-muted">Tamanhos medidos ao vivo. Escala fluida com clamp(); pesos reais dos arquivos variáveis. Tracking em px conforme o tamanho atual. As prévias são os próprios elementos.</p>
         <div role="list" aria-label="Papéis tipográficos">
           <div class="k-type-row" role="listitem" data-type><h1 data-type-preview>Clareza.</h1><div class="k-type-row__meta"><strong>H1 · título de página</strong><code data-type-metrics></code><span>clamp(44px, 5.2vw, 80px)</span></div></div>
@@ -144,14 +144,15 @@
           </div>
           <p class="k-caption k-muted">Contraste: texto #171717 e apoio #555555 sobre branco; branco e apoio #C5C5C5 sobre #111111. Todos acima de AA.</p>
         </section>
-        <section class="k-demo k-stack" id="faq-split-documentacao" aria-labelledby="faq-split-titulo">
-          <p class="k-eyebrow">Variação · k-faq-split</p><h3 id="faq-split-titulo">Introdução de um lado, perguntas do outro.</h3>
-          <p class="k-body-sm">A partir de 60rem, duas colunas (<code>--faq-split-columns</code>): introdução e ação à esquerda, sanfona à direita. No celular, uma coluna na ordem da marcação: introdução, perguntas e ação. Reutiliza k-eyebrow, k-faq e k-button. A primeira pergunta pode vir aberta com o atributo open.</p>
-          <div class="k-faq-split">
-            <header class="k-faq-split__intro k-stack"><p class="k-eyebrow">[Eyebrow]</p><h4 class="k-h3">[Título da dobra]</h4><p class="k-muted">[Texto curto.]</p></header>
-            <div class="k-faq-split__list"><details class="k-faq" open><summary>[Pergunta aberta]</summary><div class="k-faq__body"><p>[Resposta confirmada.]</p></div></details><details class="k-faq"><summary>[Outra pergunta]</summary><div class="k-faq__body"><p>[Resposta confirmada.]</p></div></details></div>
-            <div class="k-faq-split__action"><button class="k-button" type="button" data-example>Ação · exemplo</button></div>
-          </div>
+        <section class="k-demo k-stack" id="spec-documentacao" aria-labelledby="spec-doc-titulo">
+          <p class="k-eyebrow">Ficha editorial · componentes</p><h3 id="spec-doc-titulo">Informação clara, ritmo de ficha.</h3>
+          <p><code>k-spec-section</code> usa papel quente, granulado CSS discreto e duas colunas a partir de 60rem: colagem com cerca de 45% e texto com 55%, descontado o intervalo. A colagem permanece centralizada quando a ficha cresce. No celular, a ordem do HTML é introdução, perguntas, ação e colagem. <a class="k-link" href="#primeira-visita">Ver a demonstração completa</a>.</p>
+          <p><code>k-spec-faq</code> estende <code>k-faq</code> com rótulo, pergunta e indicador. Primeira pergunta aberta; <code>details/summary</code> mantém a operação nativa sem JavaScript. A lógica compartilhada em ui.js anima a resposta com a duração média e o easing único, atualiza aria-expanded e associa aria-controls à resposta. Enter, Espaço, mouse e toque alternam o estado; movimento reduzido abre e fecha imediatamente.</p>
+          <p><code>k-photo-collage</code> reserva uma foto real, com tratamento grayscale/contrast, retícula CSS, duas pontas rasgadas, moldura branca deslocada e traço de pincel SVG próprio. Nenhuma imagem ou marca da referência foi incorporada. O bloco reservado é decorativo: ao inserir a foto, retirar aria-hidden da figure, usar img.k-photo-collage__image com alt descritivo e remover o marcador.</p>
+          <p><code>k-callout</code> e sua variante <code>k-callout--end</code> são etiquetas com linha e ponto. Posições provisórias, a validar sobre a foto. Revelação única existente; etiquetas entram depois, em 260ms, com atrasos de 140/260ms. Sem loop. Movimento reduzido deixa todos visíveis.</p>
+          <p class="k-body-sm">Tokens novos somente em <code>--paper-*</code> e <code>--spec-*</code>: papel/grão, Anton, proporções, regras, tratamento da foto, recorte, moldura, pincel, etiquetas e atrasos. Anton 400 latina local, SIL OFL 1.1 em fonts/anton-OFL.txt, com font-display: swap. Restrita a títulos grandes condensados em caixa alta; não usar em perguntas, corpo ou interface.</p>
+          <p class="k-body-sm">Contraste: o vermelho primário #DE2E38 sobre o papel #F4F0E8 dá 4,06:1 e não serve ao eyebrow pequeno. Por isso <code>--spec-eyebrow-color</code> reutiliza #C1232C (vermelho de texto/hover existente); o marcador mantém o primário. Rótulos #555555, texto #171717 e etiquetas brancas permanecem AA inclusive sobre a sobreposição máxima do grão. Não aplicar opacidade ao texto.</p>
+          <div class="k-type-row" data-type><h4 class="k-spec-section__title" data-type-preview>CHEGUE<br>TRANQUILO.</h4><div class="k-type-row__meta"><strong>Anton · destaque condensado 400</strong><code data-type-metrics></code><span>Uso restrito · terceira família; Newsreader ocupa a quarta vaga editorial.</span></div></div>
         </section>
         <section class="k-demo k-stack" id="vislumbre-documentacao" aria-labelledby="vislumbre-titulo">
           <p class="k-eyebrow">Variações · k-card--compact e k-material-strip</p><h3 id="vislumbre-titulo">Um vislumbre, sem pesar a página.</h3>
@@ -234,6 +235,53 @@
       </div>
     </section>
 
+    <section class="k-section k-spec-section" id="primeira-visita" aria-labelledby="primeira-visita-titulo">
+      <div class="k-container k-spec-section__layout">
+        <div class="k-spec-section__copy" data-reveal>
+          <header class="k-spec-section__intro">
+            <p class="k-eyebrow k-spec-section__eyebrow">PRIMEIRA VISITA</p>
+            <h2 class="k-spec-section__title" id="primeira-visita-titulo"><span>PRIMEIRA VEZ?</span><span>CHEGUE TRANQUILO.</span><span>A GENTE EXPLICA.</span></h2>
+            <p>Separamos as dúvidas mais comuns de quem vem pela primeira vez.</p>
+          </header>
+          <div class="k-spec-faq-list">
+            <details class="k-faq k-spec-faq" open>
+              <summary><span class="k-eyebrow k-spec-faq__label">01 · CULTO</span><span class="k-spec-faq__question">Como é o culto e quanto tempo dura?</span><span class="k-spec-faq__indicator" aria-hidden="true"></span></summary>
+              <div class="k-faq__body k-spec-faq__answer" id="visita-resposta-culto"><p>O culto dura cerca de [duração]. Tem [momentos do culto, ex.: louvor, oração e pregação].</p></div>
+            </details>
+            <details class="k-faq k-spec-faq">
+              <summary><span class="k-eyebrow k-spec-faq__label">02 · ROUPA</span><span class="k-spec-faq__question">Preciso me vestir de algum jeito?</span><span class="k-spec-faq__indicator" aria-hidden="true"></span></summary>
+              <div class="k-faq__body k-spec-faq__answer" id="visita-resposta-roupa"><p>[Ex.: Venha como se sentir bem. Não existe roupa certa.]</p></div>
+            </details>
+            <details class="k-faq k-spec-faq">
+              <summary><span class="k-eyebrow k-spec-faq__label">03 · CRIANÇAS</span><span class="k-spec-faq__question">Posso levar meus filhos?</span><span class="k-spec-faq__indicator" aria-hidden="true"></span></summary>
+              <div class="k-faq__body k-spec-faq__answer" id="visita-resposta-criancas"><p>[Sim / Temos [nome do ministério infantil] durante o culto para crianças de [idade].]</p></div>
+            </details>
+            <details class="k-faq k-spec-faq">
+              <summary><span class="k-eyebrow k-spec-faq__label">04 · CHEGADA</span><span class="k-spec-faq__question">Vou precisar me apresentar ou falar na frente?</span><span class="k-spec-faq__indicator" aria-hidden="true"></span></summary>
+              <div class="k-faq__body k-spec-faq__answer" id="visita-resposta-chegada"><p>[Ex.: Não. Você pode só participar. Se quiser, nossa equipe de recepção te recebe na entrada.]</p></div>
+            </details>
+            <details class="k-faq k-spec-faq">
+              <summary><span class="k-eyebrow k-spec-faq__label">05 · ESTACIONAMENTO</span><span class="k-spec-faq__question">Onde posso estacionar?</span><span class="k-spec-faq__indicator" aria-hidden="true"></span></summary>
+              <div class="k-faq__body k-spec-faq__answer" id="visita-resposta-estacionamento"><p>[Orientação de estacionamento.]</p></div>
+            </details>
+          </div>
+          <div class="k-spec-section__action">
+            <a class="k-button" href="https://example.invalid/whatsapp" rel="noopener noreferrer" data-example><svg class="k-icon" aria-hidden="true"><use href="#k-chat"/></svg>Ainda tem dúvida? Fale com a gente</a>
+            <p class="k-caption k-muted">WhatsApp · link de exemplo, sem número real</p>
+          </div>
+        </div>
+        <figure class="k-photo-collage" data-reveal aria-hidden="true">
+          <div class="k-photo-collage__paper">
+            <!-- Quando a foto real chegar: remover aria-hidden da figure, incluir img.k-photo-collage__image com alt descritivo e retirar o marcador abaixo. -->
+            <div class="k-photo-collage__placeholder"><span>FOTO DA ENTRADA OU DA RECEPÇÃO</span></div>
+          </div>
+          <span class="k-photo-collage__frame"></span>
+          <svg class="k-photo-collage__brush" viewBox="0 0 120 32" aria-hidden="true"><path d="M4 24Q42 5 114 11M12 29Q52 13 108 16"/></svg>
+          <span class="k-callout">[RECEPÇÃO]<span class="k-callout__leader"></span></span>
+          <span class="k-callout k-callout--end">[ESPAÇO INFANTIL]<span class="k-callout__leader"></span></span>
+        </figure>
+      </div>
+    </section>
     <section class="k-section" id="biblia-documentacao" aria-labelledby="biblia-documentacao-titulo">
       <div class="k-container k-stack">
         <p class="k-eyebrow">Componentes · visita editorial</p><h2 class="k-h3" id="biblia-documentacao-titulo">Papel, informação e uma porta aberta.</h2>
@@ -246,7 +294,7 @@
         <div class="k-type-row" data-type><p class="k-editorial__phrase" data-type-preview>Uma casa aberta.</p><div class="k-type-row__meta"><strong>Newsreader · frase editorial 200</strong><code data-type-metrics></code></div></div>
         <div class="k-type-row" data-type><p class="k-editorial__copy" data-type-preview>Leitura tranquila, com o tempo de cada pessoa.</p><div class="k-type-row__meta"><strong>Newsreader · corpo editorial 300</strong><code data-type-metrics></code></div></div>
         <div class="k-type-row" data-type><blockquote class="k-quote k-quote--editorial" data-type-preview>[Citação autorizada a confirmar.]</blockquote><div class="k-type-row__meta"><strong>Newsreader · citação 400 itálico</strong><code data-type-metrics></code></div></div>
-        <p class="k-body-sm">Fontes latinas variáveis normal e itálica em <code>assets/fonts/newsreader-latin-variable.woff2</code> e <code>newsreader-latin-italic-variable.woff2</code>; eixo wght 200–800 e desenho óptico fixado em 16 para leitura e arquivos menores (128 KB no total). Licença: <code>newsreader-OFL.txt</code>. Fonte oficial: <a class="k-link" href="https://github.com/google/fonts/tree/main/ofl/newsreader" rel="noopener noreferrer">Google Fonts / Newsreader</a>. Fallback: Georgia e serif. Não adicionar uma quarta família.</p>
+        <p class="k-body-sm">Fontes latinas variáveis normal e itálica em <code>assets/fonts/newsreader-latin-variable.woff2</code> e <code>newsreader-latin-italic-variable.woff2</code>; eixo wght 200–800 e desenho óptico fixado em 16 para leitura e arquivos menores (128 KB no total). Licença: <code>newsreader-OFL.txt</code>. Fonte oficial: <a class="k-link" href="https://github.com/google/fonts/tree/main/ofl/newsreader" rel="noopener noreferrer">Google Fonts / Newsreader</a>. Fallback: Georgia e serif. Newsreader ocupa a quarta e última vaga autorizada; a Bíblia permanece preservada.</p>
         <p class="k-body-sm">Contraste: texto #171717 no papel #E9E9E9 e no cartão composto #E1E1E1; inclusive as legendas usam esse texto no quadriculado, garantindo 8,84:1 no pior cruzamento sob o cartão. Nas folhas opacas #FAF7EF, texto #171717 e apoio #555555 têm 16,75:1 e 6,96:1; com a sombra máxima da lombada, o apoio ainda supera 4,5:1. Branco sobre botão #DE2E38: 4,61:1. O brilho máximo é branco translúcido; sua composição ainda conserva AA. Capa, cruz e regras finas são decorativas, sem texto informativo.</p>
         <a class="k-link" href="#visite">Ver demonstração completa abaixo</a>
         <p class="k-caption k-muted">Teste por pixels em 1440 e 1366px, nas áreas reais das legendas das duas duplas: mínimo de 5,09:1 mesmo usando como limite o clareamento máximo do brilho sobre o texto. Os quatro tamanhos de tela, a montagem sem mudança de dimensões, setas, teclado, arraste, pausa e movimento reduzido foram conferidos. Evidências locais em relatorios/kemuel-biblia/, fora do Git e do deploy.</p>

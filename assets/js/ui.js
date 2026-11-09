@@ -216,14 +216,19 @@
     const summary = details.querySelector('summary');
     const body = details.querySelector('.k-faq__body');
     if (!summary || !body) return;
+    const syncExpanded = () => summary.setAttribute('aria-expanded', String(details.open && details.dataset.closing !== 'true'));
+    if (body.id) summary.setAttribute('aria-controls', body.id);
+    syncExpanded();
+    details.addEventListener('toggle', syncExpanded);
     summary.addEventListener('click', event => {
       event.preventDefault();
       faqAnimations.get(details)?.cancel();
       const opening = !details.open || details.dataset.closing === 'true';
       delete details.dataset.closing;
-      if (reduced.matches) { details.open = opening; return; }
+      if (reduced.matches) { details.open = opening; syncExpanded(); return; }
       if (opening) details.open = true;
       else details.dataset.closing = 'true';
+      syncExpanded();
       const frames = opening
         ? [{ opacity: 0, transform: faqShift }, { opacity: 1, transform: 'none' }]
         : [{ opacity: 1, transform: 'none' }, { opacity: 0, transform: faqShift }];
@@ -232,6 +237,7 @@
       animation.onfinish = () => {
         if (!opening) details.open = false;
         delete details.dataset.closing;
+        syncExpanded();
         faqAnimations.delete(details);
       };
     });

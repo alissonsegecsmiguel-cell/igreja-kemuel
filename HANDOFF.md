@@ -2,6 +2,10 @@
 
 ## 1. Última sessão
 
+- 09/11/2026: dobra “Primeira visita” refeita como ficha editorial. Novos componentes k-spec-section, k-spec-faq, k-photo-collage e k-callout no design system; papel quente, título Anton em três linhas, cinco perguntas sem alterar respostas e colagem decorativa preparada para foto real. Composição, proporções e ritmo observados na referência; nenhum recurso de terceiros copiado. k-faq-split e seu token removidos por não haver outros usos; a lógica comum de k-faq foi reaproveitada com aria-expanded sincronizado. Hero, menu, Bíblia e demais dobras preservados.
+- Anton latina estática 400 local (20.772 B), SIL OFL 1.1 ao lado. Conforme esclarecimento desta sessão, Anton entra como terceira família e Newsreader ocupa a quarta vaga restrita, preservando a Bíblia; não existe vaga adicional para outra serifada. O eyebrow pequeno usa o vermelho de texto existente #C1232C, pois o primário #DE2E38 fica abaixo de AA sobre o papel quente. Marcador e pincel conservam o primário.
+- Testes da ficha no Chrome por servidor local em 1440x900, 1366x768, 390x844 e 360x740: sem rolagem horizontal, erros de console ou requisições com falha; Anton carregada e título em três linhas sem cortes; primeira pergunta aberta, cliques, toque nativo, Enter/Espaço, foco visível e aria-expanded conferidos. Colagem centralizada mesmo com respostas abertas; ordem móvel correta, etiquetas contidas e movimento reduzido sem animação. Design system em 1440/390 e sanfona sem JavaScript também passaram; file:// usado só para estilos. Prints integrais e relatório em relatorios/kemuel-ficha/, ignorado pelo Git/deploy. Contraste conservador sobre o grão máximo: texto 14,31:1; rótulos 5,95:1; eyebrow 4,73:1; etiquetas brancas 7,45:1; botão 4,61:1.
+
 - 09/11/2026: dobra “Venha nos visitar” refeita com Bíblia 3D e composição editorial. Componentes k-bible, k-bible-pages, k-info-table e k-editorial criados e demonstrados no design system. Técnica de camadas, estados, inclinação, brilho, folha e gestos adaptada do projeto próprio Caderninho; nenhuma identidade visual ou arquivo comercial incorporado. Hero, menu e demais dobras preservados, inclusive no HTML. Newsreader latina normal/itálica local com OFL, pesos variáveis e desenho óptico fixado em 16 para reduzir os arquivos a 128 KB. Abertura única, navegação manual, montagem a 900px, pausa fora da tela/aba, sem flutuação e com movimento reduzido respeitado. Contraste AA calculado inclusive no cruzamento do quadriculado sob o cartão. Evidências e Lighthouse em relatorios/kemuel-biblia/, fora do Git/deploy.
 - Testes locais no Chrome em 1440x900, 1366x768, 390x844 e 360x740: primeira dobra preservada, sem rolagem horizontal ou erros de console/rede; abertura única, pausa durante a abertura, retorno sem repetir, setas, teclado, arraste e movimento reduzido conferidos. Montagem não altera as dimensões do livro; vitrine em 1440/390 e estilos por file:// também conferidos. Arraste nativo por toque passou. Medição por pixels nas áreas das legendas, com limite conservador do brilho máximo: mínimo de 5,09:1. Prints dos estados e das dobras inteiras preservados localmente. Publicado anterior ao push conferido sem erros de CSS/JS.
 - Lighthouse 13.6.0 mobile simulado: a primeira medição, antes de editar, deu medianas 98 / LCP 1.362ms / TBT 160ms. Houve oscilação ampla também no código anterior; por isso a comparação final usou cinco pares intercalados, com o HEAD anterior servido em memória e a versão final no mesmo servidor, perfis novos e nenhum outro teste de navegador em paralelo. Medianas comparáveis: Performance 90 → 94; LCP 1.364 → 1.368ms; TBT 389 → 272ms; CLS 0 → 0. TBT por rodada: antes 542/445/66/389/153ms, depois 159/68/406/272/324ms. Sem regressão de mediana, sem atribuir ganho garantido a diferenças sujeitas à oscilação. Newsreader fora do carregamento inicial. Relatórios completos e hashes em relatorios/kemuel-biblia/lighthouse-pareado.json.
@@ -20,8 +24,9 @@
 
 ## 4. Próximas tarefas
 
-1. Preencher os marcadores conforme chegarem os dados da igreja e seguir o checklist de lançamento.
-2. Validar o design system e substituir os provisórios quando chegarem o logo e o código oficial do vermelho.
+1. Dobra “Venha nos visitar” com Bíblia 3D: já implementada; aguardando validação. Mantida sem alterações nesta tarefa.
+2. Preencher os marcadores conforme chegarem os dados da igreja e seguir o checklist de lançamento.
+3. Validar o design system e substituir os provisórios quando chegarem o logo e o código oficial do vermelho.
 
 ## 5. Backlog
 
@@ -29,6 +34,7 @@
 
 ## 6. Pendências que dependem de pessoas
 
+- Foto real da entrada ou da recepção e pontos reais das etiquetas [RECEPÇÃO] e [ESPAÇO INFANTIL]. As posições atuais são provisórias; ao inserir a foto, retirar aria-hidden da colagem e incluir alt descritivo.
 - Visita editorial: confirmar endereço completo e observação de estacionamento/acesso.
 - Texto curto sobre como é o culto e validação da frase “Sem roupa certa, sem cobrança na porta.”
 - Versículo e tradução autorizada, somente se a igreja decidir incluir uma citação na Bíblia; nenhum texto bíblico foi publicado.
@@ -63,6 +69,9 @@
 
 ## 8. Decisões registradas
 
+- 09/11/2026: k-spec-section, k-spec-faq, k-photo-collage e k-callout compõem a ficha de primeira visita. Papel --paper-warm (#F4F0E8), grão discreto em CSS, colagem à esquerda com cerca de 45% e conteúdo à direita; no celular, colagem depois da ação. Primeira pergunta aberta, demais fechadas; detalhes semânticos e lógica comum de animação, com movimento reduzido imediato. Etiquetas reveladas uma vez, sem loop. k-faq-split removido por não haver usos restantes, inclusive seu token; não havia comportamento específico dele no JavaScript.
+- 09/11/2026: regra de fontes atualizada por esclarecimento explícito: Outfit, Public Sans, Anton (terceira, somente títulos grandes condensados em caixa alta) e Newsreader (quarta, restrita à visita editorial, Bíblia e citações). A vaga serifada já está ocupada e não há quinta família autorizada. Esta decisão substitui a regra anterior de Newsreader como terceira e última; os arquivos e a dobra da Bíblia foram preservados.
+- 09/11/2026: novos tokens da ficha somente em --paper-* e --spec-*. Contraste do eyebrow: #C1232C reutilizado do vermelho existente para texto; o primário permanece nos detalhes. Colagem com tratamento CSS de foto, moldura, duas pontas rasgadas, retícula e pincel SVG próprio. Sem foto de terceiros, biblioteca, canvas ou WebGL.
 - 09/11/2026: k-editorial, k-bible, k-bible-pages e k-info-table compõem somente a dobra #visite. Papel #E9E9E9 quadriculado a 10% (1px / 200px no computador; 25vw no celular), livro ao centro e tabela/coluna editorial abaixo. #endereco fica no cartão sempre visível, independente da dupla aberta. Nada alterado nas demais dobras.
 - 09/11/2026: técnica do projeto próprio Caderninho adaptada com nomes e tokens Kemuel: camadas, estados, mouse, brilho, folha, gestos, montagem preguiçosa e pausa. Bíblia sem imagens: capa dura escura, cruz simples de hastes alinhadas diferente do logo, lombada sem espiral, folhas quentes e fita vermelha. Composição editorial comercial apenas observada; nenhum código ou recurso incorporado.
 - 09/11/2026: Newsreader é a terceira e última família, restrita à visita editorial, às páginas da Bíblia e a citações na variante k-quote--editorial. Fonte oficial Google Fonts / Production Type, SIL OFL 1.1: newsreader-latin-variable.woff2 (60.420 B), newsreader-latin-italic-variable.woff2 (67.328 B), newsreader-OFL.txt. Subconjunto latino, eixo wght 200–800, opsz fixado em 16; pesos editoriais 200/300/400 itálico/700, números dos horários em Outfit. Sem fontes das referências. Fontes editoriais carregadas só com a seção efetivamente visível; fallback Georgia, e capa abre após a fonte ficar pronta.
