@@ -2,6 +2,8 @@
 
 ## 1. Última sessão
 
+- 09/11/2026 (fila 02): links oficiais do Instagram (@igrejakemueliguatu) e do YouTube (@Igreja.kemuelsede) aplicados a partir de dados/igreja.json: dobra “Acompanhe” com três cards (Instagram, YouTube, Blog), ícones no rodapé de todas as páginas e sameAs no JSON-LD. Ícones k-instagram e k-youtube desenhados no padrão de traço do sistema, sem logotipos coloridos. Testes por servidor local em 1366x768 e 390x844 nas seis páginas: links, nova aba com aviso acessível, alvo de 44px, foco visível, JSON-LD e console sem erros.
+
 - 09/11/2026 (fila 01): dados reais da igreja aplicados em todas as páginas, a partir de dados/igreja.json. Hero, Bíblia, tabela de cultos, linha do tempo, rodapé (partial), FAQ de demonstração do manual, títulos, descriptions, Open Graph e JSON-LD Church gerados pelo script de montagem (scripts/dados-igreja.mjs), idempotente. Botões “Ver rota no mapa” agora abrem o Google Maps em nova aba. Testes por servidor local em 1366x768 e 390x844 nas seis páginas: dados corretos, rodapé idêntico, mapa com o endereço certo, JSON-LD válido, sem erros de console; primeira dobra em 14 telas, com 19h30 sem quebra em 360 px.
 
 - 09/11/2026: início da fila sem o Alisson. Trabalho pendente da linha do tempo “Quem somos” (descrito abaixo) conferido e publicado: fumaça em /, /blog e 404 em 1440x900 e 390x844 sem rolagem horizontal, erros de console ou requisições com falha; quatro capítulos, um aberto por vez, cenas montadas e sem erros nas duas larguras.
@@ -82,6 +84,7 @@
 
 ## 8. Decisões registradas
 
+- 09/11/2026: redes oficiais em dados/igreja.json (bloco redes), aplicadas por data-dado-href. Dobra “Acompanhe” com Instagram, YouTube e Blog, cada card com uma ação secundária. Marcador do WhatsApp sai da dobra e do rodapé e fica só no botão flutuante, como exemplo (rodapé sem WhatsApp: decidido sem o Alisson, revisar).
 - 09/11/2026: Igreja Kemuel em Iguatu - CE; sede na Av. Dr. José Holanda Montenegro, [número], Centro. Fonte única de dados em dados/igreja.json (fora do deploy), aplicada pelo script de montagem por meio de data-dado e data-dado-href; títulos no formato “[Página] · Igreja Kemuel · Iguatu, CE”.
 - 09/11/2026: o grupo musical gospel Kemuel (Itu, SP) não tem relação com a igreja e não deve ser citado. Congregações em outras cidades (como Crato) não são citadas sem confirmação.
 - 09/11/2026: JSON-LD Church com streetAddress “Av. Dr. José Holanda Montenegro, Centro” enquanto o número for marcador; bairro incluído no streetAddress porque PostalAddress não tem campo próprio (decidido sem o Alisson, revisar). Horários em openingHoursSpecification.

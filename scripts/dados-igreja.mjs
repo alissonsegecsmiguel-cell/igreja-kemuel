@@ -17,6 +17,8 @@ function generators(d) {
     endereco: () => `${e.rua}, ${e.numero} · ${e.bairro} · ${e.cidade} - ${e.uf}`,
     'endereco-linhas': () => `${e.rua}, ${e.numero}<br><span class="k-muted">${e.bairro} · ${e.cidade} - ${e.uf}</span>`,
     cidade: () => `${d.cidade}, ${d.estado}`,
+    'instagram-usuario': () => d.redes.instagram.usuario,
+    'youtube-usuario': () => d.redes.youtube.usuario,
     'nome-cidade': () => `${d.nome} · ${d.cidade}, ${d.estado}`,
     'cultos-resumo': () => pairs(c => `${c.dia}, ${c.hora}`, ' · '),
     // "Quintas às 19h30 e domingos às 18h"
@@ -61,8 +63,12 @@ export function fillData(html, d, file) {
     last = end; open.lastIndex = end;
   }
   html = out + html.slice(last);
-  return html.replace(/(<a\b[^>]*\bdata-dado-href="mapa"[^>]*\bhref=")[^"]*(")|(<a\b[^>]*\bhref=")[^"]*("[^>]*\bdata-dado-href="mapa")/g,
-    (_, a1, a2, b1, b2) => a1 ? a1 + escape(d.mapa) + a2 : b1 + escape(d.mapa) + b2);
+  // data-dado-href="mapa" ou o nome de uma rede em dados/igreja.json define o href do link.
+  const urls = { mapa: d.mapa, ...Object.fromEntries(Object.entries(d.redes || {}).map(([key, rede]) => [key, rede.url])) };
+  return html.replace(/<a\b[^>]*\bdata-dado-href="([^"]+)"[^>]*>/g, (tag, key) => {
+    if (!urls[key]) throw new Error(`${file}: data-dado-href="${key}" desconhecido`);
+    return tag.replace(/\bhref="[^"]*"/, `href="${escape(urls[key])}"`);
+  });
 }
 
 export function fillHead(html, d, page, file) {
@@ -90,6 +96,7 @@ export function jsonLd(d) {
     name: d.nome,
     url: `${d.site}/`,
     hasMap: d.mapa,
+    sameAs: Object.values(d.redes || {}).map(rede => rede.url),
     address: {
       '@type': 'PostalAddress',
       streetAddress: `${e.rua}${number}, ${e.bairro}`,

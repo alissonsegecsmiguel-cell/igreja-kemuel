@@ -412,6 +412,8 @@ textarea.k-input { resize: vertical; min-height: var(--textarea-min-height); }
 .k-footer a { color: var(--color-white); min-height: var(--touch-min); display: inline-flex; align-items: center; }
 .k-footer--page { padding: var(--space-section) 0 calc(var(--space-5) + var(--whatsapp-clearance)); border-radius: 0; }
 .k-footer__links { display: grid; justify-items: start; }
+.k-footer__social { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.k-footer__social a { justify-content: center; min-width: var(--touch-min); }
 .k-footer__bottom { border-top: var(--border-width) solid var(--color-border-dark); padding-top: var(--space-3); margin-top: var(--space-5); color: var(--color-on-dark-muted); }
 .k-whatsapp { position: fixed; z-index: 30; right: var(--space-3); bottom: var(--space-3); display: inline-flex; align-items: center; gap: var(--size-xs); min-height: var(--control-height); padding: var(--size-md) var(--size-lg); color: var(--color-white); background: var(--color-black); border: var(--border-width) solid var(--color-border-dark); border-radius: var(--radius-pill); text-decoration: none; box-shadow: var(--shadow-soft); font-size: var(--text-caption); font-weight: var(--weight-semibold); transition: transform var(--duration-short) var(--ease); }
 .k-whatsapp:hover { transform: translateY(calc(var(--lift-sm) * -1)); }
