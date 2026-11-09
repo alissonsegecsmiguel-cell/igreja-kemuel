@@ -314,6 +314,193 @@
     });
   });
 
+  /* Livro editorial: camadas preguiçosas, abertura única e navegação manual.
+     Técnica de camadas/folha/gestos adaptada do projeto próprio Caderninho;
+     geometria, aparência e comportamento reescritos para a Kemuel. */
+  function setupBibles() {
+    const books = [...document.querySelectorAll('[data-bible]')];
+    if (!books.length) return;
+    const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
+    const value = name => tokens.getPropertyValue('--bible-' + name).trim();
+    const milliseconds = name => parseFloat(value(name + '-duration'));
+    const editorialReady = new WeakMap();
+    function prepareEditorial(section) {
+      if (!section) return Promise.resolve();
+      if (!editorialReady.has(section)) {
+        const family = tokens.getPropertyValue('--editorial-font').split(',')[0].trim();
+        const size = getComputedStyle(section).fontSize;
+        const weight = tokens.getPropertyValue('--editorial-weight-body').trim();
+        const normal = tokens.getPropertyValue('--editorial-weight-normal').trim();
+        const ready = Promise.all([document.fonts.load(`${weight} ${size} ${family}`), document.fonts.load(`italic ${normal} ${size} ${family}`)])
+          .then(() => section.classList.add('is-editorial-ready'));
+        editorialReady.set(section, ready);
+      }
+      return editorialReady.get(section);
+    }
+    if ('IntersectionObserver' in window) {
+      const editorial = new IntersectionObserver(entries => entries.forEach(entry => {
+        // Encostar na borda da viewport (ratio 0) ainda não é entrar na seção.
+        if (entry.isIntersecting && entry.intersectionRatio > 0) { prepareEditorial(entry.target); editorial.unobserve(entry.target); }
+      }), { threshold: .001 });
+      document.querySelectorAll('.k-editorial').forEach(section => editorial.observe(section));
+    } else document.querySelectorAll('.k-editorial').forEach(prepareEditorial);
+    books.forEach(book => {
+      const scene = book.querySelector('[data-bible-scene]');
+      const pages = book.querySelector('[data-bible-pages]');
+      const spreads = [...book.querySelectorAll('[data-bible-spread]')];
+      const previous = book.querySelector('[data-bible-previous]');
+      const next = book.querySelector('[data-bible-next]');
+      const status = book.querySelector('[data-bible-status]');
+      const animations = new Set();
+      let mounted = false, started = false, visible = false, current = 0;
+      let turning = false, frame = 0, pointerStart = null;
+      const active = () => visible && !document.hidden;
+      function motion(target, frames, time) {
+        const animation = target.animate(frames, { duration: time, easing });
+        animations.add(animation);
+        if (!active()) animation.pause();
+        animation.finished.then(() => animations.delete(animation), () => animations.delete(animation));
+        return animation;
+      }
+      function resetPointer() {
+        cancelAnimationFrame(frame); frame = 0;
+        book.classList.remove('is-pointer-active');
+        scene.style.removeProperty('--bible-pointer-x');
+        scene.style.removeProperty('--bible-pointer-y');
+        scene.style.removeProperty('--bible-sheen-shift');
+      }
+      function syncMotion() {
+        for (const animation of animations) {
+          if (reduced.matches) animation.finish();
+          else if (active()) animation.play();
+          else animation.pause();
+        }
+        if (!active() || reduced.matches) resetPointer();
+      }
+      async function openOnce() {
+        if (!mounted || !visible || started) return;
+        started = true;
+        if (reduced.matches) { book.dataset.bibleState = 'open'; return; }
+        book.dataset.bibleState = 'entering';
+        const entrance = motion(scene, [
+          { opacity: 0, transform: `translateY(${tokens.getPropertyValue('--enter-offset')}) rotateX(${value('enter-angle')})` },
+          { opacity: 1, transform: `rotateX(${value('rest-angle')})` }
+        ], milliseconds('enter'));
+        await entrance.finished;
+        await prepareEditorial(book.closest('.k-editorial'));
+        if (reduced.matches) { book.dataset.bibleState = 'open'; return; }
+        book.dataset.bibleState = 'opening';
+        const cover = scene.querySelector('.k-bible__cover');
+        const opening = motion(cover, [
+          { transform: `rotateY(${value('rest-angle')}) translateZ(${value('cover-depth')})` },
+          { transform: `rotateY(${value('turn-angle')}) translateZ(${value('cover-depth')})` }
+        ], milliseconds('open'));
+        motion(pages, [{ opacity: 0 }, { opacity: 1 }], milliseconds('open'));
+        await opening.finished;
+        book.dataset.bibleState = 'open';
+      }
+      function mount() {
+        if (mounted) return;
+        mounted = true;
+        const template = scene.querySelector('[data-bible-shell]');
+        scene.prepend(template.content.cloneNode(true));
+        book.dataset.bibleState = reduced.matches ? 'open' : 'closed';
+        openOnce();
+      }
+      function clonePage(page, back) {
+        const face = document.createElement('div');
+        face.className = 'k-bible-pages__turn-face' + (back ? ' k-bible-pages__turn-face--back' : '');
+        const clone = page.cloneNode(true);
+        clone.querySelectorAll('[id]').forEach(node => node.removeAttribute('id'));
+        clone.querySelectorAll('a, button, [tabindex]').forEach(node => node.tabIndex = -1);
+        face.append(clone); return face;
+      }
+      async function changePage(index) {
+        if (turning || index < 0 || index >= spreads.length || index === current) return;
+        if (started && book.dataset.bibleState !== 'open') return;
+        const forwards = index > current;
+        const old = spreads[current], incoming = spreads[index];
+        let sheet;
+        if (!reduced.matches && visible) {
+          turning = true;
+          sheet = document.createElement('div');
+          sheet.className = 'k-bible-pages__turn' + (forwards ? '' : ' k-bible-pages__turn--back');
+          sheet.setAttribute('aria-hidden', 'true'); sheet.inert = true;
+          sheet.append(clonePage(old.children[forwards ? 1 : 0]), clonePage(incoming.children[forwards ? 0 : 1], true));
+          pages.append(sheet);
+        }
+        old.classList.remove('is-current'); old.setAttribute('aria-hidden', 'true'); old.inert = true;
+        incoming.classList.add('is-current'); incoming.removeAttribute('aria-hidden'); incoming.inert = false;
+        current = index;
+        previous.disabled = current === 0; next.disabled = current === spreads.length - 1;
+        if (sheet) {
+          const angle = forwards ? value('turn-angle') : `calc(${value('turn-angle')} * -1)`;
+          await motion(sheet, [{ transform: `rotateY(${value('rest-angle')})` }, { transform: `rotateY(${angle})` }], milliseconds('turn')).finished;
+          sheet.remove(); turning = false;
+        }
+        status.textContent = incoming.getAttribute('aria-label') + '.';
+      }
+      previous.addEventListener('click', () => changePage(current - 1));
+      next.addEventListener('click', () => changePage(current + 1));
+      pages.addEventListener('keydown', event => {
+        if (event.target.closest('a, button, input, select, textarea')) return;
+        if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+        event.preventDefault(); changePage(current + (event.key === 'ArrowRight' ? 1 : -1));
+      });
+      pages.addEventListener('pointerdown', event => {
+        if (event.pointerType === 'mouse' || event.target.closest('a, button')) return;
+        pointerStart = { x: event.clientX, y: event.clientY };
+      }, { passive: true });
+      pages.addEventListener('pointerup', event => {
+        if (!pointerStart) return;
+        const dx = event.clientX - pointerStart.x, dy = event.clientY - pointerStart.y;
+        pointerStart = null;
+        if (Math.abs(dx) >= Number(value('swipe-distance')) && Math.abs(dx) > Math.abs(dy) * Number(value('swipe-axis-ratio'))) changePage(current + (dx < 0 ? 1 : -1));
+      }, { passive: true });
+      pages.addEventListener('pointercancel', () => { pointerStart = null; }, { passive: true });
+      scene.addEventListener('pointermove', event => {
+        if (event.pointerType !== 'mouse' || !finePointer.matches || reduced.matches || !active() || book.dataset.bibleState !== 'open' || turning) return;
+        cancelAnimationFrame(frame);
+        const x = event.clientX, y = event.clientY;
+        frame = requestAnimationFrame(() => {
+          frame = 0;
+          const rect = scene.getBoundingClientRect();
+          const px = Math.max(-1, Math.min(1, (x - rect.left) / rect.width * 2 - 1));
+          const py = Math.max(-1, Math.min(1, (y - rect.top) / rect.height * 2 - 1));
+          const limit = Number(value('tilt-limit'));
+          scene.style.setProperty('--bible-pointer-x', `${-py * limit}deg`);
+          scene.style.setProperty('--bible-pointer-y', `${px * limit}deg`);
+          scene.style.setProperty('--bible-sheen-shift', `${px * Number(value('sheen-travel'))}%`);
+          book.classList.add('is-pointer-active');
+        });
+      }, { passive: true });
+      scene.addEventListener('pointerleave', resetPointer);
+      finePointer.addEventListener('change', resetPointer);
+      reduced.addEventListener('change', () => { syncMotion(); if (reduced.matches && mounted) book.dataset.bibleState = 'open'; });
+      document.addEventListener('visibilitychange', syncMotion);
+      if ('IntersectionObserver' in window) {
+        const nearby = new IntersectionObserver(entries => {
+          if (entries.some(entry => entry.isIntersecting)) { mount(); nearby.disconnect(); }
+        }, { rootMargin: value('mount-distance') });
+        const onScreen = new IntersectionObserver(entries => {
+          visible = entries.at(-1).isIntersecting; book.classList.toggle('is-in-view', visible);
+          syncMotion(); if (visible) openOnce();
+        });
+        nearby.observe(book); onScreen.observe(book);
+      } else {
+        // Sem observadores: permanece aberta e estática; conteúdo sempre disponível.
+        visible = true; started = true; mount(); book.dataset.bibleState = 'open';
+      }
+    });
+  }
+  // Fora do caminho crítico da hero: sem montagem de objetos no primeiro paint.
+  function deferBibles() {
+    if ('requestIdleCallback' in window) requestIdleCallback(setupBibles, { timeout: duration('long') });
+    else setTimeout(setupBibles, duration('short'));
+  }
+  if (document.readyState === 'complete') deferBibles();
+  else addEventListener('load', deferBibles, { once: true });
+
   /* Manual vivo: estas rotinas só são executadas na documentação. */
   if (!document.body.hasAttribute('data-design-system')) return;
   const stateNames = { normal: 'Normal', hover: 'Hover', active: 'Ativo', focus: 'Foco', disabled: 'Desabilitado' };

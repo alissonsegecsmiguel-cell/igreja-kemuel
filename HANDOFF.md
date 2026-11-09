@@ -2,7 +2,9 @@
 
 ## 1. Última sessão
 
-- 09/11/2026: ajuste fino do fundo da k-hero-led. Diagnóstico: duas sombras de 68% com patamar até 84% do raio se sobrepunham, chegando a aproximadamente 90% de preto no centro e apagando MUE. Agora há uma única elipse com queda gradual; KEMUEL permanece inteira e a haste horizontal da cruz fica mais perceptível, ligeiramente acima das letras. Ajustes visuais restritos aos tokens --hero-led-*; components.css apenas liga a sombra do título ao novo token. Textos, botões, horários, menu, ciclos e efeito de água preservados. Chrome em 1440x900, 1366x768 e 390x844: primeira dobra intacta, sem rolagem horizontal ou erros no console, dois prints por tela com cinco segundos de intervalo; manual, pausa, movimento reduzido, água e estilos por file:// conferidos. Contraste AA também no limite conservador de fundo branco. Publicado conferido antes do push sem erros de CSS/JS. Evidências locais em relatorios/kemuel-hero-fundo/, fora do Git/deploy.
+- 09/11/2026: dobra “Venha nos visitar” refeita com Bíblia 3D e composição editorial. Componentes k-bible, k-bible-pages, k-info-table e k-editorial criados e demonstrados no design system. Técnica de camadas, estados, inclinação, brilho, folha e gestos adaptada do projeto próprio Caderninho; nenhuma identidade visual ou arquivo comercial incorporado. Hero, menu e demais dobras preservados, inclusive no HTML. Newsreader latina normal/itálica local com OFL, pesos variáveis e desenho óptico fixado em 16 para reduzir os arquivos a 128 KB. Abertura única, navegação manual, montagem a 900px, pausa fora da tela/aba, sem flutuação e com movimento reduzido respeitado. Contraste AA calculado inclusive no cruzamento do quadriculado sob o cartão. Evidências e Lighthouse em relatorios/kemuel-biblia/, fora do Git/deploy.
+- Testes locais no Chrome em 1440x900, 1366x768, 390x844 e 360x740: primeira dobra preservada, sem rolagem horizontal ou erros de console/rede; abertura única, pausa durante a abertura, retorno sem repetir, setas, teclado, arraste e movimento reduzido conferidos. Montagem não altera as dimensões do livro; vitrine em 1440/390 e estilos por file:// também conferidos. Arraste nativo por toque passou. Medição por pixels nas áreas das legendas, com limite conservador do brilho máximo: mínimo de 5,09:1. Prints dos estados e das dobras inteiras preservados localmente. Publicado anterior ao push conferido sem erros de CSS/JS.
+- Lighthouse 13.6.0 mobile simulado: a primeira medição, antes de editar, deu medianas 98 / LCP 1.362ms / TBT 160ms. Houve oscilação ampla também no código anterior; por isso a comparação final usou cinco pares intercalados, com o HEAD anterior servido em memória e a versão final no mesmo servidor, perfis novos e nenhum outro teste de navegador em paralelo. Medianas comparáveis: Performance 90 → 94; LCP 1.364 → 1.368ms; TBT 389 → 272ms; CLS 0 → 0. TBT por rodada: antes 542/445/66/389/153ms, depois 159/68/406/272/324ms. Sem regressão de mediana, sem atribuir ganho garantido a diferenças sujeitas à oscilação. Newsreader fora do carregamento inicial. Relatórios completos e hashes em relatorios/kemuel-biblia/lighthouse-pareado.json.
 
 ## 2. Estado atual
 
@@ -10,6 +12,7 @@
 - Blog, Materiais e cursos e Discipulado existem como páginas provisórias, no menu.
 - No ar: a página principal em construção, com marcadores entre colchetes e noindex. O design system permanece excluído do deploy por .vercelignore.
 - Design system oficial criado; logo oficial pendente e vermelho provisório. Tokens, componentes, JavaScript e fontes ficam em arquivos compartilhados em assets/.
+- Dobra de visita editorial com Bíblia em CSS 3D, duas duplas de páginas e tabela de cultos/endereço sempre disponível. Dados não confirmados seguem como marcadores.
 
 ## 3. Em andamento
 
@@ -25,6 +28,10 @@
 - Vazio.
 
 ## 6. Pendências que dependem de pessoas
+
+- Visita editorial: confirmar endereço completo e observação de estacionamento/acesso.
+- Texto curto sobre como é o culto e validação da frase “Sem roupa certa, sem cobrança na porta.”
+- Versículo e tradução autorizada, somente se a igreja decidir incluir uma citação na Bíblia; nenhum texto bíblico foi publicado.
 
 - Arquivo oficial do logo em SVG ou PNG transparente, com versão para fundo claro, para substituir os espaços reservados "LOGO". Não recriar nem vetorizar a partir do print; única exceção: ícones do site em assets/icons/, provisórios, a substituir pelo arquivo oficial.
 - Código oficial do vermelho para substituir --color-red PROVISÓRIO (#DE2E38). Média medida no print: RGB 234,8323 / 48,6398 / 59,6149, arredondada para #EB313C; ajuste uniforme de canais por fator 0,947 para AA com branco (4,61:1).
@@ -55,6 +62,12 @@
 - Organização dos quatro estudos locais: primeiro nível com design system renomeado, notas.md e arquivos/; cópias de segurança e diagnóstico preservados localmente.
 
 ## 8. Decisões registradas
+
+- 09/11/2026: k-editorial, k-bible, k-bible-pages e k-info-table compõem somente a dobra #visite. Papel #E9E9E9 quadriculado a 10% (1px / 200px no computador; 25vw no celular), livro ao centro e tabela/coluna editorial abaixo. #endereco fica no cartão sempre visível, independente da dupla aberta. Nada alterado nas demais dobras.
+- 09/11/2026: técnica do projeto próprio Caderninho adaptada com nomes e tokens Kemuel: camadas, estados, mouse, brilho, folha, gestos, montagem preguiçosa e pausa. Bíblia sem imagens: capa dura escura, cruz simples de hastes alinhadas diferente do logo, lombada sem espiral, folhas quentes e fita vermelha. Composição editorial comercial apenas observada; nenhum código ou recurso incorporado.
+- 09/11/2026: Newsreader é a terceira e última família, restrita à visita editorial, às páginas da Bíblia e a citações na variante k-quote--editorial. Fonte oficial Google Fonts / Production Type, SIL OFL 1.1: newsreader-latin-variable.woff2 (60.420 B), newsreader-latin-italic-variable.woff2 (67.328 B), newsreader-OFL.txt. Subconjunto latino, eixo wght 200–800, opsz fixado em 16; pesos editoriais 200/300/400 itálico/700, números dos horários em Outfit. Sem fontes das referências. Fontes editoriais carregadas só com a seção efetivamente visível; fallback Georgia, e capa abre após a fonte ficar pronta.
+- 09/11/2026: novos tokens --paper-*, --editorial-* e --bible-* em assets/css/tokens.css. Durações ligadas às existentes: entrada 260ms; abertura e folha 480ms, easing único. A Bíblia abre uma vez e permanece aberta; sem autoplay, sem ciclo e sem flutuação, inclusive no celular. Camadas montadas a 900px da tela após load/tempo ocioso, sem alterar as dimensões reservadas. Páginas inativas com content-visibility e altura intrínseca calculada pelos tokens. Observador no contêiner estável, independente da inclinação. Movimento reduzido: aberta e parada. Mouse fino: inclinação máxima de 6°; toque sem inclinação. Loop continua restrito à atmosfera da hero.
+- 09/11/2026: contraste da visita: #171717 sobre papel 14,77:1; sobre cartão 13,71:1; no pior cruzamento da malha sob o cartão, 8,84:1. Nas folhas, principal 16,75:1 e apoio 6,96:1; sombra máxima conserva AA. Botão branco/vermelho 4,61:1. Legendas do cartão usam o texto principal para manter AA sobre as linhas.
 
 - 09/11/2026: fundo da hero com uma única proteção elíptica, sem patamar opaco. Valores finais: --hero-led-text-shade: radial-gradient(ellipse farthest-corner, rgba(0, 0, 0, .74) 0%, rgba(0, 0, 0, .64) 65%, rgba(0, 0, 0, .2) 90%, rgba(0, 0, 0, 0) 100%); --hero-led-text-shade-width: clamp(44rem, 74vw, 70rem); novo --hero-led-title-shade: none, impedindo a sobreposição da segunda sombra. O token --hero-led-title-shade-bleed conserva seu valor original.
 - 09/11/2026: cruz de luz: --hero-led-cross-top: calc(var(--hero-led-word-center) - var(--hero-led-word-size) * .4); --hero-led-cross-arm: clamp(12rem, 50vw, 44rem); --hero-led-cross-horizontal: linear-gradient(180deg, rgba(var(--hero-led-amber), 0), rgba(var(--hero-led-amber), .45) 22%, rgba(var(--hero-led-amber), .95) 42%, rgba(var(--hero-led-amber), .95) 58%, rgba(var(--hero-led-amber), .45) 78%, rgba(var(--hero-led-amber), 0)). Respiração de 8s, opacidades, haste vertical e recorte pela malha preservados.

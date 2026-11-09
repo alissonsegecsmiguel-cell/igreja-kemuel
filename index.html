@@ -78,12 +78,52 @@
         </div>
       </div>
     </section>
-    <section class="k-section" id="visite" data-reveal aria-labelledby="visite-titulo">
+    <section class="k-section k-editorial" id="visite" aria-labelledby="visite-titulo">
       <div class="k-container">
-        <header class="k-section-heading"><h2 id="visite-titulo">Venha nos visitar</h2></header>
-        <div class="k-grid k-grid--2">
-          <article class="k-demo k-stack" aria-labelledby="horarios-titulo"><p class="k-eyebrow">Horários</p><h3 class="k-h4" id="horarios-titulo">Quando nos encontramos</h3><ul class="k-schedule" aria-label="Horários dos cultos"><li class="k-schedule__item"><span class="k-schedule__head"><svg class="k-icon" aria-hidden="true"><use href="#k-clock"/></svg><span class="k-schedule__mark"></span></span><span class="k-eyebrow k-schedule__day">Quinta-feira</span><span class="k-schedule__time">19h</span><span class="k-schedule__label">Culto</span></li><li class="k-schedule__item"><span class="k-schedule__head"><svg class="k-icon" aria-hidden="true"><use href="#k-clock"/></svg><span class="k-schedule__mark"></span></span><span class="k-eyebrow k-schedule__day">Domingo</span><span class="k-schedule__time">18h</span><span class="k-schedule__label">Culto</span></li></ul></article>
-          <article class="k-demo k-stack" id="endereco" aria-labelledby="endereco-titulo"><p class="k-eyebrow">Endereço</p><h3 class="k-h4" id="endereco-titulo">Como chegar</h3><p>[Endereço da igreja]<br><span class="k-muted">[Bairro] · [Cidade / UF]</span></p><div class="k-placeholder"><svg class="k-icon k-icon--large" aria-hidden="true"><use href="#k-pin"/></svg><span>MAPA<br><span class="k-caption">Espaço reservado</span></span></div><button class="k-button k-button--secondary" type="button" data-example>Ver rota no mapa<svg class="k-icon" aria-hidden="true"><use href="#k-external"/></svg></button></article>
+        <h2 class="k-editorial__opening" id="visite-titulo"><strong>Venha nos visitar</strong> <span>Duas noites por semana. Uma casa aberta.</span></h2>
+        <div class="k-bible" data-bible aria-label="Uma Bíblia aberta apresenta os horários e o endereço">
+          <div class="k-bible__scene" data-bible-scene>
+            <template data-bible-shell>
+              <div class="k-bible__shell" aria-hidden="true">
+                <div class="k-bible__shadow"></div><div class="k-bible__back"></div><div class="k-bible__block"></div>
+                <div class="k-bible__edge k-bible__edge--bottom"></div><div class="k-bible__edge k-bible__edge--side"></div>
+                <div class="k-bible__spine"></div><div class="k-bible__ribbon"></div>
+                <div class="k-bible__cover"><div class="k-bible__face k-bible__face--front"><span class="k-bible__cross"></span></div><div class="k-bible__face k-bible__face--inside"></div></div>
+              </div>
+            </template>
+            <div class="k-bible-pages" data-bible-pages tabindex="0" role="region" aria-roledescription="livro" aria-label="Informações para sua visita. Use as setas para mudar de página." id="visita-paginas">
+              <div class="k-bible-pages__spread is-current" data-bible-spread aria-label="Páginas 1 e 2: horários">
+                <article class="k-bible-pages__page"><p class="k-eyebrow">Horários</p><h3 class="k-bible-pages__title">Quando nos<br>encontramos</h3><span class="k-bible-pages__number" aria-label="Página 1">1</span></article>
+                <article class="k-bible-pages__page"><ul class="k-bible-pages__times" aria-label="Horários dos cultos"><li><span>Quinta-feira</span><strong>19h</strong><small>Culto</small></li><li><span>Domingo</span><strong>18h</strong><small>Culto</small></li></ul><span class="k-bible-pages__number" aria-label="Página 2">2</span></article>
+              </div>
+              <div class="k-bible-pages__spread" data-bible-spread aria-label="Páginas 3 e 4: endereço" aria-hidden="true" inert>
+                <article class="k-bible-pages__page"><p class="k-eyebrow">Endereço</p><h3 class="k-bible-pages__title">Como chegar</h3><p>[Endereço da igreja]<br><span class="k-muted">[Bairro] · [Cidade / UF]</span></p><span class="k-bible-pages__number" aria-label="Página 3">3</span></article>
+                <article class="k-bible-pages__page"><div class="k-placeholder"><svg class="k-icon k-icon--large" aria-hidden="true"><use href="#k-pin"/></svg><span>MAPA<br><span class="k-caption">Espaço reservado · sem embed</span></span></div><a class="k-link" href="https://example.invalid/mapa" rel="noopener noreferrer" data-example>Ver rota no mapa<svg class="k-icon" aria-hidden="true"><use href="#k-external"/></svg></a><span class="k-caption k-muted">Link de exemplo</span><span class="k-bible-pages__number" aria-label="Página 4">4</span></article>
+              </div>
+            </div>
+          </div>
+          <div class="k-bible__controls" role="group" aria-label="Navegar pelas páginas da Bíblia">
+            <button class="k-bible__control k-bible__control--previous" type="button" data-bible-previous aria-label="Página anterior" aria-controls="visita-paginas" disabled><svg class="k-icon" aria-hidden="true"><use href="#k-arrow"/></svg></button>
+            <button class="k-bible__control" type="button" data-bible-next aria-label="Próxima página" aria-controls="visita-paginas"><svg class="k-icon" aria-hidden="true"><use href="#k-arrow"/></svg></button>
+          </div>
+          <p class="k-sr-only" data-bible-status role="status" aria-live="polite" aria-atomic="true">Páginas 1 e 2: horários.</p>
+        </div>
+        <div class="k-editorial__bottom">
+          <div>
+            <div class="k-info-table" id="endereco" role="region" aria-label="Horários e endereço da igreja">
+              <table><caption class="k-sr-only">Informações para planejar sua visita</caption><thead><tr><th scope="col">Cultos</th><th scope="col">Horário</th></tr></thead><tbody><tr><th scope="row">Quinta-feira</th><td>19h</td></tr><tr><th scope="row">Domingo</th><td>18h</td></tr><tr><th scope="row">Endereço</th><td class="k-info-table__address">[Bairro, Cidade]</td></tr></tbody></table>
+              <button class="k-button" type="button" data-example>Ver rota no mapa<svg class="k-icon" aria-hidden="true"><use href="#k-external"/></svg></button>
+              <p class="k-caption k-muted">Link de exemplo · endereço a confirmar</p>
+            </div>
+            <p class="k-editorial__note">(*) [Observação sobre estacionamento ou acesso, a confirmar].</p>
+          </div>
+          <div class="k-editorial__copy">
+            <p class="k-editorial__phrase"><span>Toda semana,</span><span>a mesma porta aberta.</span><span>Venha como está.</span><span>Fique como família.</span></p>
+            <!-- Copy a confirmar com o pastor. -->
+            <p>[Texto curto sobre como é o culto, a confirmar com a igreja.] <em>Sem roupa certa, sem cobrança na porta.</em></p>
+            <a class="k-link" href="https://example.invalid/whatsapp" rel="noopener noreferrer" data-example>Falar com alguém antes da visita<svg class="k-icon" aria-hidden="true"><use href="#k-chat"/></svg></a>
+            <p class="k-caption k-muted">WhatsApp · link de exemplo, sem número real</p>
+          </div>
         </div>
       </div>
     </section>

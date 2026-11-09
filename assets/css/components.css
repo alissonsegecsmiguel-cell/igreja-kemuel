@@ -327,6 +327,107 @@ textarea.k-input { resize: vertical; min-height: var(--textarea-min-height); }
 @keyframes k-menu-in { from { opacity: 0; transform: translateY(calc(var(--menu-offset) * -1)); } to { opacity: 1; transform: none; } }
 @keyframes k-menu-out { to { opacity: 0; transform: translateY(calc(var(--menu-offset) * -1)); } }
 @keyframes k-copy { 50% { transform: scale(1.18); } }
+/* k-editorial: papel quadriculado restrito a esta dobra; sem alterar as demais. */
+.k-editorial { overflow: clip; contain: layout style; color: var(--color-text); background-color: var(--paper-bg); background-image: linear-gradient(var(--paper-grid-color) var(--paper-grid-line), transparent var(--paper-grid-line)), linear-gradient(90deg, var(--paper-grid-color) var(--paper-grid-line), transparent var(--paper-grid-line)); background-size: var(--paper-grid-mobile) var(--paper-grid-mobile); }
+@media (scripting: enabled) {
+  .k-editorial:not(.is-editorial-ready) { --editorial-font: var(--editorial-font-fallback); }
+}
+.k-editorial__opening { font-family: var(--editorial-font); font-size: var(--editorial-opening-size); font-weight: var(--editorial-weight-normal); letter-spacing: var(--tracking-body); line-height: var(--editorial-body-leading); text-align: center; }
+.k-editorial__opening strong { display: block; font-weight: var(--editorial-weight-bold); }
+.k-editorial__bottom { display: grid; gap: var(--space-5); align-items: start; margin-top: var(--space-6); }
+.k-editorial__bottom .k-muted { color: var(--color-text); }
+.k-editorial__copy { font-family: var(--editorial-font); font-weight: var(--editorial-weight-body); font-size: var(--editorial-body-size); line-height: var(--editorial-body-leading); }
+.k-editorial__phrase { font-family: var(--editorial-font); font-weight: var(--editorial-weight-light); font-size: var(--editorial-phrase-size); line-height: var(--editorial-leading); letter-spacing: var(--editorial-tracking); }
+.k-editorial__phrase span { display: block; }
+.k-editorial__copy > p { margin-top: var(--space-4); }
+.k-editorial__copy em, .k-editorial__note { font-family: var(--editorial-font); font-weight: var(--editorial-weight-normal); font-style: italic; }
+.k-editorial__copy .k-link { color: var(--color-text); font-family: var(--font-body); font-size: var(--text-body-sm); margin-top: var(--space-3); }
+.k-editorial__copy .k-caption { font-family: var(--font-body); font-weight: var(--weight-regular); }
+.k-editorial__note { font-size: var(--editorial-body-size); line-height: var(--editorial-body-leading); margin-top: var(--space-2); }
+.k-quote--editorial { font-family: var(--editorial-font); font-weight: var(--editorial-weight-normal); font-style: italic; }
+.k-info-table { padding: var(--space-3); border-radius: var(--radius-sm); background: var(--paper-card); }
+.k-info-table table { width: 100%; border-collapse: collapse; font-size: var(--text-body-sm); }
+.k-info-table th, .k-info-table td { padding-block: var(--editorial-rule-gap); border-bottom: var(--paper-rule-width) solid var(--paper-rule); text-align: left; font-weight: var(--weight-regular); }
+.k-info-table thead th { font-weight: var(--weight-semibold); }
+.k-info-table th:last-child, .k-info-table td:last-child { text-align: right; }
+.k-info-table td { font-family: var(--font-heading); font-size: var(--text-body-lg); }
+.k-info-table .k-info-table__address { font-family: var(--font-body); font-size: var(--text-body-sm); }
+.k-info-table .k-button { margin-top: var(--space-3); border-radius: var(--radius-pill); }
+/* Todas as duplas participam do grid: a maior reserva espaço antes do 3D. */
+.k-bible { max-width: var(--bible-width); margin: var(--space-5) auto 0; perspective: var(--bible-perspective); }
+.k-bible__scene { position: relative; transform-style: preserve-3d; transform: rotateX(var(--bible-pointer-x, var(--bible-rest-angle))) rotateY(var(--bible-pointer-y, var(--bible-rest-angle))); }
+.k-bible__scene::after { content: ""; position: absolute; inset: 0; z-index: 5; pointer-events: none; opacity: 0; background: var(--bible-sheen); background-size: var(--bible-sheen-width) 100%; background-repeat: no-repeat; transform: translateX(var(--bible-sheen-shift, 0%)) translateZ(var(--bible-cover-depth)); transition: opacity var(--duration-short) var(--ease); }
+.k-bible.is-pointer-active .k-bible__scene::after { opacity: var(--bible-sheen-opacity); }
+.k-bible:not(.is-in-view) .k-bible__scene::after { transition: none; }
+.k-bible-pages { position: relative; display: grid; touch-action: pan-y; transform: translateZ(var(--bible-paper-depth)); }
+.k-bible-pages__spread { grid-area: 1 / 1; display: grid; grid-template-columns: minmax(0, 1fr); visibility: hidden; pointer-events: none; content-visibility: hidden; contain-intrinsic-block-size: auto var(--bible-spread-height); }
+.k-bible-pages__spread.is-current { visibility: visible; pointer-events: auto; content-visibility: visible; }
+.k-bible-pages__page { position: relative; display: flex; flex-direction: column; gap: var(--space-3); min-height: var(--bible-page-height); padding: var(--bible-page-padding); padding-bottom: var(--space-5); color: var(--color-text); background: var(--bible-page-bg); box-shadow: var(--bible-page-shadow); font-family: var(--editorial-font); font-weight: var(--editorial-weight-body); font-size: var(--editorial-body-size); line-height: var(--editorial-body-leading); }
+.k-bible-pages__page:first-child { border-radius: var(--bible-cover-radius) var(--bible-cover-radius) 0 0; }
+.k-bible-pages__page:last-child { border-radius: 0 0 var(--bible-cover-radius) var(--bible-cover-radius); }
+.k-bible-pages__page .k-eyebrow { font-family: var(--font-body); }
+.k-bible-pages__title { font-family: var(--editorial-font); font-weight: var(--editorial-weight-normal); font-size: var(--bible-page-title); letter-spacing: var(--editorial-tracking); line-height: var(--editorial-leading); }
+.k-bible-pages__number { position: absolute; bottom: var(--space-2); inset-inline-end: var(--bible-page-padding); font-weight: var(--editorial-weight-normal); font-style: italic; color: var(--color-text-muted); font-size: var(--text-body-sm); }
+.k-bible-pages__times { margin: 0; padding: 0; list-style: none; }
+.k-bible-pages__times li { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: var(--space-2); padding-block: var(--space-3); border-bottom: var(--paper-rule-width) solid var(--bible-page-rule); }
+.k-bible-pages__times strong { grid-row: span 2; font-family: var(--font-heading); font-weight: var(--weight-semibold); font-size: var(--bible-time-size); line-height: var(--leading-heading); }
+.k-bible-pages__times small { font-family: var(--font-body); font-size: var(--text-body-sm); color: var(--color-text-muted); }
+.k-bible-pages__page .k-placeholder { flex: 1; background: transparent; }
+.k-bible-pages__page .k-link { font-family: var(--font-body); font-size: var(--text-body-sm); color: var(--color-text); }
+.k-bible__controls { display: flex; justify-content: center; gap: var(--space-2); position: relative; margin-top: var(--space-5); }
+.k-bible__control { display: grid; place-items: center; width: var(--bible-control-size); height: var(--bible-control-size); padding: 0; color: var(--color-white); background: var(--color-black); border: var(--border-width) solid var(--color-black); border-radius: var(--radius-pill); transition: opacity var(--duration-short) var(--ease), transform var(--duration-short) var(--ease); }
+.k-bible__control--previous { color: var(--color-black); background: transparent; }
+.k-bible__control--previous .k-icon { transform: rotate(var(--bible-turn-angle)); }
+.k-bible__control:hover:not(:disabled) { transform: translateY(calc(var(--lift-sm) * -1)); }
+.k-bible__control:disabled { opacity: var(--bible-disabled-opacity); }
+/* Camadas decorativas criadas por ui.js apenas na aproximação da seção. */
+.k-bible__shell { position: absolute; inset: 0; pointer-events: none; transform-style: preserve-3d; content-visibility: hidden; }
+.k-bible.is-in-view .k-bible__shell { content-visibility: visible; }
+.k-bible__back { position: absolute; inset: calc(var(--bible-edge-line) * -1); background: var(--bible-cover); border-radius: var(--bible-cover-radius); transform: translateZ(calc(var(--bible-edge-line) * -1)); }
+.k-bible__block { position: absolute; inset: 0; background: var(--bible-page-edge); border-radius: var(--bible-cover-radius); transform: translateZ(var(--bible-depth)); }
+.k-bible__edge { position: absolute; background: repeating-linear-gradient(0deg, var(--bible-page-bg) 0 var(--bible-edge-line), var(--bible-page-edge) var(--bible-edge-line) var(--bible-edge-step)); }
+.k-bible__edge--bottom { bottom: calc(var(--bible-depth) * -1); left: 0; width: 100%; height: var(--bible-depth); transform-origin: top; transform: rotateX(calc(var(--bible-turn-angle) / -2)); }
+.k-bible__edge--side { top: 0; right: calc(var(--bible-depth) * -1); height: 100%; width: var(--bible-depth); transform-origin: left; transform: rotateY(calc(var(--bible-turn-angle) / 2)); }
+.k-bible__spine { position: absolute; inset-block: 0; left: 0; width: var(--bible-spine-width); border-radius: var(--bible-cover-radius); background: var(--bible-cover-edge); }
+.k-bible__ribbon { position: absolute; top: calc(var(--space-3) * -1); left: var(--bible-ribbon-left); width: var(--bible-ribbon-width); height: var(--bible-ribbon-height); background: var(--color-red); clip-path: polygon(0 0, 100% 0, 100% 100%, 50% var(--bible-ribbon-notch), 0 100%); transform: translateZ(var(--bible-depth)); }
+.k-bible__shadow { position: absolute; inset-inline: 0; bottom: var(--bible-shadow-bottom); height: var(--bible-shadow-height); background: var(--bible-ground-shadow); transform: translateZ(calc(var(--bible-depth) * -1)); }
+.k-bible__cover { position: absolute; top: 0; left: 0; width: 100%; height: 50%; transform-origin: left center; transform-style: preserve-3d; transform: rotateY(var(--bible-turn-angle)) translateZ(var(--bible-cover-depth)); }
+.k-bible__face { position: absolute; inset: 0; border-radius: var(--bible-cover-radius); backface-visibility: hidden; }
+.k-bible__face--front { display: grid; place-items: center; background: var(--bible-cover-texture), var(--bible-cover); box-shadow: var(--bible-cover-shadow); }
+.k-bible__face--inside { background: var(--bible-page-bg); transform: rotateY(var(--bible-turn-angle)); }
+.k-bible__cross { position: relative; width: var(--bible-cross-width); height: var(--bible-cross-height); }
+.k-bible__cross::before, .k-bible__cross::after { content: ""; position: absolute; background: var(--bible-cross-color); box-shadow: var(--bible-cross-shadow); }
+.k-bible__cross::before { width: var(--bible-cross-stroke); height: 100%; left: calc(50% - var(--bible-cross-stroke) / 2); }
+.k-bible__cross::after { height: var(--bible-cross-stroke); width: 100%; top: var(--bible-cross-top); }
+.k-bible[data-bible-state="closed"] .k-bible-pages, .k-bible[data-bible-state="entering"] .k-bible-pages { opacity: 0; }
+.k-bible[data-bible-state="closed"] .k-bible__cover, .k-bible[data-bible-state="entering"] .k-bible__cover { transform: rotateY(var(--bible-rest-angle)) translateZ(var(--bible-cover-depth)); }
+.k-bible:is([data-bible-state="closed"], [data-bible-state="entering"]) :is(.k-bible__back, .k-bible__block, .k-bible__shadow, .k-bible__edge--bottom) { clip-path: inset(0 0 0 var(--bible-closed-left)); }
+.k-bible-pages__turn { position: absolute; inset-block: 0; right: 0; width: 100%; pointer-events: none; transform-origin: left center; transform-style: preserve-3d; z-index: 4; }
+.k-bible-pages__turn--back { left: 0; right: auto; transform-origin: right center; }
+.k-bible-pages__turn-face { position: absolute; inset: 0; backface-visibility: hidden; }
+.k-bible-pages__turn-face--back { transform: rotateY(var(--bible-turn-angle)); }
+.k-bible-pages__turn-face .k-bible-pages__page { height: 100%; }
+@media (max-width: 47.99rem) {
+  /* A capa já aberta fica atrás das páginas empilhadas, sem painel lateral. */
+  .k-bible[data-bible-state="open"] .k-bible__cover { visibility: hidden; }
+}
+@media (min-width: 48rem) {
+  .k-editorial { background-size: var(--paper-grid-desktop) var(--paper-grid-desktop); }
+  .k-editorial__opening strong { display: inline; margin-inline-end: var(--space-3); }
+  .k-editorial__bottom { grid-template-columns: var(--editorial-columns); gap: var(--space-6); }
+  .k-bible-pages__spread { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .k-bible-pages__page { background-image: var(--bible-spine-shade); }
+  .k-bible-pages__page:first-child { border-radius: var(--bible-cover-radius) 0 0 var(--bible-cover-radius); }
+  .k-bible-pages__page:last-child { border-radius: 0 var(--bible-cover-radius) var(--bible-cover-radius) 0; }
+  .k-bible__spine { left: calc(50% - var(--bible-spine-width) / 2); }
+  .k-bible__cover { left: 50%; width: 50%; height: 100%; }
+  .k-bible-pages__turn { width: 50%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .k-bible__scene { transform: none; }
+  .k-bible__scene::after { display: none; }
+  .k-bible__control:hover { transform: none; }
+}
 /* k-header--over — transparente sobre a hero até ui.js marcar is-solid. Sem JavaScript, permanece sólido. */
 @media (scripting: enabled) {
   body:not(.k-menu-open) .k-header--over:not(.is-solid) { color: var(--color-white); background: transparent; border-bottom-color: transparent; }
