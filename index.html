@@ -25,18 +25,22 @@
   <script src="assets/js/ui.js" defer></script>
 </head>
 <body>
-  <svg class="k-symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
-    <symbol id="k-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
-    <symbol id="k-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
-    <symbol id="k-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
-    <symbol id="k-chat" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 1-8 8H8l-5 3 1-6a8 8 0 1 1 16-5Z"/><path d="M8 10h8m-8 4h5"/></symbol>
-    <symbol id="k-external" viewBox="0 0 24 24"><path d="M13 5h6v6m0-6-9 9M9 5H5v14h14v-4"/></symbol>
-    <symbol id="k-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></symbol>
-    <symbol id="k-pin" viewBox="0 0 24 24"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2"/></symbol>
-    <symbol id="k-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V4H4v12h4"/></symbol>
-    <symbol id="k-book" viewBox="0 0 24 24"><path d="M12 5v15M3 4c4-1 7 0 9 2 2-2 5-3 9-2v15c-4-1-7 0-9 2-2-2-5-3-9-2Z"/></symbol>
-    <symbol id="k-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 17v4h16v-4"/></symbol>
-  </defs></svg>
+  <!-- symbols:start -->
+  <svg class="k-symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <symbol id="k-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
+      <symbol id="k-external" viewBox="0 0 24 24"><path d="M13 5h6v6m0-6-9 9M9 5H5v14h14v-4"/></symbol>
+      <symbol id="k-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+      <symbol id="k-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+      <symbol id="k-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></symbol>
+      <symbol id="k-pin" viewBox="0 0 24 24"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2"/></symbol>
+      <symbol id="k-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V4H4v12h4"/></symbol>
+      <symbol id="k-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 17v4h16v-4"/></symbol>
+      <symbol id="k-book" viewBox="0 0 24 24"><path d="M12 5v15M3 4c4-1 7 0 9 2 2-2 5-3 9-2v15c-4-1-7 0-9 2-2-2-5-3-9-2Z"/></symbol>
+      <symbol id="k-chat" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 1-8 8H8l-5 3 1-6a8 8 0 1 1 16-5Z"/><path d="M8 10h8m-8 4h5"/></symbol>
+    </defs>
+  </svg>
+  <!-- symbols:end -->
   <!-- header:start -->
   <a class="k-skip" href="#conteudo">Pular para o conteúdo</a>
   <header class="k-header k-header--over">
@@ -140,7 +144,11 @@
     </div>
   </footer>
   <!-- footer:end -->
+  <!-- whatsapp:start -->
   <a class="k-whatsapp" href="https://example.invalid/whatsapp" rel="noopener noreferrer" data-example aria-label="WhatsApp, link de exemplo sem número real"><svg class="k-icon" aria-hidden="true"><use href="#k-chat"/></svg><span><span class="k-whatsapp__label">WhatsApp · </span>exemplo</span></a>
+  <!-- whatsapp:end -->
+  <!-- toast:start -->
   <div class="k-toast" role="status" aria-live="polite" data-toast hidden></div>
+  <!-- toast:end -->
 </body>
 </html>

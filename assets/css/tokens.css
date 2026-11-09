@@ -144,11 +144,8 @@
   --logo-min-width: 3.25rem;
   --logo-min-height: 2.5rem;
   --logo-text-size: .625rem;
-  --logo-hero-min-width: 5rem;
-  --logo-hero-min-height: 3.5rem;
   --heading-max-width: 52rem;
   --hero-intro-max-width: 36rem;
-  --hero-aside-max-width: 23rem;
   --state-min-width: 10rem;
   --textarea-min-height: 8rem;
   --tooltip-max-width: 16rem;
@@ -176,7 +173,6 @@
   --duration-short: 140ms;
   --duration-medium: 260ms;
   --duration-long: 480ms;
-  --duration-atmosphere: 24s; /* Exceção: loop somente no fundo da hero. */
   --ease: cubic-bezier(.22, 1, .36, 1);
   --ease-atmosphere: linear;
 

@@ -69,7 +69,6 @@ h6, .k-h6 { font-size: var(--text-h6); }
 .k-brand .k-logo-slot--light { display: none; }
 .k-brand { display: flex; align-items: center; gap: var(--space-2); color: var(--color-text); text-decoration: none; font-size: var(--text-body-sm); font-weight: var(--weight-semibold); line-height: 1.3; }
 .k-logo-slot { display: inline-grid; place-items: center; min-width: var(--logo-min-width); min-height: var(--logo-min-height); padding: var(--size-xs); border: var(--border-width) dashed currentColor; border-radius: var(--radius-sm); font: var(--weight-semibold) var(--logo-text-size)/1 var(--font-body); letter-spacing: .12em; }
-.k-logo-slot--hero { min-width: var(--logo-hero-min-width); min-height: var(--logo-hero-min-height); }
 .k-doc-nav { display: none; gap: var(--space-3); }
 .k-doc-nav a { white-space: nowrap; padding-block: var(--size-md); font-size: var(--text-body-sm); color: var(--color-text); text-decoration: none; }
 .k-doc-nav a:hover, .k-doc-nav a[aria-current] { color: var(--color-red-hover); }
@@ -81,22 +80,14 @@ h6, .k-h6 { font-size: var(--text-h6); }
 .k-mobile-panel.is-closing { animation-name: k-menu-out; }
 .k-hero { position: relative; isolation: isolate; overflow: clip; color: var(--color-white); background: var(--color-black); margin-top: var(--header-height); padding-block: var(--space-5) var(--space-6); }
 .k-hero__ambience { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
-.k-hero__ambience::before { content: ""; position: absolute; width: 75%; aspect-ratio: 1; right: -25%; top: -15%; border: var(--border-width) solid var(--color-border-dark); border-radius: 50%; opacity: .55; transform: rotate(-20deg) scaleX(1.4); }
-.k-hero__ambience::after { content: ""; position: absolute; inset: -4%; opacity: .6; background: radial-gradient(ellipse at 85% 35%, var(--color-white-a12), transparent 60%); animation: k-atmosphere-orbit var(--duration-atmosphere) var(--ease-atmosphere) infinite; animation-play-state: paused; }
-.k-hero.is-atmosphere-active .k-hero__ambience::after { animation-play-state: running; }
-.k-hero__top { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); margin-bottom: var(--space-5); }
 .k-hero__grid { display: grid; gap: var(--space-5); align-items: end; }
 .k-hero__title { font: var(--weight-heavy) var(--text-display)/var(--leading-display) var(--font-heading); letter-spacing: var(--tracking-display); max-width: 12ch; margin-block: var(--space-3) var(--space-4); }
 .k-lettering { display: block; font-family: var(--font-lettering); color: transparent; -webkit-text-stroke: var(--lettering-stroke) var(--color-white); }
 @supports not (-webkit-text-stroke: 1px white) { .k-lettering { color: var(--color-white); } }
 .k-hero__intro { color: var(--color-on-dark-muted); max-width: var(--hero-intro-max-width); margin-bottom: var(--space-4); }
-.k-hero__aside { border-top: var(--border-width) solid var(--color-border-dark); padding-top: var(--space-3); max-width: var(--hero-aside-max-width); }
-.k-hero__aside strong { display: block; font-family: var(--font-heading); font-size: var(--text-h4); line-height: 1.25; margin-bottom: var(--space-2); }
-.k-hero__aside .k-caption { display: block; color: var(--color-on-dark-muted); margin-top: var(--space-3); }
 /* k-hero-led — valores visuais em tokens.css; a mesma marcação no site e manual. */
 .k-hero.k-hero-led { display: grid; align-content: center; min-height: var(--hero-led-min-height); margin-top: 0; padding-block: calc(var(--header-height) + var(--hero-led-pad-y)) var(--hero-led-pad-y); }
 .k-hero-led .k-hero__ambience { z-index: 0; }
-.k-hero-led .k-hero__ambience::before, .k-hero-led .k-hero__ambience::after { content: none; }
 .k-hero-led::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: var(--hero-led-scrim); }
 .k-hero-led__cloud, .k-hero-led__mesh { position: absolute; inset: 0; }
 .k-hero-led__cloud { mask-image: var(--hero-led-cloud-mask); }
@@ -333,11 +324,6 @@ textarea.k-input { resize: vertical; min-height: var(--textarea-min-height); }
 .k-motion-ready [data-reveal] { opacity: 0; transform: translateY(var(--enter-offset)); transition: opacity var(--duration-long) var(--ease), transform var(--duration-long) var(--ease); }
 .k-motion-ready [data-reveal].is-visible { opacity: 1; transform: none; }
 @keyframes k-enter { from { opacity: 0; transform: translateY(var(--enter-offset)); } to { opacity: 1; transform: none; } }
-@keyframes k-atmosphere-orbit {
-  0%, 100% { opacity: .55; transform: rotate(0deg) translate(1%, 1.5%) rotate(0deg); }
-  50% { opacity: .65; }
-  100% { transform: rotate(360deg) translate(1%, 1.5%) rotate(-360deg); }
-}
 @keyframes k-menu-in { from { opacity: 0; transform: translateY(calc(var(--menu-offset) * -1)); } to { opacity: 1; transform: none; } }
 @keyframes k-menu-out { to { opacity: 0; transform: translateY(calc(var(--menu-offset) * -1)); } }
 @keyframes k-copy { 50% { transform: scale(1.18); } }
@@ -381,7 +367,6 @@ textarea.k-input { resize: vertical; min-height: var(--textarea-min-height); }
   .k-faq-split__action { grid-area: action; }
   .k-hero__grid { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: var(--space-6); }
   .k-hero { padding-block: var(--space-4) var(--space-5); }
-  .k-hero__top { margin-bottom: var(--space-4); }
 }
 @media (min-width: 70rem) {
   .k-doc-nav { display: flex; }

@@ -6,6 +6,7 @@
   const tokens = getComputedStyle(root);
   const duration = name => parseFloat(tokens.getPropertyValue('--duration-' + name));
   const easing = tokens.getPropertyValue('--ease').trim();
+  const faqShift = `translateY(calc(${tokens.getPropertyValue('--tooltip-offset').trim()} * -1))`;
   const faqAnimations = new Map();
   // Loop somente no fundo da hero. Vídeo opt-in após os arquivos serem instalados.
   const assetBase = new URL('../', document.currentScript.src);
@@ -224,8 +225,8 @@
       if (opening) details.open = true;
       else details.dataset.closing = 'true';
       const frames = opening
-        ? [{ opacity: 0, transform: 'translateY(-4px)' }, { opacity: 1, transform: 'none' }]
-        : [{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateY(-4px)' }];
+        ? [{ opacity: 0, transform: faqShift }, { opacity: 1, transform: 'none' }]
+        : [{ opacity: 1, transform: 'none' }, { opacity: 0, transform: faqShift }];
       const animation = body.animate(frames, { duration: duration('medium'), easing });
       faqAnimations.set(details, animation);
       animation.onfinish = () => {

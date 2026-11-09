@@ -2,7 +2,7 @@
 
 ## 1. Última sessão
 
-- 05/11/2026: favicon com o símbolo da igreja (cruz sobre círculo vermelho) e conjunto de ícones, aplicados pelo script em todas as páginas. Folha de comparação em relatorios/kemuel-favicon/, fora do Git.
+- 09/11/2026: limpeza de código repetido e sem uso. WhatsApp flutuante, toast e símbolos SVG centralizados em partials/ e aplicados às seis páginas públicas e ao manual pelo script de montagem. Removidas as classes antigas k-hero__top, k-logo-slot--hero e k-hero__aside, o loop k-atmosphere-orbit, suas regras auxiliares e quatro tokens órfãos. Sanfona usa o token existente --tooltip-offset em vez de -4px literal. Chrome: seis páginas em 1366x768 e 390x844, visual preservado pixel a pixel, sem rolagem horizontal ou erros no console; aurora, água com mouse, pausa, movimento reduzido e sanfona conferidos também no manual. Página publicada conferida antes do push, sem falhas de CSS ou JS. Evidências em relatorios/kemuel-limpeza/, fora do Git/deploy.
 
 ## 2. Estado atual
 
@@ -56,6 +56,7 @@
 
 ## 8. Decisões registradas
 
+- 09/11/2026: partials/svg-symbols.html, partials/whatsapp.html e partials/toast.html são a fonte dos blocos comuns, com marcadores symbols, whatsapp e toast. node scripts/montar-paginas.mjs atualiza as seis páginas públicas e esses três blocos no manual; o manual mantém cabeçalho e navegação próprios. Só entram no HTML os símbolos referenciados, incluindo k-close, trocado pelo menu em ui.js. O filtro SVG da água continua dentro da hero. Montagem idempotente e com validação de todos os marcadores antes de escrever as páginas.
 - Repositório público.
 - Projeto fora do OneDrive.
 - 05/11/2026: a branch dev NÃO volta. O projeto segue só na main, e cada push vai para o ar.
@@ -109,6 +110,7 @@
 
 - [ ] Nenhum marcador [ ] restante nas páginas.
 - [ ] Logo oficial e vermelho oficial aplicados.
+- [ ] Quando o vermelho oficial chegar, gerar de novo os ícones de assets/icons/: eles têm o vermelho gravado no arquivo e não acompanham a troca do token CSS.
 - [ ] Meta robots noindex removido.
 - [ ] Links reais de WhatsApp, redes e mapa conferidos.
 - [ ] Dobra "Para sua caminhada" só visível com pelo menos 3 posts e 3 materiais reais.
