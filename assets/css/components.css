@@ -113,7 +113,7 @@ h6, .k-h6 { font-size: var(--text-h6); }
 .k-hero-led__content { position: relative; z-index: 2; }
 .k-hero-led__copy { position: relative; isolation: isolate; display: grid; justify-items: center; text-align: center; gap: var(--hero-led-gap); }
 .k-hero-led__copy::before { content: ""; position: absolute; z-index: -1; inset-block: calc(var(--hero-led-text-shade-bleed) * -1); left: var(--hero-led-center); width: var(--hero-led-text-shade-width); transform: translateX(var(--hero-led-center-shift)); background: var(--hero-led-text-shade); pointer-events: none; }
-.k-hero-led__title::before { content: ""; position: absolute; z-index: -1; inset-block: var(--hero-led-title-shade-bleed); left: var(--hero-led-center); width: var(--hero-led-text-shade-width); transform: translateX(var(--hero-led-center-shift)); background: var(--hero-led-text-shade); pointer-events: none; }
+.k-hero-led__title::before { content: ""; position: absolute; z-index: -1; inset-block: var(--hero-led-title-shade-bleed); left: var(--hero-led-center); width: var(--hero-led-text-shade-width); transform: translateX(var(--hero-led-center-shift)); background: var(--hero-led-title-shade); pointer-events: none; }
 .k-hero-led__title { position: relative; isolation: isolate; width: var(--hero-led-fill); font-size: var(--hero-led-title-size); font-weight: var(--weight-heavy); line-height: var(--leading-heading); letter-spacing: var(--tracking-display); }
 .k-hero-led__title .k-lettering { font-size: var(--hero-led-outline-size); line-height: var(--leading-heading); margin-top: var(--space-1); }
 .k-hero-led__copy .k-hero__intro { margin: 0; font-size: var(--hero-led-intro-size); line-height: var(--leading-label); }

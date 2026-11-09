@@ -198,10 +198,11 @@
   --hero-led-dot-feather: .3px;
   --hero-led-mesh-opacity: 1;
   --hero-led-scrim: rgba(0, 0, 0, .15); /* Leve: a proteção do texto é a sombra localizada. */
-  --hero-led-text-shade: radial-gradient(ellipse closest-side, rgba(0, 0, 0, .68) 84%, rgba(0, 0, 0, 0) 100%);
-  --hero-led-text-shade-width: clamp(34rem, 66vw, 60rem);
+  --hero-led-text-shade: radial-gradient(ellipse farthest-corner, rgba(0, 0, 0, .74) 0%, rgba(0, 0, 0, .64) 65%, rgba(0, 0, 0, .2) 90%, rgba(0, 0, 0, 0) 100%);
+  --hero-led-text-shade-width: clamp(44rem, 74vw, 70rem);
   --hero-led-text-shade-bleed: var(--space-6);
   --hero-led-title-shade-bleed: calc(var(--hero-led-title-size) * -.6);
+  --hero-led-title-shade: none; /* A elipse do bloco protege o texto; não empilhar outra sombra no título. */
   --hero-led-button-compact: 2.75rem; /* Botões em telas deitadas e baixas. */
   --hero-led-clear: rgba(0, 0, 0, 0);
   --hero-led-cloud-mask: radial-gradient(ellipse 58% calc(var(--hero-led-word-size) * .95) at 50% var(--hero-led-word-center), #000 62%, transparent 100%), radial-gradient(ellipse 24% calc(var(--hero-led-word-size) * .8) at 14% var(--hero-led-word-center), #000 45%, transparent 100%), radial-gradient(ellipse 24% calc(var(--hero-led-word-size) * .8) at 86% var(--hero-led-word-center), #000 45%, transparent 100%);
@@ -232,14 +233,14 @@
   --hero-led-aurora-horizontal: 12s;
   --hero-led-aurora-offset: -5s;
   /* Cruz de luz genérica, com hastes alinhadas. Não é a cruz do logo. */
-  --hero-led-cross-top: calc(var(--hero-led-word-center) - var(--hero-led-word-size) * .32);
+  --hero-led-cross-top: calc(var(--hero-led-word-center) - var(--hero-led-word-size) * .4);
   --hero-led-cross-thickness: clamp(1.5rem, 3vw, 3.25rem);
-  --hero-led-cross-arm: clamp(12rem, 44vw, 40rem);
+  --hero-led-cross-arm: clamp(12rem, 50vw, 44rem);
   --hero-led-cross-rise: clamp(5rem, 16svh, 12rem); /* Haste acima do cruzamento. */
   --hero-led-cross-fall: clamp(12rem, 46svh, 34rem); /* Haste abaixo do cruzamento. */
   --hero-led-cross-blur: clamp(.25rem, .5vw, .625rem);
   --hero-led-cross-vertical: linear-gradient(90deg, rgba(var(--hero-led-amber), 0), rgba(var(--hero-led-amber), .9) 50%, rgba(var(--hero-led-amber), 0));
-  --hero-led-cross-horizontal: linear-gradient(180deg, rgba(var(--hero-led-amber), 0), rgba(var(--hero-led-amber), .9) 50%, rgba(var(--hero-led-amber), 0));
+  --hero-led-cross-horizontal: linear-gradient(180deg, rgba(var(--hero-led-amber), 0), rgba(var(--hero-led-amber), .45) 22%, rgba(var(--hero-led-amber), .95) 42%, rgba(var(--hero-led-amber), .95) 58%, rgba(var(--hero-led-amber), .45) 78%, rgba(var(--hero-led-amber), 0));
   --hero-led-cross-low: .55;
   --hero-led-cross-high: 1;
   --hero-led-cross-static: .8; /* Parada, com movimento reduzido. */
