@@ -42,6 +42,8 @@ function symbols(html, file) {
 }
 
 function shared(html, file) {
+  // As cenas têm fonte única; templates inertes evitam montar SVGs fora da dobra.
+  if (html.includes('<!-- story-scenes:start -->')) html = apply(html, 'story-scenes', partial('story-scenes.html'), file);
   html = apply(html, 'symbols', symbols(html, file), file);
   html = apply(html, 'whatsapp', partial('whatsapp.html'), file);
   return apply(html, 'toast', partial('toast.html'), file);

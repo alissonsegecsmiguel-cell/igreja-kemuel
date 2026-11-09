@@ -174,13 +174,116 @@
         </figure>
       </div>
     </section>
-    <section class="k-section k-section--black k-dark" id="quem-somos" data-reveal aria-labelledby="quem-somos-titulo">
-      <div class="k-container k-grid k-grid--2 k-grid--center">
-        <div class="k-stack">
-          <h2 id="quem-somos-titulo">Quem somos</h2>
-          <p class="k-body-lg k-muted">[Texto: quem somos]</p>
+    <section class="k-section k-section--black k-dark k-timeline" id="quem-somos" data-timeline aria-labelledby="quem-somos-titulo">
+      <div class="k-container k-timeline__layout">
+        <div class="k-timeline__intro">
+          <p class="k-eyebrow k-timeline__eyebrow" data-reveal>NOSSA HISTÓRIA</p>
+          <h2 class="k-timeline__title" id="quem-somos-titulo" data-reveal>Quem somos</h2>
+          <p class="k-timeline__lead" data-reveal>Uma comunidade de fé de portas abertas. <strong>Cada capítulo conta um pedaço do caminho até aqui.</strong></p>
+          <div class="k-timeline__stage-home" data-story-home>
+            <figure class="k-story-stage" data-story-stage>
+              <div class="k-story-stage__canvas" data-story-canvas></div>
+              <figcaption class="k-story-stage__caption"><strong data-story-title>Como tudo começou</strong><span data-story-number>Capítulo 01</span></figcaption>
+              <!-- story-scenes:start -->
+<!-- SVGs autorizados do protótipo da história. Fonte canônica; aplicar pelo montar-paginas.mjs. -->
+<template data-story-scene="sala">
+  <div class="k-story-scene k-story-scene--room">
+    <div class="k-story-scene__glow" aria-hidden="true"></div>
+    <div class="k-story-scene__art"><svg viewBox="0 0 400 300" role="img" aria-label="Ilustração de exemplo: uma sala simples com cadeiras e uma lâmpada acesa">
+      <defs><linearGradient id="room-ink" x1="0" y1="0" x2="0" y2="1"><stop class="k-story-scene__stop-strong" offset="0"/><stop class="k-story-scene__stop-soft" offset="1"/></linearGradient><radialGradient id="room-light" cx="50%" cy="20%" r="60%"><stop class="k-story-scene__stop-strong" offset="0"/><stop class="k-story-scene__stop-clear" offset="1"/></radialGradient></defs>
+      <g class="k-story-scene__lamp"><rect class="k-story-scene__ink-soft" width="400" height="300" fill="url(#room-light)"/><circle class="k-story-scene__ink" cx="200" cy="86" r="9"/></g>
+      <line class="k-story-scene__wire" x1="200" y1="0" x2="200" y2="62"/>
+      <path class="k-story-scene__ink" d="M184 62h32l-6 16h-20z"/>
+      <rect class="k-story-scene__ink k-story-scene__ink-floor" y="210" width="400" height="90"/>
+      <g fill="url(#room-ink)">
+        <g class="k-story-scene__chair"><path d="M70 170h40v8h-40zM74 178h6v40h-6zM100 178h6v40h-6zM70 140h8v30h-8z"/></g>
+        <g class="k-story-scene__chair"><path d="M140 170h40v8h-40zM144 178h6v40h-6zM170 178h6v40h-6zM140 140h8v30h-8z"/></g>
+        <g class="k-story-scene__chair"><path d="M210 170h40v8h-40zM214 178h6v40h-6zM240 178h6v40h-6zM210 140h8v30h-8z"/></g>
+        <g class="k-story-scene__chair"><path d="M280 170h40v8h-40zM284 178h6v40h-6zM310 178h6v40h-6zM280 140h8v30h-8z"/></g>
+        <g class="k-story-scene__chair"><path class="k-story-scene__ink-ray" d="M100 206h40v8h-40zM104 214h6v40h-6zM130 214h6v40h-6zM100 176h8v30h-8z"/></g>
+        <g class="k-story-scene__chair"><path class="k-story-scene__ink-ray" d="M250 206h40v8h-40zM254 214h6v40h-6zM280 214h6v40h-6zM250 176h8v30h-8z"/></g>
+      </g>
+    </svg></div>
+  </div>
+</template>
+<template data-story-scene="predio">
+  <div class="k-story-scene k-story-scene--building">
+    <div class="k-story-scene__glow" aria-hidden="true"></div>
+    <div class="k-story-scene__art"><svg viewBox="0 0 400 300" role="img" aria-label="Ilustração de exemplo: um prédio simples com uma cruz e um caminho até a porta">
+      <defs><linearGradient id="building-ink" x1="0" y1="0" x2="1" y2="1"><stop class="k-story-scene__stop-strong" offset="0"/><stop class="k-story-scene__stop-soft" offset="1"/></linearGradient></defs>
+      <circle class="k-story-scene__ink k-story-scene__ink-mid" cx="300" cy="70" r="40"/>
+      <g class="k-story-scene__building"><path d="M120 120l80-50 80 50v110H120z" fill="url(#building-ink)"/><rect class="k-story-scene__cut" x="185" y="160" width="30" height="70"/><rect class="k-story-scene__cut" x="140" y="140" width="24" height="30"/><rect class="k-story-scene__cut" x="236" y="140" width="24" height="30"/></g>
+      <g class="k-story-scene__cross"><path class="k-story-scene__ink" d="M196 30h8v26h10v8h-10v16h-8V64h-10v-8h10z"/></g>
+      <path class="k-story-scene__ink k-story-scene__ink-floor" d="M0 230h400v70H0z"/>
+      <g class="k-story-scene__path"><path class="k-story-scene__ink k-story-scene__ink-mid" d="M185 230h30l50 70h-130z"/></g>
+    </svg></div>
+  </div>
+</template>
+<template data-story-scene="portas">
+  <div class="k-story-scene k-story-scene--doors">
+    <div class="k-story-scene__glow" aria-hidden="true"></div>
+    <div class="k-story-scene__art"><svg viewBox="0 0 400 300" role="img" aria-label="Ilustração de exemplo: portas abertas com luz saindo para a rua">
+      <defs><radialGradient id="doors-light" cx="50%" cy="55%" r="55%"><stop class="k-story-scene__stop" offset="0"/><stop class="k-story-scene__stop-clear" offset="1"/></radialGradient></defs>
+      <g class="k-story-scene__street-light"><rect class="k-story-scene__ink-haze" width="400" height="300" fill="url(#doors-light)"/><path class="k-story-scene__ink k-story-scene__ink-ray" d="M150 230h100l90 70H60z"/></g>
+      <rect class="k-story-scene__ink" x="150" y="60" width="100" height="170"/>
+      <g class="k-story-scene__door k-story-scene__door--left"><path class="k-story-scene__ink k-story-scene__ink-mid" d="M150 60l-46 22v164l46-16z"/></g>
+      <g class="k-story-scene__door k-story-scene__door--right"><path class="k-story-scene__ink k-story-scene__ink-mid" d="M250 60l46 22v164l-46-16z"/></g>
+      <g class="k-story-scene__cut k-story-scene__ink-glow"><circle cx="182" cy="250" r="7"/><rect x="176" y="258" width="12" height="26" rx="5"/><circle cx="222" cy="262" r="8"/><rect x="215" y="271" width="14" height="29" rx="6"/></g>
+    </svg></div>
+  </div>
+</template>
+<template data-story-scene="horizonte">
+  <div class="k-story-scene k-story-scene--horizon">
+    <div class="k-story-scene__glow" aria-hidden="true"></div>
+    <div class="k-story-scene__art"><svg viewBox="0 0 400 300" role="img" aria-label="Ilustração de exemplo: uma estrada seguindo até o sol nascendo no horizonte">
+      <defs><radialGradient id="horizon-light" cx="50%" cy="60%" r="45%"><stop class="k-story-scene__stop" offset="0"/><stop class="k-story-scene__stop-clear" offset="1"/></radialGradient></defs>
+      <g class="k-story-scene__sun"><rect class="k-story-scene__ink-glow" y="40" width="400" height="160" fill="url(#horizon-light)"/><circle class="k-story-scene__ink" cx="200" cy="160" r="42"/></g>
+      <rect class="k-story-scene__cut" y="160" width="400" height="140"/>
+      <path class="k-story-scene__ink k-story-scene__ink-ray" d="M0 160h400v4H0z"/>
+      <path class="k-story-scene__ink k-story-scene__ink-mid" d="M196 164h8l120 136H76z"/>
+      <g class="k-story-scene__road"><path class="k-story-scene__cut" d="M199 180h2v10h-2zM198 205h4v14h-4zM197 238h6v20h-6zM196 276h8v24h-8z"/></g>
+    </svg></div>
+  </div>
+</template>
+              <!-- story-scenes:end -->
+            </figure>
+          </div>
         </div>
-        <div class="k-photo">FOTO DA IGREJA</div>
+        <div data-reveal>
+          <ol class="k-timeline__list" aria-label="Capítulos da história da igreja" data-story-chapters>
+            <li class="k-timeline-card is-active" data-story-chapter data-story-art="sala">
+              <!-- conteúdo a substituir pela história real. O que contar aqui: quem começou, onde se reuniam, como foi o primeiro culto. -->
+              <!-- Foto real futura: após instalar assets/img/historia/capitulo-01.webp, adicionar data-story-photo="img/historia/capitulo-01.webp" e data-story-alt descritivo a este li. -->
+              <span class="k-timeline-card__marker" aria-hidden="true"></span>
+              <button class="k-timeline-card__button" type="button" id="historia-botao-01" aria-expanded="true" aria-controls="historia-texto-01"><span class="k-timeline-card__top"><span class="k-eyebrow k-timeline-card__label">CAPÍTULO 01 · [ANO]</span></span><span class="k-timeline-card__title">Como tudo começou</span><span class="k-timeline-card__summary">Uma sala, algumas famílias e muita fé.</span></button>
+              <div class="k-timeline-card__panel" id="historia-texto-01" role="region" aria-labelledby="historia-botao-01"><div data-story-slot class="k-timeline-card__slot"></div><p class="k-timeline-card__text">Texto de exemplo: tudo começou com algumas famílias reunidas numa sala emprestada, com cadeiras de plástico e uma vontade grande de buscar a Deus juntas.</p></div>
+            </li>
+            <li class="k-timeline-card" data-story-chapter data-story-art="predio">
+              <!-- conteúdo a substituir pela história real. O que contar aqui: mudanças de lugar, a origem do nome Kemuel, os primeiros marcos. -->
+              <!-- Foto real futura: data-story-photo="img/historia/capitulo-02.webp" e data-story-alt descritivo, apenas depois de instalar o arquivo autorizado. -->
+              <span class="k-timeline-card__marker" aria-hidden="true"></span>
+              <button class="k-timeline-card__button" type="button" id="historia-botao-02" aria-expanded="true" aria-controls="historia-texto-02"><span class="k-timeline-card__top"><span class="k-eyebrow k-timeline-card__label">CAPÍTULO 02 · [ANO]</span></span><span class="k-timeline-card__title">Primeiros passos</span><span class="k-timeline-card__summary">Um lugar próprio e um nome para chamar de casa.</span></button>
+              <div class="k-timeline-card__panel" id="historia-texto-02" role="region" aria-labelledby="historia-botao-02"><div data-story-slot class="k-timeline-card__slot"></div><p class="k-timeline-card__text">Texto de exemplo: a igreja cresceu, mudou de endereço e ganhou o nome que carrega até hoje. Vieram os primeiros batismos e o louvor tomou forma.</p></div>
+            </li>
+            <li class="k-timeline-card" data-story-chapter data-story-art="portas">
+              <!-- conteúdo a substituir pela história real; horários confirmados preservados. O que contar aqui: os ministérios, o que marca a igreja hoje, como é estar com a gente. -->
+              <!-- Foto real futura: data-story-photo="img/historia/capitulo-03.webp" e data-story-alt descritivo, apenas depois de instalar o arquivo autorizado. -->
+              <span class="k-timeline-card__marker" aria-hidden="true"></span>
+              <button class="k-timeline-card__button" type="button" id="historia-botao-03" aria-expanded="true" aria-controls="historia-texto-03"><span class="k-timeline-card__top"><span class="k-eyebrow k-timeline-card__label">CAPÍTULO 03 · HOJE</span><span class="k-badge k-timeline-card__badge">HOJE</span></span><span class="k-timeline-card__title">Quem somos hoje</span><span class="k-timeline-card__summary">Quintas às 19h e domingos às 18h, de portas abertas.</span></button>
+              <div class="k-timeline-card__panel" id="historia-texto-03" role="region" aria-labelledby="historia-botao-03"><div data-story-slot class="k-timeline-card__slot"></div><p class="k-timeline-card__text">Hoje nos reunimos às quintas-feiras, às 19h, e aos domingos, às 18h. Texto de exemplo: uma comunidade que recebe quem chega como família.</p></div>
+            </li>
+            <li class="k-timeline-card k-timeline-card--future" data-story-chapter data-story-art="horizonte">
+              <!-- conteúdo a substituir pela história real. O que contar aqui: os sonhos e os próximos passos da igreja. -->
+              <!-- Foto real futura: data-story-photo="img/historia/capitulo-04.webp" e data-story-alt descritivo, apenas depois de instalar o arquivo autorizado. -->
+              <span class="k-timeline-card__marker" aria-hidden="true"></span>
+              <button class="k-timeline-card__button" type="button" id="historia-botao-04" aria-expanded="true" aria-controls="historia-texto-04"><span class="k-timeline-card__top"><span class="k-eyebrow k-timeline-card__label">CAPÍTULO 04 · O QUE VEM PELA FRENTE</span></span><span class="k-timeline-card__title">O próximo capítulo</span><span class="k-timeline-card__summary">Ainda está sendo escrito.</span></button>
+              <div class="k-timeline-card__panel" id="historia-texto-04" role="region" aria-labelledby="historia-botao-04"><div data-story-slot class="k-timeline-card__slot"></div><p class="k-timeline-card__text">O próximo capítulo ainda está sendo escrito. E ele pode ter você.</p></div>
+            </li>
+          </ol>
+          <p class="k-timeline__hint">Use o mouse, o toque ou as setas do teclado para trocar de capítulo.</p>
+          <p class="k-sr-only" role="status" aria-live="polite" aria-atomic="true" data-story-status></p>
+          <noscript><p class="k-timeline__hint">Sem JavaScript, os quatro textos ficam disponíveis para leitura. Ilustrações e relatos são exemplos a validar.</p></noscript>
+        </div>
       </div>
     </section>
     <section class="k-section" id="caminhada" data-reveal aria-labelledby="caminhada-titulo">

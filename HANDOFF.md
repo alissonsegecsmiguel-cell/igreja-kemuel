@@ -2,6 +2,12 @@
 
 ## 1. Última sessão
 
+- 09/11/2026: início da fila sem o Alisson. Trabalho pendente da linha do tempo “Quem somos” (descrito abaixo) conferido e publicado: fumaça em /, /blog e 404 em 1440x900 e 390x844 sem rolagem horizontal, erros de console ou requisições com falha; quatro capítulos, um aberto por vez, cenas montadas e sem erros nas duas larguras.
+
+- 09/11/2026: dobra “Quem somos” refeita como linha do tempo com quatro capítulos de exemplo e ilustrações animadas. k-timeline, k-timeline-card, k-story-stage e k-story-scene criados no design system, com documentação e galeria de movimento. Textos e SVGs reaproveitados por autorização explícita do protótipo aprovado; CSS/JS reescritos com tokens --timeline-*. Aviso “Prévia”, fontes remotas e orientações de preenchimento não foram publicados; as orientações ficaram em comentários HTML.
+- Um único palco 4:3 fica na coluna fixa do computador e dentro do card ativo abaixo de 900px. Lista HTML aceita 3 a 6 capítulos, sem quantidade fixa no JS; botões com aria-expanded/aria-controls, painel associado, descrição das ilustrações e status aria-live. Sem troca automática. Cenas SVG têm fonte única em partials/story-scenes.html, aplicada pelo script de montagem em templates inertes; montagem só quando o palco entra na tela ou por seleção. Fotos reais futuras são opt-in, com alt e sem requisições para arquivos ausentes.
+- Animações próprias de 1,6s, uma vez por ativação, reiniciadas ao retornar ao capítulo: lâmpada/cadeiras; prédio/cruz/caminho; portas/luz; sol/estrada em três passadas finitas. Só transform/opacity; brilho respira suavemente em 12s e pausa com palco fora da tela ou aba oculta. Movimento reduzido entrega estado final imediato. O card futuro usa cinza próprio com AA, sem opacidade no card inteiro; legenda tem proteção preta de pelo menos 80% sobre qualquer imagem. Hero, menu e demais dobras permanecem idênticos no HTML.
+
 - 09/11/2026: dobra “Primeira visita” refeita como ficha editorial. Novos componentes k-spec-section, k-spec-faq, k-photo-collage e k-callout no design system; papel quente, título Anton em três linhas, cinco perguntas sem alterar respostas e colagem decorativa preparada para foto real. Composição, proporções e ritmo observados na referência; nenhum recurso de terceiros copiado. k-faq-split e seu token removidos por não haver outros usos; a lógica comum de k-faq foi reaproveitada com aria-expanded sincronizado. Hero, menu, Bíblia e demais dobras preservados.
 - Anton latina estática 400 local (20.772 B), SIL OFL 1.1 ao lado. Conforme esclarecimento desta sessão, Anton entra como terceira família e Newsreader ocupa a quarta vaga restrita, preservando a Bíblia; não existe vaga adicional para outra serifada. O eyebrow pequeno usa o vermelho de texto existente #C1232C, pois o primário #DE2E38 fica abaixo de AA sobre o papel quente. Marcador e pincel conservam o primário.
 - Testes da ficha no Chrome por servidor local em 1440x900, 1366x768, 390x844 e 360x740: sem rolagem horizontal, erros de console ou requisições com falha; Anton carregada e título em três linhas sem cortes; primeira pergunta aberta, cliques, toque nativo, Enter/Espaço, foco visível e aria-expanded conferidos. Colagem centralizada mesmo com respostas abertas; ordem móvel correta, etiquetas contidas e movimento reduzido sem animação. Design system em 1440/390 e sanfona sem JavaScript também passaram; file:// usado só para estilos. Prints integrais e relatório em relatorios/kemuel-ficha/, ignorado pelo Git/deploy. Contraste conservador sobre o grão máximo: texto 14,31:1; rótulos 5,95:1; eyebrow 4,73:1; etiquetas brancas 7,45:1; botão 4,61:1.
@@ -17,6 +23,7 @@
 - No ar: a página principal em construção, com marcadores entre colchetes e noindex. O design system permanece excluído do deploy por .vercelignore.
 - Design system oficial criado; logo oficial pendente e vermelho provisório. Tokens, componentes, JavaScript e fontes ficam em arquivos compartilhados em assets/.
 - Dobra de visita editorial com Bíblia em CSS 3D, duas duplas de páginas e tabela de cultos/endereço sempre disponível. Dados não confirmados seguem como marcadores.
+- Dobra Quem somos em capítulos interativos, com história e ilustrações de exemplo a substituir/validar antes do lançamento.
 
 ## 3. Em andamento
 
@@ -34,6 +41,7 @@
 
 ## 6. Pendências que dependem de pessoas
 
+- História real da igreja em capítulos: ano, título e 2 a 4 frases por capítulo; fotos por capítulo, se houver; aprovação pastoral. Decidir entre manter as ilustrações ou usar fotos reais autorizadas em cada capítulo.
 - Foto real da entrada ou da recepção e pontos reais das etiquetas [RECEPÇÃO] e [ESPAÇO INFANTIL]. As posições atuais são provisórias; ao inserir a foto, retirar aria-hidden da colagem e incluir alt descritivo.
 - Visita editorial: confirmar endereço completo e observação de estacionamento/acesso.
 - Texto curto sobre como é o culto e validação da frase “Sem roupa certa, sem cobrança na porta.”
@@ -69,6 +77,8 @@
 
 ## 8. Decisões registradas
 
+- 09/11/2026: k-timeline, k-timeline-card, k-story-stage e k-story-scene usam o protótipo aprovado de referencias/linha-do-tempo/ como base principal de composição, interação, textos e SVGs, estes dois últimos explicitamente autorizados. Nenhum arquivo dessa pasta entrou no Git/deploy; somente as ilustrações autorizadas foram adaptadas para o partial canônico. Sem faixa “Prévia”, fontes externas ou texto de orientação visível.
+- 09/11/2026: capítulos manuais, primeiro ativo ao carregar, palco dentro do card no celular e na coluna fixa no computador. Cenas finitas de 1,6s por ativação; retorno a capítulo visto repete a cena. Único loop da história: brilho de fundo, opacity em 12s, com easing único, pausado fora do palco/aba e desligado com movimento reduzido. Esta autorização amplia a regra anterior de loop somente na hero; nada mudou no movimento da hero.
 - 09/11/2026: k-spec-section, k-spec-faq, k-photo-collage e k-callout compõem a ficha de primeira visita. Papel --paper-warm (#F4F0E8), grão discreto em CSS, colagem à esquerda com cerca de 45% e conteúdo à direita; no celular, colagem depois da ação. Primeira pergunta aberta, demais fechadas; detalhes semânticos e lógica comum de animação, com movimento reduzido imediato. Etiquetas reveladas uma vez, sem loop. k-faq-split removido por não haver usos restantes, inclusive seu token; não havia comportamento específico dele no JavaScript.
 - 09/11/2026: regra de fontes atualizada por esclarecimento explícito: Outfit, Public Sans, Anton (terceira, somente títulos grandes condensados em caixa alta) e Newsreader (quarta, restrita à visita editorial, Bíblia e citações). A vaga serifada já está ocupada e não há quinta família autorizada. Esta decisão substitui a regra anterior de Newsreader como terceira e última; os arquivos e a dobra da Bíblia foram preservados.
 - 09/11/2026: novos tokens da ficha somente em --paper-* e --spec-*. Contraste do eyebrow: #C1232C reutilizado do vermelho existente para texto; o primário permanece nos detalhes. Colagem com tratamento CSS de foto, moldura, duas pontas rasgadas, retícula e pincel SVG próprio. Sem foto de terceiros, biblioteca, canvas ou WebGL.
@@ -98,7 +108,7 @@
 - Opção A: base branca, blocos pretos e vermelho somente em ações principais, marcadores, detalhes e estados; sem grandes superfícies vermelhas. Verde e âmbar ficam restritos ao feedback semântico.
 - Fontes: Outfit para títulos, pelas formas geométricas e pelo peso próximo ao lettering observado; Public Sans para texto e interface, pelo desenho neutro e pela leitura confortável. Ambas SIL OFL 1.1, hospedadas localmente, sem fontes copiadas das referências. Somente o lettering vazado usa o derivado Outfit Kemuel Static 800, com contornos unidos para eliminar as costuras expostas por text-stroke; métricas preservadas e licença OFL ao lado.
 - Tokens em assets/css/tokens.css; componentes em assets/css/components.css; interações em assets/js/ui.js. Easing único de interface e durações de 140ms, 260ms e 480ms. Sem frameworks ou rastreamento.
-- Loop contínuo permitido SOMENTE no fundo da hero, em linear, animando apenas transform e opacity. Pausar fora da tela ou com aba oculta e desligar com prefers-reduced-motion. Todos os demais movimentos são finitos.
+- Atmosferas contínuas autorizadas: fundo da hero em linear e respiração do brilho da história em 12s com o easing único. Só transform/opacity; pausar fora da tela ou com aba oculta e desligar com prefers-reduced-motion. Cenas da história duram 1,6s por ativação; todos os demais movimentos seguem finitos.
 - --color-red #DE2E38 é PROVISÓRIO até o código oficial chegar. Print apenas observado e medido; não incorporado ao site. A referência está em referencias/marca-kemuel/logo-referencia.jfif; essa pasta guarda somente a referência de identidade e não é uma extração de site.
 - Domínio: igrejakemuel.com.br.
 - Site contemporâneo, com objetivo de informar membros e atrair visitantes.
@@ -133,6 +143,8 @@
 
 ## 9. Checklist de lançamento
 
+- [ ] Trocar todos os textos de exemplo e os [ANO] da linha do tempo pela história real aprovada.
+- [ ] Decidir entre ilustrações e fotos reais autorizadas por capítulo; se usar fotos, instalar os arquivos e preencher alt descritivo antes de ativar data-story-photo.
 - [ ] Nenhum marcador [ ] restante nas páginas.
 - [ ] Logo oficial e vermelho oficial aplicados.
 - [ ] Quando o vermelho oficial chegar, gerar de novo os ícones de assets/icons/: eles têm o vermelho gravado no arquivo e não acompanham a troca do token CSS.

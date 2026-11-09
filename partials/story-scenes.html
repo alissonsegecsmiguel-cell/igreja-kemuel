@@ -1,0 +1,60 @@
+<!-- SVGs autorizados do protótipo da história. Fonte canônica; aplicar pelo montar-paginas.mjs. -->
+<template data-story-scene="sala">
+  <div class="k-story-scene k-story-scene--room">
+    <div class="k-story-scene__glow" aria-hidden="true"></div>
+    <div class="k-story-scene__art"><svg viewBox="0 0 400 300" role="img" aria-label="Ilustração de exemplo: uma sala simples com cadeiras e uma lâmpada acesa">
+      <defs><linearGradient id="room-ink" x1="0" y1="0" x2="0" y2="1"><stop class="k-story-scene__stop-strong" offset="0"/><stop class="k-story-scene__stop-soft" offset="1"/></linearGradient><radialGradient id="room-light" cx="50%" cy="20%" r="60%"><stop class="k-story-scene__stop-strong" offset="0"/><stop class="k-story-scene__stop-clear" offset="1"/></radialGradient></defs>
+      <g class="k-story-scene__lamp"><rect class="k-story-scene__ink-soft" width="400" height="300" fill="url(#room-light)"/><circle class="k-story-scene__ink" cx="200" cy="86" r="9"/></g>
+      <line class="k-story-scene__wire" x1="200" y1="0" x2="200" y2="62"/>
+      <path class="k-story-scene__ink" d="M184 62h32l-6 16h-20z"/>
+      <rect class="k-story-scene__ink k-story-scene__ink-floor" y="210" width="400" height="90"/>
+      <g fill="url(#room-ink)">
+        <g class="k-story-scene__chair"><path d="M70 170h40v8h-40zM74 178h6v40h-6zM100 178h6v40h-6zM70 140h8v30h-8z"/></g>
+        <g class="k-story-scene__chair"><path d="M140 170h40v8h-40zM144 178h6v40h-6zM170 178h6v40h-6zM140 140h8v30h-8z"/></g>
+        <g class="k-story-scene__chair"><path d="M210 170h40v8h-40zM214 178h6v40h-6zM240 178h6v40h-6zM210 140h8v30h-8z"/></g>
+        <g class="k-story-scene__chair"><path d="M280 170h40v8h-40zM284 178h6v40h-6zM310 178h6v40h-6zM280 140h8v30h-8z"/></g>
+        <g class="k-story-scene__chair"><path class="k-story-scene__ink-ray" d="M100 206h40v8h-40zM104 214h6v40h-6zM130 214h6v40h-6zM100 176h8v30h-8z"/></g>
+        <g class="k-story-scene__chair"><path class="k-story-scene__ink-ray" d="M250 206h40v8h-40zM254 214h6v40h-6zM280 214h6v40h-6zM250 176h8v30h-8z"/></g>
+      </g>
+    </svg></div>
+  </div>
+</template>
+<template data-story-scene="predio">
+  <div class="k-story-scene k-story-scene--building">
+    <div class="k-story-scene__glow" aria-hidden="true"></div>
+    <div class="k-story-scene__art"><svg viewBox="0 0 400 300" role="img" aria-label="Ilustração de exemplo: um prédio simples com uma cruz e um caminho até a porta">
+      <defs><linearGradient id="building-ink" x1="0" y1="0" x2="1" y2="1"><stop class="k-story-scene__stop-strong" offset="0"/><stop class="k-story-scene__stop-soft" offset="1"/></linearGradient></defs>
+      <circle class="k-story-scene__ink k-story-scene__ink-mid" cx="300" cy="70" r="40"/>
+      <g class="k-story-scene__building"><path d="M120 120l80-50 80 50v110H120z" fill="url(#building-ink)"/><rect class="k-story-scene__cut" x="185" y="160" width="30" height="70"/><rect class="k-story-scene__cut" x="140" y="140" width="24" height="30"/><rect class="k-story-scene__cut" x="236" y="140" width="24" height="30"/></g>
+      <g class="k-story-scene__cross"><path class="k-story-scene__ink" d="M196 30h8v26h10v8h-10v16h-8V64h-10v-8h10z"/></g>
+      <path class="k-story-scene__ink k-story-scene__ink-floor" d="M0 230h400v70H0z"/>
+      <g class="k-story-scene__path"><path class="k-story-scene__ink k-story-scene__ink-mid" d="M185 230h30l50 70h-130z"/></g>
+    </svg></div>
+  </div>
+</template>
+<template data-story-scene="portas">
+  <div class="k-story-scene k-story-scene--doors">
+    <div class="k-story-scene__glow" aria-hidden="true"></div>
+    <div class="k-story-scene__art"><svg viewBox="0 0 400 300" role="img" aria-label="Ilustração de exemplo: portas abertas com luz saindo para a rua">
+      <defs><radialGradient id="doors-light" cx="50%" cy="55%" r="55%"><stop class="k-story-scene__stop" offset="0"/><stop class="k-story-scene__stop-clear" offset="1"/></radialGradient></defs>
+      <g class="k-story-scene__street-light"><rect class="k-story-scene__ink-haze" width="400" height="300" fill="url(#doors-light)"/><path class="k-story-scene__ink k-story-scene__ink-ray" d="M150 230h100l90 70H60z"/></g>
+      <rect class="k-story-scene__ink" x="150" y="60" width="100" height="170"/>
+      <g class="k-story-scene__door k-story-scene__door--left"><path class="k-story-scene__ink k-story-scene__ink-mid" d="M150 60l-46 22v164l46-16z"/></g>
+      <g class="k-story-scene__door k-story-scene__door--right"><path class="k-story-scene__ink k-story-scene__ink-mid" d="M250 60l46 22v164l-46-16z"/></g>
+      <g class="k-story-scene__cut k-story-scene__ink-glow"><circle cx="182" cy="250" r="7"/><rect x="176" y="258" width="12" height="26" rx="5"/><circle cx="222" cy="262" r="8"/><rect x="215" y="271" width="14" height="29" rx="6"/></g>
+    </svg></div>
+  </div>
+</template>
+<template data-story-scene="horizonte">
+  <div class="k-story-scene k-story-scene--horizon">
+    <div class="k-story-scene__glow" aria-hidden="true"></div>
+    <div class="k-story-scene__art"><svg viewBox="0 0 400 300" role="img" aria-label="Ilustração de exemplo: uma estrada seguindo até o sol nascendo no horizonte">
+      <defs><radialGradient id="horizon-light" cx="50%" cy="60%" r="45%"><stop class="k-story-scene__stop" offset="0"/><stop class="k-story-scene__stop-clear" offset="1"/></radialGradient></defs>
+      <g class="k-story-scene__sun"><rect class="k-story-scene__ink-glow" y="40" width="400" height="160" fill="url(#horizon-light)"/><circle class="k-story-scene__ink" cx="200" cy="160" r="42"/></g>
+      <rect class="k-story-scene__cut" y="160" width="400" height="140"/>
+      <path class="k-story-scene__ink k-story-scene__ink-ray" d="M0 160h400v4H0z"/>
+      <path class="k-story-scene__ink k-story-scene__ink-mid" d="M196 164h8l120 136H76z"/>
+      <g class="k-story-scene__road"><path class="k-story-scene__cut" d="M199 180h2v10h-2zM198 205h4v14h-4zM197 238h6v20h-6zM196 276h8v24h-8z"/></g>
+    </svg></div>
+  </div>
+</template>

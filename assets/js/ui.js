@@ -320,6 +320,158 @@
     });
   });
 
+  /* História: capítulos lidos do HTML, um palco, cenas finitas e brilho pausável. */
+  function setupTimelines() {
+    document.querySelectorAll('[data-timeline]').forEach((timeline, scope) => {
+      const chapters = [...timeline.querySelector('[data-story-chapters]').children];
+      const stage = timeline.querySelector('[data-story-stage]');
+      const home = timeline.querySelector('[data-story-home]');
+      const canvas = stage.querySelector('[data-story-canvas]');
+      const templates = [...stage.querySelectorAll('template[data-story-scene]')];
+      const buttons = chapters.map(chapter => chapter.querySelector('.k-timeline-card__button'));
+      const panels = chapters.map(chapter => chapter.querySelector('.k-timeline-card__panel'));
+      const status = timeline.querySelector('[data-story-status]');
+      const mobile = matchMedia(`(max-width: ${parseFloat(tokens.getPropertyValue('--timeline-breakpoint')) - .01}px)`);
+      const cache = new Map(), exits = new Map(), panelAnimations = new Set();
+      let current = 0, currentScene = null, visible = false;
+      const value = name => tokens.getPropertyValue('--timeline-' + name).trim();
+      const syncMotion = () => timeline.classList.toggle('is-story-running', visible && !document.hidden && !reduced.matches);
+      function placeStage() {
+        const target = mobile.matches ? chapters[current].querySelector('[data-story-slot]') : home;
+        if (stage.parentNode !== target) target.append(stage);
+      }
+      function illustration(index) {
+        const template = templates.find(item => item.dataset.storyScene === chapters[index].dataset.storyArt);
+        if (!template) return null;
+        const scene = template.content.firstElementChild.cloneNode(true);
+        // Cada instância/novo capítulo tem gradientes com IDs únicos.
+        scene.querySelectorAll('[id]').forEach(node => {
+          const old = node.id, id = `k-story-${scope}-${index}-${old}`;
+          node.id = id;
+          scene.querySelectorAll('[fill]').forEach(shape => {
+            if (shape.getAttribute('fill') === `url(#${old})`) shape.setAttribute('fill', `url(#${id})`);
+          });
+        });
+        return scene;
+      }
+      function getScene(index) {
+        if (cache.has(index)) return cache.get(index);
+        const chapter = chapters[index];
+        let scene;
+        // Foto é opt-in: nenhum arquivo futuro/inexistente é solicitado.
+        if (chapter.dataset.storyPhoto && chapter.dataset.storyAlt) {
+          const url = new URL(chapter.dataset.storyPhoto, assetBase);
+          if (url.origin === location.origin) {
+            scene = document.createElement('div');scene.className = 'k-story-scene k-story-scene--photo';
+            const glow = document.createElement('div');glow.className = 'k-story-scene__glow';glow.setAttribute('aria-hidden', 'true');
+            const art = document.createElement('div');art.className = 'k-story-scene__art';
+            const image = new Image();image.className = 'k-story-scene__photo';image.alt = chapter.dataset.storyAlt;image.decoding = 'async';image.src = url.href;
+            art.append(image);scene.append(glow, art);
+          }
+        }
+        scene ||= illustration(index);
+        if (!scene) return null;
+        scene.setAttribute('aria-hidden', 'true');scene.inert = true;
+        canvas.append(scene);cache.set(index, scene);return scene;
+      }
+      function showScene(index) {
+        const incoming = getScene(index);
+        if (!incoming) return;
+        clearTimeout(exits.get(incoming));
+        if (currentScene && currentScene !== incoming) {
+          const leaving = currentScene;
+          leaving.setAttribute('aria-hidden', 'true');leaving.inert = true;
+          leaving.classList.remove('is-playing', 'is-current');leaving.classList.add('is-leaving');
+          clearTimeout(exits.get(leaving));
+          exits.set(leaving, setTimeout(() => leaving.classList.remove('is-leaving'), reduced.matches ? 0 : parseFloat(value('swap-duration'))));
+        }
+        incoming.classList.remove('is-playing', 'is-leaving');
+        // Reinicia apenas por seleção manual, inclusive ao retornar a uma cena vista.
+        void incoming.offsetWidth;
+        incoming.classList.add('is-current');
+        if (!reduced.matches && 'IntersectionObserver' in window) incoming.classList.add('is-playing');
+        incoming.removeAttribute('aria-hidden');incoming.inert = false;currentScene = incoming;
+        syncMotion();
+      }
+      function select(index, focus = false, initial = false) {
+        index = Math.max(0, Math.min(chapters.length - 1, index));
+        panelAnimations.forEach(animation => animation.cancel());panelAnimations.clear();
+        current = index;
+        // Mover antes de recolher evita prender o palco num painel oculto.
+        placeStage();
+        chapters.forEach((chapter, i) => {
+          chapter.classList.toggle('is-active', i === current);
+          buttons[i].setAttribute('aria-expanded', String(i === current));panels[i].hidden = i !== current;
+        });
+        const title = chapters[current].querySelector('.k-timeline-card__title').textContent;
+        const number = `Capítulo ${String(current + 1).padStart(2, '0')}`;
+        stage.querySelector('[data-story-title]').textContent = title;
+        stage.querySelector('[data-story-number]').textContent = number;
+        if (!initial) {
+          showScene(current);status.textContent = `${number}: ${title}.`;
+          if (!reduced.matches) {
+            const animation = panels[current].animate([
+              { opacity: 0, transform: `translateY(${value('panel-shift')})` },
+              { opacity: 1, transform: 'none' }
+            ], { duration: parseFloat(value('panel-duration')), easing });
+            panelAnimations.add(animation);animation.finished.then(() => panelAnimations.delete(animation), () => panelAnimations.delete(animation));
+          }
+        }
+        if (focus) buttons[current].focus({ preventScroll: true });
+        if (!initial && mobile.matches) {
+          const rect = buttons[current].getBoundingClientRect();
+          const top = document.querySelector('.k-header')?.offsetHeight || 0;
+          if (rect.top < top || rect.bottom > innerHeight) buttons[current].scrollIntoView({ block: 'start', behavior: 'instant' });
+        }
+      }
+      buttons.forEach((button, index) => {
+        // A quantidade e os destinos vêm da lista; funciona com 3 a 6 capítulos.
+        button.id = `${timeline.id}-capitulo-${index + 1}`;panels[index].id = `${button.id}-texto`;
+        button.setAttribute('aria-controls', panels[index].id);panels[index].setAttribute('aria-labelledby', button.id);
+        button.addEventListener('click', () => select(index));
+        button.addEventListener('keydown', event => {
+          if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return;
+          event.preventDefault();select(index + (event.key === 'ArrowDown' ? 1 : -1), true);
+        });
+      });
+      select(0, false, true);timeline.classList.add('is-timeline-ready');
+      mobile.addEventListener('change', () => {
+        // Reorganizar a tela não recomeça as animações de capítulo.
+        cache.forEach(scene => scene.classList.remove('is-playing'));placeStage();
+      });
+      reduced.addEventListener('change', () => {
+        if (reduced.matches) {
+          cache.forEach(scene => scene.classList.remove('is-playing'));
+          panelAnimations.forEach(animation => animation.finish());
+        }
+        syncMotion();
+      });
+      document.addEventListener('visibilitychange', syncMotion);
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(entries => {
+          visible = entries.at(-1).isIntersecting;
+          if (visible && !currentScene) showScene(current);
+          syncMotion();
+        }).observe(stage);
+      } else {
+        showScene(current);currentScene?.classList.remove('is-playing');
+      } // Sem observador: cena final, sem loop.
+      document.querySelectorAll('[data-story-demo]').forEach(control => {
+        if (control.dataset.storyDemo !== timeline.id) return;
+        control.addEventListener('click', () => {
+          select(Number(control.dataset.storyIndex));stage.scrollIntoView({ block: 'center', behavior: 'instant' });
+        });
+      });
+    });
+  }
+  function deferTimelines() {
+    if (!document.querySelector('[data-timeline]')) return;
+    if ('requestIdleCallback' in window) requestIdleCallback(setupTimelines, { timeout: duration('short') });
+    else setTimeout(setupTimelines, duration('short'));
+  }
+  if (document.readyState === 'complete') deferTimelines();
+  else addEventListener('load', deferTimelines, { once: true });
+
   /* Livro editorial: camadas preguiçosas, abertura única e navegação manual.
      Técnica de camadas/folha/gestos adaptada do projeto próprio Caderninho;
      geometria, aparência e comportamento reescritos para a Kemuel. */

@@ -81,7 +81,7 @@
         <div class="k-principle"><span>01</span><p>Uma ação principal por bloco.</p></div>
         <div class="k-principle"><span>02</span><p>Primeiro o celular. Sempre a leitura.</p></div>
         <div class="k-principle"><span>03</span><p>Contraste e foco fazem parte.</p></div>
-        <div class="k-principle"><span>04</span><p>Loop suave só no fundo da hero.</p></div>
+        <div class="k-principle"><span>04</span><p>Movimento finito. Atmosferas pausáveis.</p></div>
       </div>
     </div>
 
@@ -133,7 +133,7 @@
           <p class="k-body-sm">O template inerte contém video autoplay muted loop playsinline preload="metadata", sem áudio. Nenhuma mídia é solicitada no padrão CSS. Após instalar todos os arquivos, adicionar <code>data-video-enabled</code> à section k-hero-led, tanto aqui quanto na página. ui.js resolve os caminhos a partir de assets/, independentemente da página.</p>
           <ul class="k-body-sm"><li><code>assets/video/hero.webm</code> e <code>assets/video/hero.mp4</code>: desktop, 1280px de largura, até 3 MB por arquivo.</li><li><code>assets/video/hero-mobile.mp4</code>: abaixo de 768px, 720px de largura, até 1,5 MB.</li><li>8 a 15 segundos, horizontal, sem som, movimento lento e loop sem corte perceptível. WebM e MP4; sem pista de áudio.</li><li>Só filmagens reais da igreja, nunca IA. Nenhuma criança identificável; pessoas filmadas precisam autorizar.</li></ul>
           <p class="k-body-sm">O vídeo substitui a luz e mantém palavra, nuvem, pontos, filtro monocromático e proteção do texto. Só aparece depois de começar a tocar; falha ou bloqueio de autoplay preserva o CSS. IntersectionObserver pausa luz e vídeo fora da tela; aba oculta pausa também. Movimento reduzido mantém palavra e malha estáticas, sem iniciar nem carregar vídeo. Sem IntersectionObserver, o fundo permanece estático.</p>
-          <p class="k-caption k-muted">Regra: loop contínuo permitido somente no fundo da hero. Título e ações permanecem legíveis com CSS estático, sem vídeo ou sem JavaScript. Os textos entre colchetes são pendências, não informações reais da igreja.</p>
+          <p class="k-caption k-muted">Regra: movimento contínuo somente nas atmosferas autorizadas: fundo da hero e respiração do brilho da história. Título e ações permanecem legíveis com CSS estático, sem vídeo ou sem JavaScript. Os textos entre colchetes são pendências, não informações reais da igreja.</p>
         </section>
         <section class="k-demo k-stack" id="schedule-documentacao" aria-labelledby="schedule-doc-titulo">
           <p class="k-eyebrow">Componente · k-schedule</p><h3 id="schedule-doc-titulo">Horários que se leem de longe.</h3>
@@ -143,6 +143,15 @@
             <div class="k-dark k-layout-preview__band k-stack"><p class="k-label">Variante escura · k-schedule--dark</p><ul class="k-schedule k-schedule--dark" aria-label="Horários dos cultos"><li class="k-schedule__item"><span class="k-schedule__head"><svg class="k-icon" aria-hidden="true"><use href="#k-clock"/></svg><span class="k-schedule__mark"></span></span><span class="k-eyebrow k-schedule__day">Quinta-feira</span><span class="k-schedule__time">19h</span><span class="k-schedule__label">Culto</span></li><li class="k-schedule__item"><span class="k-schedule__head"><svg class="k-icon" aria-hidden="true"><use href="#k-clock"/></svg><span class="k-schedule__mark"></span></span><span class="k-eyebrow k-schedule__day">Domingo</span><span class="k-schedule__time">18h</span><span class="k-schedule__label">Culto</span></li></ul></div>
           </div>
           <p class="k-caption k-muted">Contraste: texto #171717 e apoio #555555 sobre branco; branco e apoio #C5C5C5 sobre #111111. Todos acima de AA.</p>
+        </section>
+        <section class="k-demo k-stack" id="timeline-documentacao" aria-labelledby="timeline-doc-titulo">
+          <p class="k-eyebrow">História · capítulos manuais</p><h3 id="timeline-doc-titulo">Um capítulo de cada vez.</h3>
+          <p><code>k-timeline</code> organiza introdução fixa e lista à direita a partir de 900px; abaixo disso, o mesmo palco entra no card ativo, acima do texto completo. <code>k-timeline-card</code> combina botão com aria-expanded/aria-controls, painel associado, marcador e estados normal, ativo, hover, foco e futuro tracejado. Capítulo 01 começa ativo; clique, toque, Enter, Espaço e setas para cima/baixo selecionam. Não há troca automática. <a class="k-link" href="#quem-somos">Experimentar a linha do tempo</a>.</p>
+          <p><code>k-story-stage</code> reserva 4:3, legenda protegida e um único palco movido pelo DOM. <code>k-story-scene</code> separa brilho, malha de pontos e grupos SVG. Os quatro SVGs e textos foram autorizados do protótipo aprovado para esta dobra; CSS e JavaScript foram reescritos para a Kemuel. Fonte canônica em <code>partials/story-scenes.html</code>, aplicada aos marcadores story-scenes pelo script de montagem; não editar os blocos gerados.</p>
+          <p>Para usar de 3 a 6 capítulos, editar somente a lista HTML e escolher <code>data-story-art</code>: sala, predio, portas ou horizonte. A quantidade, os botões e seus destinos são lidos da lista; IDs de instâncias e gradientes ficam únicos. O status aria-live anuncia apenas seleções manuais. Sem JavaScript, todos os textos continuam visíveis e o palco é omitido. Os comentários “O que contar aqui” orientam o conteúdo futuro e não são exibidos.</p>
+          <p>Para uma foto real, instalar <code>assets/img/historia/capitulo-01.webp</code> (ou equivalente) e só então adicionar ao li <code>data-story-photo="img/historia/capitulo-01.webp"</code> e <code>data-story-alt</code> descritivo. O caminho parte de assets/ nas duas páginas. Foto substitui o SVG, recebe preto e branco, contraste estático e a mesma malha; sua entrada usa apenas o zoom curto. Nenhuma foto futura é buscada por suposição.</p>
+          <p class="k-body-sm">Tokens novos somente em <code>--timeline-*</code>: composição, estados, rail/marcadores, palco/legenda, tinta/transparências, malha derivada da hero, movimentos e tratamento de foto. Cards futuros usam texto #9B9B9B, sem reduzir a opacidade do card inteiro. Legenda tem proteção preta de pelo menos 80%, inclusive sobre foto branca. Cores de ação, fontes, badge, eyebrow, foco e revelação vêm do sistema.</p>
+          <p class="k-body-sm">Movimento: troca em 480ms, texto em 260ms, cenas em 1.600ms. Só transform e opacity animam; máscara, filtros, cores e dimensões ficam parados. Cena inicial começa quando o palco entra na tela; cada seleção reinicia a cena escolhida. Fora da tela ou com aba oculta, a cena pausa; a respiração de 12s do brilho também. Com movimento reduzido, estado final imediato, sem zoom, animação própria ou loop. A respiração do brilho da história é a única exceção adicional à atmosfera contínua da hero.</p>
         </section>
         <section class="k-demo k-stack" id="spec-documentacao" aria-labelledby="spec-doc-titulo">
           <p class="k-eyebrow">Ficha editorial · componentes</p><h3 id="spec-doc-titulo">Informação clara, ritmo de ficha.</h3>
@@ -289,7 +298,7 @@
         <p><code>k-bible</code> é um objeto CSS com contracapa, folhas listradas, lombada, fita vermelha, capa de duas faces e cruz simples de hastes alinhadas; a cruz não é o logo. A técnica de camadas, estados, brilho, gestos e folha foi adaptada do projeto próprio Caderninho. A composição editorial é inspirada no Money in Check; nenhum arquivo ou código comercial foi incorporado.</p>
         <p><code>k-bible-pages</code> mantém as duas duplas no HTML e reserva a altura da maior no grid, inclusive antes do JavaScript. Setas, teclado e arraste trocam a folha manualmente; a dupla inativa fica inert e fora da árvore acessível, e aria-live anuncia a atual. No celular as duas páginas são empilhadas, sem diminuir o texto.</p>
         <p><code>k-info-table</code> mantém cultos e endereço sempre disponíveis em <code>#endereco</code>, destino do botão da hero. Botão de mapa e WhatsApp são exemplos. O cartão translúcido tem regras de 0,5px, botão em pílula e nota fora do cartão.</p>
-        <p>Movimento finito: entrada 260ms, abertura única de 180° em 480ms e virada manual em 480ms, todas no easing <code>cubic-bezier(.22, 1, .36, 1)</code>. Montagem das camadas a 900px da tela, após load e em tempo ocioso. Fontes editoriais carregam quando a seção entra efetivamente na tela, antes de abrir a capa. O fallback inicial é Georgia; sem JavaScript, Newsreader carrega normalmente. Páginas inativas usam content-visibility e altura intrínseca calculada pelos tokens de conteúdo, mantendo o espaço reservado. Fora da tela ou com a aba oculta, animações pausam. Sem flutuação ou repetição; o loop contínuo continua permitido somente na atmosfera da hero. Movimento reduzido: livro já aberto e parado. Mouse: inclinação limitada a 6° e brilho discreto; toque: sem inclinação. Repouso frontal de 0°.</p>
+        <p>Movimento finito: entrada 260ms, abertura única de 180° em 480ms e virada manual em 480ms, todas no easing <code>cubic-bezier(.22, 1, .36, 1)</code>. Montagem das camadas a 900px da tela, após load e em tempo ocioso. Fontes editoriais carregam quando a seção entra efetivamente na tela, antes de abrir a capa. O fallback inicial é Georgia; sem JavaScript, Newsreader carrega normalmente. Páginas inativas usam content-visibility e altura intrínseca calculada pelos tokens de conteúdo, mantendo o espaço reservado. Fora da tela ou com a aba oculta, animações pausam. Sem flutuação ou repetição; as atmosferas contínuas autorizadas são a hero e o brilho da história. Movimento reduzido: livro já aberto e parado. Mouse: inclinação limitada a 6° e brilho discreto; toque: sem inclinação. Repouso frontal de 0°.</p>
         <p class="k-body-sm">Novos tokens: <code>--paper-*</code> para fundo, grid, cartão e divisores; <code>--editorial-*</code> para família, pesos, escala e composição; <code>--bible-*</code> para papel quente, capa, camadas, ângulos, brilho, gestos e durações ligadas aos tokens existentes. Nenhuma imagem, textura externa, biblioteca, canvas ou WebGL.</p>
         <div class="k-type-row" data-type><p class="k-editorial__phrase" data-type-preview>Uma casa aberta.</p><div class="k-type-row__meta"><strong>Newsreader · frase editorial 200</strong><code data-type-metrics></code></div></div>
         <div class="k-type-row" data-type><p class="k-editorial__copy" data-type-preview>Leitura tranquila, com o tempo de cada pessoa.</p><div class="k-type-row__meta"><strong>Newsreader · corpo editorial 300</strong><code data-type-metrics></code></div></div>
@@ -351,6 +360,119 @@
       </div>
     </section>
 
+    <section class="k-section k-section--black k-dark k-timeline" id="quem-somos" data-timeline aria-labelledby="quem-somos-titulo">
+      <div class="k-container k-timeline__layout">
+        <div class="k-timeline__intro">
+          <p class="k-eyebrow k-timeline__eyebrow" data-reveal>NOSSA HISTÓRIA</p>
+          <h2 class="k-timeline__title" id="quem-somos-titulo" data-reveal>Quem somos</h2>
+          <p class="k-timeline__lead" data-reveal>Uma comunidade de fé de portas abertas. <strong>Cada capítulo conta um pedaço do caminho até aqui.</strong></p>
+          <div class="k-timeline__stage-home" data-story-home>
+            <figure class="k-story-stage" data-story-stage>
+              <div class="k-story-stage__canvas" data-story-canvas></div>
+              <figcaption class="k-story-stage__caption"><strong data-story-title>Como tudo começou</strong><span data-story-number>Capítulo 01</span></figcaption>
+              <!-- story-scenes:start -->
+<!-- SVGs autorizados do protótipo da história. Fonte canônica; aplicar pelo montar-paginas.mjs. -->
+<template data-story-scene="sala">
+  <div class="k-story-scene k-story-scene--room">
+    <div class="k-story-scene__glow" aria-hidden="true"></div>
+    <div class="k-story-scene__art"><svg viewBox="0 0 400 300" role="img" aria-label="Ilustração de exemplo: uma sala simples com cadeiras e uma lâmpada acesa">
+      <defs><linearGradient id="room-ink" x1="0" y1="0" x2="0" y2="1"><stop class="k-story-scene__stop-strong" offset="0"/><stop class="k-story-scene__stop-soft" offset="1"/></linearGradient><radialGradient id="room-light" cx="50%" cy="20%" r="60%"><stop class="k-story-scene__stop-strong" offset="0"/><stop class="k-story-scene__stop-clear" offset="1"/></radialGradient></defs>
+      <g class="k-story-scene__lamp"><rect class="k-story-scene__ink-soft" width="400" height="300" fill="url(#room-light)"/><circle class="k-story-scene__ink" cx="200" cy="86" r="9"/></g>
+      <line class="k-story-scene__wire" x1="200" y1="0" x2="200" y2="62"/>
+      <path class="k-story-scene__ink" d="M184 62h32l-6 16h-20z"/>
+      <rect class="k-story-scene__ink k-story-scene__ink-floor" y="210" width="400" height="90"/>
+      <g fill="url(#room-ink)">
+        <g class="k-story-scene__chair"><path d="M70 170h40v8h-40zM74 178h6v40h-6zM100 178h6v40h-6zM70 140h8v30h-8z"/></g>
+        <g class="k-story-scene__chair"><path d="M140 170h40v8h-40zM144 178h6v40h-6zM170 178h6v40h-6zM140 140h8v30h-8z"/></g>
+        <g class="k-story-scene__chair"><path d="M210 170h40v8h-40zM214 178h6v40h-6zM240 178h6v40h-6zM210 140h8v30h-8z"/></g>
+        <g class="k-story-scene__chair"><path d="M280 170h40v8h-40zM284 178h6v40h-6zM310 178h6v40h-6zM280 140h8v30h-8z"/></g>
+        <g class="k-story-scene__chair"><path class="k-story-scene__ink-ray" d="M100 206h40v8h-40zM104 214h6v40h-6zM130 214h6v40h-6zM100 176h8v30h-8z"/></g>
+        <g class="k-story-scene__chair"><path class="k-story-scene__ink-ray" d="M250 206h40v8h-40zM254 214h6v40h-6zM280 214h6v40h-6zM250 176h8v30h-8z"/></g>
+      </g>
+    </svg></div>
+  </div>
+</template>
+<template data-story-scene="predio">
+  <div class="k-story-scene k-story-scene--building">
+    <div class="k-story-scene__glow" aria-hidden="true"></div>
+    <div class="k-story-scene__art"><svg viewBox="0 0 400 300" role="img" aria-label="Ilustração de exemplo: um prédio simples com uma cruz e um caminho até a porta">
+      <defs><linearGradient id="building-ink" x1="0" y1="0" x2="1" y2="1"><stop class="k-story-scene__stop-strong" offset="0"/><stop class="k-story-scene__stop-soft" offset="1"/></linearGradient></defs>
+      <circle class="k-story-scene__ink k-story-scene__ink-mid" cx="300" cy="70" r="40"/>
+      <g class="k-story-scene__building"><path d="M120 120l80-50 80 50v110H120z" fill="url(#building-ink)"/><rect class="k-story-scene__cut" x="185" y="160" width="30" height="70"/><rect class="k-story-scene__cut" x="140" y="140" width="24" height="30"/><rect class="k-story-scene__cut" x="236" y="140" width="24" height="30"/></g>
+      <g class="k-story-scene__cross"><path class="k-story-scene__ink" d="M196 30h8v26h10v8h-10v16h-8V64h-10v-8h10z"/></g>
+      <path class="k-story-scene__ink k-story-scene__ink-floor" d="M0 230h400v70H0z"/>
+      <g class="k-story-scene__path"><path class="k-story-scene__ink k-story-scene__ink-mid" d="M185 230h30l50 70h-130z"/></g>
+    </svg></div>
+  </div>
+</template>
+<template data-story-scene="portas">
+  <div class="k-story-scene k-story-scene--doors">
+    <div class="k-story-scene__glow" aria-hidden="true"></div>
+    <div class="k-story-scene__art"><svg viewBox="0 0 400 300" role="img" aria-label="Ilustração de exemplo: portas abertas com luz saindo para a rua">
+      <defs><radialGradient id="doors-light" cx="50%" cy="55%" r="55%"><stop class="k-story-scene__stop" offset="0"/><stop class="k-story-scene__stop-clear" offset="1"/></radialGradient></defs>
+      <g class="k-story-scene__street-light"><rect class="k-story-scene__ink-haze" width="400" height="300" fill="url(#doors-light)"/><path class="k-story-scene__ink k-story-scene__ink-ray" d="M150 230h100l90 70H60z"/></g>
+      <rect class="k-story-scene__ink" x="150" y="60" width="100" height="170"/>
+      <g class="k-story-scene__door k-story-scene__door--left"><path class="k-story-scene__ink k-story-scene__ink-mid" d="M150 60l-46 22v164l46-16z"/></g>
+      <g class="k-story-scene__door k-story-scene__door--right"><path class="k-story-scene__ink k-story-scene__ink-mid" d="M250 60l46 22v164l-46-16z"/></g>
+      <g class="k-story-scene__cut k-story-scene__ink-glow"><circle cx="182" cy="250" r="7"/><rect x="176" y="258" width="12" height="26" rx="5"/><circle cx="222" cy="262" r="8"/><rect x="215" y="271" width="14" height="29" rx="6"/></g>
+    </svg></div>
+  </div>
+</template>
+<template data-story-scene="horizonte">
+  <div class="k-story-scene k-story-scene--horizon">
+    <div class="k-story-scene__glow" aria-hidden="true"></div>
+    <div class="k-story-scene__art"><svg viewBox="0 0 400 300" role="img" aria-label="Ilustração de exemplo: uma estrada seguindo até o sol nascendo no horizonte">
+      <defs><radialGradient id="horizon-light" cx="50%" cy="60%" r="45%"><stop class="k-story-scene__stop" offset="0"/><stop class="k-story-scene__stop-clear" offset="1"/></radialGradient></defs>
+      <g class="k-story-scene__sun"><rect class="k-story-scene__ink-glow" y="40" width="400" height="160" fill="url(#horizon-light)"/><circle class="k-story-scene__ink" cx="200" cy="160" r="42"/></g>
+      <rect class="k-story-scene__cut" y="160" width="400" height="140"/>
+      <path class="k-story-scene__ink k-story-scene__ink-ray" d="M0 160h400v4H0z"/>
+      <path class="k-story-scene__ink k-story-scene__ink-mid" d="M196 164h8l120 136H76z"/>
+      <g class="k-story-scene__road"><path class="k-story-scene__cut" d="M199 180h2v10h-2zM198 205h4v14h-4zM197 238h6v20h-6zM196 276h8v24h-8z"/></g>
+    </svg></div>
+  </div>
+</template>
+              <!-- story-scenes:end -->
+            </figure>
+          </div>
+        </div>
+        <div data-reveal>
+          <ol class="k-timeline__list" aria-label="Capítulos da história da igreja" data-story-chapters>
+            <li class="k-timeline-card is-active" data-story-chapter data-story-art="sala">
+              <!-- conteúdo a substituir pela história real. O que contar aqui: quem começou, onde se reuniam, como foi o primeiro culto. -->
+              <!-- Foto real futura: após instalar assets/img/historia/capitulo-01.webp, adicionar data-story-photo="img/historia/capitulo-01.webp" e data-story-alt descritivo a este li. -->
+              <span class="k-timeline-card__marker" aria-hidden="true"></span>
+              <button class="k-timeline-card__button" type="button" id="historia-botao-01" aria-expanded="true" aria-controls="historia-texto-01"><span class="k-timeline-card__top"><span class="k-eyebrow k-timeline-card__label">CAPÍTULO 01 · [ANO]</span></span><span class="k-timeline-card__title">Como tudo começou</span><span class="k-timeline-card__summary">Uma sala, algumas famílias e muita fé.</span></button>
+              <div class="k-timeline-card__panel" id="historia-texto-01" role="region" aria-labelledby="historia-botao-01"><div data-story-slot class="k-timeline-card__slot"></div><p class="k-timeline-card__text">Texto de exemplo: tudo começou com algumas famílias reunidas numa sala emprestada, com cadeiras de plástico e uma vontade grande de buscar a Deus juntas.</p></div>
+            </li>
+            <li class="k-timeline-card" data-story-chapter data-story-art="predio">
+              <!-- conteúdo a substituir pela história real. O que contar aqui: mudanças de lugar, a origem do nome Kemuel, os primeiros marcos. -->
+              <!-- Foto real futura: data-story-photo="img/historia/capitulo-02.webp" e data-story-alt descritivo, apenas depois de instalar o arquivo autorizado. -->
+              <span class="k-timeline-card__marker" aria-hidden="true"></span>
+              <button class="k-timeline-card__button" type="button" id="historia-botao-02" aria-expanded="true" aria-controls="historia-texto-02"><span class="k-timeline-card__top"><span class="k-eyebrow k-timeline-card__label">CAPÍTULO 02 · [ANO]</span></span><span class="k-timeline-card__title">Primeiros passos</span><span class="k-timeline-card__summary">Um lugar próprio e um nome para chamar de casa.</span></button>
+              <div class="k-timeline-card__panel" id="historia-texto-02" role="region" aria-labelledby="historia-botao-02"><div data-story-slot class="k-timeline-card__slot"></div><p class="k-timeline-card__text">Texto de exemplo: a igreja cresceu, mudou de endereço e ganhou o nome que carrega até hoje. Vieram os primeiros batismos e o louvor tomou forma.</p></div>
+            </li>
+            <li class="k-timeline-card" data-story-chapter data-story-art="portas">
+              <!-- conteúdo a substituir pela história real; horários confirmados preservados. O que contar aqui: os ministérios, o que marca a igreja hoje, como é estar com a gente. -->
+              <!-- Foto real futura: data-story-photo="img/historia/capitulo-03.webp" e data-story-alt descritivo, apenas depois de instalar o arquivo autorizado. -->
+              <span class="k-timeline-card__marker" aria-hidden="true"></span>
+              <button class="k-timeline-card__button" type="button" id="historia-botao-03" aria-expanded="true" aria-controls="historia-texto-03"><span class="k-timeline-card__top"><span class="k-eyebrow k-timeline-card__label">CAPÍTULO 03 · HOJE</span><span class="k-badge k-timeline-card__badge">HOJE</span></span><span class="k-timeline-card__title">Quem somos hoje</span><span class="k-timeline-card__summary">Quintas às 19h e domingos às 18h, de portas abertas.</span></button>
+              <div class="k-timeline-card__panel" id="historia-texto-03" role="region" aria-labelledby="historia-botao-03"><div data-story-slot class="k-timeline-card__slot"></div><p class="k-timeline-card__text">Hoje nos reunimos às quintas-feiras, às 19h, e aos domingos, às 18h. Texto de exemplo: uma comunidade que recebe quem chega como família.</p></div>
+            </li>
+            <li class="k-timeline-card k-timeline-card--future" data-story-chapter data-story-art="horizonte">
+              <!-- conteúdo a substituir pela história real. O que contar aqui: os sonhos e os próximos passos da igreja. -->
+              <!-- Foto real futura: data-story-photo="img/historia/capitulo-04.webp" e data-story-alt descritivo, apenas depois de instalar o arquivo autorizado. -->
+              <span class="k-timeline-card__marker" aria-hidden="true"></span>
+              <button class="k-timeline-card__button" type="button" id="historia-botao-04" aria-expanded="true" aria-controls="historia-texto-04"><span class="k-timeline-card__top"><span class="k-eyebrow k-timeline-card__label">CAPÍTULO 04 · O QUE VEM PELA FRENTE</span></span><span class="k-timeline-card__title">O próximo capítulo</span><span class="k-timeline-card__summary">Ainda está sendo escrito.</span></button>
+              <div class="k-timeline-card__panel" id="historia-texto-04" role="region" aria-labelledby="historia-botao-04"><div data-story-slot class="k-timeline-card__slot"></div><p class="k-timeline-card__text">O próximo capítulo ainda está sendo escrito. E ele pode ter você.</p></div>
+            </li>
+          </ol>
+          <p class="k-timeline__hint">Use o mouse, o toque ou as setas do teclado para trocar de capítulo.</p>
+          <p class="k-sr-only" role="status" aria-live="polite" aria-atomic="true" data-story-status></p>
+          <noscript><p class="k-timeline__hint">Sem JavaScript, os quatro textos ficam disponíveis para leitura. Ilustrações e relatos são exemplos a validar.</p></noscript>
+        </div>
+      </div>
+    </section>
+
     <section class="k-section k-section--soft" id="layout" data-reveal aria-labelledby="titulo-layout">
       <div class="k-container k-stack--large"><header class="k-section-heading"><p class="k-section-number">04 / LAYOUT & ESPAÇAMENTO</p><h2 id="titulo-layout">Ritmo consistente.<br>Conteúdo em primeiro lugar.</h2><p class="k-muted">Container de até 1280px. Margens laterais de 20px a 64px. Leitura limitada a 65ch. Seções com 72px a 128px de respiro, sem espaços arbitrários entre os blocos.</p></header>
         <div class="k-demo k-stack"><h3 class="k-h5">Escala de espaço</h3><div class="k-spacing-strip"><span>--space-1<br>6–8px</span><span>--space-2<br>12–16px</span><span>--space-3<br>16–24px</span><span>--space-4<br>24–40px</span><span>--space-5<br>32–64px</span><span>--space-6<br>48–96px</span></div><p class="k-body-sm k-muted">Todos fluidos com clamp(). Raio pequeno 6px, médio 12px e grande 20px; pill só em chips e pequenos indicadores. Sombra suave em elevação, sem brilhos.</p></div>
@@ -361,7 +483,7 @@
 
     <section class="k-section" id="icones" data-reveal aria-labelledby="titulo-icones"><div class="k-container k-stack--large"><header class="k-section-heading"><p class="k-section-number">05 / ÍCONES</p><h2 id="titulo-icones">Traços simples.<br>Significado por perto.</h2><p class="k-muted">SVGs originais de 24 × 24 unidades, traço de 1,7, pontas arredondadas e currentColor. Sem biblioteca de ícones. Fonte canônica em icons/kemuel.svg, licença MIT ao lado.</p></header><div class="k-grid k-grid--3"><div class="k-icon-cell"><svg class="k-icon" aria-hidden="true"><use href="#k-arrow"/></svg><span>Continuar</span></div><div class="k-icon-cell"><svg class="k-icon" aria-hidden="true"><use href="#k-external"/></svg><span>Destino externo</span></div><div class="k-icon-cell"><svg class="k-icon" aria-hidden="true"><use href="#k-menu"/></svg><span>Menu</span></div><div class="k-icon-cell"><svg class="k-icon" aria-hidden="true"><use href="#k-clock"/></svg><span>Horário</span></div><div class="k-icon-cell"><svg class="k-icon" aria-hidden="true"><use href="#k-pin"/></svg><span>Endereço</span></div><div class="k-icon-cell"><svg class="k-icon" aria-hidden="true"><use href="#k-copy"/></svg><span>Copiar</span></div><div class="k-icon-cell"><svg class="k-icon" aria-hidden="true"><use href="#k-check"/></svg><span>Concluído</span></div><div class="k-icon-cell"><svg class="k-icon" aria-hidden="true"><use href="#k-download"/></svg><span>Download</span></div><div class="k-icon-cell"><svg class="k-icon" aria-hidden="true"><use href="#k-book"/></svg><span>Material</span></div><div class="k-icon-cell"><svg class="k-icon" aria-hidden="true"><use href="#k-calendar"/></svg><span>Evento</span></div><div class="k-icon-cell"><svg class="k-icon" aria-hidden="true"><use href="#k-chat"/></svg><span>Conversa</span></div><div class="k-icon-cell"><svg class="k-icon" aria-hidden="true"><use href="#k-info"/></svg><span>Informação</span></div></div><div class="k-demo k-stack" id="icones-do-site"><p class="k-eyebrow">Ícones do site</p><h3 class="k-h4">Favicon com o símbolo da igreja.</h3><p class="k-body-sm"><strong>Aproximação PROVISÓRIA</strong>, redesenhada só para os ícones do site, até chegar o arquivo oficial do logo. Não usar em nenhum outro lugar. Vermelho de <code>--color-red</code>, também provisório. O símbolo fica sobre quadrado preto de cantos arredondados, porque a cruz branca sumiria em aba clara; assim, cruz e círculo aparecem em abas claras e escuras. Em 16 px, a haste é mais curta e o anel, maior, mantendo as peças deslocadas e os vãos.</p><div class="k-grid k-grid--2"><div class="k-row"><figure class="k-stack"><img src="icons/favicon.svg" width="64" height="64" alt="Favicon em 64 pixels"><figcaption class="k-caption">64 px</figcaption></figure><figure class="k-stack"><img src="icons/favicon.svg" width="32" height="32" alt="Favicon em 32 pixels"><figcaption class="k-caption">32 px</figcaption></figure><figure class="k-stack"><img src="icons/favicon.svg" width="16" height="16" alt="Favicon em 16 pixels"><figcaption class="k-caption">16 px</figcaption></figure></div><div class="k-row k-dark k-layout-preview__band"><figure class="k-stack"><img src="icons/favicon.svg" width="64" height="64" alt="Favicon em 64 pixels"><figcaption class="k-caption">64 px</figcaption></figure><figure class="k-stack"><img src="icons/favicon.svg" width="32" height="32" alt="Favicon em 32 pixels"><figcaption class="k-caption">32 px</figcaption></figure><figure class="k-stack"><img src="icons/favicon.svg" width="16" height="16" alt="Favicon em 16 pixels"><figcaption class="k-caption">16 px</figcaption></figure></div></div><p class="k-caption k-muted">Arquivos em icons/: favicon.svg, favicon.ico (16 e 32 px), apple-touch-icon.png (180 px, fundo no quadrado inteiro), icon-192.png, icon-512.png e site.webmanifest. Nas páginas, o bloco vem de partials/head-icons.html.</p></div><div class="k-demo k-stack"><h3 class="k-h5">Escala e herança de cor</h3><div class="k-row"><svg class="k-icon k-icon--small" aria-hidden="true"><use href="#k-pin"/></svg><span class="k-caption">16px</span><svg class="k-icon" aria-hidden="true"><use href="#k-pin"/></svg><span class="k-caption">20px</span><svg class="k-icon k-icon--large" aria-hidden="true"><use href="#k-pin"/></svg><span class="k-caption">32px</span><span class="k-row k-icon--red"><svg class="k-icon" aria-hidden="true"><use href="#k-arrow"/></svg>Cor herdada</span></div><p class="k-body-sm k-muted">Junto de texto, ícone decorativo recebe aria-hidden. Botão só com ícone precisa de nome acessível. O sinal Λ pode aparecer como detalhe tipográfico, com moderação; não é usado para reconstruir a marca.</p></div></div></section>
 
-    <section class="k-section k-section--soft" id="animacoes" data-reveal aria-labelledby="titulo-animacoes"><div class="k-container k-stack--large"><header class="k-section-heading"><p class="k-section-number">06 / MOVIMENTO</p><h2 id="titulo-animacoes">Entra com leveza.<br>Deixa o conteúdo ficar.</h2><p class="k-muted">Um único easing de interface: cubic-bezier(.22, 1, .36, 1). Três durações: 140ms, 260ms e 480ms. Loop contínuo permitido SOMENTE no fundo da hero: luz de vitral em ciclos de 12s e 14s, cruz em 8s e respiração da palavra em 6s, em linear, sem piscar. Pausa fora da tela ou com a aba oculta e desliga com prefers-reduced-motion. Os demais movimentos continuam curtos e finitos.</p></header>
+    <section class="k-section k-section--soft" id="animacoes" data-reveal aria-labelledby="titulo-animacoes"><div class="k-container k-stack--large"><header class="k-section-heading"><p class="k-section-number">06 / MOVIMENTO</p><h2 id="titulo-animacoes">Entra com leveza.<br>Deixa o conteúdo ficar.</h2><p class="k-muted">Um único easing de interface: cubic-bezier(.22, 1, .36, 1). Três durações: 140ms, 260ms e 480ms. Atmosfera da hero: luz de vitral em ciclos de 12s e 14s, cruz em 8s e respiração da palavra em 6s, em linear, sem piscar. Pausa fora da tela ou com a aba oculta e desliga com prefers-reduced-motion. Na história, cenas finitas de 1,6s e apenas o brilho respira em 12s, com o easing único, pausando fora da tela. Todo movimento respeita a preferência de redução.</p></header>
       <div class="k-grid k-grid--3">
         <div class="k-motion-tile" id="movimento-entrada"><div class="k-motion-mark" aria-hidden="true"></div><h3 class="k-h5">Entrada da hero</h3><p class="k-caption k-muted">k-enter · 480ms · easing único<br>Sequência: atrasos de 0 / 140 / 260ms.</p><button class="k-button k-button--secondary" type="button" data-replay="movimento-entrada">Repetir entrada</button></div>
         <div class="k-motion-tile" id="movimento-scroll"><div class="k-motion-mark" aria-hidden="true"></div><h3 class="k-h5">Revelação no scroll</h3><p class="k-caption k-muted">data-reveal · 480ms · easing único<br>12px de deslocamento, uma vez por seção.</p><button class="k-button k-button--secondary" type="button" data-replay="movimento-scroll">Repetir revelação</button></div>
@@ -370,9 +492,19 @@
         <div class="k-motion-tile"><h3 class="k-h5">FAQ</h3><p class="k-caption k-muted">k-faq · 260ms · easing único<br>Opacidade e deslocamento de 4px.</p><details class="k-faq" id="faq-galeria"><summary>Abrir demonstração</summary><div class="k-faq__body"><p class="k-body-sm">Abre e fecha com estado nativo, sem esconder conteúdo atrás de uma animação lenta.</p></div></details></div>
         <div class="k-motion-tile k-mobile-demo"><h3 class="k-h5">Menu mobile</h3><p class="k-caption k-muted">k-menu-in/out · 260ms · easing único<br>8px, sem animar altura.</p><button class="k-menu-toggle" type="button" data-menu-toggle="menu-galeria" aria-controls="menu-galeria" aria-expanded="false">Abrir menu<svg class="k-icon" aria-hidden="true"><use href="#k-menu"/></svg></button><nav class="k-mobile-panel" id="menu-galeria" aria-label="Menu da galeria de movimento" hidden inert><a href="#animacoes">[Item de exemplo]</a></nav></div>
         <div class="k-motion-tile"><h3 class="k-h5">Confirmação de cópia</h3><p class="k-caption k-muted">k-copy · 260ms · easing único<br>Ícone amplia e retorna. Texto confirma.</p><button class="k-button" type="button" data-copy="pix-exemplo"><svg class="k-icon" aria-hidden="true"><use href="#k-copy"/></svg><span data-copy-label>Copiar marcador</span></button></div>
-        <div class="k-motion-tile"><h3 class="k-h5">Luz de vitral e cruz</h3><p class="k-caption k-muted">k-hero-led-beam · 12s e 14s · linear<br>k-hero-led-aurora-horizontal · 12s · linear<br>k-hero-led-cross · 8s · linear<br>k-hero-led-breath · 6s · linear<br>Único loop contínuo permitido: fundo da hero. Só transform e opacity. No celular, um feixe e a cruz. Pausa fora da tela; com movimento reduzido, feixes e cruz ficam parados e visíveis.</p><a class="k-link" href="#hero">Observar a hero</a></div>
+        <div class="k-motion-tile"><h3 class="k-h5">Luz de vitral e cruz</h3><p class="k-caption k-muted">k-hero-led-beam · 12s e 14s · linear<br>k-hero-led-aurora-horizontal · 12s · linear<br>k-hero-led-cross · 8s · linear<br>k-hero-led-breath · 6s · linear<br>Loop da hero; a outra exceção é o brilho da história. Só transform e opacity. No celular, um feixe e a cruz. Pausa fora da tela; com movimento reduzido, feixes e cruz ficam parados e visíveis.</p><a class="k-link" href="#hero">Observar a hero</a></div>
         <div class="k-motion-tile"><h3 class="k-h5">Água na hero</h3><p class="k-caption k-muted">k-hero-water · filtro SVG · ao mover o mouse<br>Acalma em 1,2s, sem loop. Só na malha, só com mouse.<br>Desligada com movimento reduzido ou hero fora da tela.</p><a class="k-link" href="#hero">Testar na hero</a></div>
         <div class="k-motion-tile"><h3 class="k-h5">Movimento reduzido</h3><p class="k-body-sm k-muted">prefers-reduced-motion remove animações e transições. Conteúdo, foco e estados continuam visíveis. A preferência pode mudar com a página aberta.</p></div>
+      </div>
+      <div class="k-stack"><h3>Galeria · cenas da história</h3><p class="k-body-sm k-muted">Os controles abaixo usam o mesmo palco e os mesmos SVGs da demonstração. Toda seleção pode ser repetida; nenhum capítulo troca sozinho. Easing de todos os movimentos: cubic-bezier(.22, 1, .36, 1).</p>
+        <div class="k-grid k-grid--3">
+          <div class="k-motion-tile"><h4 class="k-h5">Troca e texto</h4><p class="k-caption k-muted">k-story-zoom · 480ms · atraso 0<br>Opacidade entre cenas · 480ms<br>Painel · 260ms · 4px, sem animar altura.</p><button class="k-button k-button--secondary" type="button" data-story-demo="quem-somos" data-story-index="0">Observar a entrada</button></div>
+          <div class="k-motion-tile"><h4 class="k-h5">01 · Sala</h4><p class="k-caption k-muted">k-story-light · 1.600ms · atraso 0<br>k-story-rise nas cadeiras · 480ms<br>Atrasos: 260, 400, 540, 680, 820 e 960ms.<br>Lâmpada acende; cadeiras sobem 12px.</p><button class="k-button k-button--secondary" type="button" data-story-demo="quem-somos" data-story-index="0">Repetir capítulo 01</button></div>
+          <div class="k-motion-tile"><h4 class="k-h5">02 · Primeiros passos</h4><p class="k-caption k-muted">k-story-rise / light · 1.600ms · atraso 0<br>k-story-path · 1.340ms · atraso 260ms<br>Prédio sobe 12px; cruz acende; caminho abre de baixo para cima.</p><button class="k-button k-button--secondary" type="button" data-story-demo="quem-somos" data-story-index="1">Repetir capítulo 02</button></div>
+          <div class="k-motion-tile"><h4 class="k-h5">03 · Portas abertas</h4><p class="k-caption k-muted">k-story-door-left/right · 1.600ms<br>k-story-spread · 1.600ms · atraso 0<br>Portas giram nas dobradiças, com perspectiva; luz se espalha na rua.</p><button class="k-button k-button--secondary" type="button" data-story-demo="quem-somos" data-story-index="2">Repetir capítulo 03</button></div>
+          <div class="k-motion-tile"><h4 class="k-h5">04 · Horizonte</h4><p class="k-caption k-muted">k-story-sun · 1.600ms · atraso 0<br>k-story-road · 480ms × 3 · atraso 140ms<br>Sol sobe 42px; faixas avançam 18px, em três passadas finitas. Depois param.</p><button class="k-button k-button--secondary" type="button" data-story-demo="quem-somos" data-story-index="3">Repetir capítulo 04</button></div>
+          <div class="k-motion-tile"><h4 class="k-h5">Atmosfera pausável</h4><p class="k-caption k-muted">k-story-breathe · 12s · atraso 0<br>Somente opacity: 0,35 → 0,7 → 0,35.<br>Único loop da história, no brilho atrás dos pontos. Pausa com palco fora da tela ou aba oculta; desligado com movimento reduzido.</p><a class="k-link" href="#quem-somos">Observar o brilho</a></div>
+        </div>
       </div>
       <div class="k-demo k-stack"><h3 class="k-h5">Como usar o sistema</h3><p class="k-body-sm">Toda página importa <code>css/tokens.css</code>, <code>css/components.css</code> e, quando houver interação, <code>js/ui.js</code>. Os tokens estão no :root. Nenhum estilo depende deste HTML de documentação.</p><p class="k-body-sm">A vitrine fica fora do deploy. O index é a página principal em construção, com k-hero-led, marcadores visíveis e noindex até o lançamento. Antes de lançar, validar conteúdo, logo e vermelho oficial.</p></div>
     </div></section>
