@@ -2,6 +2,8 @@
 
 ## 1. Última sessão
 
+- 09/11/2026 (fila 03): logo redesenhado em vetor (provisório), com versões horizontal, empilhada e símbolo, claras e escuras, em assets/brand/, e PNG 1200x630 para og:image. Aplicado no cabeçalho (SVG interno, tinta segue a cor do cabeçalho: branco sobre a hero, preto no sólido, troca de 140ms), no rodapé (empilhado claro) e nos ícones de 180, 192 e 512 px. Nenhum “LOGO” restante. Seção “Logo” no design system com versões, respiro, tamanho mínimo, fundos e usos proibidos. Folha de comparação em relatorios/kemuel-logo/. Testes por servidor local em 1440x900, 1366x768, 390x844 e 360x740 e primeira dobra em 14 telas: sem erros, logo nas duas variantes, rodapé empilhado.
+
 - 09/11/2026 (fila 02): links oficiais do Instagram (@igrejakemueliguatu) e do YouTube (@Igreja.kemuelsede) aplicados a partir de dados/igreja.json: dobra “Acompanhe” com três cards (Instagram, YouTube, Blog), ícones no rodapé de todas as páginas e sameAs no JSON-LD. Ícones k-instagram e k-youtube desenhados no padrão de traço do sistema, sem logotipos coloridos. Testes por servidor local em 1366x768 e 390x844 nas seis páginas: links, nova aba com aviso acessível, alvo de 44px, foco visível, JSON-LD e console sem erros.
 
 - 09/11/2026 (fila 01): dados reais da igreja aplicados em todas as páginas, a partir de dados/igreja.json. Hero, Bíblia, tabela de cultos, linha do tempo, rodapé (partial), FAQ de demonstração do manual, títulos, descriptions, Open Graph e JSON-LD Church gerados pelo script de montagem (scripts/dados-igreja.mjs), idempotente. Botões “Ver rota no mapa” agora abrem o Google Maps em nova aba. Testes por servidor local em 1366x768 e 390x844 nas seis páginas: dados corretos, rodapé idêntico, mapa com o endereço certo, JSON-LD válido, sem erros de console; primeira dobra em 14 telas, com 19h30 sem quebra em 360 px.
@@ -54,7 +56,7 @@
 - Texto curto sobre como é o culto e validação da frase “Sem roupa certa, sem cobrança na porta.”
 - Versículo e tradução autorizada, somente se a igreja decidir incluir uma citação na Bíblia; nenhum texto bíblico foi publicado.
 
-- Arquivo oficial do logo em SVG ou PNG transparente, com versão para fundo claro, para substituir os espaços reservados "LOGO". Não recriar nem vetorizar a partir do print; única exceção: ícones do site em assets/icons/, provisórios, a substituir pelo arquivo oficial.
+- Arquivo original do logo (SVG ou PNG transparente, versões clara e escura) para substituir o redesenho provisório de assets/brand/ e os ícones de assets/icons/.
 - Código oficial do vermelho para substituir --color-red PROVISÓRIO (#DE2E38). Média medida no print: RGB 234,8323 / 48,6398 / 59,6149, arredondada para #EB313C; ajuste uniforme de canais por fator 0,947 para AA com branco (4,61:1).
 - Confirmar o registro do domínio igrejakemuel.com.br e em nome de quem está.
 - Conteúdo institucional: quem somos, contatos.
@@ -67,7 +69,7 @@
 - Validar a frase da hero com o pastor.
 - Respostas do FAQ: duração e estrutura do culto, costume de vestimenta, ministério infantil e faixa etária, como a igreja recebe visitantes, estacionamento.
 - Número oficial do WhatsApp.
-- Logo oficial em versão clara e escura.
+- Aprovação visual do Alisson do logo redesenhado: folha em relatorios/kemuel-logo/comparacao.png.
 - Confirmar que todos os cursos e materiais serão gratuitos, por causa do texto do botão da hero.
 - Substituir os ícones provisórios quando chegarem o arquivo oficial do logo e o código oficial do vermelho.
 
@@ -84,6 +86,8 @@
 
 ## 8. Decisões registradas
 
+- 09/11/2026: exceção ampliada pelo Alisson: o logo completo (símbolo, “IGREJA” e “Kemuel”) foi redesenhado em contornos, como aproximação PROVISÓRIA até o original aparecer; aprovação visual pendente. Arquivos em assets/brand/; regras de uso na seção “Logo” do design system. Palavras a partir da Outfit (600 em Kemuel, 350 em IGREJA), encaixadas letra por letra nas caixas medidas da referência; Λ desenhado à parte.
+- 09/11/2026: no site, o logo é SVG interno com classes k-logo__ink (currentColor) e k-logo__ring (--color-red), para a cor vir dos tokens e trocar com o cabeçalho; os arquivos de imagem têm as cores gravadas. logo-simbolo.svg (cruz branca) e logo-simbolo-escuro.svg (cruz preta) em dois arquivos (decidido sem o Alisson, revisar). Favicon de 16/32 px mantém a simplificação de legibilidade; ícones grandes usam o símbolo refinado. Estilos e tokens do antigo espaço “LOGO” removidos.
 - 09/11/2026: redes oficiais em dados/igreja.json (bloco redes), aplicadas por data-dado-href. Dobra “Acompanhe” com Instagram, YouTube e Blog, cada card com uma ação secundária. Marcador do WhatsApp sai da dobra e do rodapé e fica só no botão flutuante, como exemplo (rodapé sem WhatsApp: decidido sem o Alisson, revisar).
 - 09/11/2026: Igreja Kemuel em Iguatu - CE; sede na Av. Dr. José Holanda Montenegro, [número], Centro. Fonte única de dados em dados/igreja.json (fora do deploy), aplicada pelo script de montagem por meio de data-dado e data-dado-href; títulos no formato “[Página] · Igreja Kemuel · Iguatu, CE”.
 - 09/11/2026: o grupo musical gospel Kemuel (Itu, SP) não tem relação com a igreja e não deve ser citado. Congregações em outras cidades (como Crato) não são citadas sem confirmação.
@@ -157,6 +161,7 @@
 - [ ] Trocar todos os textos de exemplo e os [ANO] da linha do tempo pela história real aprovada.
 - [ ] Decidir entre ilustrações e fotos reais autorizadas por capítulo; se usar fotos, instalar os arquivos e preencher alt descritivo antes de ativar data-story-photo.
 - [ ] Nenhum marcador [ ] restante nas páginas.
+- [ ] Logo redesenhado aprovado pelo Alisson ou substituído pelo arquivo original.
 - [ ] Logo oficial e vermelho oficial aplicados.
 - [ ] Quando o vermelho oficial chegar, gerar de novo os ícones de assets/icons/: eles têm o vermelho gravado no arquivo e não acompanham a troca do token CSS.
 - [ ] Meta robots noindex removido.

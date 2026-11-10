@@ -83,6 +83,11 @@ export function fillHead(html, d, page, file) {
   set(/(<meta name="description" content=")[^"]*(")/, escape(info.descricao));
   set(/(<meta property="og:title" content=")[^"]*(")/, escape(title));
   set(/(<meta property="og:description" content=")[^"]*(")/, escape(info.descricao));
+  // og:image: logo horizontal claro sobre preto. Substitui as linhas anteriores para não duplicar.
+  html = html.replace(/\n[ \t]*<meta property="og:image[^>]*>/g, '');
+  const og = `${d.site}/assets/brand/og-igreja-kemuel.png`;
+  html = html.replace(/(\n([ \t]*)<meta property="og:description"[^>]*>)/, (line, _, indent) =>
+    `${line}\n${indent}<meta property="og:image" content="${og}">\n${indent}<meta property="og:image:width" content="1200">\n${indent}<meta property="og:image:height" content="630">\n${indent}<meta property="og:image:alt" content="Logo da Igreja Kemuel">`);
   return html;
 }
 

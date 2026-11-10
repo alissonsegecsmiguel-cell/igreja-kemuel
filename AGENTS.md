@@ -25,7 +25,7 @@ Regras fixas do projeto do site da Igreja Kemuel.
 - É proibido contornar recusas de servidor (403, 401 ou similares), alterar cabeçalhos para se passar por navegador ou usar links temporários e assinados.
 - Se faltar algum arquivo, documentar como ausente e seguir sem ele.
 - Toda extração em referencias/ entrega, no primeiro nível da pasta do site, somente: design-system__RESUMO.html, notas.md e a pasta arquivos/ com todo o resto. RESUMO tem de 2 a 5 palavras sobre o estilo visual, em minúsculas, sem acentos, com hífens, diferente dos já existentes.
-- Exceção autorizada pelo Alisson: redesenhar SOMENTE o símbolo (cruz e círculo) para os ícones do site em assets/icons/, como aproximação PROVISÓRIA até o arquivo oficial do logo chegar. A regra de não recriar o logo continua valendo para todo o resto do site.
+- Exceção autorizada pelo Alisson: o logo completo (símbolo, "IGREJA" e "Kemuel") foi redesenhado em vetor, em assets/brand/, e o símbolo nos ícones de assets/icons/, sempre como aproximação PROVISÓRIA até o arquivo original aparecer. Usar só os arquivos e regras de uso do design system; não redesenhar de novo sem pedido.
 - Imagens no site: só da igreja ou com licença. Imagens geradas por IA só como provisórias, nunca representando pessoas ou eventos reais da igreja. Letras de louvor não são publicadas.
 
 ## Forma de trabalho

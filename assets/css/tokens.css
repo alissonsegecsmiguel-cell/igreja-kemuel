@@ -362,9 +362,8 @@
   --menu-offset: 8px;
   --tooltip-offset: 4px;
   --sr-only-size: 1px;
-  --logo-min-width: 3.25rem;
-  --logo-min-height: 2.5rem;
-  --logo-text-size: .625rem;
+  --logo-header-height: clamp(2rem, 2.6vw, 2.25rem); /* Cabe nos 56 e 64 px do cabeçalho. */
+  --logo-footer-height: 7rem;
   --heading-max-width: 52rem;
   --hero-intro-max-width: 36rem;
   --state-min-width: 10rem;
