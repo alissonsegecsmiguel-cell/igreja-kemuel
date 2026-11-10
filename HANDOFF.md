@@ -2,6 +2,8 @@
 
 ## 1. Última sessão
 
+- 10/11/2026 (retomada, fila 09): Contribua refeita em manifesto preto com fotografia histórica licenciada, citação/paráfrases próprias e motivos; projetos/PIX em fundo suave. Metas fictícias marcadas EXEMPLO, percentuais calculados (64/38/12), seleção e instrução do PIX por código, cópia com confirmação e seleção do texto quando negada. Chave/titular/QR continuam marcadores em dados/igreja.json. SVGs próprios, entrada única da moeda e barras, inclinação até 6°, sem loop, com movimento reduzido. Inicial e /contribua, quatro tamanhos, teclado/toque/mouse, variante sem valores, contraste e manual conferidos; sem erros nem rolagem horizontal. Hero, blog e materiais preservados.
+
 - 10/11/2026 (retomada, fila 07): dobra Materiais e /materiais em composição editorial de revista, com imagens históricas licenciadas, três capas desencontradas e scroll-snap na inicial móvel; grade e seis filtros em texto na página, curso em #cursos. Item 01 real preservado integralmente, com download da apostila; exemplos 02–06 e créditos individuais. Montagem idempotente; quatro tamanhos passaram, sem erros/rolagem horizontal, com filtros, selos, avisos e downloads. Newsreader preparada perto da seção. Lighthouse móvel mediano antes/depois final: 98→98, LCP 1.831→1.824ms, TBT 111→114ms, CLS 0; transferência final 335.902 bytes.
 
 - 10/11/2026 (retomada identificada, fila 06): teste único da imagem Morgan fol. 28r com User-Agent IgrejaKemuelSite/1.0 retornou HTTP 200, JPEG 1.662.408 bytes. Portal /blog implementado: versículo ARC exato, busca normalizada com hash, filtros/contagens, destaque, três recomendados manuais, lista paginada e dez em breve sem links/páginas. Licenças e originais conferidos; downloads sequenciais com pausa de 4s. Inicial e cinco posts completos idênticos ao HEAD. Testes locais nos quatro tamanhos e manual 1440/390 passaram. Lighthouse móvel, mediana de três: 99 / LCP 1.771ms / TBT 44ms / CLS 0. Publicação e teste público registrados no relatório 06.
@@ -41,6 +43,8 @@
 
 ## 2. Estado atual
 
+- Portal do blog com busca, cinco textos de exemplo e dez em breve; Materiais com catálogo editorial, apostila 01 real e cinco exemplos; Contribua com manifesto, metas fictícias e PIX ainda marcado. A inicial usa as mesmas fontes de dados/componentes.
+
 - Repositório conectado ao GitHub, só branch main. Todo push vai para o ar.
 - Blog e Materiais e cursos ainda têm partes provisórias, no menu. /discipulado contém dez lições, FAQ pendente de confirmação e apostila de exemplo para download; o catálogo já tem o item 01 real.
 - No ar: a página principal em construção, com marcadores entre colchetes e noindex. O design system permanece excluído do deploy por .vercelignore.
@@ -54,16 +58,18 @@
 
 ## 4. Próximas tarefas
 
-1. Rever a apostila e a página /discipulado; aprovar a dobra editorial de blog concluída na 05. Retomar 06, 07 e 09 quando houver acesso permitido às imagens/fontes documentadas no Backlog; não contornar recusas.
+1. Rever /blog, /materiais e /contribua e as três dobras na inicial. Revisar a apostila e /discipulado; aprovar os exemplos antes do lançamento. As tarefas 06, 07 e 09 estão implementadas; substituir conteúdos e dados provisórios conforme o checklist.
 2. Dobra “Venha nos visitar” com Bíblia 3D: já implementada; aguardando validação. Mantida sem alterações nesta tarefa.
 3. Preencher os marcadores conforme chegarem os dados da igreja e seguir o checklist de lançamento.
 4. Validar o design system e substituir os provisórios quando chegarem o logo e o código oficial do vermelho.
 
 ## 5. Backlog
 
-- Fila 09 — manifesto Contribua, metas e PIX: pausada antes de implementar. Fotografia Coin of Porcius Festus no Commons tem domínio público confirmado, mas o download respondeu HTTP 403; busca no Met não forneceu alternativa adequada com CC0 verificado. Risco: atribuir licença de outra obra ou reutilizar foto sem acesso permitido. Retomar com fotografia autorizada de moeda de bronze da Judeia do século I e executar 09-contribua.md. Nenhum arquivo de produto alterado ou restauração necessária. Relatório: relatorios/fila/09-relatorio.md.
+- Vazio. As tarefas 06, 07 e 09 foram retomadas com a identificação autorizada.
 
 ## 6. Pendências que dependem de pessoas
+
+- Validar o manifesto com o pastor; confirmar metas reais autorizadas para divulgação, mostrar valores ou só percentuais, responsável por atualizar e códigos de projeto com a tesouraria. Chave PIX institucional, titular e QR Code oficiais ainda pendentes; não substituir marcadores sem confirmação.
 
 - Lista real de materiais/PDFs para substituir exemplos 02–05; plataforma e link do curso do item 06. Preservar a apostila real 01.
 
@@ -109,6 +115,8 @@
 - Organização dos quatro estudos locais: primeiro nível com design system renomeado, notas.md e arquivos/; cópias de segurança e diagnóstico preservados localmente.
 
 ## 8. Decisões registradas
+
+- 10/11/2026 (fila 09): k-give-manifesto, k-give-reasons, k-goal-card, k-progress e novo k-pix documentados no manual/galeria. dados/metas.json contém somente os exemplos autorizados, percentuais calculados na montagem; mostrar_valores false omite valores do HTML. Projeto escolhido pela mensagem/código do PIX; segundo clique desmarca. Três ilustrações próprias em partials/give-*.svg, com malha e brilho derivados da história, sem pessoas. Fotografia da outra face do mesmo prutah de Agrippa I usada em Materiais, licenciada, sem repetir a foto. Paráfrases próprias. Entrada única em 480ms, inclinacão manual até 6°, barras finitas e motivos escalonados, sem novo loop. Preparação do itálico ao se aproximar e título com largura própria, preservando “cada um” junto (decidido sem o Alisson, revisar). Ordem atual: blog → Materiais cinza-pedra → manifesto Contribua preto → metas/PIX suaves → Acompanhe branca.
 
 - 10/11/2026 (fila 07): k-materials-header, k-material-card e k-cover-title no design system; dados/materiais.json é o catálogo único, lido pela montagem. Apostila 01 real sem selo, cinco itens fictícios com EXEMPLO e aviso; curso externo continua exemplo. Imagens naturais, sem colagem/retícula, com crédito expansível e originais fora do deploy. Nova ordem: hero preta → visita branca → primeira visita em papel quente → história preta → blog em papel quente → Materiais em cinza-pedra → Contribua suave → Acompanhe branca → rodapé preto. Faixa de materiais removida de dentro do blog; blog e posts preservados. Preparação de Newsreader a --materials-font-distance (600px, alias do token existente) para evitar 128KB de fontes na hero (decidido sem o Alisson, revisar).
 
@@ -194,6 +202,8 @@
 
 ## 9. Checklist de lançamento
 
+- [ ] Substituir metas fictícias por dados públicos aprovados, confirmar data recente e responsável; validar códigos, chave PIX, titular e QR Code antes de remover marcadores/selos.
+
 - [ ] Materiais 02–05 com conteúdo e PDFs reais, curso 06 ligado à plataforma e selos EXEMPLO removidos somente após validação.
 
 - [ ] Substituir assets/materiais/discipulado-basico.pdf pela apostila revisada e aprovada antes de tirar noindex; regenerar as capas e conferir os dados do item 01.
@@ -226,3 +236,11 @@
 3. Definir em_breve: false, data, autor e subtitulo; gerar também capa-1600.webp no fluxo do conversor para o post completo.
 4. Rodar node scripts/montar-paginas.mjs duas vezes; conferir página, relacionados, índice e dobra inicial. Nunca editar dados/posts.json à mão.
 5. Testar, atualizar HANDOFF, adicionar só os arquivos da tarefa, commit e push.
+
+## 12. Como atualizar as metas
+
+1. Editar dados/metas.json com os dados aprovados para divulgação; nunca incluir dados de doadores ou movimentações individuais. Atualizar atualizacao (AAAA-MM-DD).
+2. arrecadado e meta são números em reais; meta precisa ser maior que zero. Não digitar percentual: a montagem calcula e limita de 0 a 100. Manter exemplo: true enquanto forem dados fictícios.
+3. mostrar_valores true publica valores agregados; false omite valores do HTML e mantém percentuais. A escolha aguarda confirmação.
+4. Combinar codigo com a tesouraria; esse texto será sugerido na mensagem do PIX, não cria direcionamento bancário automático. Ilustrações disponíveis: banda, infantil, garagem.
+5. Chave, titular e QR Code só em dados/igreja.json. Rodar node scripts/montar-paginas.mjs duas vezes, conferir estados/cópia e atualizar HANDOFF antes do commit/push.

@@ -244,20 +244,30 @@
   });
 
   document.querySelectorAll('[data-copy]').forEach(button => {
+    const label = button.querySelector('[data-copy-label]');
+    const originalLabel = label?.textContent;
+    let feedbackTimer;
     button.addEventListener('click', async () => {
       const field = document.getElementById(button.dataset.copy);
       if (!field) return;
-      const text = field.value || field.textContent;
-      const label = button.querySelector('[data-copy-label]');
+      const text = (field.value || field.textContent).trim();
       try {
         if (navigator.clipboard?.writeText) await navigator.clipboard.writeText(text);
-        else { field.focus(); field.select(); if (!document.execCommand('copy')) throw new Error('clipboard'); }
+        else throw new Error('clipboard');
+        clearTimeout(feedbackTimer);
         button.classList.add('is-copied');
-        if (label) label.textContent = 'Copiado · exemplo';
-        announce('Marcador de demonstração copiado. Não é uma chave PIX real.');
+        const message = button.dataset.copyKind === 'key' ? 'Chave copiada' : button.dataset.copyKind === 'code' ? 'Código copiado' : 'Copiado · exemplo';
+        if (label) label.textContent = message;
+        announce(message);
+        feedbackTimer = setTimeout(() => { button.classList.remove('is-copied'); if (label) label.textContent = originalLabel; }, parseFloat(tokens.getPropertyValue('--give-copy-feedback-hold')));
       } catch {
-        field.focus(); field.select?.();
-        announce('Selecione e copie o texto do campo. Ele é apenas um marcador de demonstração.');
+        clearTimeout(feedbackTimer);
+        button.classList.remove('is-copied');
+        if (label) label.textContent = originalLabel;
+        field.focus?.({ preventScroll: true });
+        if (field.select) field.select();
+        else { const range = document.createRange(); range.selectNodeContents(field); const selection = getSelection(); selection.removeAllRanges(); selection.addRange(range); }
+        announce('Não foi possível copiar. O texto foi selecionado para você copiar.');
       }
     });
   });
@@ -714,6 +724,94 @@
       group.querySelectorAll('[data-material-section]').forEach(section => { section.hidden = ![...section.querySelectorAll('[data-material-category]')].some(card => !card.hidden); });
       group.querySelector('[data-material-count]').textContent = `${count} ${count === 1 ? 'material' : 'materiais'}`;
     }));
+  });
+
+  // Contribua: entrada finita e inclinação somente com mouse; sem movimento contínuo.
+  document.querySelectorAll('[data-give-manifesto]').forEach(section => {
+    const prepare = () => {
+      const family = tokens.getPropertyValue('--editorial-font').split(',')[0].trim();
+      const weight = tokens.getPropertyValue('--editorial-weight-body').trim();
+      document.fonts.load(`italic ${weight} ${getComputedStyle(section).fontSize} ${family}`).then(() => section.classList.add('is-give-ready'));
+    };
+    if ('IntersectionObserver' in window) {
+      const nearby = new IntersectionObserver(entries => { if (entries.some(entry => entry.isIntersecting)) { prepare(); nearby.disconnect(); } }, { rootMargin: tokens.getPropertyValue('--give-font-distance').trim() });
+      nearby.observe(section);
+    } else prepare();
+    const coin = section.querySelector('[data-give-coin]');
+    const tilt = coin?.querySelector('.k-give-coin__tilt');
+    if (!coin || !tilt) return;
+    let active = false, pending = false, point, loaded = false, loading = false;
+    const reset = () => { tilt.style.transform = 'none'; };
+    const startEntry = () => { if (active && loaded) coin.classList.add('is-coin-ready'); };
+    const prepareImage = () => {
+      if (loading) return;
+      loading = true;
+      coin.querySelector('img').decode().then(() => { loaded = true; startEntry(); }).catch(() => {});
+    };
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => { active = entries[0].isIntersecting; if (active) { prepareImage(); startEntry(); } else reset(); });
+      observer.observe(coin);
+    } else { active = true; prepareImage(); }
+    coin.addEventListener('pointermove', event => {
+      if (!active || reduced.matches || event.pointerType !== 'mouse') return;
+      point = { x: event.clientX, y: event.clientY };
+      if (pending) return;
+      pending = true;
+      requestAnimationFrame(() => {
+        pending = false;
+        if (!active || reduced.matches) return;
+        const box = coin.getBoundingClientRect();
+        const x = (point.x - box.left - box.width / 2) / (box.width / 2), y = (point.y - box.top - box.height / 2) / (box.height / 2);
+        const norm = Math.max(1, Math.hypot(x, y));
+        const max = parseFloat(tokens.getPropertyValue('--give-coin-max-tilt'));
+        tilt.style.transform = `perspective(${tokens.getPropertyValue('--give-coin-perspective').trim()}) rotateX(${-y / norm * max}deg) rotateY(${x / norm * max}deg)`;
+      });
+    });
+    coin.addEventListener('pointerleave', reset); reduced.addEventListener('change', reset);
+  });
+  document.querySelectorAll('[data-give-group]').forEach(group => {
+    const buttons = [...group.querySelectorAll('[data-goal-select]')];
+    const pix = group.querySelector('[data-pix]');
+    const mobile = matchMedia(`(max-width: ${parseFloat(tokens.getPropertyValue('--give-mobile-breakpoint')) - .01}px)`);
+    buttons.forEach(button => button.addEventListener('click', () => {
+      const selected = button.getAttribute('aria-pressed') !== 'true';
+      buttons.forEach(item => item.setAttribute('aria-pressed', String(item === button && selected)));
+      pix.querySelector('[data-pix-default]').hidden = selected;
+      pix.querySelector('[data-pix-target]').hidden = !selected;
+      pix.querySelector('[data-pix-title]').textContent = selected ? button.dataset.goalTitle : '';
+      pix.querySelector('[data-pix-code]').textContent = selected ? button.dataset.goalCode : '';
+      pix.querySelector('[data-pix-code-copy]').hidden = !selected;
+      if (mobile.matches && selected) pix.scrollIntoView({ behavior: reduced.matches ? 'instant' : 'smooth', block: 'start' });
+    }));
+    const updateSticky = () => { const clearance = parseFloat(getComputedStyle(pix).scrollMarginTop); pix.classList.toggle('is-sticky', !mobile.matches && pix.offsetHeight <= innerHeight - clearance * 2); };
+    if ('ResizeObserver' in window) new ResizeObserver(updateSticky).observe(pix);
+    addEventListener('resize', updateSticky); updateSticky();
+    const animations = new Set(), seen = new WeakSet();
+    function show(card, index) {
+      if (seen.has(card)) return;
+      seen.add(card);
+      if (reduced.matches) return;
+      const bar = card.querySelector('[data-goal-progress]');
+      const number = card.querySelector('[data-goal-number]');
+      const target = Number(bar.getAttribute('aria-valuenow'));
+      const fill = bar.querySelector('.k-progress__fill');
+      const animation = fill.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: parseFloat(tokens.getPropertyValue('--give-progress-duration')), delay: index * parseFloat(tokens.getPropertyValue('--give-progress-stagger')), easing, fill: 'both' });
+      animations.add(animation); number.textContent = '0';
+      const tick = () => {
+        if (reduced.matches) { animation.finish(); number.textContent = target; animations.delete(animation); return; }
+        const progress = animation.effect.getComputedTiming().progress || 0;
+        number.textContent = Math.round(target * progress);
+        if (animation.playState === 'finished') { number.textContent = target; animations.delete(animation); }
+        else requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }
+    const cards = [...group.querySelectorAll('[data-goal-card]')];
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { show(entry.target, cards.indexOf(entry.target)); observer.unobserve(entry.target); } }));
+      cards.forEach(card => observer.observe(card));
+    }
+    reduced.addEventListener('change', () => { if (reduced.matches) animations.forEach(animation => animation.finish()); });
   });
 
   // Portal: índice público gerado; HTML estático continua legível se a busca falhar.

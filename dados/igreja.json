@@ -56,7 +56,7 @@
     },
     "contribua": {
       "titulo": "Contribua",
-      "descricao": "Formas de contribuir com a Igreja Kemuel, em Iguatu, Ceará. Página em construção."
+      "descricao": "Conheça as formas de contribuir com a Igreja Kemuel, em Iguatu, Ceará. Projetos e PIX institucional em preparação, com exemplos identificados."
     }
   },
   "redes": {
@@ -70,5 +70,10 @@
       "usuario": "@Igreja.kemuelsede",
       "url": "https://www.youtube.com/@Igreja.kemuelsede"
     }
+  },
+  "pix": {
+    "chave": "[Chave PIX institucional]",
+    "titular": "[Nome do titular institucional]",
+    "qr_codigo": "[QR Code institucional]"
   }
 }

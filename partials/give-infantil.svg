@@ -1,0 +1,6 @@
+<svg class="k-give-art" viewBox="0 0 400 200" role="img" aria-label="Ilustração de exemplo: blocos e brinquedos de uma sala infantil">
+  <rect class="k-give-art__fill" x="60" y="97" width="76" height="76" rx="5"/><rect x="60" y="97" width="76" height="76" rx="5"/><path d="m83 146 15-30 15 30Z"/>
+  <rect class="k-give-art__fill" x="147" y="97" width="76" height="76" rx="5"/><rect x="147" y="97" width="76" height="76" rx="5"/><circle cx="185" cy="135" r="16"/>
+  <rect class="k-give-art__fill" x="103" y="13" width="76" height="76" rx="5"/><rect x="103" y="13" width="76" height="76" rx="5"/><path d="m141 28 5 14 15 1-12 9 4 15-12-9-12 9 4-15-12-9 15-1Z"/>
+  <circle cx="297" cy="139" r="34"/><path d="M263 139h68m-34-34c-19 18-19 50 0 68 19-18 19-50 0-68M46 184h308M257 69h73m-61 0 5-19h38l6 19"/>
+</svg>

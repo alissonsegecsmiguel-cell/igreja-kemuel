@@ -1,0 +1,9 @@
+{
+  "atualizacao": "2026-11-10",
+  "mostrar_valores": true,
+  "metas": [
+    { "id": "banda", "titulo": "Instrumentos para a banda", "descricao": "Novos instrumentos para o louvor dos cultos.", "codigo": "BANDA", "ilustracao": "banda", "arrecadado": 6400, "meta": 10000, "exemplo": true },
+    { "id": "infantil", "titulo": "Salas do ministério infantil", "descricao": "Salas mais seguras e acolhedoras para as crianças.", "codigo": "INFANTIL", "ilustracao": "infantil", "arrecadado": 11400, "meta": 30000, "exemplo": true },
+    { "id": "garagem", "titulo": "Ampliação da garagem", "descricao": "Mais vagas para quem chega aos cultos.", "codigo": "GARAGEM", "ilustracao": "garagem", "arrecadado": 9600, "meta": 80000, "exemplo": true }
+  ]
+}
