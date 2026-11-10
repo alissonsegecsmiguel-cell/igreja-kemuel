@@ -26,6 +26,9 @@ function generators(d) {
     endereco: () => `${e.rua}, ${e.numero} · ${e.bairro} · ${e.cidade} - ${e.uf}`,
     'endereco-linhas': () => `${e.rua}, ${e.numero}<br><span class="k-muted">${e.bairro} · ${e.cidade} - ${e.uf}</span>`,
     cidade: () => `${d.cidade}, ${d.estado}`,
+    // Batismos: o número só existe em dados/igreja.json.
+    'batismos-total': () => String(d.batismos.total),
+    'batismos-aviso': () => d.batismos.provisorio ? 'Número provisório' : '',
     'instagram-usuario': () => d.redes.instagram.usuario,
     'youtube-usuario': () => d.redes.youtube.usuario,
     'nome-cidade': () => `${d.nome} · ${d.cidade}, ${d.estado}`,
@@ -86,7 +89,10 @@ export function fillData(html, d, file) {
   }
   html = out + html.slice(last);
   // data-dado-href="mapa" ou o nome de uma rede em dados/igreja.json define o href do link.
-  const urls = { mapa: d.mapa, ...Object.fromEntries(Object.entries(d.redes || {}).map(([key, rede]) => [key, rede.url])) };
+  // WhatsApp do discipulado: só com número oficial; sem ele, o botão leva ao fechamento da página.
+  const whats = d.contato?.whatsapp; const digits = String(whats?.numero || '').replace(/\D/g, '');
+  const discipleship = !whats?.exemplo && digits.length >= 10 ? `https://wa.me/${digits}?text=${encodeURIComponent('Olá! Quero participar do Discipulado Básico.')}` : '#participar';
+  const urls = { mapa: d.mapa, 'whatsapp-discipulado': discipleship, ...Object.fromEntries(Object.entries(d.redes || {}).map(([key, rede]) => [key, rede.url])) };
   html = html.replace(/<a\b[^>]*\bdata-dado-href="([^"]+)"[^>]*>/g, (tag, key) => {
     if (!urls[key]) throw new Error(`${file}: data-dado-href="${key}" desconhecido`);
     return tag.replace(/(\s)href="[^"]*"/, (_, space) => `${space}href="${escape(urls[key])}"`);

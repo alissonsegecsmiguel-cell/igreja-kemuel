@@ -1,0 +1,38 @@
+{
+  "discipulado": {
+    "explicacao": {
+      "youtube_id": null,
+      "titulo": "Como é o Discipulado Básico",
+      "duracao": "1:45",
+      "formato": "horizontal",
+      "exemplo": true
+    },
+    "depoimentos": [
+      {
+        "youtube_id": null,
+        "titulo": "Depoimento 1",
+        "duracao": "0:48",
+        "formato": "vertical",
+        "exemplo": true
+      },
+      {
+        "youtube_id": null,
+        "titulo": "Depoimento 2",
+        "duracao": "0:52",
+        "formato": "vertical",
+        "exemplo": true
+      },
+      {
+        "youtube_id": null,
+        "titulo": "Depoimento 3",
+        "duracao": "0:41",
+        "formato": "vertical",
+        "exemplo": true
+      }
+    ],
+    "fundo_batismo": {
+      "arquivo": null,
+      "exemplo": true
+    }
+  }
+}

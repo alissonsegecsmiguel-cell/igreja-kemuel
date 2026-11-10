@@ -6,6 +6,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { loadData, fillData, fillHead, jsonLd } from './dados-igreja.mjs';
 import { loadPosts, postPage, postsIndex, blogFeature } from './blog.mjs';
+import { loadVideos, videoSlot, testimonials, closingBackground } from './videos.mjs';
 import { loadMaterials, materialsHome, materialsPage } from './materiais.mjs';
 import { blogPortal } from './blog-portal.mjs';
 import { loadGoals, giveSections } from './contribua.mjs';
@@ -50,6 +51,11 @@ function symbols(html, file) {
 }
 
 function shared(html, file) {
+  // Vídeos do discipulado: dados/videos.json; sem youtube_id, player de exemplo sem requisições externas.
+  const video = videos.discipulado || {};
+  if (html.includes('<!-- video-explicacao:start -->')) html = apply(html, 'video-explicacao', videoSlot(video.explicacao, 'explicacao'), file);
+  if (html.includes('<!-- video-depoimentos:start -->')) html = apply(html, 'video-depoimentos', testimonials(video.depoimentos), file);
+  if (html.includes('<!-- video-fundo:start -->')) html = apply(html, 'video-fundo', closingBackground(video.fundo_batismo), file);
   if (html.includes('<!-- give-section:start -->')) html = apply(html, 'give-section', giveSections(goals, church, file.startsWith('assets/') ? '' : 'assets/', file.startsWith('assets/') ? 'demo-give' : 'contribua', file === 'contribua.html' ? 1 : 2), file);
   if (html.includes('<!-- blog-portal:start -->')) html = apply(html, 'blog-portal', blogPortal(posts, verse, file.startsWith('assets/') ? '' : 'assets/', church), file);
   if (html.includes('<!-- materiais-catalogo:start -->')) html = apply(html, 'materiais-catalogo', materialsPage(materials, '', 2, 'demo-materiais'), file);
@@ -71,6 +77,7 @@ function shared(html, file) {
 }
 
 const posts = await loadPosts(root);
+const videos = loadVideos(root);
 const materials = loadMaterials(root);
 const verse = JSON.parse(read(join(root, 'dados', 'versiculos.json'))).blog;
 const goals = loadGoals(root);

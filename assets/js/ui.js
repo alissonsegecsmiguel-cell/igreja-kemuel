@@ -900,6 +900,70 @@
     reduced.addEventListener('change', () => { if (reduced.matches) animations.forEach(animation => animation.finish()); });
   });
 
+  // /discipulado: contador (uma vez, ao entrar na tela), jornada, vídeos de exemplo, fachada do YouTube e vídeo de fundo.
+  const easeOut = (() => {
+    // cubic-bezier(.22, 1, .36, 1), o easing do projeto, resolvido por Newton.
+    const [x1, y1, x2, y2] = [.22, 1, .36, 1];
+    const bez = (t, a, b) => 3 * a * t * (1 - t) ** 2 + 3 * b * t * t * (1 - t) + t ** 3;
+    return x => { let t = x; for (let i = 0; i < 6; i++) { const d = 3 * x1 * (1 - t) ** 2 + 6 * (x2 - x1) * t * (1 - t) + 3 * (1 - x2) * t * t; if (!d) break; t -= (bez(t, x1, x2) - x) / d; } return bez(Math.min(1, Math.max(0, t)), y1, y2); };
+  })();
+  document.querySelectorAll('[data-counter]').forEach(counter => {
+    const value = counter.querySelector('[data-counter-value]');
+    const total = Number(value?.textContent);
+    if (!value || !Number.isFinite(total) || reduced.matches || !('IntersectionObserver' in window)) return;
+    const length = parseFloat(tokens.getPropertyValue('--discipleship-counter-duration')) || 1600;
+    const observer = new IntersectionObserver(entries => {
+      if (!entries.some(entry => entry.isIntersecting)) return;
+      observer.disconnect();
+      const start = performance.now();
+      const step = now => {
+        const progress = Math.min(1, (now - start) / length);
+        value.textContent = String(Math.round(total * easeOut(progress)));
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      value.textContent = '0';
+      requestAnimationFrame(step);
+    }, { threshold: .4 });
+    observer.observe(counter);
+  });
+  document.querySelectorAll('[data-journey]').forEach(journey => {
+    const marker = journey.querySelector('[data-journey-marker]');
+    if (!marker) return;
+    let visible = false, pending = false;
+    const update = () => {
+      pending = false;
+      const box = journey.getBoundingClientRect();
+      const progress = Math.min(1, Math.max(0, (innerHeight / 2 - box.top) / box.height));
+      marker.style.transform = `translateY(${progress * (box.height - marker.offsetHeight)}px)`;
+    };
+    const schedule = () => { if (visible && !pending && !reduced.matches) { pending = true; requestAnimationFrame(update); } };
+    if ('IntersectionObserver' in window) new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; schedule(); }).observe(journey);
+    addEventListener('scroll', schedule, { passive: true });
+    addEventListener('resize', schedule);
+  });
+  const playWhenVisible = (elements, on, off) => {
+    if (!('IntersectionObserver' in window)) return;
+    const visible = new Set();
+    const sync = () => elements.forEach(el => (visible.has(el) && !reduced.matches && !document.hidden ? on : off)(el));
+    const observer = new IntersectionObserver(entries => { entries.forEach(entry => entry.isIntersecting ? visible.add(entry.target) : visible.delete(entry.target)); sync(); }, { threshold: 0 });
+    elements.forEach(el => observer.observe(el));
+    document.addEventListener('visibilitychange', sync);
+    reduced.addEventListener('change', sync);
+  };
+  playWhenVisible([...document.querySelectorAll('[data-video-example]')], el => el.classList.add('is-playing'), el => el.classList.remove('is-playing'));
+  playWhenVisible([...document.querySelectorAll('[data-bg-video]')], video => video.play().catch(() => {}), video => video.pause());
+  document.querySelectorAll('[data-video-id]').forEach(button => {
+    button.addEventListener('click', () => {
+      const frame = document.createElement('iframe');
+      frame.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(button.dataset.videoId)}?autoplay=1`;
+      frame.title = button.dataset.videoTitle;
+      frame.allow = 'autoplay; encrypted-media; picture-in-picture';
+      frame.allowFullscreen = true;
+      button.replaceWith(frame);
+      frame.focus();
+    });
+  });
+
   // Post do blog: barra de progresso de leitura (só transform) e cópia do link.
   const readingBar = document.querySelector('[data-reading-progress] span');
   const article = document.querySelector('.k-article');

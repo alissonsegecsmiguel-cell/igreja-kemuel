@@ -63,6 +63,28 @@
   /* Discipulado: capa da apostila e ficha das dez lições. */
   --discipleship-cover-width: 24rem;
   --discipleship-lesson-columns: var(--space-5) minmax(0, 1fr);
+  /* /discipulado: contador, jornada, vídeos, fotos e presente. */
+  --discipleship-counter-size: clamp(6rem, 20vw, 15rem);
+  --discipleship-counter-duration: 1600ms; /* Contagem única ao entrar na tela. */
+  --discipleship-intro-width: 46rem;
+  --discipleship-reading-size: 1.125rem; /* Newsreader 400, 18 px. */
+  --discipleship-journey-line: var(--border-width-strong);
+  --discipleship-journey-marker: .875rem;
+  --discipleship-journey-number: 2.5rem;
+  --discipleship-photo-width: 30rem;
+  --discipleship-video-horizontal: 16 / 9;
+  --discipleship-video-vertical: 9 / 16;
+  --discipleship-play-size: clamp(3.5rem, 7vw, 5rem);
+  --discipleship-video-bg: radial-gradient(circle at 30% 35%, rgba(222, 46, 56, .35), rgba(222, 46, 56, 0) 45%), radial-gradient(circle at 70% 70%, rgba(255, 255, 255, .14), rgba(255, 255, 255, 0) 45%);
+  --discipleship-video-drift: 18s; /* Degradê lento do player de exemplo. */
+  --discipleship-video-shift: 8%;
+  --discipleship-video-scrim: linear-gradient(to top, rgba(0, 0, 0, .78), rgba(0, 0, 0, 0) 45%);
+  --discipleship-testimonial-card: 72%;
+  --discipleship-gift-tilt: -3deg;
+  --discipleship-gift-width: 22rem;
+  --discipleship-ribbon-width: 2.25rem;
+  --discipleship-veil: linear-gradient(to bottom, rgba(0, 0, 0, .55), rgba(0, 0, 0, .82));
+  --photo-slot-border: var(--border-width) dashed var(--color-border-control);
   /* Materiais: capas naturais e composição editorial em cinza-pedra. */
   --materials-surface: #e9e7e2;
 
