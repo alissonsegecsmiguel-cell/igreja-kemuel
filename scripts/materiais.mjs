@@ -19,7 +19,7 @@ export function loadMaterials(root) {
 }
 
 const typeKey = value => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replaceAll(' ', '-');
-export function materialCards(materials, prefix = 'assets/', home = false) {
+export function materialCards(materials, prefix = 'assets/', home = false, level = 2) {
   const local = path => escape(path.replace(/^assets\//, prefix));
   return `<div class="k-materials-grid${home ? ' k-materials-grid--home' : ''}">${materials.map(item => {
     const course = item.formato === 'Curso externo';
@@ -31,7 +31,7 @@ export function materialCards(materials, prefix = 'assets/', home = false) {
     // Metadados só com os campos existentes; nada de páginas ou tamanho inventados.
     const parts = item.metadados ? [item.metadados] : [item.formato, item.paginas ? `${item.paginas} páginas` : '', item.tamanho || ''].filter(Boolean);
     const meta = `<p class="k-material-card__meta"><svg class="k-icon k-icon--small" aria-hidden="true"><use href="#k-document"/></svg><span${item.pagina ? ' class="k-material-card__example"' : ''}>${parts.map(escape).join(' · ')}${item.exemplo ? ' · <span class="k-material-card__example">Exemplo</span>' : ''}</span></p>`;
-    const text = `<h3 class="k-material-card__title">${escape(item.titulo)}</h3><p class="k-material-card__description">${escape(item.descricao)}</p>`;
+    const text = `<h${level + 1} class="k-material-card__title">${escape(item.titulo)}</h${level + 1}><p class="k-material-card__description">${escape(item.descricao)}</p>`;
     const credits = `<details class="k-material-card__credits"><summary class="k-caption">Crédito da imagem</summary><p class="k-caption k-muted">${escape(item.credito)}</p></details>`;
     const category = `data-material-category="${typeKey(item.tipo)}"`;
     if (item.pagina) {
@@ -45,7 +45,7 @@ export function materialCards(materials, prefix = 'assets/', home = false) {
 }
 
 export function materialsHeader(level = 2, id = 'materiais-home') {
-  return `<header class="k-materials-header"><p class="k-eyebrow">Materiais</p><h${level} class="k-materials-header__title" id="${id}-titulo"><span>Estude a PALAVRA</span><span>no seu RITMO.</span></h${level}><div class="k-materials-header__bottom"><p>Guias, estudos e planos de leitura gratuitos para baixar, imprimir e compartilhar.</p><a class="k-link" href="/materiais">Ver todos os materiais<svg class="k-icon k-icon--small" aria-hidden="true"><use href="#k-arrow"/></svg></a></div></header>`;
+  return `<header class="k-materials-header"><p class="k-eyebrow">Materiais</p><h${level} class="k-materials-header__title" id="${id}-titulo"><span>Estude a PALAVRA</span> <span>no seu RITMO.</span></h${level}><div class="k-materials-header__bottom"><p>Guias, estudos e planos de leitura gratuitos para baixar, imprimir e compartilhar.</p><a class="k-link" href="/materiais">Ver todos os materiais<svg class="k-icon k-icon--small" aria-hidden="true"><use href="#k-arrow"/></svg></a></div></header>`;
 }
 
 export function materialsHome(materials, prefix = 'assets/') {
@@ -54,5 +54,5 @@ export function materialsHome(materials, prefix = 'assets/') {
 
 export function materialsPage(materials, prefix = 'assets/', level = 1, id = 'materiais') {
   const filters = [['todos','Todos'],['guia','Guias'],['plano-de-leitura','Planos de leitura'],['estudo','Estudos'],['devocional','Devocionais'],['curso','Cursos']];
-  return `<div class="k-stack--large" data-materials>${materialsHeader(level,id)}<div class="k-materials-filter" role="group" aria-label="Filtrar materiais por tipo">${filters.map(([value,label])=>`<button class="k-blog-tab" type="button" data-material-filter="${value}" aria-pressed="${value==='todos'}">${label}</button>`).join('')}</div><p class="k-caption k-muted" data-material-count role="status" aria-live="polite">${materials.length} materiais</p><section class="k-stack" id="${id}" data-material-section aria-label="Materiais em PDF">${materialCards(materials.filter(m=>m.formato!=='Curso externo'),prefix)}</section><section class="k-stack" id="${id==='materiais'?'cursos':id+'-cursos'}" data-material-section aria-labelledby="${id}-cursos-titulo"><h2 id="${id}-cursos-titulo">Cursos em outra plataforma</h2>${materialCards(materials.filter(m=>m.formato==='Curso externo'),prefix)}</section></div>`;
+  return `<div class="k-stack--large" data-materials>${materialsHeader(level,id)}<div class="k-materials-filter" role="group" aria-label="Filtrar materiais por tipo">${filters.map(([value,label])=>`<button class="k-blog-tab" type="button" data-material-filter="${value}" aria-pressed="${value==='todos'}">${label}</button>`).join('')}</div><p class="k-caption k-muted" data-material-count role="status" aria-live="polite">${materials.length} materiais</p><section class="k-stack" id="${id}" data-material-section aria-label="Materiais em PDF">${materialCards(materials.filter(m=>m.formato!=='Curso externo'),prefix,false,level)}</section><section class="k-stack" id="${id==='materiais'?'cursos':id+'-cursos'}" data-material-section aria-labelledby="${id}-cursos-titulo"><h2 id="${id}-cursos-titulo">Cursos em outra plataforma</h2>${materialCards(materials.filter(m=>m.formato==='Curso externo'),prefix,false,level+1)}</section></div>`;
 }

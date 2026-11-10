@@ -117,6 +117,8 @@ async function convert(file) {
     for (const width of [480, 960, 1600]) { // 480 nas listas, 960 e 1600 no post
       await sharp(src).extract({ left, top, width: cw, height: ch }).resize({ width, height: Math.round(width * 2 / 3) }).webp({ quality: 80, effort: 6 }).toFile(join(imgDir, `capa-${width}.webp`));
     }
+    // Prévia do WhatsApp/redes: 1200×630 em JPEG (formato aceito por todos), mesmo foco da capa.
+    await sharp(src).extract({ left, top, width: cw, height: ch }).resize({ width: 1200, height: 630, fit: 'cover' }).jpeg({ quality: 82, mozjpeg: true }).toFile(join(imgDir, 'og-1200x630.jpg'));
   }
   const lines = [];
   for (const block of body) {

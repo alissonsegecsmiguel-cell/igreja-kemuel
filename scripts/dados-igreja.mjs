@@ -112,6 +112,30 @@ export function fillData(html, d, file) {
   });
 }
 
+// Indexação: um único interruptor em dados/igreja.json (site.indexar). 404 e posts de exemplo nunca entram.
+export function robots(d, never = false) {
+  return d.site.indexar === true && !never ? 'index, follow' : 'noindex, nofollow';
+}
+
+// Endereço limpo e absoluto: a home com barra, as demais sem .html e sem barra final.
+export function pageUrl(d, page) {
+  return page === 'index' ? `${d.site.url}/` : `${d.site.url}/${page}`;
+}
+
+// Prévias do X e do WhatsApp a partir dos mesmos dados do Open Graph.
+export function twitterTags(indent, { title, description, image, alt }) {
+  return [['card', 'summary_large_image'], ['title', title], ['description', description], ['image', image], ['image:alt', alt]]
+    .map(([name, value]) => `${indent}<meta name="twitter:${name}" content="${escape(value)}">`).join('\n');
+}
+
+// "às quintas, 19h30, e aos domingos, 18h", sempre a partir de cultos.
+function cultosFrase(d) {
+  return d.cultos.map(c => {
+    const day = c.dia.split('-')[0].toLowerCase();
+    return `${/^(sábado|domingo)$/.test(day) ? 'aos' : 'às'} ${day}s, ${c.hora}`;
+  }).join(', e ');
+}
+
 export function fillHead(html, d, page, file) {
   const info = d.paginas[page];
   if (!info) throw new Error(`${file}: página sem metadados em dados/igreja.json`);
@@ -121,14 +145,20 @@ export function fillHead(html, d, page, file) {
     html = html.replace(pattern, (_, a, b) => a + value + b);
   };
   set(/(<title>)[^<]*(<\/title>)/, escape(title));
-  set(/(<meta name="description" content=")[^"]*(")/, escape(info.descricao));
+  const description = info.descricao.replace('{cultos}', cultosFrase(d));
+  set(/(<meta name="description" content=")[^"]*(")/, escape(description));
+  set(/(<meta name="robots" content=")[^"]*(")/, robots(d, page === '404'));
   set(/(<meta property="og:title" content=")[^"]*(")/, escape(title));
-  set(/(<meta property="og:description" content=")[^"]*(")/, escape(info.descricao));
+  set(/(<meta property="og:description" content=")[^"]*(")/, escape(description));
+  // Canonical logo depois do título; a 404 não tem endereço próprio.
+  html = html.replace(/\n[ \t]*<link rel="canonical"[^>]*>/g, '');
+  if (page !== '404') html = html.replace(/(\n([ \t]*)<title>[^<]*<\/title>)/, (line, _, indent) => `${line}\n${indent}<link rel="canonical" href="${pageUrl(d, page)}">`);
   // og:image: logo horizontal claro sobre preto. Substitui as linhas anteriores para não duplicar.
-  html = html.replace(/\n[ \t]*<meta property="og:image[^>]*>/g, '');
-  const og = `${d.site}/assets/brand/og-igreja-kemuel.png`;
+  html = html.replace(/\n[ \t]*<meta (property="og:image|name="twitter:)[^>]*>/g, '');
+  const og = `${d.site.url}/assets/brand/og-igreja-kemuel.png`;
   html = html.replace(/(\n([ \t]*)<meta property="og:description"[^>]*>)/, (line, _, indent) =>
-    `${line}\n${indent}<meta property="og:image" content="${og}">\n${indent}<meta property="og:image:width" content="1200">\n${indent}<meta property="og:image:height" content="630">\n${indent}<meta property="og:image:alt" content="Logo da Igreja Kemuel">`);
+    `${line}\n${indent}<meta property="og:image" content="${og}">\n${indent}<meta property="og:image:width" content="1200">\n${indent}<meta property="og:image:height" content="630">\n${indent}<meta property="og:image:alt" content="Logo da Igreja Kemuel">\n`
+    + twitterTags(indent, { title, description, image: og, alt: 'Logo da Igreja Kemuel' }));
   return html;
 }
 
@@ -140,7 +170,11 @@ export function jsonLd(d) {
     '@context': 'https://schema.org',
     '@type': 'Church',
     name: d.nome,
-    url: `${d.site}/`,
+    url: `${d.site.url}/`,
+    logo: `${d.site.url}/assets/brand/logo-empilhado-escuro.svg`,
+    image: `${d.site.url}/assets/brand/og-igreja-kemuel.png`,
+    areaServed: `${d.cidade}, ${d.uf}`,
+    ...(d.contato?.telefone ? { telephone: d.contato.telefone } : {}),
     hasMap: d.mapa,
     sameAs: Object.values(d.redes || {}).map(rede => rede.url),
     address: {
@@ -148,8 +182,11 @@ export function jsonLd(d) {
       streetAddress: `${e.rua}${number}, ${e.bairro}`,
       addressLocality: e.cidade,
       addressRegion: e.uf,
+      ...(e.cep ? { postalCode: e.cep } : {}),
       addressCountry: d.pais
     },
+    // Coordenadas só quando o pastor confirmar as duas.
+    ...(d.geo?.latitude && d.geo?.longitude ? { geo: { '@type': 'GeoCoordinates', latitude: d.geo.latitude, longitude: d.geo.longitude } } : {}),
     openingHoursSpecification: d.cultos.map(c => ({
       '@type': 'OpeningHoursSpecification',
       name: c.nome,

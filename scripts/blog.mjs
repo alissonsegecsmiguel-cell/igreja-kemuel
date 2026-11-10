@@ -2,6 +2,7 @@
 // Chamado por montar-paginas.mjs. Precisa de "marked" (npm install --prefix scripts).
 import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { robots, twitterTags } from './dados-igreja.mjs';
 
 const esc = text => String(text).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 const CSP = "default-src 'self'; style-src 'self'; script-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'";
@@ -56,7 +57,8 @@ export async function loadPosts(root) {
         return { size, file, width: info.width, height: info.height };
       }));
     }
-    return { slug, ...meta, cardCover, leitura: meta.em_breve ? null : minutes, html, url: meta.em_breve ? null : `/blog/${slug}` };
+    const og = existsSync(join(root, 'assets', 'img', 'blog', slug, 'og-1200x630.jpg'));
+    return { slug, ...meta, cardCover, og, leitura: meta.em_breve ? null : minutes, html, url: meta.em_breve ? null : `/blog/${slug}` };
   }));
   return entries.sort((a, b) => Number(a.em_breve === true) - Number(b.em_breve === true) || (a.em_breve ? String(a.numero).localeCompare(String(b.numero)) : (b.data || '').localeCompare(a.data || '')) || a.slug.localeCompare(b.slug));
 }
@@ -77,17 +79,24 @@ function related(post, posts) {
 }
 
 export function postPage(post, posts, church) {
-  const site = church.site;
+  const site = church.site.url;
   const url = `${site}${post.url}`;
   const title = `${post.titulo} · ${church.nome} · ${church.cidade}, ${church.uf}`;
   const cover = post.capa ? `${site}/assets/img/blog/${post.slug}/capa-1600.webp` : `${site}/assets/brand/og-igreja-kemuel.png`;
+  // Prévia 1200×630 em JPEG gerada pelo converter-post; sem ela, a imagem da marca.
+  const og = post.og ? { image: `${site}/assets/img/blog/${post.slug}/og-1200x630.jpg`, alt: post.capa_legenda || post.titulo } : { image: `${site}/assets/brand/og-igreja-kemuel.png`, alt: 'Logo da Igreja Kemuel' };
+  const publisher = { '@type': 'Organization', name: church.nome, url: `${site}/`, logo: { '@type': 'ImageObject', url: `${site}/assets/brand/logo-empilhado-escuro.svg` } };
   const author = post.autor === church.nome
     ? { '@type': 'Organization', name: church.nome, url: `${site}/` }
     : { '@type': 'Person', name: post.autor };
   const ld = JSON.stringify({
     '@context': 'https://schema.org', '@type': 'BlogPosting', headline: post.titulo, description: post.subtitulo,
-    datePublished: post.data, author, publisher: { '@type': 'Organization', name: church.nome, url: `${site}/` },
-    image: cover, mainEntityOfPage: url, inLanguage: 'pt-BR'
+    datePublished: post.data, dateModified: post.atualizado || post.data, author, publisher,
+    image: [cover, ...(post.og ? [og.image] : [])], mainEntityOfPage: { '@type': 'WebPage', '@id': url }, inLanguage: 'pt-BR'
+  }, null, 2).replaceAll('<', '\\u003c').split('\n').map(l => `  ${l}`).join('\n');
+  const crumbs = JSON.stringify({
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [['Início', `${site}/`], ['Blog', `${site}/blog`], [post.titulo, url]].map(([name, item], i) => ({ '@type': 'ListItem', position: i + 1, name, item }))
   }, null, 2).replaceAll('<', '\\u003c').split('\n').map(l => `  ${l}`).join('\n');
   const share = encodeURIComponent(`${post.titulo} ${url}`);
   const coverHtml = post.capa ? `
@@ -99,16 +108,21 @@ export function postPage(post, posts, church) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="${esc(post.subtitulo)}">
-  <meta name="robots" content="noindex">
+  <meta name="robots" content="${robots(church, post.exemplo === true)}">
   <meta http-equiv="Content-Security-Policy" content="${CSP}">
   <title>${esc(title)}</title>
+  <link rel="canonical" href="${url}">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="${esc(church.nome)}">
   <meta property="og:title" content="${esc(title)}">
   <meta property="og:description" content="${esc(post.subtitulo)}">
   <meta property="og:url" content="${url}">
-  <meta property="og:image" content="${cover}">
+  <meta property="og:image" content="${og.image}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="${esc(og.alt)}">
+${twitterTags('  ', { title, description: post.subtitulo, image: og.image, alt: og.alt })}
   <!-- icons:start -->
 x
   <!-- icons:end -->
@@ -117,6 +131,9 @@ x
   <script src="../assets/js/ui.js" defer></script>
   <script type="application/ld+json">
 ${ld}
+  </script>
+  <script type="application/ld+json">
+${crumbs}
   </script>
 </head>
 <body>

@@ -2,9 +2,10 @@
 // Rodar antes do commit: node scripts/montar-paginas.mjs
 // O resultado é HTML estático; a Vercel não executa este script.
 import { readdirSync, readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { loadData, fillData, fillHead, jsonLd } from './dados-igreja.mjs';
+import { loadData, fillData, fillHead, jsonLd, pageUrl } from './dados-igreja.mjs';
 import { loadPosts, postPage, postsIndex, blogFeature } from './blog.mjs';
 import { loadVideos, videoSlot, testimonials, closingBackground } from './videos.mjs';
 import { loadMaterials, materialsHome, materialsPage } from './materiais.mjs';
@@ -112,6 +113,19 @@ outputs.push({ file: index, before: existsSync(join(root, index)) ? read(join(ro
 const searchFile = 'dados/busca.json';
 outputs.push({ file: searchFile, before: existsSync(join(root, searchFile)) ? read(join(root, searchFile)) : '', html: searchIndex(posts) });
 mkdirSync(join(root, 'blog'), { recursive: true });
+
+// robots.txt libera tudo: quem esconde página é o meta robots (o Google precisa ler a página para ver o noindex).
+outputs.push({ file: 'robots.txt', before: existsSync(join(root, 'robots.txt')) ? read(join(root, 'robots.txt')) : '', html: `User-agent: *\nAllow: /\n\nSitemap: ${church.site.url}/sitemap.xml\n` });
+// lastmod: data do último commit da página; se o build mudou a página, a data de hoje (em Fortaleza).
+const today = new Intl.DateTimeFormat('en-CA', { timeZone: church.fuso || 'America/Fortaleza' }).format(new Date());
+const git = args => { try { return execFileSync('git', args, { cwd: root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }); } catch { return ''; } };
+const lastmod = ({ file, html }) => git(['show', `HEAD:${file}`]).replace(/\r\n/g, '\n') === html ? git(['log', '-1', '--format=%cs', '--', file]).trim() || today : today;
+const listed = outputs.filter(o => /^[^/]+\.html$/.test(o.file) && o.file !== '404.html')
+  .sort((a, b) => Number(b.file === 'index.html') - Number(a.file === 'index.html'))
+  .map(o => ({ loc: pageUrl(church, o.file.replace(/\.html$/, '')), lastmod: lastmod(o) }))
+  .concat(posts.filter(post => post.em_breve !== true && post.exemplo !== true).map(post => ({ loc: `${church.site.url}${post.url}`, lastmod: post.atualizado || post.data })));
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${listed.map(u => `  <url><loc>${u.loc}</loc><lastmod>${u.lastmod}</lastmod></url>`).join('\n')}\n</urlset>\n`;
+outputs.push({ file: 'sitemap.xml', before: existsSync(join(root, 'sitemap.xml')) ? read(join(root, 'sitemap.xml')) : '', html: sitemap });
 
 // Valida todos os marcadores antes de escrever qualquer página.
 for (const { file, before, html } of outputs) {

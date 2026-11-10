@@ -2,6 +2,8 @@
 
 ## 1. Última sessão
 
+- Tarefa 19 da fila (Claude Code, 10/11/2026): SEO técnico. Interruptor único site.indexar em dados/igreja.json (continua false: todas as páginas noindex, nofollow, gerado pelo script; 404 e posts de exemplo sempre noindex). robots.txt (libera tudo e aponta o sitemap) e sitemap.xml gerados por montar-paginas.mjs (home, /discipulado, /materiais, /blog, /contribua; posts só quando não forem exemplo; lastmod pelo último commit ou hoje quando o build muda a página). Canonical absoluto em todas as páginas, exceto 404. twitter:card/title/description/image/image:alt em todas. Posts com og:image 1200×630 em JPEG (og-1200x630.jpg, gerado também pelo converter-post a partir do recorte da capa) com width, height e alt. JSON-LD: Church com logo, image e areaServed, e telephone, postalCode e geo só quando preenchidos (campos vazios criados no JSON); BlogPosting com dateModified, publisher com logo e mainEntityOfPage; BreadcrumbList Início › Blog › título. H1 de /materiais lido com espaço; níveis de título corrigidos sem mudar o visual (cards de /materiais, motivos e PIX de /contribua; CSS passou a aceitar os dois níveis). Descrições novas de home (horários lidos do JSON), /discipulado, /materiais e /contribua. Seção “Checklist de lançamento no Google” criada no item 9.
+
 - Tarefa 18 da fila (Claude Code, 10/11/2026): faísca na borda dos cards de horário da HERO e etiqueta “Próximo culto”. Variante k-schedule__item--glint gerada por data-dado="cultos-schedule-glint" (scripts/dados-igreja.mjs), usada só na hero do index.html e na demonstração da hero do manual; os blocos de cultos da dobra da Bíblia (cultos-destaque) não foram tocados. Anel com máscara de contorno (mask-composite exclude) e quadrado com conic-gradient girando 0→360° em 1,4s com o easing do projeto; opacidade do anel 0→1→0; domingo 0,35s depois da quinta; repete a cada 7s com um único timer em assets/js/ui.js, pausado fora da hero (IntersectionObserver) e com a aba oculta; hover/foco passa a faísca na hora e clareia a borda. Próximo culto calculado com Intl no fuso de dados/igreja.json (campo novo "fuso": "America/Fortaleza", aplicado em data-timezone pela montagem): etiqueta sobre a borda (visibility, sem deslocar layout), ponto vermelho pulsando em 2,4s (só opacity) e borda vermelha suave. Sem JS, nenhuma etiqueta; movimento reduzido: sem faísca nem pulso. Loop contínuo autorizado pelo Alisson na tarefa 18. Tokens --schedule-glint-* e --schedule-next-*. Testes: 1440/1024/760/390 com e sem movimento reduzido, seis cenários de data (inclusive a virada no horário de início e domingo 23h em Fortaleza = segunda em UTC), sem JS, fumaça sem falhas; Lighthouse da home 92 antes e 92 depois, CLS 0.
 
 - 10/11/2026 (fila 15, Claude Code): /discipulado refeita como caminhada em turma até o batismo, não como PDF. Contador de batismos (k-counter) lido de dados/igreja.json, com contagem única de 1,6s e número final no HTML; título e chamada; “O que é” com texto em Newsreader e vídeo de exemplo; jornada de oito etapas (k-journey) com marcador que acompanha a rolagem; depoimentos em três vídeos verticais de exemplo; a apostila como presente (k-gift, capa real inclinada com fita em CSS, sem download); dez lições em duas colunas; seis dúvidas; fechamento #participar com espaço do vídeo de fundo. Componentes k-counter, k-journey, k-photo-slot, k-video-slot e k-gift no design system, com demonstração. Card do Discipulado nos Materiais: “Você recebe no Discipulado” e “Quero participar”. Nenhum link público para o PDF. Testes por servidor local em 1440, 1024, 760 e 390, normal e reduzido: contador, jornada, vídeos desativados com dica no foco e sem iframe, nenhuma requisição externa, teclado, FAQ, sem rolagem horizontal ou erros. Lighthouse móvel em /discipulado, mediana de 3: 98 / LCP 1.814ms / TBT 63ms / CLS 0,013.
@@ -118,6 +120,7 @@
 
 ## 6. Pendências que dependem de pessoas
 
+- Pastor: telefone, CEP, número e coordenadas da igreja para dados/igreja.json (contato.telefone, endereco.cep, endereco.numero, geo). Vazios, não entram no JSON-LD.
 - Discipulado, a confirmar: como e quando as turmas começam; se o batismo acontece ao fim de toda turma; se é preciso já ser membro; se o discipulado é necessário para o batismo; se é recomendado a quem vem de igreja coirmã; quanto custa; quando começa a próxima turma.
 - Discipulado, fotos reais pedidas (k-photo-slot): a apostila impressa sobre uma mesa; mãos com a Bíblia e a apostila abertas, marcando um versículo; orientador conversando com alguém da turma; uma pessoa saindo das águas no batismo; igreja reunida num culto ou batismo (fundo do fechamento). Para trocar: salvar em assets/img/discipulado/ e pôr na figure um img com src e alt reais, apagando os dois textos.
 - Discipulado, vídeos pedidos: explicação do pastor (horizontal); 3 depoimentos verticais, com autorização por escrito de cada pessoa; vídeo de batismos para o fundo (MP4 H.264, 720p, sem áudio, até 3 MB, com poster). Para trocar: preencher youtube_id em dados/videos.json e mudar exemplo para false; para o fundo, preencher arquivo (e poster); depois node scripts/montar-paginas.mjs.
@@ -173,6 +176,10 @@
 
 ## 8. Decisões registradas
 
+- Tarefa 19: não foi acrescentado redirect /:pagina.html → /:pagina no vercel.json porque o cleanUrls já responde 308 para o endereço limpo (conferido no site publicado em /materiais.html, /index.html e nos posts); o domínio sem www já redireciona para o www. (decidido sem o Alisson, revisar)
+- Tarefa 19: logo do JSON-LD aponta para assets/brand/logo-empilhado-escuro.svg e image para og-igreja-kemuel.png, arquivos já existentes da marca (provisórios até o logo original). (decidido sem o Alisson, revisar)
+- Tarefa 19: a 404 usa noindex, nofollow e não tem canonical. (decidido sem o Alisson, revisar)
+- Tarefa 19: “igreja batista” não aparece em títulos nem descrições até o Alisson confirmar com o pastor.
 - Tarefa 18: depois do horário de início de um culto, o “Próximo culto” passa para o seguinte (quinta 19h30 em diante destaca domingo). (decidido sem o Alisson, revisar)
 - Tarefa 18: a etiqueta “Próximo culto” fica centralizada sobre a borda superior do card, com fundo preto, para não ocupar espaço nem mover a primeira dobra. (decidido sem o Alisson, revisar)
 - Tarefa 18: a inicialização do brilho espera o tempo ocioso do navegador (requestIdleCallback) para não pesar no carregamento. (decidido sem o Alisson, revisar)
@@ -302,12 +309,25 @@
 - [ ] Logo redesenhado aprovado pelo Alisson ou substituído pelo arquivo original.
 - [ ] Logo oficial e vermelho oficial aplicados.
 - [ ] Quando o vermelho oficial chegar, gerar de novo os ícones de assets/icons/: eles têm o vermelho gravado no arquivo e não acompanham a troca do token CSS.
-- [ ] Meta robots noindex removido.
+- [ ] Meta robots noindex removido: nunca à mão; ver “Checklist de lançamento no Google” abaixo.
 - [ ] Links reais de WhatsApp, redes e mapa conferidos.
 - [ ] Dobra "Para sua caminhada" só visível com pelo menos 3 posts e 3 materiais reais.
 - [ ] Só ficam no menu as páginas com conteúdo real. Páginas ainda provisórias saem do menu no lançamento e voltam quando tiverem conteúdo.
 - [ ] Aprovar ou substituir os 5 posts de exemplo e remover os avisos e os selos EXEMPLO.
 - [ ] Teste completo em 1440 px e 390 px.
+
+### Checklist de lançamento no Google (tarefa 19)
+
+Para lançar no Google, trocar site.indexar para true em dados/igreja.json e rodar o script (node scripts/montar-paginas.mjs). Só o Alisson decide quando; até lá, fica false.
+
+- [ ] Itens acima concluídos e conteúdo provisório resolvido.
+- [ ] Trocar `site.indexar` para true e rodar o script: todas as páginas passam a index, follow, exceto a 404 e os posts com `exemplo: true` (continuam noindex).
+- [ ] Conferir https://www.igrejakemuel.com.br/robots.txt e /sitemap.xml publicados (gerados pelo script a cada build; posts entram no sitemap só quando não forem exemplo).
+- [ ] Google Search Console: verificar o domínio (registro DNS) e enviar o sitemap.xml.
+- [ ] Perfil da Empresa no Google: criar ou reivindicar a ficha da igreja com o mesmo nome, endereço e horários de dados/igreja.json.
+- [ ] Dados pendentes do pastor, em dados/igreja.json (vazios não aparecem no JSON-LD): `contato.telefone`, `endereco.cep`, `endereco.numero`, `geo.latitude` e `geo.longitude`.
+- [ ] Não usar “igreja batista” em títulos ou descrições até o Alisson confirmar com o pastor.
+- [ ] Testar uma página e um post no Teste de pesquisa aprimorada do Google (Rich Results) e no Validador do Schema.org depois de publicar.
 
 ## 10. Como publicar um post novo
 

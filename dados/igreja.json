@@ -4,13 +4,17 @@
   "estado": "Ceará",
   "uf": "CE",
   "pais": "BR",
-  "site": "https://www.igrejakemuel.com.br",
+  "site": {
+    "indexar": false,
+    "url": "https://www.igrejakemuel.com.br"
+  },
   "endereco": {
     "rua": "Av. Dr. José Holanda Montenegro",
     "numero": "[número]",
     "bairro": "Centro",
     "cidade": "Iguatu",
-    "uf": "CE"
+    "uf": "CE",
+    "cep": ""
   },
   "cultos": [
     {
@@ -33,6 +37,10 @@
     }
   ],
   "mapa": "https://www.google.com/maps/search/?api=1&query=Igreja%20Kemuel%2C%20Av.%20Dr.%20Jos%C3%A9%20Holanda%20Montenegro%2C%20Centro%2C%20Iguatu%20-%20CE",
+  "geo": {
+    "latitude": "",
+    "longitude": ""
+  },
   "paginas": {
     "404": {
       "titulo": "Página não encontrada",
@@ -40,15 +48,15 @@
     },
     "index": {
       "titulo": null,
-      "descricao": "Igreja Kemuel em Iguatu, Ceará. Cultos às quintas, 19h30, e aos domingos, 18h. Venha nos visitar."
+      "descricao": "Igreja Kemuel, igreja evangélica em Iguatu, Ceará. Cultos {cultos}. Você é bem-vindo."
     },
     "discipulado": {
       "titulo": "Discipulado Básico",
-      "descricao": "Discipulado Básico da Igreja Kemuel, em Iguatu, Ceará: uma caminhada em turma, com um orientador, até o batismo."
+      "descricao": "Discipulado Básico da Igreja Kemuel, em Iguatu (CE): dez lições em turma, com acompanhamento, para quem quer dar os primeiros passos na fé e se batizar."
     },
     "materiais": {
       "titulo": "Materiais e cursos",
-      "descricao": "Guias, estudos e planos de leitura da Igreja Kemuel, em Iguatu, Ceará. Baixe a apostila de discipulado e conheça os materiais e cursos em preparação."
+      "descricao": "Guias, estudos e planos de leitura da Igreja Kemuel, em Iguatu (CE), para estudar a Bíblia no seu ritmo."
     },
     "blog": {
       "titulo": "Blog",
@@ -56,7 +64,7 @@
     },
     "contribua": {
       "titulo": "Contribua",
-      "descricao": "Conheça as formas de contribuir com a Igreja Kemuel, em Iguatu, Ceará. Projetos e PIX institucional em preparação, com exemplos identificados."
+      "descricao": "Saiba como contribuir com a Igreja Kemuel, em Iguatu (CE), e acompanhe os projetos que a igreja está construindo."
     }
   },
   "redes": {
@@ -81,7 +89,8 @@
       "numero": "[Número oficial do WhatsApp]",
       "url": "https://example.invalid/whatsapp",
       "exemplo": true
-    }
+    },
+    "telefone": ""
   },
   "batismos": {
     "total": 247,
