@@ -37,6 +37,7 @@ Regras fixas do projeto do site da Igreja Kemuel.
 ## Forma de trabalho
 
 - Mobile primeiro.
+- Movimento contínuo autorizado somente na atmosfera da hero, na respiração do brilho da história e nas três ondas decorativas de k-radiate na Primeira visita (ciclo 4,8s). Só transform/opacity, pausando fora da dobra ou com a aba oculta; prefers-reduced-motion entrega estado estático. A onda extra de k-radiate ao abrir uma pergunta dura 1s e toca uma vez.
 - Primeira dobra da página principal: logo e menu, título, subtítulo, horários dos cultos (k-schedule) e os dois botões ("Como chegar" e "Cursos e materiais gratuitos") ficam SEMPRE visíveis sem rolar, em qualquer tela.
 - MODO FILA: prompt que começa com "FILA: execute somente depois de terminar a tarefa atual." espera a tarefa atual terminar.
 - Backlog: "Coloque isso no Backlog" pausa um item. "Retome o item [nome] do Backlog" retoma.

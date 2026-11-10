@@ -212,6 +212,39 @@
     if (overlay) matchMedia('(min-width: 70rem)').addEventListener('change', e => { if (e.matches) setMenu(false); });
   });
 
+  /* Primeira visita: três ondas pausáveis; impulso finito ao abrir o FAQ. */
+  document.querySelectorAll('[data-radiate]').forEach(panel => {
+    const section = panel.closest('.k-spec-section');
+    const pulse = panel.querySelector('.k-radiate__pulse');
+    if (!section || !pulse) return;
+    let visible = false;
+    let impulse;
+    const update = () => {
+      const active = visible && !document.hidden && !reduced.matches;
+      panel.classList.toggle('is-radiating', active);
+      if (!active) { impulse?.cancel(); impulse = null; }
+    };
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        visible = entries[0].isIntersecting;
+        update();
+      });
+      observer.observe(section);
+    }
+    document.addEventListener('visibilitychange', update);
+    reduced.addEventListener('change', update);
+    section.addEventListener('k:faq-open', () => {
+      if (!panel.classList.contains('is-radiating')) return;
+      impulse?.cancel();
+      const value = name => tokens.getPropertyValue('--faq-' + name).trim();
+      impulse = pulse.animate([
+        { opacity: value('pulse-opacity'), transform: `scale(${value('wave-start')})` },
+        { opacity: 0, transform: `scale(${value('wave-end')})` }
+      ], { duration: parseFloat(value('pulse-duration')), easing });
+    });
+    update();
+  });
+
   document.querySelectorAll('.k-faq').forEach(details => {
     const summary = details.querySelector('summary');
     const body = details.querySelector('.k-faq__body');
@@ -226,7 +259,10 @@
       const opening = !details.open || details.dataset.closing === 'true';
       delete details.dataset.closing;
       if (reduced.matches) { details.open = opening; syncExpanded(); return; }
-      if (opening) details.open = true;
+      if (opening) {
+        details.open = true;
+        details.dispatchEvent(new CustomEvent('k:faq-open', { bubbles: true }));
+      }
       else details.dataset.closing = 'true';
       syncExpanded();
       const frames = opening
