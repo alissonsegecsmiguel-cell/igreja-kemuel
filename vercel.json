@@ -1,6 +1,14 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/assets/materiais/discipulado-basico.pdf",
+      "headers": [
+        { "key": "Content-Disposition", "value": "inline; filename=\"Discipulado-Basico-Igreja-Kemuel.pdf\"" }
+      ]
+    }
+  ],
   "redirects": [
     { "source": "/quem-somos", "destination": "/#quem-somos", "permanent": true },
     { "source": "/quemsomos", "destination": "/#quem-somos", "permanent": true },
