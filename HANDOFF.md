@@ -112,6 +112,11 @@
   - Depois do plano de imagens: site.min.css (lightningcss) e ui.min.js (esbuild) com hash na query; preload só da fonte do H1; cache longo no vercel.json para fontes, imagens, ícones e CSS/JS com hash.
   - A divisão do ui.js em módulos ainda não foi feita. Se ficar frágil, fazer só a minificação e registrar o motivo.
   - Arquivos antigos não serão apagados sem aprovação.
+  - Retomada em 10/11/2026 e pausada de novo (o Alisson passou a fila para o Codex). O travamento foi corrigido em scripts/otimizar-imagens.mjs: sharp.cache(false) e leitura por Buffer (alteração ainda NÃO commitada). Uma segunda execução foi interrompida no meio e deixou alterações locais, NÃO commitadas nem conferidas:
+    - .webp recomprimidos em materiais/, contribua/ e em parte das pastas de blog/;
+    - .avif novos ao lado das capas;
+    - cópias mestres em assets/img/*/originais/mestres/.
+  - Próximo passo do Codex: rodar `node scripts/otimizar-imagens.mjs` de novo até o fim (ele refaz tudo a partir dos originais e das mestres, sem perda acumulada); conferir os pesos no log; comparar as capturas com relatorios/fila/20/antes/ (python relatorios/fila/capturas.py 20/depois); seguir o plano acima. Se desistir: `git restore assets/img` e apagar os .avif e as pastas originais/mestres não rastreados.
 
 ## 4. Próximas tarefas
 
