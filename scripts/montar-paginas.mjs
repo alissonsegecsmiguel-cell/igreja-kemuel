@@ -57,6 +57,8 @@ function shared(html, file) {
   if (html.includes('<!-- materiais-pagina:start -->')) html = apply(html, 'materiais-pagina', materialsPage(materials), file);
   // Dobra de blog gerada a partir dos posts; no manual, os caminhos partem de assets/.
   if (html.includes('<!-- blog-destaque:start -->')) html = apply(html, 'blog-destaque', file.startsWith('assets/') ? blogFeature(posts, '', 'demo-blog') : blogFeature(posts), file);
+  // Visita: livro, cultos e mapa têm fonte única no partial.
+  if (html.includes('<!-- bible-visit:start -->')) html = apply(html, 'bible-visit', partial('bible-visit.html'), file);
   // História: o manual e a home compartilham o painel e os capítulos.
   if (html.includes('<!-- timeline:start -->')) html = apply(html, 'timeline', partial('timeline.html'), file);
   // As cenas têm fonte única; templates inertes evitam montar SVGs fora da dobra.

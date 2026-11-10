@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Design system da Igreja Kemuel: princípios, tokens, componentes e acessibilidade.">
   <meta name="robots" content="noindex, nofollow">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; frame-src https://www.google.com; object-src 'none'; base-uri 'none'; form-action 'none'">
   <title>Design system — Igreja Kemuel</title>
   <link rel="icon" href="icons/favicon.ico" sizes="32x32">
   <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
@@ -76,7 +76,7 @@
           <h1 class="k-hero-led__title k-enter k-enter--2" id="hero-titulo">Bem-vindo à <span class="k-lettering">casa de Deus.</span></h1>
           <p class="k-body-lg k-hero__intro k-enter k-enter--3">Uma comunidade de fé de portas abertas para você e sua família viverem mais perto de Deus.</p>
           <div class="k-enter k-enter--3 k-hero-led__schedule"><ul class="k-schedule k-schedule--dark" aria-label="Horários dos cultos" data-dado="cultos-schedule"><li class="k-schedule__item"><span class="k-schedule__head"><svg class="k-icon" aria-hidden="true"><use href="#k-clock"/></svg><span class="k-schedule__mark"></span></span><span class="k-eyebrow k-schedule__day">Quinta-feira</span><span class="k-schedule__time">19h30</span><span class="k-schedule__label">Culto</span></li><li class="k-schedule__item"><span class="k-schedule__head"><svg class="k-icon" aria-hidden="true"><use href="#k-clock"/></svg><span class="k-schedule__mark"></span></span><span class="k-eyebrow k-schedule__day">Domingo</span><span class="k-schedule__time">18h</span><span class="k-schedule__label">Culto</span></li></ul></div>
-          <div class="k-row k-hero-led__actions k-enter k-enter--3"><a class="k-button" href="#endereco">Como chegar<svg class="k-icon" aria-hidden="true"><use href="#k-pin"/></svg></a><a class="k-button k-button--secondary" href="/materiais">Cursos e materiais gratuitos</a></div>
+          <div class="k-row k-hero-led__actions k-enter k-enter--3"><a class="k-button" href="#como-chegar">Como chegar<svg class="k-icon" aria-hidden="true"><use href="#k-pin"/></svg></a><a class="k-button k-button--secondary" href="/materiais">Cursos e materiais gratuitos</a></div>
         </div>
       </div>
     </section>
@@ -388,72 +388,118 @@
     </section>
     <section class="k-section" id="biblia-documentacao" aria-labelledby="biblia-documentacao-titulo">
       <div class="k-container k-stack">
-        <p class="k-eyebrow">Componentes · visita editorial</p><h2 class="k-h3" id="biblia-documentacao-titulo">Papel, informação e uma porta aberta.</h2>
-        <p><code>k-editorial</code> delimita o papel #E9E9E9 e o grid preto a 10%, de 1px: 200px no computador, 25vw no celular. Uso somente nesta dobra. A abertura usa Public Sans 400; a frase, Outfit 800 / h2; o corpo, Public Sans 400 / body-lg; os destaques e números de página, 400 itálico. Horários continuam em Outfit.</p>
-        <p><code>k-bible</code> é um objeto CSS com contracapa, folhas listradas, lombada, fita vermelha, capa de duas faces e cruz simples de hastes alinhadas; a cruz não é o logo. A técnica de camadas, estados, brilho, gestos e folha foi adaptada do projeto próprio Caderninho. A composição editorial é inspirada no Money in Check; nenhum arquivo ou código comercial foi incorporado.</p>
-        <p><code>k-bible-pages</code> mantém as duas duplas no HTML e reserva a altura da maior no grid, inclusive antes do JavaScript. Setas, teclado e arraste trocam a folha manualmente; a dupla inativa fica inert e fora da árvore acessível, e aria-live anuncia a atual. No celular as duas páginas são empilhadas, sem diminuir o texto.</p>
-        <p><code>k-info-table</code> mantém cultos e endereço sempre disponíveis em <code>#endereco</code>, destino do botão da hero. Botão de mapa e WhatsApp são exemplos. O cartão translúcido tem regras de 0,5px, botão em pílula e nota fora do cartão.</p>
-        <p>Movimento finito: entrada 260ms, abertura única de 180° em 480ms e virada manual em 480ms, todas no easing <code>cubic-bezier(.22, 1, .36, 1)</code>. Montagem das camadas a 900px da tela, após load e em tempo ocioso. Fontes editoriais carregam quando a seção entra efetivamente na tela, antes de abrir a capa. O fallback inicial é Georgia; sem JavaScript, Newsreader carrega normalmente. Páginas inativas usam content-visibility e altura intrínseca calculada pelos tokens de conteúdo, mantendo o espaço reservado. Fora da tela ou com a aba oculta, animações pausam. Sem flutuação ou repetição; as atmosferas contínuas autorizadas são a hero, o brilho da história e as ondas de k-radiate. Movimento reduzido: livro já aberto e parado. Mouse: inclinação limitada a 6° e brilho discreto; toque: sem inclinação. Repouso frontal de 0°.</p>
-        <p class="k-body-sm">Novos tokens: <code>--paper-*</code> para fundo, grid, cartão e divisores; <code>--editorial-*</code> para família, pesos, escala e composição; <code>--bible-*</code> para papel quente, capa, camadas, ângulos, brilho, gestos e durações ligadas aos tokens existentes. Nenhuma imagem, textura externa, biblioteca, canvas ou WebGL.</p>
-        <div class="k-type-row" data-type><p class="k-editorial__phrase" data-type-preview>Uma casa aberta.</p><div class="k-type-row__meta"><strong>Outfit · título de seção 800</strong><code data-type-metrics></code></div></div>
-        <div class="k-type-row" data-type><p class="k-editorial__copy" data-type-preview>Leitura tranquila, com o tempo de cada pessoa.</p><div class="k-type-row__meta"><strong>Public Sans · apoio 400</strong><code data-type-metrics></code></div></div>
-        <div class="k-type-row" data-type><blockquote class="k-quote k-quote--editorial" data-type-preview>[Citação autorizada a confirmar.]</blockquote><div class="k-type-row__meta"><strong>Newsreader · citação 400 itálico</strong><code data-type-metrics></code></div></div>
-        <p class="k-body-sm">Fonte latina normal variável e itálica estática em <code>assets/fonts/newsreader-latin-variable.woff2</code> e <code>newsreader-latin-italic-400.woff2</code>; eixo normal wght 300–600, itálico estático 400 e desenho óptico fixado em 16 para leitura e arquivos menores (79.756 bytes no total). Licença: <code>newsreader-OFL.txt</code>. Fonte oficial: <a class="k-link" href="https://github.com/google/fonts/tree/main/ofl/newsreader" rel="noopener noreferrer">Google Fonts / Newsreader</a>. Fallback: Georgia e serif. Newsreader é a terceira família autorizada; a Bíblia permanece preservada.</p>
-        <p class="k-body-sm">Contraste: texto #171717 no papel #E9E9E9 e no cartão composto #E1E1E1; inclusive as legendas usam esse texto no quadriculado, garantindo 8,84:1 no pior cruzamento sob o cartão. Nas folhas opacas #FAF7EF, texto #171717 e apoio #555555 têm 16,75:1 e 6,96:1; com a sombra máxima da lombada, o apoio ainda supera 4,5:1. Branco sobre botão #DE2E38: 4,61:1. O brilho máximo é branco translúcido; sua composição ainda conserva AA. Capa, cruz e regras finas são decorativas, sem texto informativo.</p>
-        <a class="k-link" href="#visite">Ver demonstração completa abaixo</a>
-        <p class="k-caption k-muted">Teste por pixels em 1440 e 1366px, nas áreas reais das legendas das duas duplas: mínimo de 5,09:1 mesmo usando como limite o clareamento máximo do brilho sobre o texto. Os quatro tamanhos de tela, a montagem sem mudança de dimensões, setas, teclado, arraste, pausa e movimento reduzido foram conferidos. Evidências locais em relatorios/kemuel-biblia/, fora do Git e do deploy.</p>
+        <p class="k-eyebrow">Componentes · k-service-times, k-bible e k-bible-page</p>
+        <h2 class="k-h3" id="biblia-documentacao-titulo">Bíblia aberta. A informação vem primeiro.</h2>
+        <p><code>k-service-times</code> coloca os dois cultos acima do livro em texto estático, visível sem JavaScript e independente da animação. Dia Public Sans 600/caption, caixa alta e tracking único; horário Outfit 800, clamp de 48–88px, marcador vermelho discreto. Duas colunas desde 360px; abaixo disso, empilha. Endereço e link interno para <code>#como-chegar</code> logo abaixo.</p>
+        <p><code>k-editorial</code> conserva o papel e grid do sistema (200px desktop, 25vw mobile), com traço preto a 4% para manter o contraste. Mesmo no cruzamento, apoio #555555 ≥5,16:1 e links no vermelho ativo ≥5,19:1. Nas folhas, apoio ≥5,82:1 e números pequenos de verso no vermelho hover ≥4,63:1, incluindo sombra de 8%. Botões branco/vermelho: 4,61:1. Título Outfit 800/h2, com um único destaque Newsreader itálico 400 e ponto vermelho. A Bíblia é uma das exceções autorizadas à combinação de acento itálico e voz de leitura. Nenhuma família nova, fonte externa, imagem pesada ou biblioteca.</p>
+        <p><code>k-bible</code> usa livro de proporção 1.78, meias capas escuras com costura tracejada, corte vermelho, lombada, capa de duas faces e fita. A folha tem frente e verso reais: página 2 na frente, 3 atrás; 1 e 4 ficam embaixo. Sombra com pointer-events:none e controles separados da fita por --bible-control-clearance. Capa e cruz genérica são decoração; a cruz não é o logo. Protótipo próprio aprovado reconstruído com classes e tokens Kemuel, sem faixa Prévia nem cólofon.</p>
+        <p><code>k-bible-page</code> usa container-type:inline-size e tokens com cqw: cabeçalho corrido, numerais Outfit 800, duas colunas Newsreader 400 justificadas, números de verso e referências cf. Todos os dados de cidade, endereço e cultos são preenchidos a partir de dados/igreja.json. Sem nomes inventados de cultos. Os textos do protótipo foram transcritos em UTF-8; os marcadores continuam visíveis e as afirmações de acolhimento precisam de aprovação antes do lançamento. Nenhuma citação bíblica longa.</p>
+        <p>As quatro páginas têm uma só fonte HTML em <code>partials/bible-visit.html</code>, aplicada na home e nesta demonstração. O JavaScript move os mesmos elementos entre a folha 3D e o carrossel até 760px. Carrossel com scroll-snap, quatro indicadores com área de toque do sistema, setas, arraste e Repetir abertura; sem troca automática. Navegação por teclado restrita ao componente. Textos impressos são decorativos (aria-hidden); controles e botão de rota permanecem acessíveis, com foco visível e anúncio discreto da página atual. Informações essenciais estão em texto real fora do livro.</p>
+        <p>Movimento finito, somente transform e opacity, easing cubic-bezier(.22,1,.36,1): capa/volume 480ms ao entrar na tela; revelação do miolo 260ms após 140ms; fita balança uma vez em 480ms ao terminar a abertura; folha manual 480ms. A proporção reserva o espaço desde o início; montagem 3D/carrossel a 300px da tela, e diagramação do miolo suspensa fora dela por content-visibility. Animações pausam fora da tela ou com aba oculta. Movimento reduzido: livro já aberto e estático, troca imediata e carrossel sem rolagem animada. Sem JavaScript, páginas disponíveis, controles ocultos e link externo de mapa utilizável. Arraste não seleciona o texto decorativo.</p>
+        <p><code>k-visit-map</code> fica abaixo do livro, com endereço, horários e Abrir no Google Maps. O iframe de 420px (320px mobile) tem título acessível, loading=lazy e só recebe a URL ao chegar a 300px da tela. A URL é gerada dos dados do endereço, omitindo [número] da consulta. Até o número ser confirmado, o mapa indica a avenida/bairro; conferir a localização exata antes do lançamento. Sem JS ou observador, permanece o link externo. A CSP permite somente https://www.google.com como origem de frame na home/manual.</p>
+        <p class="k-body-sm">Tokens --bible-* reúnem geometria, diagramação cqw, proporções, mapa e movimento. Cores, fontes, espaçamentos, raios, sombras e easing são aliases dos tokens existentes. Newsreader local OFL, normal 400 e itálico 400; nenhuma fonte do Google é requisitada. A família é preparada quando a seção entra na tela; os cultos nunca aguardam isso.</p>
+        <a class="k-link" href="#visite">Experimentar os três componentes abaixo</a>
       </div>
     </section>
 
+    <!-- bible-visit:start -->
     <section class="k-section k-editorial" id="visite" aria-labelledby="visite-titulo">
       <div class="k-container">
-        <h2 class="k-editorial__opening" id="visite-titulo"><strong>Venha nos visitar</strong> <span>Duas noites por semana. Uma casa aberta.</span></h2>
-        <div class="k-bible" data-bible aria-label="Uma Bíblia aberta apresenta os horários e o endereço">
-          <div class="k-bible__scene" data-bible-scene>
-            <template data-bible-shell>
-              <div class="k-bible__shell" aria-hidden="true">
-                <div class="k-bible__shadow"></div><div class="k-bible__back"></div><div class="k-bible__block"></div>
-                <div class="k-bible__edge k-bible__edge--bottom"></div><div class="k-bible__edge k-bible__edge--side"></div>
-                <div class="k-bible__spine"></div><div class="k-bible__ribbon"></div>
-                <div class="k-bible__cover"><div class="k-bible__face k-bible__face--front"><span class="k-bible__cross"></span></div><div class="k-bible__face k-bible__face--inside"></div></div>
+        <header class="k-editorial__intro">
+          <p class="k-eyebrow">Venha nos visitar</p>
+          <h2 class="k-editorial__title" id="visite-titulo">Toda semana, a mesma <em>porta aberta</em><span>.</span></h2>
+          <p class="k-body-lg k-muted">Duas noites por semana, em <span data-dado="cidade-nome">Iguatu</span>. Venha como está e fique como família.</p>
+        </header>
+        <ul class="k-service-times" data-dado="cultos-destaque" aria-label="Horários dos cultos na sede"><li class="k-service-times__item"><span class="k-service-times__day">Quinta-feira</span><strong class="k-service-times__time">19h30</strong></li><li class="k-service-times__item"><span class="k-service-times__day">Domingo</span><strong class="k-service-times__time">18h</strong></li></ul>
+        <div class="k-service-times__address"><p data-dado="endereco">Av. Dr. José Holanda Montenegro, [número] · Centro · Iguatu - CE</p><a class="k-link" href="#como-chegar">Como chegar <span aria-hidden="true">↓</span></a></div>
+
+        <div class="k-bible" data-bible role="group" aria-label="Bíblia ilustrativa. Navegue pelas quatro páginas.">
+          <div class="k-bible__scene" data-bible-scene id="visita-paginas">
+            <div class="k-bible__shadow" aria-hidden="true"></div>
+            <div class="k-bible__volume">
+              <div class="k-bible__leather k-bible__leather--left" aria-hidden="true"></div><div class="k-bible__leather k-bible__leather--right" aria-hidden="true"></div>
+              <div class="k-bible__edge k-bible__edge--left" aria-hidden="true"></div><div class="k-bible__edge k-bible__edge--right" aria-hidden="true"></div>
+              <div class="k-bible__pages" data-bible-pages>
+                <article class="k-bible-page k-bible-page--left" data-bible-page role="presentation">
+                  <div class="k-bible-page__print" aria-hidden="true">
+                    <div class="k-bible-page__runhead"><span>1</span><b>Venha nos visitar</b></div>
+                    <div class="k-bible-page__chapter"><span class="k-bible-page__numeral" data-dado="culto-0-numero">19<small>h30</small></span><span class="k-bible-page__cap"><span data-dado="culto-0-dia">Quinta-feira</span><i>o culto do meio da semana</i></span></div>
+                    <div class="k-bible-page__columns">
+                      <p><sup>1</sup>Toda <b data-dado="culto-0-detalhe">quinta-feira, às 19h30</b>, as portas da <span data-dado="nome">Igreja Kemuel</span> se abrem para o culto.</p>
+                      <p><sup>2</sup>É um encontro no meio da semana para louvar, orar e ouvir a Palavra.</p>
+                      <p><sup>3</sup>Você não precisa conhecer ninguém para chegar. Alguém da recepção vai te receber na porta.</p>
+                      <p><sup>4</sup>[Texto curto sobre como é o culto de quinta, a confirmar com a igreja.]</p>
+                    </div>
+                    <div class="k-bible-page__note"><span>cf. Domingo, p. 2</span><span data-dado="cidade-uf">Iguatu · CE</span></div>
+                  </div>
+                </article>
+                <article class="k-bible-page k-bible-page--right" data-bible-page role="presentation">
+                  <div class="k-bible-page__print" aria-hidden="true">
+                    <div class="k-bible-page__runhead"><b>Quando nos encontramos</b><span>2</span></div>
+                    <div class="k-bible-page__chapter"><span class="k-bible-page__numeral" data-dado="culto-1-numero">18<small>h</small></span><span class="k-bible-page__cap"><span data-dado="culto-1-dia">Domingo</span><i>o culto de domingo</i></span></div>
+                    <div class="k-bible-page__columns">
+                      <p><sup>1</sup>Aos <b data-dado="culto-1-detalhe">domingos, às 18h</b>, a igreja se reúne de novo para encerrar a semana perto de Deus.</p>
+                      <p><sup>2</sup>Venha com a família. Venha sozinho. Venha como estiver.</p>
+                      <p><sup>3</sup>[Informação sobre o espaço para crianças, a confirmar com a igreja.]</p>
+                      <p><sup>4</sup>Não existe roupa certa. Existe o desejo de estar junto.</p>
+                    </div>
+                    <div class="k-bible-page__note"><span>cf. Como chegar, p. 3</span><span>Ver horários</span></div>
+                  </div>
+                </article>
+                <article class="k-bible-page k-bible-page--left" data-bible-page role="presentation">
+                  <div class="k-bible-page__print" aria-hidden="true">
+                    <div class="k-bible-page__runhead"><span>3</span><b>Como chegar</b></div>
+                    <div class="k-bible-page__chapter"><span class="k-bible-page__numeral" data-dado="uf">CE</span><span class="k-bible-page__cap"><span data-dado="cidade-nome">Iguatu</span><i>a sede, no <span data-dado="bairro">Centro</span></i></span></div>
+                    <div class="k-bible-page__columns">
+                      <p><sup>1</sup>A sede fica na <b data-dado="rua-numero">Av. Dr. José Holanda Montenegro, [número]</b>, no <span data-dado="endereco-regiao">Centro de Iguatu, Ceará</span>.</p>
+                      <p><sup>2</sup>[Ponto de referência perto da igreja, a confirmar.]</p>
+                      <p><sup>3</sup>[Orientação sobre estacionamento, a confirmar.]</p>
+                      <p><sup>4</sup>Se tiver dúvida no caminho, é só chamar a gente no WhatsApp.</p>
+                    </div>
+                    <div class="k-bible-page__note"><span>cf. Mapa, p. 4</span><span data-dado="bairro">Centro</span></div>
+                  </div>
+                </article>
+                <article class="k-bible-page k-bible-page--right k-bible-page--map" data-bible-page role="presentation">
+                  <div class="k-bible-page__print">
+                    <div class="k-bible-page__runhead" aria-hidden="true"><b>A rota</b><span>4</span></div>
+                    <div class="k-bible-page__plate">
+                      <svg class="k-bible-page__compass" viewBox="0 0 100 100" aria-hidden="true" fill="none" stroke="currentColor"><circle cx="50" cy="50" r="44"/><circle cx="50" cy="50" r="36" stroke-dasharray="1.5 2.5"/><path class="k-bible-page__needle" d="M50 8 56 50 50 92 44 50Z"/><path class="k-bible-page__north" d="M50 8 56 50H44Z"/><path d="M8 50 50 45 92 50 50 55Z"/></svg>
+                      <p class="k-bible-page__city" aria-hidden="true"><span data-dado="nome">Igreja Kemuel</span><i data-dado="endereco-curto">Av. Dr. José Holanda Montenegro, Centro</i></p>
+                      <a class="k-button k-bible-page__route" href="#como-chegar" aria-label="Ver rota no mapa abaixo da Bíblia">Ver rota no mapa<svg class="k-icon" aria-hidden="true"><use href="#k-pin"/></svg></a>
+                    </div>
+                    <p class="k-bible-page__folio" aria-hidden="true">Venha como está. Fique como família.</p>
+                  </div>
+                </article>
+                <div class="k-bible__leaf" data-bible-leaf></div>
               </div>
-            </template>
-            <div class="k-bible-pages" data-bible-pages tabindex="0" role="region" aria-roledescription="livro" aria-label="Informações para sua visita. Use as setas para mudar de página." id="visita-paginas">
-              <div class="k-bible-pages__spread is-current" data-bible-spread aria-label="Páginas 1 e 2: horários">
-                <article class="k-bible-pages__page"><p class="k-eyebrow">Horários</p><h3 class="k-bible-pages__title">Quando nos<br>encontramos</h3><span class="k-bible-pages__number" aria-label="Página 1">1</span></article>
-                <article class="k-bible-pages__page"><ul class="k-bible-pages__times" aria-label="Horários dos cultos" data-dado="cultos-biblia"><li><span>Quinta-feira</span><strong>19h30</strong><small>Culto</small></li><li><span>Domingo</span><strong>18h</strong><small>Culto</small></li></ul><span class="k-bible-pages__number" aria-label="Página 2">2</span></article>
-              </div>
-              <div class="k-bible-pages__spread" data-bible-spread aria-label="Páginas 3 e 4: endereço" aria-hidden="true" inert>
-                <article class="k-bible-pages__page"><p class="k-eyebrow">Endereço</p><h3 class="k-bible-pages__title">Como chegar</h3><p data-dado="endereco-linhas">Av. Dr. José Holanda Montenegro, [número]<br><span class="k-muted">Centro · Iguatu - CE</span></p><span class="k-bible-pages__number" aria-label="Página 3">3</span></article>
-                <article class="k-bible-pages__page"><div class="k-placeholder"><svg class="k-icon k-icon--large" aria-hidden="true"><use href="#k-pin"/></svg><span>MAPA<br><span class="k-caption">Espaço reservado · sem embed</span></span></div><a class="k-link" href="https://www.google.com/maps/search/?api=1&amp;query=Igreja%20Kemuel%2C%20Av.%20Dr.%20Jos%C3%A9%20Holanda%20Montenegro%2C%20Centro%2C%20Iguatu%20-%20CE" data-dado-href="mapa" target="_blank" rel="noopener noreferrer">Ver rota no mapa<svg class="k-icon" aria-hidden="true"><use href="#k-external"/></svg><span class="k-sr-only"> (abre em nova aba)</span></a><span class="k-caption k-muted">Abre o Google Maps</span><span class="k-bible-pages__number" aria-label="Página 4">4</span></article>
-              </div>
+              <div class="k-bible__spine" aria-hidden="true"></div><div class="k-bible__ribbon" aria-hidden="true"></div>
+              <div class="k-bible__cover" aria-hidden="true"><div class="k-bible__cover-face k-bible__cover-face--out"><span class="k-bible__stamp"><span class="k-bible__cross"></span><span class="k-label">Bíblia Sagrada</span></span></div><div class="k-bible__cover-face k-bible__cover-face--in"></div></div>
             </div>
           </div>
-          <div class="k-bible__controls" role="group" aria-label="Navegar pelas páginas da Bíblia">
+          <div class="k-bible__controls" data-bible-controls hidden>
             <button class="k-bible__control k-bible__control--previous" type="button" data-bible-previous aria-label="Página anterior" aria-controls="visita-paginas" disabled><svg class="k-icon" aria-hidden="true"><use href="#k-arrow"/></svg></button>
+            <p class="k-label k-bible__position" data-bible-position>Páginas 1 e 2 de 4</p>
             <button class="k-bible__control" type="button" data-bible-next aria-label="Próxima página" aria-controls="visita-paginas"><svg class="k-icon" aria-hidden="true"><use href="#k-arrow"/></svg></button>
+            <button class="k-bible__replay k-link" type="button" data-bible-replay aria-label="Repetir abertura da Bíblia">Repetir abertura</button>
           </div>
-          <p class="k-sr-only" data-bible-status role="status" aria-live="polite" aria-atomic="true">Páginas 1 e 2: horários.</p>
+          <div class="k-bible__dots" data-bible-dots role="group" aria-label="Escolher uma página" hidden><button type="button" data-bible-dot="0" aria-label="Página 1" aria-current="true"><span></span></button><button type="button" data-bible-dot="1" aria-label="Página 2"><span></span></button><button type="button" data-bible-dot="2" aria-label="Página 3"><span></span></button><button type="button" data-bible-dot="3" aria-label="Página 4"><span></span></button></div>
+          <p class="k-caption k-muted k-bible__hint">Use as setas, arraste ou toque nos controles para explorar as páginas.</p>
+          <p class="k-sr-only" data-bible-status role="status" aria-live="polite" aria-atomic="true"></p>
         </div>
-        <div class="k-editorial__bottom">
-          <div>
-            <div class="k-info-table" id="endereco" role="region" aria-label="Horários e endereço da igreja">
-              <table><caption class="k-sr-only">Informações para planejar sua visita</caption><thead><tr><th scope="col">Cultos</th><th scope="col">Horário</th></tr></thead><tbody data-dado="cultos-tabela"><tr><th scope="row">Quinta-feira</th><td>19h30</td></tr><tr><th scope="row">Domingo</th><td>18h</td></tr><tr><th scope="row">Endereço</th><td class="k-info-table__address">Av. Dr. José Holanda Montenegro, [número] · Centro · Iguatu - CE</td></tr></tbody></table>
-              <a class="k-button" href="https://www.google.com/maps/search/?api=1&amp;query=Igreja%20Kemuel%2C%20Av.%20Dr.%20Jos%C3%A9%20Holanda%20Montenegro%2C%20Centro%2C%20Iguatu%20-%20CE" data-dado-href="mapa" target="_blank" rel="noopener noreferrer">Ver rota no mapa<svg class="k-icon" aria-hidden="true"><use href="#k-external"/></svg><span class="k-sr-only"> (abre em nova aba)</span></a>
-              <p class="k-caption k-muted">Abre o Google Maps em nova aba · número do endereço a confirmar</p>
-            </div>
-            <p class="k-editorial__note">(*) [Observação sobre estacionamento ou acesso, a confirmar].</p>
+
+        <section class="k-visit-map" id="como-chegar" aria-labelledby="visita-mapa-titulo">
+          <span id="endereco" class="k-sr-only" aria-hidden="true"></span>
+          <div class="k-visit-map__copy k-stack">
+            <p class="k-eyebrow">Como chegar</p><h3 class="k-h3" id="visita-mapa-titulo">Uma porta aberta em <span data-dado="cidade-nome">Iguatu</span>.</h3>
+            <p data-dado="endereco">Av. Dr. José Holanda Montenegro, [número] · Centro · Iguatu - CE</p><p class="k-body-sm k-muted" data-dado="cultos-resumo">Quinta-feira, 19h30 · Domingo, 18h</p>
+            <a class="k-button" data-dado-href="mapa" href="https://www.google.com/maps/search/?api=1&amp;query=Igreja%20Kemuel%2C%20Av.%20Dr.%20Jos%C3%A9%20Holanda%20Montenegro%2C%20Centro%2C%20Iguatu%20-%20CE" target="_blank" rel="noopener noreferrer">Abrir no Google Maps<svg class="k-icon" aria-hidden="true"><use href="#k-external"/></svg><span class="k-sr-only"> (abre em nova aba)</span></a>
+            <p class="k-caption k-muted">Número do endereço a confirmar. A localização no mapa usa a avenida e o bairro.</p>
           </div>
-          <div class="k-editorial__copy">
-            <p class="k-editorial__phrase"><span>Toda semana,</span><span>a mesma porta aberta.</span><span>Venha como está.</span><span>Fique como família.</span></p>
-            <!-- Copy a confirmar com o pastor. -->
-            <p>[Texto curto sobre como é o culto, a confirmar com a igreja.] <em>Sem roupa certa, sem cobrança na porta.</em></p>
-            <a class="k-link" href="https://example.invalid/whatsapp" rel="noopener noreferrer" data-example>Falar com alguém antes da visita<svg class="k-icon" aria-hidden="true"><use href="#k-chat"/></svg></a>
-            <p class="k-caption k-muted">WhatsApp · link de exemplo, sem número real</p>
-          </div>
-        </div>
+          <iframe class="k-visit-map__frame" data-map-lazy data-dado-src="mapa-embed" data-src="https://www.google.com/maps?q=Igreja%20Kemuel%2C%20Av.%20Dr.%20Jos%C3%A9%20Holanda%20Montenegro%2C%20Centro%2C%20Iguatu%20-%20CE&amp;output=embed" loading="lazy" title="Mapa de localização da igreja" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </section>
       </div>
     </section>
+    <!-- bible-visit:end -->
 
     <!-- timeline:start -->
     <section class="k-section k-section--black k-dark k-timeline" id="quem-somos" data-timeline aria-labelledby="quem-somos-titulo">
@@ -608,6 +654,7 @@
         <div class="k-motion-tile"><h3 class="k-h5">k-radiate</h3><p class="k-caption k-muted">k-radiate-wave · 4,8s · linear (atmosfera)<br>Defasagens 0 / −1,6 / −3,2s. Só scale e opacity; traço fino constante. Onda extra ao abrir FAQ: 1s, easing único de interface, uma vez, opacidade 0,75 → 0. Pausa fora da dobra/aba oculta; movimento reduzido e sem JS: três anéis estáticos.</p><a class="k-link" href="#primeira-visita">Abrir uma pergunta e observar as ondas</a></div>
         <div class="k-motion-tile"><h3 class="k-h5">Movimento reduzido</h3><p class="k-body-sm k-muted">prefers-reduced-motion remove animações e transições. Conteúdo, foco e estados continuam visíveis. A preferência pode mudar com a página aberta.</p></div>
       </div>
+      <div class="k-stack"><h3>Galeria · Bíblia aberta</h3><div class="k-grid k-grid--3"><div class="k-motion-tile"><h4 class="k-h5">k-bible · abertura</h4><p class="k-caption k-muted">Volume e capa: 480ms, easing único. Miolo: 260ms, atraso 140ms. Só transform/opacity, uma vez ao entrar na tela; replay manual.</p></div><div class="k-motion-tile"><h4 class="k-h5">k-bible · fita</h4><p class="k-caption k-muted">Balanço finito 9° → −5° → 2° → 0°, 480ms após a abertura. Easing único. Pausa fora da tela/aba oculta. Sem loop.</p></div><div class="k-motion-tile"><h4 class="k-h5">k-bible · folha</h4><p class="k-caption k-muted">Frente/verso em rotateY 0° ↔ −180°, 480ms, easing único. Setas, teclado ou arraste. Movimento reduzido: estado final, sem animação.</p></div></div><a class="k-link" href="#visite">Testar e repetir a abertura</a></div>
       <div class="k-stack"><h3>Galeria · imagens do blog</h3><div class="k-motion-tile"><h4 class="k-h5">k-blog-cover</h4><p class="k-caption k-muted">Hover de imagem: scale 1 → 1.03, 500ms, cubic-bezier(.22, 1, .36, 1). Só a fotografia se move, recortada pelo radius do sistema. Texto e etiqueta ficam parados. Sem zoom com movimento reduzido ou toque.</p><a class="k-link" href="#k-blog-documentacao">Testar os cards limpos</a></div></div>
       <div class="k-stack"><h3>Galeria · contribuição</h3><div class="k-grid k-grid--3"><div class="k-motion-tile"><h4 class="k-h5">k-give-coin-enter</h4><p class="k-caption k-muted">480ms · easing único · opacidade, subida de 12px e rotação de -5° para 0°. Uma entrada; inclinação por mouse limitada a 6°, sem loop.</p></div><div class="k-motion-tile"><h4 class="k-h5">k-progress</h4><p class="k-caption k-muted">480ms · easing único · atrasos 0/140/280ms. Só scaleX; porcentagem conta até o valor calculado. Uma vez, depois fica parada.</p></div><div class="k-motion-tile"><h4 class="k-h5">k-give-reasons</h4><p class="k-caption k-muted">Revelação do sistema: 480ms · easing único · atrasos 0/140/260ms. Movimento reduzido entrega o estado final. Confirmação de cópia reutiliza o botão do sistema.</p></div></div><a class="k-link" href="#demo-give">Ver a demonstração completa</a></div>
       <div class="k-stack"><h3>Galeria · cenas da história</h3><p class="k-body-sm k-muted">Os controles abaixo usam o mesmo palco e os mesmos SVGs da demonstração. Toda seleção pode ser repetida; nenhum capítulo troca sozinho. Easing de todos os movimentos: cubic-bezier(.22, 1, .36, 1).</p>

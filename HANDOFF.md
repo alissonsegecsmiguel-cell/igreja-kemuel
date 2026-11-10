@@ -2,6 +2,10 @@
 
 ## 1. Última sessão
 
+- 10/11/2026 (Bíblia aberta): visita reconstruída do protótipo próprio aprovado, com título Outfit 800/acento Newsreader itálico, k-service-times acima do livro e endereço em texto estático. k-bible/k-bible-page: couro com costura, corte vermelho, capa de duas faces, folha frente/verso, fita finita e quatro páginas em diagramação cqw/duas colunas. Até 760px, carrossel scroll-snap com indicadores. Fonte única em partials/bible-visit.html para home/manual; cultos, cidade, endereço e consulta do mapa gerados de dados/igreja.json. Hero aponta para #como-chegar, mapa abaixo com loading=lazy e URL aplicada só a 300px da tela. Sem Prévia, cólofon, imagem pesada, fonte externa ou biblioteca. No histórico existia apenas placeholder de mapa; iframe criado e CSP de frame limitada a www.google.com na home/manual. Número segue marcador visível, omitido da consulta enquanto não confirmado.
+- Validação da Bíblia aberta: 1440×900, 1024×768, 760×900 e 390×844, normal/reduzido; horários cabem ao entrar na dobra, sem aguardar animação e também sem JS. Teclado, setas, mouse/arraste, toque nativo, replay, foco, indicadores, quatro páginas únicas, pausa fora da tela e visibilitychange simulado, redução dinâmica e resize passaram. Sem erros de console/recursos locais ou rolagem horizontal; mapa carregou em Iguatu. Textos decorativos fora da árvore acessível; rota e controles acessíveis. Contrastes conservadores: apoio/grid ≥5,16:1, link/grid ≥5,19:1, apoio/folha com sombra ≥5,82:1, verso pequeno ≥4,63:1, botão 4,61:1. Montagem idempotente, JSON/demais páginas preservados; k-info-table mantida para Discipulado. Corrigidos na origem o preenchimento do href quando data-dado-href vem antes e a captura precoce do ponteiro/hover transformado do botão dentro da folha 3D. Evidências locais em relatorios/kemuel-biblia-aberta/RELATORIO.md.
+- Desempenho da Bíblia aberta: Lighthouse 13.6 móvel local, mediana de três antes/final: 98→92, LCP 1.816→2.114ms, TBT 104→264ms, CLS 0. Há queda de seis pontos; não considerar preservados os 98. Primeira versão mediu 90; montagem a 300px, espaço reservado e suspensão de diagramação fora da tela reduziram o trabalho, mas a regressão permanece. Rodadas finais 92/93/66 (última com TBT 5.059ms), variação de CPU registrada sem atribuir todo o custo ao componente. Revisar o caminho de renderização antes do lançamento; relatórios locais incluem todas as medições.
+
 - Validação dos cards do blog (10/11/2026): Chrome local em 1440×900, 1024×768, 760×900 e 390×844 passou, sem erros de console/HTTP ou rolagem horizontal. Grade, ordem, proporções, etiquetas sem quebra, leitura sem corte, fontes, filtros por mouse/Enter/Espaço/toque, foco, zoom exclusivo da imagem e redução de movimento conferidos; prints dos quatro tamanhos inspecionados. Manual e portal em 1440/390, fallback sem JS, flag Exemplo, quinze WebPs/dimensões/hashes e preservação das outras dobras/posts/busca passaram. Duas montagens consecutivas retornaram somente “igual”. Lighthouse 13.6 móvel (mediana de três rodadas antes/depois): 97→98, LCP 1.819→1.821ms, TBT 128→81ms, CLS 0; mantém os 98 informados, sem alegar ganho garantido diante da variação de CPU. Transferência inicial 334.422→334.680 bytes, capas novas com lazy loading. Evidências locais em relatorios/kemuel-blog-imagens/RELATORIO.md, fora do Git/deploy.
 
 - 10/11/2026 (cards do blog): dobra da home com o post mais recente em destaque à esquerda (duas linhas, imagem 4/5) e quatro cards 2×2 à direita (4/3); até 760px, uma coluna e todas as capas 4/3. k-blog-cover nasce no design system como variante limpa; cabeçalho/filtros/contador preservados. Sem formas, filtros ou recortes ornamentais. Etiqueta única branca/preta, Exemplo nos metadados, resumo em três linhas e tempo de leitura separado. Hover só da imagem, 1.03/500ms; sem zoom com redução de movimento/toque. Quinze WebPs 600/900/1400 criados dos originais locais licenciados, sem ampliar pixels; fontes/licenças reconferidas, créditos/dimensões/hashes atualizados. Nenhum download novo foi necessário e nenhuma IA foi usada. Catálogo gerado de front matter, nunca editado à mão; conversor atualizado para as versões limpas futuras. Colagem preservada como demonstração independente; portal /blog usa outros componentes e permanece igual.
@@ -83,7 +87,7 @@
 - Blog e Materiais e cursos ainda têm partes provisórias, no menu. /discipulado contém dez lições, FAQ pendente de confirmação e apostila de exemplo para download; o catálogo já tem o item 01 real.
 - No ar: a página principal em construção, com marcadores entre colchetes e noindex. O design system permanece excluído do deploy por .vercelignore.
 - Design system oficial criado; logo oficial pendente e vermelho provisório. Tokens, componentes, JavaScript e fontes ficam em arquivos compartilhados em assets/.
-- Dobra de visita editorial com Bíblia em CSS 3D, duas duplas de páginas e tabela de cultos/endereço sempre disponível. Dados não confirmados seguem como marcadores.
+- Dobra Bíblia aberta com dois cultos grandes antes do livro, quatro páginas decorativas/duas duplas 3D no computador e carrossel no celular; endereço e mapa abaixo. Dados não confirmados seguem como marcadores. Regressão de Lighthouse móvel local registrada para revisão antes do lançamento.
 - Dobra Quem somos com painel de leitura sticky/abas no computador e acordeão até 760px; conteúdo da apostila, fundação ainda como marcador e ilustrações de exemplo. Princípios batistas aguardam confirmação pastoral.
 
 ## 3. Em andamento
@@ -94,7 +98,7 @@
 
 1. Quando houver analytics aprovado, medir buscas sem resultado para melhorar temas, sinônimos e conteúdo; nenhuma busca é registrada nesta implementação.
 1. Rever /blog, /materiais e /contribua e as três dobras na inicial. Revisar a apostila e /discipulado; aprovar os exemplos antes do lançamento. As tarefas 06, 07 e 09 estão implementadas; substituir conteúdos e dados provisórios conforme o checklist.
-2. Dobra “Venha nos visitar” com Bíblia 3D: já implementada; aguardando validação. Mantida sem alterações nesta tarefa.
+2. Validar a nova Bíblia aberta, conferir o pino do mapa quando o número chegar e revisar a regressão de Lighthouse móvel local (98→92).
 3. Preencher os marcadores conforme chegarem os dados da igreja e seguir o checklist de lançamento.
 4. Validar o design system e substituir os provisórios quando chegarem o logo e o código oficial do vermelho.
 
@@ -121,7 +125,7 @@
 - Confirmar com o pastor que a Kemuel adota os sete princípios batistas da lição 10 da apostila antes do lançamento. Revisar a síntese de três parágrafos e o convite ao serviço.
 - Decidir entre ilustrações e fotos reais autorizadas por capítulo, se houver.
 - Visita editorial: confirmar endereço completo e observação de estacionamento/acesso.
-- Texto curto sobre como é o culto e validação da frase “Sem roupa certa, sem cobrança na porta.”
+- Aprovar os textos transcritos do protótipo da Bíblia aberta: recepção, vestimenta, descrição dos cultos, espaço infantil e estacionamento. Confirmar número do endereço e o pino exato do mapa; por ora, consulta por avenida/bairro com aviso visível.
 - Versículo e tradução autorizada, somente se a igreja decidir incluir uma citação na Bíblia; nenhum texto bíblico foi publicado.
 
 - Arquivo original do logo (SVG ou PNG transparente, versões clara e escura) para substituir o redesenho provisório de assets/brand/ e os ícones de assets/icons/.
@@ -153,6 +157,9 @@
 - Organização dos quatro estudos locais: primeiro nível com design system renomeado, notas.md e arquivos/; cópias de segurança e diagnóstico preservados localmente.
 
 ## 8. Decisões registradas
+
+- 10/11/2026 (Bíblia aberta): k-service-times é informação prioritária e estática, antes de k-bible; Outfit 800/48–88px nos horários e Public Sans 600 nos dias. k-bible-page usa quatro páginas únicas e tokens cqw, Newsreader 400 na leitura e itálico 400 nos apoios, sem aumentar a família/pesos autorizados. Livro 1.78, folha real frente/verso, capa e fita finitas; carrossel até 760px. Abertura/folha/fita 480ms, revelação 260ms após 140ms, easing único; pausa fora da tela/aba e redução de movimento. Nenhuma nova exceção de movimento contínuo.
+- 10/11/2026 (dados/mapa): partials/bible-visit.html é fonte única da dobra e demonstração, montada antes de preencher data-dado. Dados só de dados/igreja.json; iframe gerado do endereço, sem colchetes, carregado a 300px com loading=lazy e alturas 420/320px. #como-chegar substitui o destino da hero, mantendo #endereco como alias de compatibilidade. Grid preto reduzido de 10% para 4% e links no vermelho ativo existente para garantir AA no cruzamento. As afirmações do protótipo ainda exigem validação pastoral para lançamento.
 
 - 10/11/2026 (blog, imagens primeiro): k-blog-card usa k-blog-cover limpo. Desktop >760px com destaque mais recente à esquerda (2 de 4 trilhas/duas linhas) e quatro cards à direita; mobile <=760px em coluna. Cabeçalho atual mantido. Tema uma vez, sem quebra; Exemplo discreto nos metadados condicionado à flag, resumo clamp 3 e leitura em linha própria. Só imagem tem hover 1.03/500ms/easing único, desativado por redução de movimento/toque. Filtro promove o primeiro resultado visível e usa 4/3 nos resultados filtrados; não altera a ordem dos temas.
 - 10/11/2026 (nitidez do blog): usar os mesmos originais locais, com 1594–3840px no lado maior, sem download adicional. WebPs 600/900/1400 de largura em proporção natural, withoutEnlargement; srcset com dimensões reais e sizes do layout. Créditos mantêm licença/origem e passam a registrar originais/derivadas/hashes. Páginas de post, portal e capas legadas permanecem preservadas; a colagem continua apenas na demonstração independente do manual. O recorte rasgado dessa demonstração deixou de depender do token removido da antiga FAQ: agora é --collage-tear-shape.
@@ -255,6 +262,9 @@
 - O design system nasce com os componentes das 3 fases: hero, menu mobile, bloco de horários, bloco de endereço com mapa, bloco de PIX, botão flutuante de WhatsApp, rodapé, card de post, página de texto longo, card de material, filtro por categoria, card de evento, card de curso.
 
 ## 9. Checklist de lançamento
+
+- [ ] Conferir o pino do Google Maps com o número completo e aprovar as informações impressas na Bíblia aberta.
+- [ ] Rever a regressão de Lighthouse móvel local da Bíblia aberta (mediana 98→92) e o custo do caminho inicial de renderização.
 
 - [ ] Substituir metas fictícias por dados públicos aprovados, confirmar data recente e responsável; validar códigos, chave PIX, titular e QR Code antes de remover marcadores/selos.
 

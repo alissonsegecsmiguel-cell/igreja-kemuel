@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Igreja Kemuel em Iguatu, Ceará. Cultos às quintas, 19h30, e aos domingos, 18h. Venha nos visitar.">
   <meta name="robots" content="noindex">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'none'; frame-src https://www.google.com; object-src 'none'; base-uri 'none'; form-action 'none'">
   <title>Igreja Kemuel · Iguatu, CE</title>
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
@@ -116,59 +116,108 @@
           <h1 class="k-hero-led__title k-enter k-enter--2" id="hero-titulo">Bem-vindo à <span class="k-lettering">casa de Deus.</span></h1>
           <p class="k-body-lg k-hero__intro k-enter k-enter--3">Uma comunidade de fé de portas abertas para você e sua família viverem mais perto de Deus.</p>
           <div class="k-enter k-enter--3 k-hero-led__schedule"><ul class="k-schedule k-schedule--dark" aria-label="Horários dos cultos" data-dado="cultos-schedule"><li class="k-schedule__item"><span class="k-schedule__head"><svg class="k-icon" aria-hidden="true"><use href="#k-clock"/></svg><span class="k-schedule__mark"></span></span><span class="k-eyebrow k-schedule__day">Quinta-feira</span><span class="k-schedule__time">19h30</span><span class="k-schedule__label">Culto</span></li><li class="k-schedule__item"><span class="k-schedule__head"><svg class="k-icon" aria-hidden="true"><use href="#k-clock"/></svg><span class="k-schedule__mark"></span></span><span class="k-eyebrow k-schedule__day">Domingo</span><span class="k-schedule__time">18h</span><span class="k-schedule__label">Culto</span></li></ul></div>
-          <div class="k-row k-hero-led__actions k-enter k-enter--3"><a class="k-button" href="#endereco">Como chegar<svg class="k-icon" aria-hidden="true"><use href="#k-pin"/></svg></a><a class="k-button k-button--secondary" href="/materiais">Cursos e materiais gratuitos</a></div>
+          <div class="k-row k-hero-led__actions k-enter k-enter--3"><a class="k-button" href="#como-chegar">Como chegar<svg class="k-icon" aria-hidden="true"><use href="#k-pin"/></svg></a><a class="k-button k-button--secondary" href="/materiais">Cursos e materiais gratuitos</a></div>
         </div>
       </div>
     </section>
+    <!-- bible-visit:start -->
     <section class="k-section k-editorial" id="visite" aria-labelledby="visite-titulo">
       <div class="k-container">
-        <h2 class="k-editorial__opening" id="visite-titulo"><strong>Venha nos visitar</strong> <span>Duas noites por semana. Uma casa aberta.</span></h2>
-        <div class="k-bible" data-bible aria-label="Uma Bíblia aberta apresenta os horários e o endereço">
-          <div class="k-bible__scene" data-bible-scene>
-            <template data-bible-shell>
-              <div class="k-bible__shell" aria-hidden="true">
-                <div class="k-bible__shadow"></div><div class="k-bible__back"></div><div class="k-bible__block"></div>
-                <div class="k-bible__edge k-bible__edge--bottom"></div><div class="k-bible__edge k-bible__edge--side"></div>
-                <div class="k-bible__spine"></div><div class="k-bible__ribbon"></div>
-                <div class="k-bible__cover"><div class="k-bible__face k-bible__face--front"><span class="k-bible__cross"></span></div><div class="k-bible__face k-bible__face--inside"></div></div>
+        <header class="k-editorial__intro">
+          <p class="k-eyebrow">Venha nos visitar</p>
+          <h2 class="k-editorial__title" id="visite-titulo">Toda semana, a mesma <em>porta aberta</em><span>.</span></h2>
+          <p class="k-body-lg k-muted">Duas noites por semana, em <span data-dado="cidade-nome">Iguatu</span>. Venha como está e fique como família.</p>
+        </header>
+        <ul class="k-service-times" data-dado="cultos-destaque" aria-label="Horários dos cultos na sede"><li class="k-service-times__item"><span class="k-service-times__day">Quinta-feira</span><strong class="k-service-times__time">19h30</strong></li><li class="k-service-times__item"><span class="k-service-times__day">Domingo</span><strong class="k-service-times__time">18h</strong></li></ul>
+        <div class="k-service-times__address"><p data-dado="endereco">Av. Dr. José Holanda Montenegro, [número] · Centro · Iguatu - CE</p><a class="k-link" href="#como-chegar">Como chegar <span aria-hidden="true">↓</span></a></div>
+
+        <div class="k-bible" data-bible role="group" aria-label="Bíblia ilustrativa. Navegue pelas quatro páginas.">
+          <div class="k-bible__scene" data-bible-scene id="visita-paginas">
+            <div class="k-bible__shadow" aria-hidden="true"></div>
+            <div class="k-bible__volume">
+              <div class="k-bible__leather k-bible__leather--left" aria-hidden="true"></div><div class="k-bible__leather k-bible__leather--right" aria-hidden="true"></div>
+              <div class="k-bible__edge k-bible__edge--left" aria-hidden="true"></div><div class="k-bible__edge k-bible__edge--right" aria-hidden="true"></div>
+              <div class="k-bible__pages" data-bible-pages>
+                <article class="k-bible-page k-bible-page--left" data-bible-page role="presentation">
+                  <div class="k-bible-page__print" aria-hidden="true">
+                    <div class="k-bible-page__runhead"><span>1</span><b>Venha nos visitar</b></div>
+                    <div class="k-bible-page__chapter"><span class="k-bible-page__numeral" data-dado="culto-0-numero">19<small>h30</small></span><span class="k-bible-page__cap"><span data-dado="culto-0-dia">Quinta-feira</span><i>o culto do meio da semana</i></span></div>
+                    <div class="k-bible-page__columns">
+                      <p><sup>1</sup>Toda <b data-dado="culto-0-detalhe">quinta-feira, às 19h30</b>, as portas da <span data-dado="nome">Igreja Kemuel</span> se abrem para o culto.</p>
+                      <p><sup>2</sup>É um encontro no meio da semana para louvar, orar e ouvir a Palavra.</p>
+                      <p><sup>3</sup>Você não precisa conhecer ninguém para chegar. Alguém da recepção vai te receber na porta.</p>
+                      <p><sup>4</sup>[Texto curto sobre como é o culto de quinta, a confirmar com a igreja.]</p>
+                    </div>
+                    <div class="k-bible-page__note"><span>cf. Domingo, p. 2</span><span data-dado="cidade-uf">Iguatu · CE</span></div>
+                  </div>
+                </article>
+                <article class="k-bible-page k-bible-page--right" data-bible-page role="presentation">
+                  <div class="k-bible-page__print" aria-hidden="true">
+                    <div class="k-bible-page__runhead"><b>Quando nos encontramos</b><span>2</span></div>
+                    <div class="k-bible-page__chapter"><span class="k-bible-page__numeral" data-dado="culto-1-numero">18<small>h</small></span><span class="k-bible-page__cap"><span data-dado="culto-1-dia">Domingo</span><i>o culto de domingo</i></span></div>
+                    <div class="k-bible-page__columns">
+                      <p><sup>1</sup>Aos <b data-dado="culto-1-detalhe">domingos, às 18h</b>, a igreja se reúne de novo para encerrar a semana perto de Deus.</p>
+                      <p><sup>2</sup>Venha com a família. Venha sozinho. Venha como estiver.</p>
+                      <p><sup>3</sup>[Informação sobre o espaço para crianças, a confirmar com a igreja.]</p>
+                      <p><sup>4</sup>Não existe roupa certa. Existe o desejo de estar junto.</p>
+                    </div>
+                    <div class="k-bible-page__note"><span>cf. Como chegar, p. 3</span><span>Ver horários</span></div>
+                  </div>
+                </article>
+                <article class="k-bible-page k-bible-page--left" data-bible-page role="presentation">
+                  <div class="k-bible-page__print" aria-hidden="true">
+                    <div class="k-bible-page__runhead"><span>3</span><b>Como chegar</b></div>
+                    <div class="k-bible-page__chapter"><span class="k-bible-page__numeral" data-dado="uf">CE</span><span class="k-bible-page__cap"><span data-dado="cidade-nome">Iguatu</span><i>a sede, no <span data-dado="bairro">Centro</span></i></span></div>
+                    <div class="k-bible-page__columns">
+                      <p><sup>1</sup>A sede fica na <b data-dado="rua-numero">Av. Dr. José Holanda Montenegro, [número]</b>, no <span data-dado="endereco-regiao">Centro de Iguatu, Ceará</span>.</p>
+                      <p><sup>2</sup>[Ponto de referência perto da igreja, a confirmar.]</p>
+                      <p><sup>3</sup>[Orientação sobre estacionamento, a confirmar.]</p>
+                      <p><sup>4</sup>Se tiver dúvida no caminho, é só chamar a gente no WhatsApp.</p>
+                    </div>
+                    <div class="k-bible-page__note"><span>cf. Mapa, p. 4</span><span data-dado="bairro">Centro</span></div>
+                  </div>
+                </article>
+                <article class="k-bible-page k-bible-page--right k-bible-page--map" data-bible-page role="presentation">
+                  <div class="k-bible-page__print">
+                    <div class="k-bible-page__runhead" aria-hidden="true"><b>A rota</b><span>4</span></div>
+                    <div class="k-bible-page__plate">
+                      <svg class="k-bible-page__compass" viewBox="0 0 100 100" aria-hidden="true" fill="none" stroke="currentColor"><circle cx="50" cy="50" r="44"/><circle cx="50" cy="50" r="36" stroke-dasharray="1.5 2.5"/><path class="k-bible-page__needle" d="M50 8 56 50 50 92 44 50Z"/><path class="k-bible-page__north" d="M50 8 56 50H44Z"/><path d="M8 50 50 45 92 50 50 55Z"/></svg>
+                      <p class="k-bible-page__city" aria-hidden="true"><span data-dado="nome">Igreja Kemuel</span><i data-dado="endereco-curto">Av. Dr. José Holanda Montenegro, Centro</i></p>
+                      <a class="k-button k-bible-page__route" href="#como-chegar" aria-label="Ver rota no mapa abaixo da Bíblia">Ver rota no mapa<svg class="k-icon" aria-hidden="true"><use href="#k-pin"/></svg></a>
+                    </div>
+                    <p class="k-bible-page__folio" aria-hidden="true">Venha como está. Fique como família.</p>
+                  </div>
+                </article>
+                <div class="k-bible__leaf" data-bible-leaf></div>
               </div>
-            </template>
-            <div class="k-bible-pages" data-bible-pages tabindex="0" role="region" aria-roledescription="livro" aria-label="Informações para sua visita. Use as setas para mudar de página." id="visita-paginas">
-              <div class="k-bible-pages__spread is-current" data-bible-spread aria-label="Páginas 1 e 2: horários">
-                <article class="k-bible-pages__page"><p class="k-eyebrow">Horários</p><h3 class="k-bible-pages__title">Quando nos<br>encontramos</h3><span class="k-bible-pages__number" aria-label="Página 1">1</span></article>
-                <article class="k-bible-pages__page"><ul class="k-bible-pages__times" aria-label="Horários dos cultos" data-dado="cultos-biblia"><li><span>Quinta-feira</span><strong>19h30</strong><small>Culto</small></li><li><span>Domingo</span><strong>18h</strong><small>Culto</small></li></ul><span class="k-bible-pages__number" aria-label="Página 2">2</span></article>
-              </div>
-              <div class="k-bible-pages__spread" data-bible-spread aria-label="Páginas 3 e 4: endereço" aria-hidden="true" inert>
-                <article class="k-bible-pages__page"><p class="k-eyebrow">Endereço</p><h3 class="k-bible-pages__title">Como chegar</h3><p data-dado="endereco-linhas">Av. Dr. José Holanda Montenegro, [número]<br><span class="k-muted">Centro · Iguatu - CE</span></p><span class="k-bible-pages__number" aria-label="Página 3">3</span></article>
-                <article class="k-bible-pages__page"><div class="k-placeholder"><svg class="k-icon k-icon--large" aria-hidden="true"><use href="#k-pin"/></svg><span>MAPA<br><span class="k-caption">Espaço reservado · sem embed</span></span></div><a class="k-link" href="https://www.google.com/maps/search/?api=1&amp;query=Igreja%20Kemuel%2C%20Av.%20Dr.%20Jos%C3%A9%20Holanda%20Montenegro%2C%20Centro%2C%20Iguatu%20-%20CE" data-dado-href="mapa" target="_blank" rel="noopener noreferrer">Ver rota no mapa<svg class="k-icon" aria-hidden="true"><use href="#k-external"/></svg><span class="k-sr-only"> (abre em nova aba)</span></a><span class="k-caption k-muted">Abre o Google Maps</span><span class="k-bible-pages__number" aria-label="Página 4">4</span></article>
-              </div>
+              <div class="k-bible__spine" aria-hidden="true"></div><div class="k-bible__ribbon" aria-hidden="true"></div>
+              <div class="k-bible__cover" aria-hidden="true"><div class="k-bible__cover-face k-bible__cover-face--out"><span class="k-bible__stamp"><span class="k-bible__cross"></span><span class="k-label">Bíblia Sagrada</span></span></div><div class="k-bible__cover-face k-bible__cover-face--in"></div></div>
             </div>
           </div>
-          <div class="k-bible__controls" role="group" aria-label="Navegar pelas páginas da Bíblia">
+          <div class="k-bible__controls" data-bible-controls hidden>
             <button class="k-bible__control k-bible__control--previous" type="button" data-bible-previous aria-label="Página anterior" aria-controls="visita-paginas" disabled><svg class="k-icon" aria-hidden="true"><use href="#k-arrow"/></svg></button>
+            <p class="k-label k-bible__position" data-bible-position>Páginas 1 e 2 de 4</p>
             <button class="k-bible__control" type="button" data-bible-next aria-label="Próxima página" aria-controls="visita-paginas"><svg class="k-icon" aria-hidden="true"><use href="#k-arrow"/></svg></button>
+            <button class="k-bible__replay k-link" type="button" data-bible-replay aria-label="Repetir abertura da Bíblia">Repetir abertura</button>
           </div>
-          <p class="k-sr-only" data-bible-status role="status" aria-live="polite" aria-atomic="true">Páginas 1 e 2: horários.</p>
+          <div class="k-bible__dots" data-bible-dots role="group" aria-label="Escolher uma página" hidden><button type="button" data-bible-dot="0" aria-label="Página 1" aria-current="true"><span></span></button><button type="button" data-bible-dot="1" aria-label="Página 2"><span></span></button><button type="button" data-bible-dot="2" aria-label="Página 3"><span></span></button><button type="button" data-bible-dot="3" aria-label="Página 4"><span></span></button></div>
+          <p class="k-caption k-muted k-bible__hint">Use as setas, arraste ou toque nos controles para explorar as páginas.</p>
+          <p class="k-sr-only" data-bible-status role="status" aria-live="polite" aria-atomic="true"></p>
         </div>
-        <div class="k-editorial__bottom">
-          <div>
-            <div class="k-info-table" id="endereco" role="region" aria-label="Horários e endereço da igreja">
-              <table><caption class="k-sr-only">Informações para planejar sua visita</caption><thead><tr><th scope="col">Cultos</th><th scope="col">Horário</th></tr></thead><tbody data-dado="cultos-tabela"><tr><th scope="row">Quinta-feira</th><td>19h30</td></tr><tr><th scope="row">Domingo</th><td>18h</td></tr><tr><th scope="row">Endereço</th><td class="k-info-table__address">Av. Dr. José Holanda Montenegro, [número] · Centro · Iguatu - CE</td></tr></tbody></table>
-              <a class="k-button" href="https://www.google.com/maps/search/?api=1&amp;query=Igreja%20Kemuel%2C%20Av.%20Dr.%20Jos%C3%A9%20Holanda%20Montenegro%2C%20Centro%2C%20Iguatu%20-%20CE" data-dado-href="mapa" target="_blank" rel="noopener noreferrer">Ver rota no mapa<svg class="k-icon" aria-hidden="true"><use href="#k-external"/></svg><span class="k-sr-only"> (abre em nova aba)</span></a>
-              <p class="k-caption k-muted">Abre o Google Maps em nova aba · número do endereço a confirmar</p>
-            </div>
-            <p class="k-editorial__note">(*) [Observação sobre estacionamento ou acesso, a confirmar].</p>
+
+        <section class="k-visit-map" id="como-chegar" aria-labelledby="visita-mapa-titulo">
+          <span id="endereco" class="k-sr-only" aria-hidden="true"></span>
+          <div class="k-visit-map__copy k-stack">
+            <p class="k-eyebrow">Como chegar</p><h3 class="k-h3" id="visita-mapa-titulo">Uma porta aberta em <span data-dado="cidade-nome">Iguatu</span>.</h3>
+            <p data-dado="endereco">Av. Dr. José Holanda Montenegro, [número] · Centro · Iguatu - CE</p><p class="k-body-sm k-muted" data-dado="cultos-resumo">Quinta-feira, 19h30 · Domingo, 18h</p>
+            <a class="k-button" data-dado-href="mapa" href="https://www.google.com/maps/search/?api=1&amp;query=Igreja%20Kemuel%2C%20Av.%20Dr.%20Jos%C3%A9%20Holanda%20Montenegro%2C%20Centro%2C%20Iguatu%20-%20CE" target="_blank" rel="noopener noreferrer">Abrir no Google Maps<svg class="k-icon" aria-hidden="true"><use href="#k-external"/></svg><span class="k-sr-only"> (abre em nova aba)</span></a>
+            <p class="k-caption k-muted">Número do endereço a confirmar. A localização no mapa usa a avenida e o bairro.</p>
           </div>
-          <div class="k-editorial__copy">
-            <p class="k-editorial__phrase"><span>Toda semana,</span><span>a mesma porta aberta.</span><span>Venha como está.</span><span>Fique como família.</span></p>
-            <!-- Copy a confirmar com o pastor. -->
-            <p>[Texto curto sobre como é o culto, a confirmar com a igreja.] <em>Sem roupa certa, sem cobrança na porta.</em></p>
-            <a class="k-link" href="https://example.invalid/whatsapp" rel="noopener noreferrer" data-example>Falar com alguém antes da visita<svg class="k-icon" aria-hidden="true"><use href="#k-chat"/></svg></a>
-            <p class="k-caption k-muted">WhatsApp · link de exemplo, sem número real</p>
-          </div>
-        </div>
+          <iframe class="k-visit-map__frame" data-map-lazy data-dado-src="mapa-embed" data-src="https://www.google.com/maps?q=Igreja%20Kemuel%2C%20Av.%20Dr.%20Jos%C3%A9%20Holanda%20Montenegro%2C%20Centro%2C%20Iguatu%20-%20CE&amp;output=embed" loading="lazy" title="Mapa de localização da igreja" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </section>
       </div>
     </section>
+    <!-- bible-visit:end -->
     <section class="k-section k-spec-section" id="primeira-visita" aria-labelledby="primeira-visita-titulo">
       <div class="k-container k-spec-section__layout">
         <div class="k-spec-section__copy" data-reveal>

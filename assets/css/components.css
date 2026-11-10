@@ -697,24 +697,6 @@ textarea.k-input { resize: vertical; min-height: var(--textarea-min-height); }
 @keyframes k-menu-in { from { opacity: 0; transform: translateY(calc(var(--menu-offset) * -1)); } to { opacity: 1; transform: none; } }
 @keyframes k-menu-out { to { opacity: 0; transform: translateY(calc(var(--menu-offset) * -1)); } }
 @keyframes k-copy { 50% { transform: scale(1.18); } }
-/* k-editorial: papel quadriculado restrito a esta dobra; sem alterar as demais. */
-.k-editorial { overflow: clip; contain: layout style; color: var(--color-text); background-color: var(--paper-bg); background-image: linear-gradient(var(--paper-grid-color) var(--paper-grid-line), transparent var(--paper-grid-line)), linear-gradient(90deg, var(--paper-grid-color) var(--paper-grid-line), transparent var(--paper-grid-line)); background-size: var(--paper-grid-mobile) var(--paper-grid-mobile); }
-@media (scripting: enabled) {
-  .k-editorial:not(.is-editorial-ready) { --editorial-font: var(--editorial-font-fallback); }
-}
-.k-editorial__opening { font-family: var(--font-body); font-size: var(--text-body-lg); font-weight: var(--editorial-weight-normal); letter-spacing: var(--tracking-body); line-height: var(--editorial-body-leading); text-align: center; }
-.k-editorial__opening strong { display: block; font-weight: var(--weight-regular); }
-.k-editorial__bottom { display: grid; gap: var(--space-5); align-items: start; margin-top: var(--space-6); }
-.k-editorial__bottom .k-muted { color: var(--color-text); }
-.k-editorial__copy { font-family: var(--font-body); font-weight: var(--weight-regular); font-size: var(--text-body-lg); line-height: var(--editorial-body-leading); }
-.k-editorial__phrase { font-family: var(--font-heading); font-weight: var(--weight-heavy); font-size: var(--text-h2); line-height: var(--editorial-leading); letter-spacing: var(--editorial-tracking); }
-.k-editorial__phrase span { display: block; }
-.k-editorial__copy > p { margin-top: var(--space-4); }
-.k-editorial__copy em, .k-editorial__note { font-family: var(--editorial-font); font-weight: var(--editorial-weight-normal); font-style: italic; }
-.k-editorial__copy .k-link { color: var(--color-text); font-family: var(--font-body); font-size: var(--text-small); margin-top: var(--space-3); }
-.k-editorial__copy .k-caption { font-family: var(--font-body); font-weight: var(--weight-regular); }
-.k-editorial__note { font-size: var(--text-body-lg); line-height: var(--editorial-body-leading); margin-top: var(--space-2); }
-.k-quote--editorial { font-family: var(--editorial-font); font-weight: var(--editorial-weight-normal); font-style: italic; }
 .k-info-table { padding: var(--space-3); border-radius: var(--radius-sm); background: var(--paper-card); }
 .k-info-table table { width: 100%; border-collapse: collapse; font-size: var(--text-small); }
 .k-info-table th, .k-info-table td { padding-block: var(--editorial-rule-gap); border-bottom: var(--paper-rule-width) solid var(--paper-rule); text-align: left; font-weight: var(--weight-regular); }
@@ -724,80 +706,121 @@ textarea.k-input { resize: vertical; min-height: var(--textarea-min-height); }
 .k-info-table .k-info-table__address { font-family: var(--font-body); font-size: var(--text-small); font-weight: var(--weight-regular); }
 .k-info-table .k-button { margin-top: var(--space-3); border-radius: var(--radius-pill); }
 /* Todas as duplas participam do grid: a maior reserva espaço antes do 3D. */
-.k-bible { max-width: var(--bible-width); margin: var(--space-5) auto 0; perspective: var(--bible-perspective); }
-.k-bible__scene { position: relative; transform-style: preserve-3d; transform: rotateX(var(--bible-pointer-x, var(--bible-rest-angle))) rotateY(var(--bible-pointer-y, var(--bible-rest-angle))); }
-.k-bible__scene::after { content: ""; position: absolute; inset: 0; z-index: 5; pointer-events: none; opacity: 0; background: var(--bible-sheen); background-size: var(--bible-sheen-width) 100%; background-repeat: no-repeat; transform: translateX(var(--bible-sheen-shift, 0%)) translateZ(var(--bible-cover-depth)); transition: opacity var(--duration-short) var(--ease); }
-.k-bible.is-pointer-active .k-bible__scene::after { opacity: var(--bible-sheen-opacity); }
-.k-bible:not(.is-in-view) .k-bible__scene::after { transition: none; }
-.k-bible-pages { position: relative; display: grid; touch-action: pan-y; transform: translateZ(var(--bible-paper-depth)); }
-.k-bible-pages__spread { grid-area: 1 / 1; display: grid; grid-template-columns: minmax(0, 1fr); visibility: hidden; pointer-events: none; content-visibility: hidden; contain-intrinsic-block-size: auto var(--bible-spread-height); }
-.k-bible-pages__spread.is-current { visibility: visible; pointer-events: auto; content-visibility: visible; }
-.k-bible-pages__page { position: relative; display: flex; flex-direction: column; gap: var(--space-3); min-height: var(--bible-page-height); padding: var(--bible-page-padding); padding-bottom: var(--space-5); color: var(--color-text); background: var(--bible-page-bg); box-shadow: var(--bible-page-shadow); font-family: var(--editorial-font); font-weight: var(--editorial-weight-body); font-size: var(--text-body-lg); line-height: var(--editorial-body-leading); }
-.k-bible-pages__page:first-child { border-radius: var(--bible-cover-radius) var(--bible-cover-radius) 0 0; }
-.k-bible-pages__page:last-child { border-radius: 0 0 var(--bible-cover-radius) var(--bible-cover-radius); }
-.k-bible-pages__page .k-eyebrow { font-family: var(--font-body); }
-.k-bible-pages__title { font-family: var(--editorial-font); font-weight: var(--editorial-weight-normal); font-size: var(--text-h3); letter-spacing: var(--editorial-tracking); line-height: var(--editorial-leading); }
-.k-bible-pages__number { position: absolute; bottom: var(--space-2); inset-inline-end: var(--bible-page-padding); font-weight: var(--editorial-weight-normal); font-style: italic; color: var(--color-text-muted); font-size: var(--text-small); }
-.k-bible-pages__times { margin: 0; padding: 0; list-style: none; }
-.k-bible-pages__times li { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: var(--space-2); padding-block: var(--space-3); border-bottom: var(--paper-rule-width) solid var(--bible-page-rule); }
-.k-bible-pages__times strong { grid-row: span 2; font-family: var(--font-heading); font-weight: var(--weight-semibold); font-size: var(--text-h2); line-height: var(--leading-heading); }
-.k-bible-pages__times small { font-family: var(--font-body); font-size: var(--text-small); color: var(--color-text-muted); }
-.k-bible-pages__page .k-placeholder { flex: 1; background: transparent; }
-.k-bible-pages__page .k-link { font-family: var(--font-body); font-size: var(--text-small); color: var(--color-text); }
-.k-bible__controls { display: flex; justify-content: center; gap: var(--space-2); position: relative; margin-top: var(--space-5); }
-.k-bible__control { display: grid; place-items: center; width: var(--bible-control-size); height: var(--bible-control-size); padding: 0; color: var(--color-white); background: var(--color-black); border: var(--border-width) solid var(--color-black); border-radius: var(--radius-pill); transition: opacity var(--duration-short) var(--ease), transform var(--duration-short) var(--ease); }
+/* Visita: dados estáticos primeiro; livro decorativo, mapa com carregamento próximo. */
+.k-editorial { overflow: clip; color: var(--color-text); background-color: var(--paper-bg); background-image: linear-gradient(var(--paper-grid-color) var(--paper-grid-line), transparent var(--paper-grid-line)), linear-gradient(90deg, var(--paper-grid-color) var(--paper-grid-line), transparent var(--paper-grid-line)); background-size: var(--paper-grid-mobile) var(--paper-grid-mobile); }
+.k-editorial .k-link { color: var(--bible-link-color); }
+@media (scripting: enabled) { .k-editorial:not(.is-editorial-ready) { --editorial-font: var(--editorial-font-fallback); } }
+.k-editorial__intro { display: grid; gap: var(--space-3); margin-bottom: var(--space-4); }
+.k-editorial__intro > p:last-child { max-width: var(--bible-intro-measure); }
+.k-editorial__title { max-width: var(--bible-title-measure); font: var(--weight-heavy) var(--text-h2)/var(--leading-heading) var(--font-heading); letter-spacing: var(--tracking-heading); text-wrap: balance; }
+.k-editorial__title em { font-family: var(--editorial-font); font-weight: var(--weight-regular); letter-spacing: var(--tracking-body); }
+.k-editorial__title > span { color: var(--color-red-hover); }
+.k-service-times { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); max-width: var(--bible-services-width); list-style: none; padding: var(--space-3) 0; margin: 0; border-block: var(--border-width) solid var(--paper-rule); }
+.k-service-times__item { position: relative; min-width: 0; padding-left: var(--space-3); }
+.k-service-times__item::before { content: ""; position: absolute; left: 0; top: var(--size-2xs); width: var(--marker-height); height: var(--marker-width); background: var(--color-red); }
+.k-service-times__day { display: block; font: var(--weight-semibold) var(--text-caption)/var(--leading-label) var(--font-body); letter-spacing: var(--tracking-label); text-transform: var(--case-label); }
+.k-service-times__time { display: block; margin-top: var(--space-1); font: var(--weight-heavy) var(--bible-services-size)/var(--leading-display) var(--font-heading); letter-spacing: var(--tracking-heading); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.k-service-times__address { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2) var(--space-4); margin-top: var(--space-3); font-size: var(--text-small); }
+.k-service-times__address .k-link { flex-shrink: 0; }
+.k-bible { max-width: var(--bible-width); margin: var(--space-6) auto 0; }
+.k-bible__scene { position: relative; perspective: var(--bible-perspective); }
+.k-bible__volume { position: relative; }
+.k-bible__pages { display: flex; overflow-x: auto; gap: var(--bible-mobile-gap); scroll-snap-type: x mandatory; scrollbar-width: none; border-radius: var(--bible-page-radius); }
+.k-bible__pages { user-select: none; }
+@media (scripting: enabled) { .k-bible:not(.is-in-view) .k-bible-page__print { content-visibility: hidden; } }
+@media (scripting: enabled) {
+  .k-bible__scene { aspect-ratio: var(--bible-mobile-ratio); }
+  .k-bible:not([data-bible-enhanced]) .k-bible__volume { display: none; }
+}
+@media (scripting: enabled) and (width > 760px) { .k-bible__scene { aspect-ratio: var(--bible-ratio); } }
+.k-bible__pages::-webkit-scrollbar { display: none; }
+.k-bible-page { position: relative; flex: 0 0 100%; min-width: 0; aspect-ratio: var(--bible-mobile-ratio); overflow: hidden; container-type: inline-size; scroll-snap-align: start; scroll-snap-stop: always; background: var(--bible-page-bg); color: var(--bible-page-ink); border-radius: var(--bible-page-radius); }
+.k-bible-page::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: var(--bible-page-shade-left); }
+.k-bible-page--right::after { background: var(--bible-page-shade-right); }
+.k-bible-page__print { position: absolute; inset: 0; display: flex; flex-direction: column; padding: var(--bible-page-pad); }
+.k-bible-page__runhead { display: flex; align-items: baseline; justify-content: space-between; gap: var(--bible-page-gap); padding-bottom: var(--bible-page-rule-gap); margin-bottom: var(--bible-page-heading-gap); border-bottom: var(--border-width) solid var(--bible-page-rule); color: var(--bible-page-muted); font: var(--weight-semibold) var(--bible-page-label)/var(--bible-page-label-leading) var(--font-body); letter-spacing: var(--tracking-label); text-transform: var(--case-label); }
+.k-bible-page__runhead b { color: var(--bible-page-ink); font-weight: var(--weight-semibold); }
+.k-bible-page__chapter { display: flex; align-items: end; gap: var(--bible-page-gap); margin-bottom: var(--bible-page-chapter-gap); }
+.k-bible-page__numeral { font: var(--weight-heavy) var(--bible-page-numeral)/var(--bible-page-number-leading) var(--font-heading); letter-spacing: var(--tracking-heading); color: var(--color-red); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.k-bible-page__numeral small { font-size: var(--bible-page-small); }
+.k-bible-page__cap { padding-bottom: var(--bible-page-rule-gap); font: var(--weight-semibold) var(--bible-page-cap)/var(--leading-label) var(--font-body); letter-spacing: var(--tracking-label); text-transform: var(--case-label); }
+.k-bible-page__cap i, .k-bible-page__city i { display: block; font: italic var(--weight-regular) var(--bible-page-italic)/var(--leading-medium) var(--editorial-font); text-transform: var(--case-natural); letter-spacing: var(--tracking-body); color: var(--bible-page-muted); }
+.k-bible-page__columns { flex: 1; columns: 2; column-gap: var(--bible-page-column-gap); column-rule: var(--border-width) solid var(--bible-page-rule); font: var(--weight-regular) var(--bible-page-text)/var(--bible-page-body-leading) var(--editorial-font); text-align: justify; hyphens: auto; }
+.k-bible-page__columns p { margin: 0 0 var(--bible-page-paragraph-gap); }
+.k-bible-page__columns sup { vertical-align: var(--bible-page-sup-rise); margin-right: var(--bible-page-sup-gap); color: var(--bible-page-accent); font: var(--weight-semibold) var(--bible-page-sup-size)/var(--bible-page-label-leading) var(--font-body); }
+.k-bible-page__columns b { font-weight: var(--weight-regular); color: var(--bible-page-ink); }
+.k-bible-page__note { display: flex; justify-content: space-between; gap: var(--bible-page-gap); border-top: var(--border-width) solid var(--bible-page-rule); padding-top: var(--bible-page-note-gap); margin-top: var(--bible-page-rule-gap); font: italic var(--weight-regular) var(--bible-page-note)/var(--bible-page-note-leading) var(--editorial-font); color: var(--bible-page-muted); }
+.k-bible-page__plate { flex: 1; display: grid; place-items: center; align-content: center; text-align: center; gap: var(--bible-page-gap); padding: var(--bible-page-plate-pad); border: var(--border-width) solid var(--bible-page-rule); outline: var(--border-width) solid var(--bible-page-rule); outline-offset: calc(var(--bible-page-paragraph-gap) * -1); }
+.k-bible-page__compass { width: var(--bible-compass-size); height: var(--bible-compass-size); stroke-width: var(--bible-compass-stroke); }
+.k-bible-page__needle { fill: currentColor; stroke: none; }
+.k-bible-page__north { fill: var(--color-red); stroke: none; }
+.k-bible-page__city { font: var(--weight-semibold) var(--bible-page-cap)/var(--leading-label) var(--font-body); letter-spacing: var(--tracking-label); text-transform: var(--case-label); }
+.k-bible-page__city i { margin-top: var(--bible-page-rule-gap); }
+.k-bible-page__route { position: relative; z-index: 1; font-size: var(--bible-route-size); padding: var(--bible-route-pad); border-radius: var(--radius-pill); white-space: nowrap; }
+.k-bible-page__route:hover, .k-bible-page__route:active { transform: none; }
+.k-bible-page__folio { margin-top: var(--bible-page-rule-gap); text-align: center; font: var(--weight-semibold) var(--bible-page-label)/var(--leading-label) var(--font-body); letter-spacing: var(--tracking-label); color: var(--bible-page-muted); }
+.k-bible__leather, .k-bible__edge, .k-bible__spine, .k-bible__cover, .k-bible__shadow, .k-bible__leaf { display: none; }
+.k-bible__ribbon { position: absolute; top: calc(var(--bible-mobile-pad) * -1); right: var(--space-3); width: var(--bible-mobile-ribbon-width); height: var(--bible-mobile-ribbon-height); z-index: 3; pointer-events: none; background: var(--bible-ribbon-bg); clip-path: polygon(0 0, 100% 0, 100% 100%, 50% var(--bible-ribbon-notch), 0 100%); }
+.k-bible__volume { padding: var(--bible-mobile-pad); background: var(--bible-cover-texture); border-radius: var(--bible-cover-radius); box-shadow: var(--bible-cover-shadow); }
+.k-bible__volume::after { content: ""; position: absolute; left: var(--bible-mobile-pad); right: var(--bible-mobile-pad); top: 100%; height: var(--size-2xs); background: var(--bible-edge-gradient); border-radius: 0 0 var(--bible-page-radius) var(--bible-page-radius); pointer-events: none; }
+.k-bible__controls { position: relative; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--space-2); margin-top: var(--bible-control-clearance); }
+.k-bible__control { display: grid; place-items: center; flex-shrink: 0; width: var(--bible-control-size); height: var(--bible-control-size); padding: 0; color: var(--color-white); background: var(--color-black); border: var(--border-width) solid var(--color-black); border-radius: var(--radius-pill); transition: opacity var(--duration-short) var(--ease); }
 .k-bible__control--previous { color: var(--color-black); background: transparent; }
 .k-bible__control--previous .k-icon { transform: rotate(var(--bible-turn-angle)); }
-.k-bible__control:hover:not(:disabled) { transform: translateY(calc(var(--lift-sm) * -1)); }
 .k-bible__control:disabled { opacity: var(--bible-disabled-opacity); }
-/* Camadas decorativas criadas por ui.js apenas na aproximação da seção. */
-.k-bible__shell { position: absolute; inset: 0; pointer-events: none; transform-style: preserve-3d; content-visibility: hidden; }
-.k-bible.is-in-view .k-bible__shell { content-visibility: visible; }
-.k-bible__back { position: absolute; inset: calc(var(--bible-edge-line) * -1); background: var(--bible-cover); border-radius: var(--bible-cover-radius); transform: translateZ(calc(var(--bible-edge-line) * -1)); }
-.k-bible__block { position: absolute; inset: 0; background: var(--bible-page-edge); border-radius: var(--bible-cover-radius); transform: translateZ(var(--bible-depth)); }
-.k-bible__edge { position: absolute; background: repeating-linear-gradient(0deg, var(--bible-page-bg) 0 var(--bible-edge-line), var(--bible-page-edge) var(--bible-edge-line) var(--bible-edge-step)); }
-.k-bible__edge--bottom { bottom: calc(var(--bible-depth) * -1); left: 0; width: 100%; height: var(--bible-depth); transform-origin: top; transform: rotateX(calc(var(--bible-turn-angle) / -2)); }
-.k-bible__edge--side { top: 0; right: calc(var(--bible-depth) * -1); height: 100%; width: var(--bible-depth); transform-origin: left; transform: rotateY(calc(var(--bible-turn-angle) / 2)); }
-.k-bible__spine { position: absolute; inset-block: 0; left: 0; width: var(--bible-spine-width); border-radius: var(--bible-cover-radius); background: var(--bible-cover-edge); }
-.k-bible__ribbon { position: absolute; top: calc(var(--space-3) * -1); left: var(--bible-ribbon-left); width: var(--bible-ribbon-width); height: var(--bible-ribbon-height); background: var(--color-red); clip-path: polygon(0 0, 100% 0, 100% 100%, 50% var(--bible-ribbon-notch), 0 100%); transform: translateZ(var(--bible-depth)); }
-.k-bible__shadow { position: absolute; inset-inline: 0; bottom: var(--bible-shadow-bottom); height: var(--bible-shadow-height); background: var(--bible-ground-shadow); transform: translateZ(calc(var(--bible-depth) * -1)); }
-.k-bible__cover { position: absolute; top: 0; left: 0; width: 100%; height: 50%; transform-origin: left center; transform-style: preserve-3d; transform: rotateY(var(--bible-turn-angle)) translateZ(var(--bible-cover-depth)); }
-.k-bible__face { position: absolute; inset: 0; border-radius: var(--bible-cover-radius); backface-visibility: hidden; }
-.k-bible__face--front { display: grid; place-items: center; background: var(--bible-cover-texture), var(--bible-cover); box-shadow: var(--bible-cover-shadow); }
-.k-bible__face--inside { background: var(--bible-page-bg); transform: rotateY(var(--bible-turn-angle)); }
-.k-bible__cross { position: relative; width: var(--bible-cross-width); height: var(--bible-cross-height); }
-.k-bible__cross::before, .k-bible__cross::after { content: ""; position: absolute; background: var(--bible-cross-color); box-shadow: var(--bible-cross-shadow); }
-.k-bible__cross::before { width: var(--bible-cross-stroke); height: 100%; left: calc(50% - var(--bible-cross-stroke) / 2); }
-.k-bible__cross::after { height: var(--bible-cross-stroke); width: 100%; top: var(--bible-cross-top); }
-.k-bible[data-bible-state="closed"] .k-bible-pages, .k-bible[data-bible-state="entering"] .k-bible-pages { opacity: 0; }
-.k-bible[data-bible-state="closed"] .k-bible__cover, .k-bible[data-bible-state="entering"] .k-bible__cover { transform: rotateY(var(--bible-rest-angle)) translateZ(var(--bible-cover-depth)); }
-.k-bible:is([data-bible-state="closed"], [data-bible-state="entering"]) :is(.k-bible__back, .k-bible__block, .k-bible__shadow, .k-bible__edge--bottom) { clip-path: inset(0 0 0 var(--bible-closed-left)); }
-.k-bible-pages__turn { position: absolute; inset-block: 0; right: 0; width: 100%; pointer-events: none; transform-origin: left center; transform-style: preserve-3d; z-index: 4; }
-.k-bible-pages__turn--back { left: 0; right: auto; transform-origin: right center; }
-.k-bible-pages__turn-face { position: absolute; inset: 0; backface-visibility: hidden; }
-.k-bible-pages__turn-face--back { transform: rotateY(var(--bible-turn-angle)); }
-.k-bible-pages__turn-face .k-bible-pages__page { height: 100%; }
-@media (max-width: 47.99rem) {
-  /* A capa já aberta fica atrás das páginas empilhadas, sem painel lateral. */
-  .k-bible[data-bible-state="open"] .k-bible__cover { visibility: hidden; }
-}
-@media (min-width: 48rem) {
+.k-bible__position { color: var(--color-text-muted); }
+.k-bible__replay { flex-basis: 100%; justify-content: center; padding: var(--space-1); border: 0; background: none; font-size: var(--text-small); }
+.k-bible__hint { text-align: center; margin-top: var(--space-2); }
+.k-bible__dots { display: flex; justify-content: center; }
+.k-bible__dots button { display: grid; place-items: center; width: var(--touch-min); height: var(--touch-min); border: 0; background: none; }
+.k-bible__dots span { width: var(--bible-dot-size); height: var(--bible-dot-size); background: var(--color-border-control); border-radius: var(--radius-pill); }
+.k-bible__dots [aria-current="true"] span { background: var(--color-red); }
+.k-visit-map { display: grid; gap: var(--space-5); margin-top: var(--space-6); padding-top: var(--space-5); border-top: var(--border-width-strong) solid var(--color-text); }
+.k-visit-map__copy { align-self: center; }
+.k-visit-map__copy .k-button { justify-self: start; }
+.k-visit-map__frame { display: block; width: 100%; height: var(--bible-map-mobile-height); border: var(--border-width) solid var(--color-border-control); border-radius: var(--radius-md); background: var(--color-surface-soft); }
+@media (max-width: 359px) { .k-service-times { grid-template-columns: minmax(0, 1fr); } }
+@media (width > 760px) {
   .k-editorial { background-size: var(--paper-grid-desktop) var(--paper-grid-desktop); }
-  .k-editorial__opening strong { display: inline; margin-inline-end: var(--space-3); }
-  .k-editorial__bottom { grid-template-columns: var(--editorial-columns); gap: var(--space-6); }
-  .k-bible-pages__spread { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .k-bible-pages__page { background-image: var(--bible-spine-shade); }
-  .k-bible-pages__page:first-child { border-radius: var(--bible-cover-radius) 0 0 var(--bible-cover-radius); }
-  .k-bible-pages__page:last-child { border-radius: 0 var(--bible-cover-radius) var(--bible-cover-radius) 0; }
-  .k-bible__spine { left: calc(50% - var(--bible-spine-width) / 2); }
-  .k-bible__cover { left: 50%; width: 50%; height: 100%; }
-  .k-bible-pages__turn { width: 50%; }
+  .k-visit-map { grid-template-columns: var(--bible-map-columns); }
+  .k-visit-map__frame { height: var(--bible-map-height); }
+  .k-bible:not([data-bible-enhanced]) .k-bible__pages { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .k-bible[data-bible-enhanced] .k-bible__scene { aspect-ratio: var(--bible-ratio); }
+  .k-bible[data-bible-enhanced] .k-bible__volume { position: absolute; inset: 0; padding: 0; background: none; box-shadow: none; transform-style: preserve-3d; transform: rotateX(var(--bible-rest-angle)); }
+  .k-bible[data-bible-enhanced] .k-bible__volume::after { display: none; }
+  .k-bible[data-bible-enhanced] .k-bible__pages { position: absolute; inset: 0; display: block; overflow: visible; border-radius: 0; transform-style: preserve-3d; touch-action: pan-y; }
+  .k-bible[data-bible-enhanced] .k-bible-page { position: absolute; top: 0; bottom: 0; width: 50%; aspect-ratio: auto; }
+  .k-bible[data-bible-enhanced] .k-bible-page--left { left: 0; border-radius: var(--bible-page-radius) 0 0 var(--bible-page-radius); }
+  .k-bible[data-bible-enhanced] .k-bible-page--right { left: 50%; border-radius: 0 var(--bible-page-radius) var(--bible-page-radius) 0; }
+  .k-bible[data-bible-enhanced] .k-bible__leaf { display: block; position: absolute; z-index: 2; inset-block: 0; left: 50%; width: 50%; transform-origin: left center; transform-style: preserve-3d; transform: rotateY(0deg); }
+  .k-bible[data-bible-enhanced] .k-bible__leaf .k-bible-page { inset: 0; width: 100%; backface-visibility: hidden; }
+  .k-bible__leaf .k-bible-page--left { transform: rotateY(var(--bible-turn-angle)); }
+  .k-bible.is-turned .k-bible__leaf { transform: rotateY(var(--bible-turn-angle)); }
+  .k-bible[data-bible-enhanced] .k-bible__leather { display: block; position: absolute; top: var(--bible-cover-top); bottom: var(--bible-cover-bottom); background: var(--bible-cover-texture); border-radius: var(--bible-cover-radius); box-shadow: var(--bible-cover-shadow); }
+  .k-bible__leather::after, .k-bible__cover-face--out::after { content: ""; position: absolute; inset: var(--bible-stitch-inset); border: var(--border-width) dashed var(--bible-stitch-color); border-radius: inherit; pointer-events: none; }
+  .k-bible__leather--left { left: var(--bible-cover-bleed); right: 50%; }
+  .k-bible__leather--right { left: 50%; right: var(--bible-cover-bleed); }
+  .k-bible[data-bible-enhanced] .k-bible__edge { display: block; position: absolute; bottom: var(--bible-edge-bottom); height: var(--bible-edge-height); background: var(--bible-edge-gradient); }
+  .k-bible__edge--left { left: var(--bible-edge-inset); right: 50%; }
+  .k-bible__edge--right { left: 50%; right: var(--bible-edge-inset); }
+  .k-bible[data-bible-enhanced] .k-bible__spine { display: block; position: absolute; inset-block: 0; left: 50%; width: var(--bible-spine-width); transform: translateX(-50%); pointer-events: none; background: var(--bible-spine-shade); }
+  .k-bible[data-bible-enhanced] .k-bible__shadow { display: block; position: absolute; inset-inline: var(--bible-shadow-inset); bottom: var(--bible-shadow-bottom); height: var(--bible-shadow-height); background: var(--bible-ground-shadow); pointer-events: none; }
+  .k-bible[data-bible-enhanced] .k-bible__ribbon { top: var(--bible-ribbon-top); right: auto; left: var(--bible-ribbon-left); width: var(--bible-ribbon-width); min-width: var(--bible-ribbon-min); height: var(--bible-ribbon-height); transform-origin: top center; transform: translateZ(var(--bible-ribbon-depth)); }
+  .k-bible[data-bible-enhanced] .k-bible__cover { position: absolute; display: block; top: var(--bible-cover-top); bottom: var(--bible-cover-bottom); left: 50%; right: var(--bible-cover-bleed); transform-style: preserve-3d; transform-origin: left center; transform: translateZ(var(--bible-cover-depth)) rotateY(var(--bible-cover-angle)); opacity: 0; pointer-events: none; container-type: inline-size; }
+  .k-bible__cover-face { position: absolute; inset: 0; border-radius: var(--bible-cover-radius); backface-visibility: hidden; }
+  .k-bible__cover-face--out { display: grid; place-items: center; background: var(--bible-cover-texture); }
+  .k-bible__cover-face--in { background: var(--color-red-active); transform: rotateY(var(--bible-turn-angle)); }
+  .k-bible__stamp { display: grid; justify-items: center; gap: var(--space-3); color: var(--bible-cross-color); }
+  .k-bible__cross { position: relative; width: var(--bible-cross-width); aspect-ratio: var(--bible-cross-ratio); }
+  .k-bible__cross::before, .k-bible__cross::after { content: ""; position: absolute; background: var(--bible-cross-color); }
+  .k-bible__cross::before { left: calc((100% - var(--bible-cross-stroke)) / 2); width: var(--bible-cross-stroke); height: 100%; }
+  .k-bible__cross::after { left: calc((100% - var(--bible-cross-arm)) / 2); top: var(--bible-cross-top); width: var(--bible-cross-arm); height: var(--bible-cross-stroke); }
+  .k-bible[data-bible-state="closed"] .k-bible__volume { transform: translateX(var(--bible-enter-shift)) rotateX(var(--bible-enter-angle)) rotateZ(var(--bible-enter-rotate)); }
+  .k-bible[data-bible-state="closed"] .k-bible__cover { opacity: 1; transform: translateZ(var(--bible-cover-depth)); }
+  .k-bible[data-bible-state="closed"] :is(.k-bible__leather--left,.k-bible__edge--left,.k-bible__pages,.k-bible__spine,.k-bible__ribbon) { opacity: 0; }
+  .k-bible__dots { display: none; }
 }
-@media (prefers-reduced-motion: reduce) {
-  .k-bible__scene { transform: none; }
-  .k-bible__scene::after { display: none; }
-  .k-bible__control:hover { transform: none; }
-}
+@media (prefers-reduced-motion: reduce) { .k-bible[data-bible-enhanced] .k-bible__volume { transform: none; } }
 /* k-header--over — transparente sobre a hero até ui.js marcar is-solid. Sem JavaScript, permanece sólido. */
 @media (scripting: enabled) {
   body:not(.k-menu-open) .k-header--over:not(.is-solid) { color: var(--color-white); background: transparent; border-bottom-color: transparent; }

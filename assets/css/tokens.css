@@ -257,7 +257,7 @@
   --faq-glow: radial-gradient(closest-side, var(--color-red), transparent);
   /* Papel: somente a seção editorial de visita. */
   --paper-bg: #e9e9e9;
-  --paper-grid-color: rgba(0, 0, 0, .1);
+  --paper-grid-color: rgba(0, 0, 0, .04); /* Sutil; preserva AA no cruzamento das duas linhas. */
   --paper-grid-line: 1px;
   --paper-grid-mobile: 25vw;
   --paper-grid-desktop: 200px;
@@ -278,59 +278,117 @@
   --editorial-columns: minmax(0, .85fr) minmax(0, 1.15fr);
   --editorial-rule-gap: var(--space-3);
 
-  /* Bíblia: objeto CSS finito, sem texturas, imagens ou bibliotecas. */
-  --bible-width: 62rem;
-  --bible-page-height: max(24rem, calc(var(--placeholder-min-height) + var(--touch-min) + var(--text-caption) * var(--leading-label) + var(--space-3) * 2 + var(--bible-page-padding) + var(--space-5)));
-  --bible-spread-height: calc(var(--bible-page-height) * 2);
-  --bible-page-padding: clamp(1.25rem, 3.2vw, 3rem);
+  /* Bíblia aberta: geometria CSS, leitura em container e movimento finito. */
+  --bible-width: 65rem;
+  --bible-ratio: 1.78;
+  --bible-mobile-ratio: 3 / 3.7;
+  --bible-breakpoint: 760px;
+  --bible-title-measure: 24ch;
+  --bible-link-color: var(--color-red-active);
+  --bible-intro-measure: 48ch;
+  --bible-services-size: clamp(3rem, 6.1vw, 5.5rem);
+  --bible-services-width: 48rem;
   --bible-page-bg: #faf7ef;
-  --bible-page-edge: #d8d0bf;
-  --bible-page-rule: #a79d88;
-
+  --bible-page-edge: var(--color-red-active);
+  --bible-page-rule: var(--color-border-control);
+  --bible-page-ink: var(--color-text);
+  --bible-page-muted: var(--color-text-muted);
+  --bible-page-accent: var(--color-red-hover);
+  --bible-page-radius: var(--radius-sm);
+  --bible-page-pad: 7cqw 8cqw 6cqw;
+  --bible-page-text: max(.6875rem, 3.05cqw);
+  --bible-page-label: max(.5rem, 1.9cqw);
+  --bible-page-cap: max(.5rem, 2.1cqw);
+  --bible-page-italic: max(.625rem, 3cqw);
+  --bible-page-note: max(.5625rem, 2cqw);
+  --bible-page-numeral: 17cqw;
+  --bible-page-small: .45em;
+  --bible-page-number-leading: .82;
+  --bible-page-label-leading: 1;
+  --bible-page-body-leading: 1.58;
+  --bible-page-note-leading: 1.45;
+  --bible-page-sup-size: .62em;
+  --bible-page-sup-rise: .55em;
+  --bible-page-sup-gap: .2em;
+  --bible-page-gap: 3cqw;
+  --bible-page-rule-gap: 2cqw;
+  --bible-page-heading-gap: 4.5cqw;
+  --bible-page-chapter-gap: 3.4cqw;
+  --bible-page-column-gap: 4.5cqw;
+  --bible-page-paragraph-gap: 1.6cqw;
+  --bible-page-note-gap: 1.8cqw;
+  --bible-page-plate-pad: 6cqw 5cqw;
+  --bible-compass-size: 26cqw;
+  --bible-compass-stroke: .8;
+  --bible-route-size: max(.6875rem, 2.4cqw);
+  --bible-route-pad: 2.6cqw 4.4cqw;
+  --bible-page-shade-left: linear-gradient(90deg, var(--color-white-a12), transparent 12%, transparent 85%, var(--color-black-a08));
+  --bible-page-shade-right: linear-gradient(270deg, var(--color-white-a12), transparent 12%, transparent 85%, var(--color-black-a08));
   --bible-cover: var(--color-surface-dark);
-  --bible-cover-edge: var(--color-black);
-  --bible-cover-radius: var(--radius-sm);
-  --bible-cover-texture: repeating-linear-gradient(35deg, transparent 0 2px, var(--color-white-a06) 2px 3px);
-  --bible-cover-shadow: inset 0 0 0 1px rgba(255, 255, 255, .1), inset 8px 0 12px rgba(0, 0, 0, .6);
-  --bible-cross-color: #303030;
-  --bible-cross-shadow: 0 1px 0 rgba(255, 255, 255, .1), 0 -1px 1px rgba(0, 0, 0, .8);
-  --bible-cross-width: 3rem;
-  --bible-cross-height: 5rem;
-  --bible-cross-stroke: .375rem;
-  --bible-cross-top: 34%;
-  --bible-depth: 12px;
-  --bible-paper-depth: 14px;
-  --bible-cover-depth: 18px;
-  --bible-edge-step: 2px;
-  --bible-edge-line: 1px;
-  --bible-spine-width: 1.25rem;
-  --bible-spine-shade: linear-gradient(90deg, rgba(0, 0, 0, .18), transparent 14%, transparent 86%, rgba(0, 0, 0, .12));
-  --bible-page-shadow: 0 2px 0 var(--bible-page-edge), 0 4px 0 var(--bible-page-bg), 0 6px 0 var(--bible-page-edge);
-  --bible-ground-shadow: radial-gradient(ellipse, rgba(0, 0, 0, .22), transparent 70%);
-  --bible-shadow-height: 5rem;
-  --bible-shadow-bottom: -3rem;
-  --bible-ribbon-width: .625rem;
-  --bible-ribbon-height: 3rem;
-  --bible-ribbon-left: 74%;
-  --bible-ribbon-notch: 78%;
-  --bible-perspective: 1800px;
+  --bible-cover-texture: var(--paper-grain), linear-gradient(160deg, var(--color-surface-raised), var(--bible-cover));
+  --bible-cover-radius: var(--radius-md);
+  --bible-cover-shadow: var(--shadow-modal);
+  --bible-cover-top: -2.2%;
+  --bible-cover-bottom: -3.6%;
+  --bible-cover-bleed: -2.4%;
+  --bible-stitch-inset: var(--size-xs);
+  --bible-stitch-color: var(--color-white-a12);
+  --bible-edge-inset: 1.2%;
+  --bible-edge-bottom: -1.6%;
+  --bible-edge-height: 1.8%;
+  --bible-edge-line: var(--border-width);
+  --bible-edge-step: 2.4px;
+  --bible-edge-gradient: repeating-linear-gradient(180deg, var(--bible-page-edge) 0 var(--bible-edge-line), var(--color-red) var(--bible-edge-line) var(--bible-edge-step));
+  --bible-ground-shadow: radial-gradient(ellipse, var(--color-black-a60), transparent 70%);
+  --bible-shadow-height: var(--space-6);
+  --bible-shadow-bottom: calc(var(--space-5) * -1);
+  --bible-shadow-inset: 4%;
+  --bible-spine-width: 6%;
+  --bible-spine-shade: linear-gradient(90deg, transparent, var(--color-black-a08), transparent);
+  --bible-ribbon-width: 1.6%;
+  --bible-ribbon-min: var(--size-sm);
+  --bible-ribbon-left: calc(50% + var(--size-2xs));
+  --bible-ribbon-top: -3%;
+  --bible-ribbon-height: 109%;
+  --bible-ribbon-notch: 96.5%;
+  --bible-ribbon-bg: linear-gradient(90deg, var(--color-red-active), var(--color-red), var(--color-red-active));
+  --bible-ribbon-depth: 3px;
+  --bible-ribbon-start: 9deg;
+  --bible-ribbon-middle: -5deg;
+  --bible-ribbon-end: 2deg;
+  --bible-cover-depth: 2px;
+  --bible-cover-angle: -178deg;
+  --bible-cross-color: var(--color-border-dark);
+  --bible-cross-width: 16cqw;
+  --bible-cross-ratio: 3 / 4;
+  --bible-cross-stroke: 12%;
+  --bible-cross-top: 26%;
+  --bible-cross-arm: 68%;
+  --bible-perspective: 2200px;
+  --bible-enter-shift: -24%;
+  --bible-enter-angle: 22deg;
+  --bible-enter-rotate: -5deg;
+  --bible-rest-angle: 5deg;
   --bible-turn-angle: -180deg;
-  --bible-enter-angle: 12deg;
-  --bible-rest-angle: 0deg;
-  --bible-tilt-limit: 6;
-  --bible-sheen: radial-gradient(ellipse at center, rgba(255, 255, 255, .16), transparent 65%);
-  --bible-sheen-width: 65%;
-  --bible-sheen-travel: 50;
-  --bible-sheen-opacity: .4;
-  --bible-disabled-opacity: .38;
-  --bible-mount-distance: 900px;
   --bible-swipe-distance: 45;
   --bible-swipe-axis-ratio: 1.2;
   --bible-enter-duration: var(--duration-medium);
   --bible-open-duration: var(--duration-long);
   --bible-turn-duration: var(--duration-long);
+  --bible-ribbon-duration: var(--duration-long);
   --bible-control-size: var(--control-height);
-  --bible-closed-left: 0%;
+  --bible-control-clearance: var(--space-6);
+  --bible-disabled-opacity: .38;
+  --bible-mobile-pad: var(--size-sm);
+  --bible-mobile-gap: var(--size-sm);
+  --bible-mobile-ribbon-width: var(--size-md);
+  --bible-mobile-ribbon-height: 4.375rem;
+  --bible-dot-size: 7px;
+  --bible-map-height: 420px;
+  --bible-map-mobile-height: 320px;
+  --bible-map-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+  --bible-map-distance: 300px;
+  --bible-mount-distance: var(--bible-map-distance);
   color-scheme: light;
   --color-red: #de2e38; /* PROVISÓRIO: substituir após confirmação da marca. */
   --color-red-hover: #c1232c;
@@ -632,9 +690,6 @@
 }
 @media (min-width: 70rem) {
   :root { --header-height: 4rem; }
-}
-@media (min-width: 48rem) {
-  :root { --bible-closed-left: 50%; --bible-spread-height: var(--bible-page-height); }
 }
 @media (max-aspect-ratio: 1/1) {
   :root { --hero-led-word-top: 22%; } /* Em pé, a palavra aparece acima do texto. */

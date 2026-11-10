@@ -13,7 +13,16 @@ function generators(d) {
   const e = d.endereco;
   const pairs = (fn, joiner) => d.cultos.map(fn).join(joiner);
   const icon = '<svg class="k-icon" aria-hidden="true"><use href="#k-clock"/></svg>';
-  return {
+  const fields = {
+    nome: () => escape(d.nome),
+    'cidade-nome': () => escape(d.cidade),
+    'cidade-uf': () => escape(`${e.cidade} · ${e.uf}`),
+    uf: () => escape(e.uf),
+    bairro: () => escape(e.bairro),
+    'rua-numero': () => escape(`${e.rua}, ${e.numero}`),
+    'endereco-curto': () => escape(`${e.rua}, ${e.bairro}`),
+    'endereco-regiao': () => escape(`${e.bairro} de ${e.cidade}, ${d.estado}`),
+    'cultos-destaque': () => pairs(c => `<li class="k-service-times__item"><span class="k-service-times__day">${escape(c.dia)}</span><strong class="k-service-times__time">${escape(c.hora)}</strong></li>`, ''),
     endereco: () => `${e.rua}, ${e.numero} · ${e.bairro} · ${e.cidade} - ${e.uf}`,
     'endereco-linhas': () => `${e.rua}, ${e.numero}<br><span class="k-muted">${e.bairro} · ${e.cidade} - ${e.uf}</span>`,
     cidade: () => `${d.cidade}, ${d.estado}`,
@@ -40,6 +49,15 @@ function generators(d) {
     'cultos-biblia': () => pairs(c => `<li><span>${c.dia}</span><strong>${c.hora}</strong><small>${c.nome}</small></li>`, ''),
     'cultos-tabela': () => pairs(c => `<tr><th scope="row">${c.dia}</th><td>${c.hora}</td></tr>`, '') + `<tr><th scope="row">Endereço</th><td class="k-info-table__address">${e.rua}, ${e.numero} · ${e.bairro} · ${e.cidade} - ${e.uf}</td></tr>`
   };
+  d.cultos.forEach((c, i) => {
+    fields[`culto-${i}-dia`] = () => escape(c.dia);
+    fields[`culto-${i}-detalhe`] = () => escape(`${i === 0 ? c.dia.toLowerCase() : c.diaPlural}, às ${c.hora}`);
+    fields[`culto-${i}-numero`] = () => {
+      const [, hour, suffix] = /^(\d+)(.*)$/.exec(c.hora) || ['', c.hora, ''];
+      return `${escape(hour)}<small>${escape(suffix)}</small>`;
+    };
+  });
+  return fields;
 }
 
 // Fecha a tag certa mesmo com elementos iguais aninhados.
@@ -69,9 +87,17 @@ export function fillData(html, d, file) {
   html = out + html.slice(last);
   // data-dado-href="mapa" ou o nome de uma rede em dados/igreja.json define o href do link.
   const urls = { mapa: d.mapa, ...Object.fromEntries(Object.entries(d.redes || {}).map(([key, rede]) => [key, rede.url])) };
-  return html.replace(/<a\b[^>]*\bdata-dado-href="([^"]+)"[^>]*>/g, (tag, key) => {
+  html = html.replace(/<a\b[^>]*\bdata-dado-href="([^"]+)"[^>]*>/g, (tag, key) => {
     if (!urls[key]) throw new Error(`${file}: data-dado-href="${key}" desconhecido`);
-    return tag.replace(/\bhref="[^"]*"/, `href="${escape(urls[key])}"`);
+    return tag.replace(/(\s)href="[^"]*"/, (_, space) => `${space}href="${escape(urls[key])}"`);
+  });
+  const number = /^\[.*\]$/.test(d.endereco.numero) ? '' : `, ${d.endereco.numero}`;
+  const mapQuery = `${d.nome}, ${d.endereco.rua}${number}, ${d.endereco.bairro}, ${d.endereco.cidade} - ${d.endereco.uf}`;
+  const mapEmbed = `https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&output=embed`;
+  return html.replace(/<iframe\b[^>]*\bdata-dado-src="mapa-embed"[^>]*>/g, tag => {
+    // Sem src antes da proximidade: loading=lazy também é mantido na incorporação.
+    const clean = tag.replace(/\sdata-src="[^"]*"/g, '');
+    return clean.replace('data-dado-src="mapa-embed"', `data-dado-src="mapa-embed" data-src="${escape(mapEmbed)}"`);
   });
 }
 
