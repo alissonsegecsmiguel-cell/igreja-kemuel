@@ -103,7 +103,15 @@
 
 ## 3. Em andamento
 
-- Nada.
+- Fila do Claude Code PAUSADA pelo Alisson em 10/11/2026, no meio da tarefa 20 (performance). Concluídas e publicadas: 14, 15, 18 (4b03d63, cdee1b7) e 19 (4287702). Faltam: 20 e depois 21 (referencias/fila-claude-code/21-blog-chamada-leitura.md); ao fim da 21, rodar o build de novo e conferir o Lighthouse mobile da home. Depois, o resumo final pedido no 00-LEIA-PRIMEIRO.md.
+- Estado da tarefa 20 (nada publicado, nenhuma imagem alterada):
+  - Linha de base (Lighthouse mobile local, mediana de 3): home 87 (LCP 3,1s, TBT 265ms); /materiais 85 (LCP 4,2s, 2,5 MB); /blog 97 (1 MB); /discipulado 98; post quem-e-o-meu-proximo 88 (LCP 3,8s, CLS 0,027). Capturas “antes” em relatorios/fila/20/antes/ (capturas.py, fora do Git).
+  - scripts/otimizar-imagens.mjs criado e ainda não validado. Ele recomprime cada família [nome]-[largura].webp com os mesmos nomes e tamanhos, a partir do original de mesma proporção. Quando não há original de mesma proporção (capa 3:2 do post, moeda quadrada, apostila), usa uma cópia mestre guardada uma vez em [área]/originais/mestres/. Qualidade 72, descendo até 62 se passar da meta. Gera AVIF para as capas dos posts e a capa da apostila.
+  - A primeira execução parou com erro “UNKNOWN: open” ao gravar assets/img/materiais/biblia-met-1280.webp. Causa provável: o sharp mantém o arquivo aberto no Windows depois de ler os metadados. Correção sugerida: sharp.cache(false) no início, ou ler os metadados de um Buffer (readFileSync).
+  - Plano restante (decidido sem o Alisson, revisar): manter os nomes e larguras atuais das imagens (480/960/1600, cards 600/900/1400, materiais 640/1280), em vez de trocar para 480/800/1200/1600, para não mexer nos geradores. O montar-paginas.mjs troca por <picture> os <img> cujas versões tenham .avif, com picture { display: contents } no CSS.
+  - Depois do plano de imagens: site.min.css (lightningcss) e ui.min.js (esbuild) com hash na query; preload só da fonte do H1; cache longo no vercel.json para fontes, imagens, ícones e CSS/JS com hash.
+  - A divisão do ui.js em módulos ainda não foi feita. Se ficar frágil, fazer só a minificação e registrar o motivo.
+  - Arquivos antigos não serão apagados sem aprovação.
 
 ## 4. Próximas tarefas
 
