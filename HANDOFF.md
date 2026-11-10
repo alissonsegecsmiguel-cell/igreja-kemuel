@@ -2,6 +2,8 @@
 
 ## 1. Última sessão
 
+- 10/11/2026 (retomada, fila 06 após 11): teste único autorizado da Morgan fol.28r retornou HTTP 200, JPEG 1.662.408 bytes, SHA-256 idêntico ao download licenciado anterior. Identificação IgrejaKemuelSite/1.0 mantida, sem insistência ou troca de cabeçalho. Portal existente conferido em 1440/1366/390/360 com tipografia da 11: versículo ARC exato, Newsreader 300/display, busca/metadados, filtros/hash, doze→quinze itens, dez em breve sem páginas/links, três Recomendados, imagens/créditos e ausência de erros/rolagem horizontal. Inicial pós-11, dobra 05 e cinco posts da 04 preservados; não recriados nem baixados novamente. Tarefa 11 já passou também no publicado nas onze páginas; detalhes e medição do portal nos relatórios locais. Seguir imediatamente para a 10 após a conferência pública da 06.
+
 - 10/11/2026 (retomada, tarefa 11): tipografia opção A aplicada ao site e manual, com três famílias, pesos restritos e dez tamanhos fluidos --text-*. Rótulos unificados, seções Outfit 800/h2, cards Outfit 600/h5 e números 800/tabular. Anton e licença removidas com cópia local anterior; Newsreader itálica instanciada em 400, variáveis reduzidas. WOFF2: 222.220→140.532 bytes, seis→cinco arquivos. 86 prints antes e 86 depois, inventário CSS por componente/página, testes nas onze páginas em 1440/390 e hero/FAQ em 1366/360 passaram localmente; nenhuma requisição Anton, pesos inválidos, cortes ou rolagem horizontal. Hero AA conservador: título ≥8,32:1, subtítulo ≥5,29:1. Lighthouse móvel mediano 95→98, LCP 1.862→1.821ms, TBT 195→80ms, CLS 0. Tarefas locais 06/10/07/09 atualizadas com a regra. Ressalva sobre a soma de famílias registrada abaixo. Seguir 06→10→07→09, conferindo as implementações existentes e preservando os dados/imagens licenciados já publicados.
 
 - 10/11/2026 (fila 10): busca acolhedora do /blog publicada no commit 84161d0, com módulo próprio, sem biblioteca, índice normalizado e texto público sem HTML, carregados na primeira interação. Temas nos quinze posts, sinônimos, 66 livros, erros de digitação/prefixos, sugestões acessíveis, atalhos “Como você está hoje?”, trechos destacados e saída humana em caso vazio. Testes locais e publicados 1440x900/390x844, teclado/toque e dezesseis consultas passaram, sem erros ou rolagem horizontal; rede negada, sem JS e manual também. Resposta publicada abaixo de 6ms; CPU simulada 4× com atualização do DOM abaixo de 39ms. Montagem idempotente; inicial, materiais, Contribua, discipulado e cinco posts preservados. Lighthouse móvel mediano antes/depois (3 rodadas): 91→98, LCP 1.753→1.875ms, TBT 353→66ms, CLS 0; variação ampla de CPU, sem atribuir ganho garantido. Três JSONs de busca públicos; dados da igreja, metas, scripts e manual retornam 404. Evidências no relatório local 10.
@@ -75,6 +77,8 @@
 - Vazio. As tarefas 06, 07 e 09 foram retomadas com a identificação autorizada.
 
 ## 6. Pendências que dependem de pessoas
+
+- Revisar a combinação tipográfica dos blocos editoriais: escolher qual papel simplificar para cumprir literalmente duas famílias por dobra, pois títulos Outfit, apoio Public Sans e citações/Bíblia/destaques Newsreader exigidos em conjunto usam três. Papéis atuais preservados e ressalva explícita no manual/AGENTS.
 
 - Validar o manifesto com o pastor; confirmar metas reais autorizadas para divulgação, mostrar valores ou só percentuais, responsável por atualizar e códigos de projeto com a tesouraria. Chave PIX institucional, titular e QR Code oficiais ainda pendentes; não substituir marcadores sem confirmação.
 
