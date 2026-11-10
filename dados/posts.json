@@ -10,6 +10,8 @@
     "referencia": "Lucas 10.25-37",
     "leitura": 2,
     "exemplo": true,
+    "em_breve": false,
+    "recomendado": false,
     "capa": {
       "480": "/assets/img/blog/quem-e-o-meu-proximo/capa-480.webp",
       "960": "/assets/img/blog/quem-e-o-meu-proximo/capa-960.webp",
@@ -29,6 +31,8 @@
     "referencia": "Mateus 4.18-22",
     "leitura": 2,
     "exemplo": true,
+    "em_breve": false,
+    "recomendado": true,
     "capa": {
       "480": "/assets/img/blog/deixaram-as-redes/capa-480.webp",
       "960": "/assets/img/blog/deixaram-as-redes/capa-960.webp",
@@ -48,6 +52,8 @@
     "referencia": "",
     "leitura": 2,
     "exemplo": true,
+    "em_breve": false,
+    "recomendado": true,
     "capa": {
       "480": "/assets/img/blog/o-que-os-manuscritos-do-mar-morto-nos-contam/capa-480.webp",
       "960": "/assets/img/blog/o-que-os-manuscritos-do-mar-morto-nos-contam/capa-960.webp",
@@ -67,6 +73,8 @@
     "referencia": "Salmo 119.105",
     "leitura": 2,
     "exemplo": true,
+    "em_breve": false,
+    "recomendado": false,
     "capa": {
       "480": "/assets/img/blog/uma-lampada-para-os-meus-pes/capa-480.webp",
       "960": "/assets/img/blog/uma-lampada-para-os-meus-pes/capa-960.webp",
@@ -86,12 +94,204 @@
     "referencia": "Marcos 4.35-41",
     "leitura": 2,
     "exemplo": true,
+    "em_breve": false,
+    "recomendado": true,
     "capa": {
       "480": "/assets/img/blog/quando-a-tempestade-nao-passa/capa-480.webp",
       "960": "/assets/img/blog/quando-a-tempestade-nao-passa/capa-960.webp",
       "1600": "/assets/img/blog/quando-a-tempestade-nao-passa/capa-1600.webp",
       "legenda": "Iluminura de cerca de 1020 mostra Jesus no barco com os discípulos durante a tempestade.",
       "credito": "Códice de Hitda, fol. 117r, c. 1020. Universitäts- und Landesbibliothek Darmstadt. Domínio público, via Wikimedia Commons."
+    }
+  },
+  {
+    "slug": "davi-e-golias-quando-o-gigante-parece-maior",
+    "url": null,
+    "numero": "06",
+    "titulo": "Davi e Golias: quando o gigante parece maior",
+    "subtitulo": "Diante de um gigante, Davi aprendeu a confiar em Deus. Uma história para lembrar onde está a nossa coragem.",
+    "categoria": "Antigo Testamento",
+    "referencia": "1 Samuel 17",
+    "leitura": null,
+    "exemplo": true,
+    "em_breve": true,
+    "recomendado": false,
+    "capa": {
+      "480": "/assets/img/blog/davi-e-golias-quando-o-gigante-parece-maior/capa-480.webp",
+      "960": "/assets/img/blog/davi-e-golias-quando-o-gigante-parece-maior/capa-960.webp",
+      "legenda": "Davi e Golias na Bíblia Morgan, século XIII.",
+      "credito": "Bíblia Morgan, M.638, fol. 28r, c. 1250. The Morgan Library & Museum. Domínio público (PD-Art), via Wikimedia Commons."
+    }
+  },
+  {
+    "slug": "a-arca-de-noe-e-as-promessas-que-nao-falham",
+    "url": null,
+    "numero": "07",
+    "titulo": "A arca de Noé e as promessas que não falham",
+    "subtitulo": "Noé construiu a arca enquanto esperava. Uma reflexão sobre confiança, cuidado e as promessas de Deus.",
+    "categoria": "Antigo Testamento",
+    "referencia": "Gênesis 6 a 9",
+    "leitura": null,
+    "exemplo": true,
+    "em_breve": true,
+    "recomendado": false,
+    "capa": {
+      "480": "/assets/img/blog/a-arca-de-noe-e-as-promessas-que-nao-falham/capa-480.webp",
+      "960": "/assets/img/blog/a-arca-de-noe-e-as-promessas-que-nao-falham/capa-960.webp",
+      "legenda": "Noé e a arca em iluminura da Bíblia Morgan, século XIII.",
+      "credito": "Bíblia Morgan, M.638, fol. 2v, c. 1250. The Morgan Library & Museum. Domínio público (PD-Art), via Wikimedia Commons."
+    }
+  },
+  {
+    "slug": "abraao-e-a-fe-que-caminha-sem-mapa",
+    "url": null,
+    "numero": "08",
+    "titulo": "Abraão e a fé que caminha sem mapa",
+    "subtitulo": "Abraão saiu sem conhecer o destino. A fé também pode começar com um passo pequeno e um coração disposto.",
+    "categoria": "Fé",
+    "referencia": "Gênesis 12",
+    "leitura": null,
+    "exemplo": true,
+    "em_breve": true,
+    "recomendado": false,
+    "capa": {
+      "480": "/assets/img/blog/abraao-e-a-fe-que-caminha-sem-mapa/capa-480.webp",
+      "960": "/assets/img/blog/abraao-e-a-fe-que-caminha-sem-mapa/capa-960.webp",
+      "legenda": "Abraão e Isaac em iluminura medieval; detalhe de Gênesis 22, não da partida em Gênesis 12.",
+      "credito": "Bíblia Morgan, M.638, fol. 3r, c. 1250, detalhe de Abraão e Isaac (Gênesis 22). The Morgan Library & Museum. Domínio público (PD-Art), via Wikimedia Commons."
+    }
+  },
+  {
+    "slug": "jose-do-egito-perdao-depois-da-traicao",
+    "url": null,
+    "numero": "09",
+    "titulo": "José do Egito: perdão depois da traição",
+    "subtitulo": "A história de José passa pela dor e chega ao reencontro. Um convite para pensar no perdão sem apagar o que aconteceu.",
+    "categoria": "Antigo Testamento",
+    "referencia": "Gênesis 37 a 50",
+    "leitura": null,
+    "exemplo": true,
+    "em_breve": true,
+    "recomendado": false,
+    "capa": {
+      "480": "/assets/img/blog/jose-do-egito-perdao-depois-da-traicao/capa-480.webp",
+      "960": "/assets/img/blog/jose-do-egito-perdao-depois-da-traicao/capa-960.webp",
+      "legenda": "José vendido por seus irmãos, Bíblia Morgan, século XIII.",
+      "credito": "Bíblia Morgan, M.638, fol. 5r, c. 1250. The Morgan Library & Museum. Domínio público (PD-Art), via Wikimedia Commons."
+    }
+  },
+  {
+    "slug": "moises-e-o-mar-que-se-abriu",
+    "url": null,
+    "numero": "10",
+    "titulo": "Moisés e o mar que se abriu",
+    "subtitulo": "Entre o medo e o mar, o povo deu o próximo passo. Uma lembrança de que Deus cuida mesmo quando não vemos saída.",
+    "categoria": "Fé",
+    "referencia": "Êxodo 14",
+    "leitura": null,
+    "exemplo": true,
+    "em_breve": true,
+    "recomendado": false,
+    "capa": {
+      "480": "/assets/img/blog/moises-e-o-mar-que-se-abriu/capa-480.webp",
+      "960": "/assets/img/blog/moises-e-o-mar-que-se-abriu/capa-960.webp",
+      "legenda": "Travessia do Mar Vermelho, Bíblia Morgan, século XIII.",
+      "credito": "Bíblia Morgan, M.638, fol. 9r, c. 1250. The Morgan Library & Museum. Domínio público (PD-Art), via Wikimedia Commons."
+    }
+  },
+  {
+    "slug": "rute-lealdade-em-tempos-dificeis",
+    "url": null,
+    "numero": "11",
+    "titulo": "Rute: lealdade em tempos difíceis",
+    "subtitulo": "Rute escolheu ficar ao lado de Noemi. Sua lealdade mostra como o amor pode abrir caminhos em dias difíceis.",
+    "categoria": "Amor ao próximo",
+    "referencia": "Rute 1 a 4",
+    "leitura": null,
+    "exemplo": true,
+    "em_breve": true,
+    "recomendado": false,
+    "capa": {
+      "480": "/assets/img/blog/rute-lealdade-em-tempos-dificeis/capa-480.webp",
+      "960": "/assets/img/blog/rute-lealdade-em-tempos-dificeis/capa-960.webp",
+      "legenda": "Rute recolhendo espigas nos campos de Boaz, iluminura de William de Brailes.",
+      "credito": "William de Brailes, Rute encontra Boaz, W.106, fol. 18r, c. 1250. Walters Art Museum. Domínio público, via Wikimedia Commons."
+    }
+  },
+  {
+    "slug": "neemias-e-os-muros-reconstruidos",
+    "url": null,
+    "numero": "12",
+    "titulo": "Neemias e os muros reconstruídos",
+    "subtitulo": "Neemias viu ruínas e começou com oração. Uma história sobre reconstruir juntos e cuidar do que Deus nos confiou.",
+    "categoria": "Chamado",
+    "referencia": "Neemias 1 a 6",
+    "leitura": null,
+    "exemplo": true,
+    "em_breve": true,
+    "recomendado": false,
+    "capa": {
+      "480": "/assets/img/blog/neemias-e-os-muros-reconstruidos/capa-480.webp",
+      "960": "/assets/img/blog/neemias-e-os-muros-reconstruidos/capa-960.webp",
+      "legenda": "Reconstrução e defesa dos muros de Jerusalém na Bíblia de Alba, 1430.",
+      "credito": "Reconstrução dos muros de Jerusalém, Bíblia de Alba, 1430. Coleção Casa de Alba. Domínio público (PD-Art), via Wikimedia Commons."
+    }
+  },
+  {
+    "slug": "elias-e-o-deus-que-fala-baixo",
+    "url": null,
+    "numero": "13",
+    "titulo": "Elias e o Deus que fala baixo",
+    "subtitulo": "Cansado e com medo, Elias precisou parar. Uma reflexão sobre escutar Deus também nos momentos de silêncio.",
+    "categoria": "Palavra",
+    "referencia": "1 Reis 19",
+    "leitura": null,
+    "exemplo": true,
+    "em_breve": true,
+    "recomendado": false,
+    "capa": {
+      "480": "/assets/img/blog/elias-e-o-deus-que-fala-baixo/capa-480.webp",
+      "960": "/assets/img/blog/elias-e-o-deus-que-fala-baixo/capa-960.webp",
+      "legenda": "Elias e Eliseu em manuscrito medieval; cena da ascensão de Elias, não do Horebe.",
+      "credito": "Elias e Eliseu, Biblia Pauperum, British Library, King’s 5, fol. 27, c. 1405. Domínio público, via Wikimedia Commons."
+    }
+  },
+  {
+    "slug": "daniel-e-a-fe-que-nao-se-curva",
+    "url": null,
+    "numero": "14",
+    "titulo": "Daniel e a fé que não se curva",
+    "subtitulo": "Daniel continuou a orar quando parecia arriscado. Uma história para fortalecer a fidelidade nas escolhas de cada dia.",
+    "categoria": "Fé",
+    "referencia": "Daniel 6",
+    "leitura": null,
+    "exemplo": true,
+    "em_breve": true,
+    "recomendado": false,
+    "capa": {
+      "480": "/assets/img/blog/daniel-e-a-fe-que-nao-se-curva/capa-480.webp",
+      "960": "/assets/img/blog/daniel-e-a-fe-que-nao-se-curva/capa-960.webp",
+      "legenda": "Daniel entre os leões em inicial de Bíblia medieval da escola bolonhesa, cerca de 1300.",
+      "credito": "Daniel entre os leões, inicial de Bíblia da escola bolonhesa, c. 1300. Autor desconhecido. Domínio público (PD-Art), via Wikimedia Commons."
+    }
+  },
+  {
+    "slug": "jonas-fugir-de-deus-nao-funciona",
+    "url": null,
+    "numero": "15",
+    "titulo": "Jonas: fugir de Deus não funciona",
+    "subtitulo": "Jonas tomou outro caminho, mas Deus não desistiu dele. Uma reflexão sobre recomeço, obediência e misericórdia.",
+    "categoria": "Chamado",
+    "referencia": "Jonas 1 a 4",
+    "leitura": null,
+    "exemplo": true,
+    "em_breve": true,
+    "recomendado": false,
+    "capa": {
+      "480": "/assets/img/blog/jonas-fugir-de-deus-nao-funciona/capa-480.webp",
+      "960": "/assets/img/blog/jonas-fugir-de-deus-nao-funciona/capa-960.webp",
+      "legenda": "Jonas lançado ao mar, na boca do peixe e diante de Nínive, Saltério de Paris.",
+      "credito": "História de Jonas, Saltério de Paris, BnF Grec 139, fol. 431v, século X. Bibliothèque nationale de France. Domínio público (PD-Art), via Wikimedia Commons."
     }
   }
 ]

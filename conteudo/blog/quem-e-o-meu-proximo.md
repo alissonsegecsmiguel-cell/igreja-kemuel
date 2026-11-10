@@ -9,6 +9,7 @@ capa: "capa"
 capa_legenda: "Iluminura do século VI mostra a história do bom samaritano, que cuida do homem ferido à beira da estrada."
 capa_credito: "O Bom Samaritano, Evangelhos de Rossano, fol. 7v, século VI. Museo Diocesano, Rossano. Domínio público, via Wikimedia Commons."
 exemplo: true
+recomendado: false
 ---
 Você já desviou o olhar de alguém na rua? Às vezes é pressa. Às vezes é medo. Às vezes a gente só não sabe o que fazer. Todos nós já passamos ao largo de alguém.
 

@@ -443,6 +443,22 @@
   --blog-summary-lines: 4;
   --blog-badge-reserve: 6rem; /* Selo EXEMPLO e intervalo; categoria nunca passa por baixo. */
   --blog-font-distance: 600px; /* Preparar o itálico fora do carregamento inicial da hero. */
+  /* Portal claro: a dobra da inicial conserva seus próprios tokens. */
+  --blog-verse-size: clamp(1.75rem, 1.2rem + 2vw, 3rem);
+  --blog-verse-width: 47.5rem;
+  --blog-search-width: 45rem;
+  --blog-search-height: 3.75rem;
+  --blog-top-space: var(--space-6);
+  --blog-portal-columns: minmax(0, 2fr) minmax(0, 1fr);
+  --blog-feature-height: clamp(29rem, 44vw, 36rem);
+  --blog-feature-scrim: linear-gradient(to bottom, rgba(0, 0, 0, .82), rgba(0, 0, 0, .96));
+  --blog-feature-title: clamp(1.75rem, 1rem + 2vw, 3rem);
+  --blog-thumb-width: clamp(5.25rem, 13vw, 12rem);
+  --blog-recommended-thumb: 6rem;
+  --blog-recommended-card: 72%;
+  --blog-list-lines: 2;
+  --blog-page-size: 12;
+  --blog-feature-radius: var(--radius-sm);
   --whatsapp-clearance: 5rem; /* Altura reservada para o botão flutuante não cobrir o fim da página. */
   --duration-short: 140ms;
   --duration-medium: 260ms;

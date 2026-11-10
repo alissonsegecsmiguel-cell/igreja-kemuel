@@ -8,7 +8,9 @@ relatorios/
 prints/
 partials/
 scripts/
-dados/
+dados/*
+!dados/posts.json
 textos-blog/
 node_modules/
 conteudo/
+assets/img/blog/originais/

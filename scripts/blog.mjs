@@ -30,8 +30,11 @@ export async function loadPosts(root) {
   try { ({ marked } = await import('marked')); } catch {
     throw new Error('Falta a biblioteca marked. Rode: npm install --prefix scripts');
   }
-  return readdirSync(dir).filter(f => f.endsWith('.md')).sort().map(file => {
-    const slug = file.replace(/\.md$/, '');
+  const files = readdirSync(dir).filter(f => f.endsWith('.md')).sort();
+  const upcoming = join(dir, 'em-breve');
+  if (existsSync(upcoming)) files.push(...readdirSync(upcoming).filter(f => f.endsWith('.md')).sort().map(f => `em-breve/${f}`));
+  return files.map(file => {
+    const slug = file.split('/').at(-1).replace(/\.md$/, '');
     const { meta, body } = parse(readFileSync(join(dir, file), 'utf8'), file);
     const img = `../assets/img/blog/${slug}/`;
     let html = marked.parse(body, { gfm: true, breaks: false });
@@ -40,21 +43,23 @@ export async function loadPosts(root) {
     html = html.replace(/<p><img src="([^"]+)" alt="([^"]*)"(?: title="([^"]*)")?\s*\/?><\/p>/g, (_, src, alt, credit = '') =>
       `<figure class="k-article__figure"><img src="${img}${src}" alt="${alt}" width="960" loading="lazy" decoding="async"><figcaption>${alt}${credit ? ` <span class="k-article__credit">${credit}</span>` : ''}</figcaption></figure>`);
     const minutes = Math.max(1, Math.ceil((words(body) + words(meta.subtitulo || '') + words(meta.titulo)) / WORDS_PER_MINUTE));
-    return { slug, ...meta, leitura: minutes, html, url: `/blog/${slug}` };
-  }).sort((a, b) => b.data.localeCompare(a.data) || a.slug.localeCompare(b.slug));
+    if (file.startsWith('em-breve/') && meta.em_breve !== true) throw new Error(`${file}: mova o texto completo para conteudo/blog/ antes de publicar`);
+    if (meta.slug && meta.slug !== slug) throw new Error(`${file}: slug diferente do nome do arquivo`);
+    return { slug, ...meta, leitura: meta.em_breve ? null : minutes, html, url: meta.em_breve ? null : `/blog/${slug}` };
+  }).sort((a, b) => Number(a.em_breve === true) - Number(b.em_breve === true) || (a.em_breve ? String(a.numero).localeCompare(String(b.numero)) : (b.data || '').localeCompare(a.data || '')) || a.slug.localeCompare(b.slug));
 }
 
 // Lista gerada para dados/posts.json (nunca editada à mão).
 export function postsIndex(posts) {
   return JSON.stringify(posts.map(p => ({
-    slug: p.slug, url: p.url, titulo: p.titulo, subtitulo: p.subtitulo, categoria: p.categoria, autor: p.autor, data: p.data,
-    referencia: p.referencia, leitura: p.leitura, exemplo: p.exemplo === true,
-    capa: p.capa ? { 480: `/assets/img/blog/${p.slug}/capa-480.webp`, 960: `/assets/img/blog/${p.slug}/capa-960.webp`, 1600: `/assets/img/blog/${p.slug}/capa-1600.webp`, legenda: p.capa_legenda, credito: p.capa_credito } : null
+    slug: p.slug, url: p.url, numero: p.numero, titulo: p.titulo, subtitulo: p.subtitulo || p.resumo, categoria: p.categoria, autor: p.autor, data: p.data,
+    referencia: p.referencia, leitura: p.leitura, exemplo: p.exemplo === true, em_breve: p.em_breve === true, recomendado: p.recomendado === true,
+    capa: p.capa ? { 480: `/assets/img/blog/${p.slug}/capa-480.webp`, 960: `/assets/img/blog/${p.slug}/capa-960.webp`, ...(!p.em_breve ? { 1600: `/assets/img/blog/${p.slug}/capa-1600.webp` } : {}), legenda: p.capa_legenda, credito: p.capa_credito } : null
   })), null, 2) + '\n';
 }
 
 function related(post, posts) {
-  const others = posts.filter(p => p.slug !== post.slug);
+  const others = posts.filter(p => p.slug !== post.slug && p.em_breve !== true);
   const same = others.filter(p => p.categoria === post.categoria);
   return [...same, ...others.filter(p => !same.includes(p))].slice(0, 3);
 }
