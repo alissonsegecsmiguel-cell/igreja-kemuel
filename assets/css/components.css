@@ -552,6 +552,26 @@ textarea.k-input { resize: vertical; min-height: var(--textarea-min-height); }
 .k-hero-led__schedule { width: min(100%, var(--schedule-max-width)); }
 .k-hero-led__schedule .k-schedule__item { justify-items: center; gap: var(--hero-led-schedule-gap); padding: var(--hero-led-schedule-pad); text-align: center; }
 .k-hero-led__schedule .k-schedule__time { font-size: var(--text-h3); line-height: var(--leading-display); }
+/* k-schedule__item--glint — faísca que percorre a borda (só transform/opacity) e etiqueta do próximo culto sobre a borda, sem ocupar espaço. */
+.k-schedule__item--glint { position: relative; }
+.k-schedule__glint { position: absolute; inset: calc(var(--border-width) * -1); padding: var(--schedule-glint-ring); border-radius: inherit; overflow: hidden; opacity: 0; pointer-events: none; -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); }
+.k-schedule__glint-sweep { position: absolute; top: 50%; left: 50%; width: var(--schedule-glint-size); aspect-ratio: 1; background: var(--schedule-glint-tail); transform: translate(-50%, -50%) rotate(0deg); }
+.k-schedule__item--glint.is-glinting .k-schedule__glint { animation: k-glint-ring var(--schedule-glint-duration) var(--ease) both; }
+.k-schedule__item--glint.is-glinting .k-schedule__glint-sweep { animation: k-glint-sweep var(--schedule-glint-duration) var(--ease) both; }
+.k-schedule__item--glint:nth-child(2).is-glinting .k-schedule__glint, .k-schedule__item--glint:nth-child(2).is-glinting .k-schedule__glint-sweep { animation-delay: var(--schedule-glint-delay); }
+.k-schedule__item--glint.is-glint-now .k-schedule__glint, .k-schedule__item--glint.is-glint-now .k-schedule__glint-sweep { animation-delay: 0s; }
+.k-schedule--dark .k-schedule__item--glint:hover, .k-schedule--dark .k-schedule__item--glint:focus-within { border-color: var(--schedule-hover-border); }
+.k-schedule__next { position: absolute; top: 0; left: 50%; display: inline-flex; align-items: center; gap: var(--size-2xs); padding: 0 var(--size-xs); color: var(--color-white); background: var(--color-black); font: var(--weight-semibold) var(--text-caption)/var(--leading-label) var(--font-body); letter-spacing: var(--tracking-eyebrow); text-transform: uppercase; white-space: nowrap; transform: translate(-50%, -50%); visibility: hidden; }
+.k-schedule__next-dot { width: var(--schedule-next-dot); aspect-ratio: 1; border-radius: var(--radius-pill); background: var(--color-red); animation: k-glint-pulse var(--schedule-next-pulse) var(--ease-atmosphere) infinite alternate; }
+.k-schedule--dark .k-schedule__item--glint.is-next { border-color: var(--schedule-next-border); }
+.k-schedule__item--glint.is-next .k-schedule__next { visibility: visible; }
+@keyframes k-glint-sweep { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+@keyframes k-glint-ring { 0% { opacity: 0; } 12% { opacity: 1; } 82% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes k-glint-pulse { from { opacity: .35; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .k-schedule__item--glint .k-schedule__glint { display: none; }
+  .k-schedule__next-dot { animation: none; }
+}
 .k-faq { border-bottom: var(--border-width) solid var(--color-border); }
 .k-faq summary { list-style: none; display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); min-height: var(--faq-summary-height); padding-block: var(--space-3); font-family: var(--font-heading); font-size: var(--text-small); font-weight: var(--weight-semibold); line-height: var(--leading-body); }
 .k-faq summary::-webkit-details-marker { display: none; }

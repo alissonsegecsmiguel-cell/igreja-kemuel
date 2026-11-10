@@ -550,6 +550,17 @@
   --marker-width: 1.5rem;
   --marker-height: 2px;
   --schedule-item-min: 7rem; /* Dois horários cabem também na coluna da hero deitada em 568px. */
+  /* Brilho na borda dos cards de horário da hero (k-schedule__item--glint). Loop autorizado pelo Alisson na tarefa 18. */
+  --schedule-glint-duration: 1.4s;
+  --schedule-glint-interval: 7s;
+  --schedule-glint-delay: .35s;
+  --schedule-glint-tail: conic-gradient(from 0deg, rgba(222, 46, 56, 0) 0deg, rgba(222, 46, 56, 0) 290deg, rgba(222, 46, 56, .9) 335deg, rgba(255, 236, 214, 1) 357deg, rgba(255, 236, 214, 0) 360deg);
+  --schedule-glint-ring: 1px;
+  --schedule-glint-size: 300%;
+  --schedule-hover-border: var(--color-border-control);
+  --schedule-next-border: rgba(222, 46, 56, .45);
+  --schedule-next-pulse: 2.4s;
+  --schedule-next-dot: .4375rem;
   --schedule-max-width: 28rem;
   --card-compact-thumb: 6.5rem; /* Imagem do card horizontal no celular. */
   /* Post do blog (k-article): leitura em coluna, Newsreader no texto. */

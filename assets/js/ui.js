@@ -900,6 +900,41 @@
     reduced.addEventListener('change', () => { if (reduced.matches) animations.forEach(animation => animation.finish()); });
   });
 
+  // Hero: faísca na borda dos horários (um único timer para os dois cards) e destaque do próximo culto.
+  // Começa no tempo ocioso para não pesar no carregamento; a etiqueta só usa visibility, sem deslocar nada.
+  const whenIdle = window.requestIdleCallback || (fn => setTimeout(fn, 200));
+  document.querySelectorAll('.k-schedule--glint').forEach(list => whenIdle(() => {
+    const cards = [...list.querySelectorAll('.k-schedule__item--glint')];
+    if (!cards.length) return;
+    // Próximo culto no fuso da igreja; depois do horário de início, conta o seguinte.
+    const zone = list.dataset.timezone || 'America/Fortaleza';
+    const parts = Object.fromEntries(new Intl.DateTimeFormat('en-US', { timeZone: zone, weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).formatToParts(new Date()).map(part => [part.type, part.value]));
+    const now = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(parts.weekday) * 1440 + Number(parts.hour) * 60 + Number(parts.minute);
+    const until = card => { const [h, m] = card.dataset.time.split(':').map(Number); const at = Number(card.dataset.weekday) * 1440 + h * 60 + m; return (at - now + 10080) % 10080 || 10080; };
+    const next = cards.reduce((best, card) => until(card) < until(best) ? card : best);
+    next.classList.add('is-next');
+    // Reinicia pelas próprias animações (sem forçar layout); o pulso do ponto segue sozinho.
+    const glint = (targets, now) => targets.forEach(card => {
+      card.classList.toggle('is-glint-now', Boolean(now));
+      if (!card.classList.contains('is-glinting')) return card.classList.add('is-glinting');
+      card.getAnimations({ subtree: true }).forEach(a => { if (a.animationName !== 'k-glint-pulse') { a.cancel(); a.play(); } });
+    });
+    let timer = 0, visible = true;
+    const interval = parseFloat(tokens.getPropertyValue('--schedule-glint-interval')) * 1000 || 7000;
+    const stop = () => { clearInterval(timer); timer = 0; };
+    const start = () => {
+      if (timer || reduced.matches || document.hidden || !visible) return;
+      glint(cards);
+      timer = setInterval(() => glint(cards), interval);
+    };
+    const hero = list.closest('.k-hero') || list;
+    if ('IntersectionObserver' in window) new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; visible ? start() : stop(); }).observe(hero);
+    else start();
+    document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+    reduced.addEventListener('change', () => (reduced.matches ? stop() : start()));
+    cards.forEach(card => ['pointerenter', 'focusin'].forEach(type => card.addEventListener(type, () => { if (!reduced.matches) glint([card], true); })));
+  }));
+
   // /discipulado: contador (uma vez, ao entrar na tela), jornada, vídeos de exemplo, fachada do YouTube e vídeo de fundo.
   const easeOut = (() => {
     // cubic-bezier(.22, 1, .36, 1), o easing do projeto, resolvido por Newton.

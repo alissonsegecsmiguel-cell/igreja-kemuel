@@ -9,6 +9,8 @@ export function loadData(root) {
   return JSON.parse(readFileSync(join(root, 'dados', 'igreja.json'), 'utf8'));
 }
 
+const WEEKDAYS = { Sunday: 0, Monday: 1, Tuesday: 2, Wednesday: 3, Thursday: 4, Friday: 5, Saturday: 6 };
+
 function generators(d) {
   const e = d.endereco;
   const pairs = (fn, joiner) => d.cultos.map(fn).join(joiner);
@@ -49,6 +51,8 @@ function generators(d) {
       return items.length > 1 ? `${items.slice(0, -1).join(', ')}, e ${items.at(-1)}` : items[0];
     },
     'cultos-schedule': () => pairs(c => `<li class="k-schedule__item"><span class="k-schedule__head">${icon}<span class="k-schedule__mark"></span></span><span class="k-eyebrow k-schedule__day">${c.dia}</span><span class="k-schedule__time">${c.hora}</span><span class="k-schedule__label">${c.nome}</span></li>`, ''),
+    // Hero: mesma marcação de k-schedule, com o anel do brilho, a etiqueta do próximo culto e dia/hora para o ui.js.
+    'cultos-schedule-glint': () => pairs(c => `<li class="k-schedule__item k-schedule__item--glint" data-weekday="${WEEKDAYS[c.diaSchema]}" data-time="${c.horaISO}"><span class="k-schedule__glint" aria-hidden="true"><span class="k-schedule__glint-sweep"></span></span><span class="k-schedule__next"><span class="k-schedule__next-dot" aria-hidden="true"></span>Próximo culto</span><span class="k-schedule__head">${icon}<span class="k-schedule__mark"></span></span><span class="k-eyebrow k-schedule__day">${c.dia}</span><span class="k-schedule__time">${c.hora}</span><span class="k-schedule__label">${c.nome}</span></li>`, ''),
     'cultos-biblia': () => pairs(c => `<li><span>${c.dia}</span><strong>${c.hora}</strong><small>${c.nome}</small></li>`, ''),
     'cultos-tabela': () => pairs(c => `<tr><th scope="row">${c.dia}</th><td>${c.hora}</td></tr>`, '') + `<tr><th scope="row">Endereço</th><td class="k-info-table__address">${e.rua}, ${e.numero} · ${e.bairro} · ${e.cidade} - ${e.uf}</td></tr>`
   };
@@ -88,6 +92,7 @@ export function fillData(html, d, file) {
     last = end; open.lastIndex = end;
   }
   html = out + html.slice(last);
+  html = html.replace(/data-timezone="[^"]*"/g, `data-timezone="${escape(d.fuso || 'America/Fortaleza')}"`);
   // data-dado-href="mapa" ou o nome de uma rede em dados/igreja.json define o href do link.
   // WhatsApp do discipulado: só com número oficial; sem ele, o botão leva ao fechamento da página.
   const whats = d.contato?.whatsapp; const digits = String(whats?.numero || '').replace(/\D/g, '');
