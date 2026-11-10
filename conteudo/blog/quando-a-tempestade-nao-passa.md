@@ -10,6 +10,7 @@ capa_legenda: "Iluminura de cerca de 1020 mostra Jesus no barco com os discípul
 capa_credito: "Códice de Hitda, fol. 117r, c. 1020. Universitäts- und Landesbibliothek Darmstadt. Domínio público, via Wikimedia Commons."
 exemplo: true
 recomendado: true
+temas: ["confiança", "tempestade", "paz", "descanso"]
 ---
 Você já deitou a cabeça no travesseiro com o coração acelerado? A conta que não fecha. O exame que não saiu. A conversa difícil que ficou para amanhã. A gente ora, mas a sensação é de que nada mudou.
 

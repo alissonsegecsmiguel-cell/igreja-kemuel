@@ -10,6 +10,7 @@ capa_legenda: "Colunas do Grande Rolo de Isaías, um dos Manuscritos do Mar Mort
 capa_credito: "Grande Rolo de Isaías (1QIsa), trecho do capítulo 53, fotografia de Ardon Bar Hama. Museu de Israel, Jerusalém. Domínio público, via Wikimedia Commons."
 exemplo: true
 recomendado: true
+temas: ["Escrituras", "fé", "confiança"]
 ---
 Em 1947, perto do mar Morto, um jovem pastor procurava uma cabra perdida entre as rochas. Ele atirou uma pedra dentro de uma caverna e ouviu barulho de cerâmica quebrando. Lá dentro havia jarros antigos. E, dentro dos jarros, rolos de pergaminho.
 

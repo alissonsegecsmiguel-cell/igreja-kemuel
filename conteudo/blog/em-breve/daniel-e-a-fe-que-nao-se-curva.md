@@ -10,4 +10,5 @@ capa_legenda: "Daniel entre os leões em inicial de Bíblia medieval da escola b
 capa_credito: "Daniel entre os leões, inicial de Bíblia da escola bolonhesa, c. 1300. Autor desconhecido. Domínio público (PD-Art), via Wikimedia Commons."
 exemplo: true
 em_breve: true
+temas: ["fé", "oração", "confiança", "louvor"]
 ---

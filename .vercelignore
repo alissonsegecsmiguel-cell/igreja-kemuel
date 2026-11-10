@@ -10,6 +10,9 @@ partials/
 scripts/
 dados/*
 !dados/posts.json
+!dados/busca.json
+!dados/sinonimos.json
+!dados/livros-biblia.json
 textos-blog/
 node_modules/
 conteudo/

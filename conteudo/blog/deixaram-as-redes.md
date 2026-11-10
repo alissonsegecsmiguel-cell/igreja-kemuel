@@ -10,6 +10,7 @@ capa_legenda: "Pintura de Duccio mostra Jesus na margem chamando os irmãos Pedr
 capa_credito: "Duccio di Buoninsegna, O chamado dos apóstolos Pedro e André, 1308-1311. National Gallery of Art, Washington. Obra em domínio público, reprodução CC0, via Wikimedia Commons."
 exemplo: true
 recomendado: true
+temas: ["fé", "recomeço", "chamado", "gratidão"]
 ---
 Era um dia normal de trabalho. Em Mateus 4.18-22, os irmãos Pedro e André estavam jogando a rede no mar da Galileia. Logo adiante, Tiago e João consertavam as redes no barco, com o pai deles. Ninguém ali estava num retiro espiritual. Estavam trabalhando.
 

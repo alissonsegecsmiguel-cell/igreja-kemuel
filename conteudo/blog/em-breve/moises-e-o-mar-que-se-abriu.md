@@ -10,4 +10,5 @@ capa_legenda: "Travessia do Mar Vermelho, Bíblia Morgan, século XIII."
 capa_credito: "Bíblia Morgan, M.638, fol. 9r, c. 1250. The Morgan Library & Museum. Domínio público (PD-Art), via Wikimedia Commons."
 exemplo: true
 em_breve: true
+temas: ["medo", "confiança", "esperança"]
 ---

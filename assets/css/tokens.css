@@ -53,6 +53,16 @@
 }
 
 :root {
+  /* Busca própria: resultados, combobox e ajuda; nenhuma nova família/cor. */
+  --search-debounce: 120ms; /* Espera de digitação, não animação. */
+  --search-suggestions: 5;
+  --search-popup-height: min(21rem, 50svh);
+  --search-popup-z: 5;
+  --search-snippet-length: 180;
+  --search-mark-bg: var(--color-surface-soft);
+  --search-mark-ink: var(--color-text);
+  --search-option-bg: var(--color-surface-soft);
+  --search-empty-pad: var(--space-4);
   /* Discipulado: capa da apostila e ficha das dez lições. */
   --discipleship-cover-width: 24rem;
   --discipleship-lesson-columns: var(--space-5) minmax(0, 1fr);

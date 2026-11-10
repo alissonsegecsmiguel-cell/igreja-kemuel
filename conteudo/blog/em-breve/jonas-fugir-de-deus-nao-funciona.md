@@ -10,4 +10,5 @@ capa_legenda: "Jonas lançado ao mar, na boca do peixe e diante de Nínive, Salt
 capa_credito: "História de Jonas, Saltério de Paris, BnF Grec 139, fol. 431v, século X. Bibliothèque nationale de France. Domínio público (PD-Art), via Wikimedia Commons."
 exemplo: true
 em_breve: true
+temas: ["perdão", "recomeço", "obediência"]
 ---

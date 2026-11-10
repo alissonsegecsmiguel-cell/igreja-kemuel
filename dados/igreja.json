@@ -75,5 +75,12 @@
     "chave": "[Chave PIX institucional]",
     "titular": "[Nome do titular institucional]",
     "qr_codigo": "[QR Code institucional]"
+  },
+  "contato": {
+    "whatsapp": {
+      "numero": "[Número oficial do WhatsApp]",
+      "url": "https://example.invalid/whatsapp",
+      "exemplo": true
+    }
   }
 }

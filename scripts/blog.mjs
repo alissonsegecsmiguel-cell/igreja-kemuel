@@ -15,7 +15,7 @@ function parse(source, file) {
     const kv = line.match(/^([a-z_]+):\s*(.*)$/);
     if (!kv) continue;
     const raw = kv[2].trim();
-    meta[kv[1]] = raw.startsWith('"') ? JSON.parse(raw) : raw === 'true' ? true : raw === 'false' ? false : raw;
+    meta[kv[1]] = raw.startsWith('"') || raw.startsWith('[') ? JSON.parse(raw) : raw === 'true' ? true : raw === 'false' ? false : raw;
   }
   return { meta, body: m[2].trim() };
 }
@@ -36,6 +36,7 @@ export async function loadPosts(root) {
   return files.map(file => {
     const slug = file.split('/').at(-1).replace(/\.md$/, '');
     const { meta, body } = parse(readFileSync(join(dir, file), 'utf8'), file);
+    if (!Array.isArray(meta.temas) || meta.temas.length < 2 || meta.temas.length > 4 || meta.temas.some(t => typeof t !== 'string' || !t.trim()) || new Set(meta.temas).size !== meta.temas.length) throw new Error(`${file}: informe de 2 a 4 temas distintos no front matter`);
     const img = `../assets/img/blog/${slug}/`;
     let html = marked.parse(body, { gfm: true, breaks: false });
     // Citação em destaque e imagem sozinha num parágrafo viram figuras do k-article.
@@ -53,7 +54,7 @@ export async function loadPosts(root) {
 export function postsIndex(posts) {
   return JSON.stringify(posts.map(p => ({
     slug: p.slug, url: p.url, numero: p.numero, titulo: p.titulo, subtitulo: p.subtitulo || p.resumo, categoria: p.categoria, autor: p.autor, data: p.data,
-    referencia: p.referencia, leitura: p.leitura, exemplo: p.exemplo === true, em_breve: p.em_breve === true, recomendado: p.recomendado === true,
+    referencia: p.referencia, temas: p.temas, leitura: p.leitura, exemplo: p.exemplo === true, em_breve: p.em_breve === true, recomendado: p.recomendado === true,
     capa: p.capa ? { 480: `/assets/img/blog/${p.slug}/capa-480.webp`, 960: `/assets/img/blog/${p.slug}/capa-960.webp`, ...(!p.em_breve ? { 1600: `/assets/img/blog/${p.slug}/capa-1600.webp` } : {}), legenda: p.capa_legenda, credito: p.capa_credito } : null
   })), null, 2) + '\n';
 }

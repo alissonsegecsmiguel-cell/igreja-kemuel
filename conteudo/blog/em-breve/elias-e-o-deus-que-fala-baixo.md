@@ -10,4 +10,5 @@ capa_legenda: "Elias e Eliseu em manuscrito medieval; cena da ascensão de Elias
 capa_credito: "Elias e Eliseu, Biblia Pauperum, British Library, King’s 5, fol. 27, c. 1405. Domínio público, via Wikimedia Commons."
 exemplo: true
 em_breve: true
+temas: ["descanso", "força", "paz"]
 ---

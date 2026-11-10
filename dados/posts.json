@@ -8,6 +8,11 @@
     "autor": "Igreja Kemuel",
     "data": "2026-11-02",
     "referencia": "Lucas 10.25-37",
+    "temas": [
+      "generosidade",
+      "consolo",
+      "amor ao próximo"
+    ],
     "leitura": 2,
     "exemplo": true,
     "em_breve": false,
@@ -29,6 +34,12 @@
     "autor": "Igreja Kemuel",
     "data": "2026-10-26",
     "referencia": "Mateus 4.18-22",
+    "temas": [
+      "fé",
+      "recomeço",
+      "chamado",
+      "gratidão"
+    ],
     "leitura": 2,
     "exemplo": true,
     "em_breve": false,
@@ -50,6 +61,11 @@
     "autor": "Igreja Kemuel",
     "data": "2026-10-19",
     "referencia": "",
+    "temas": [
+      "Escrituras",
+      "fé",
+      "confiança"
+    ],
     "leitura": 2,
     "exemplo": true,
     "em_breve": false,
@@ -71,6 +87,12 @@
     "autor": "Igreja Kemuel",
     "data": "2026-10-12",
     "referencia": "Salmo 119.105",
+    "temas": [
+      "fé",
+      "Escrituras",
+      "esperança",
+      "força"
+    ],
     "leitura": 2,
     "exemplo": true,
     "em_breve": false,
@@ -92,6 +114,12 @@
     "autor": "Igreja Kemuel",
     "data": "2026-10-05",
     "referencia": "Marcos 4.35-41",
+    "temas": [
+      "confiança",
+      "tempestade",
+      "paz",
+      "descanso"
+    ],
     "leitura": 2,
     "exemplo": true,
     "em_breve": false,
@@ -112,6 +140,11 @@
     "subtitulo": "Diante de um gigante, Davi aprendeu a confiar em Deus. Uma história para lembrar onde está a nossa coragem.",
     "categoria": "Antigo Testamento",
     "referencia": "1 Samuel 17",
+    "temas": [
+      "coragem",
+      "confiança",
+      "força"
+    ],
     "leitura": null,
     "exemplo": true,
     "em_breve": true,
@@ -131,6 +164,11 @@
     "subtitulo": "Noé construiu a arca enquanto esperava. Uma reflexão sobre confiança, cuidado e as promessas de Deus.",
     "categoria": "Antigo Testamento",
     "referencia": "Gênesis 6 a 9",
+    "temas": [
+      "confiança",
+      "esperança",
+      "gratidão"
+    ],
     "leitura": null,
     "exemplo": true,
     "em_breve": true,
@@ -150,6 +188,11 @@
     "subtitulo": "Abraão saiu sem conhecer o destino. A fé também pode começar com um passo pequeno e um coração disposto.",
     "categoria": "Fé",
     "referencia": "Gênesis 12",
+    "temas": [
+      "fé",
+      "confiança",
+      "chamado"
+    ],
     "leitura": null,
     "exemplo": true,
     "em_breve": true,
@@ -169,6 +212,11 @@
     "subtitulo": "A história de José passa pela dor e chega ao reencontro. Um convite para pensar no perdão sem apagar o que aconteceu.",
     "categoria": "Antigo Testamento",
     "referencia": "Gênesis 37 a 50",
+    "temas": [
+      "perdão",
+      "recomeço",
+      "consolo"
+    ],
     "leitura": null,
     "exemplo": true,
     "em_breve": true,
@@ -188,6 +236,11 @@
     "subtitulo": "Entre o medo e o mar, o povo deu o próximo passo. Uma lembrança de que Deus cuida mesmo quando não vemos saída.",
     "categoria": "Fé",
     "referencia": "Êxodo 14",
+    "temas": [
+      "medo",
+      "confiança",
+      "esperança"
+    ],
     "leitura": null,
     "exemplo": true,
     "em_breve": true,
@@ -207,6 +260,12 @@
     "subtitulo": "Rute escolheu ficar ao lado de Noemi. Sua lealdade mostra como o amor pode abrir caminhos em dias difíceis.",
     "categoria": "Amor ao próximo",
     "referencia": "Rute 1 a 4",
+    "temas": [
+      "luto",
+      "consolo",
+      "esperança",
+      "amor ao próximo"
+    ],
     "leitura": null,
     "exemplo": true,
     "em_breve": true,
@@ -226,6 +285,11 @@
     "subtitulo": "Neemias viu ruínas e começou com oração. Uma história sobre reconstruir juntos e cuidar do que Deus nos confiou.",
     "categoria": "Chamado",
     "referencia": "Neemias 1 a 6",
+    "temas": [
+      "recomeço",
+      "oração",
+      "generosidade"
+    ],
     "leitura": null,
     "exemplo": true,
     "em_breve": true,
@@ -245,6 +309,11 @@
     "subtitulo": "Cansado e com medo, Elias precisou parar. Uma reflexão sobre escutar Deus também nos momentos de silêncio.",
     "categoria": "Palavra",
     "referencia": "1 Reis 19",
+    "temas": [
+      "descanso",
+      "força",
+      "paz"
+    ],
     "leitura": null,
     "exemplo": true,
     "em_breve": true,
@@ -264,6 +333,12 @@
     "subtitulo": "Daniel continuou a orar quando parecia arriscado. Uma história para fortalecer a fidelidade nas escolhas de cada dia.",
     "categoria": "Fé",
     "referencia": "Daniel 6",
+    "temas": [
+      "fé",
+      "oração",
+      "confiança",
+      "louvor"
+    ],
     "leitura": null,
     "exemplo": true,
     "em_breve": true,
@@ -283,6 +358,11 @@
     "subtitulo": "Jonas tomou outro caminho, mas Deus não desistiu dele. Uma reflexão sobre recomeço, obediência e misericórdia.",
     "categoria": "Chamado",
     "referencia": "Jonas 1 a 4",
+    "temas": [
+      "perdão",
+      "recomeço",
+      "obediência"
+    ],
     "leitura": null,
     "exemplo": true,
     "em_breve": true,

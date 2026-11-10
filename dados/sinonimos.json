@@ -1,0 +1,104 @@
+{
+  "ansiedade": [
+    "confiança",
+    "tempestade",
+    "paz"
+  ],
+  "ansioso": [
+    "confiança",
+    "tempestade",
+    "paz"
+  ],
+  "preocupação": [
+    "confiança",
+    "tempestade",
+    "paz"
+  ],
+  "medo": [
+    "confiança",
+    "tempestade",
+    "paz"
+  ],
+  "nervoso": [
+    "confiança",
+    "tempestade",
+    "paz"
+  ],
+  "cansado": [
+    "descanso",
+    "força"
+  ],
+  "cansaço": [
+    "descanso",
+    "força"
+  ],
+  "esgotado": [
+    "descanso",
+    "força"
+  ],
+  "tristeza": [
+    "consolo",
+    "esperança"
+  ],
+  "triste": [
+    "consolo",
+    "esperança"
+  ],
+  "luto": [
+    "consolo",
+    "esperança"
+  ],
+  "perda": [
+    "consolo",
+    "esperança"
+  ],
+  "dinheiro": [
+    "generosidade"
+  ],
+  "dízimo": [
+    "generosidade"
+  ],
+  "oferta": [
+    "generosidade"
+  ],
+  "errei": [
+    "perdão",
+    "recomeço"
+  ],
+  "culpa": [
+    "perdão",
+    "recomeço"
+  ],
+  "recomeço": [
+    "perdão",
+    "recomeço"
+  ],
+  "recomeçar": [
+    "perdão",
+    "recomeço"
+  ],
+  "dúvida": [
+    "fé",
+    "Escrituras"
+  ],
+  "duvida": [
+    "fé",
+    "Escrituras"
+  ],
+  "fé fraca": [
+    "fé",
+    "Escrituras"
+  ],
+  "gratidão": [
+    "gratidão",
+    "louvor"
+  ],
+  "grato": [
+    "gratidão",
+    "louvor"
+  ],
+  "agradecer": [
+    "gratidão",
+    "louvor"
+  ]
+}

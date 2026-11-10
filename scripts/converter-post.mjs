@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const FIELDS = {
-  'categoria': 'categoria', 'autor': 'autor', 'data': 'data', 'referência bíblica': 'referencia', 'referencia biblica': 'referencia',
+  'categoria': 'categoria', 'temas': 'temas', 'autor': 'autor', 'data': 'data', 'referência bíblica': 'referencia', 'referencia biblica': 'referencia',
   'capa': 'capa', 'legenda da capa': 'capa_legenda', 'crédito da capa': 'capa_credito', 'credito da capa': 'capa_credito', 'foco da capa': 'capa_foco', 'exemplo': 'exemplo'
 };
 
@@ -89,6 +89,8 @@ async function convert(file) {
     body.push(block);
   }
   if (!title) throw new Error(`${basename(path)}: falta o título (Título 1 ou "# ").`);
+  const themes = [...new Set((meta.temas || '').split(/[,;]/).map(t => t.trim()).filter(Boolean))];
+  if (themes.length < 2 || themes.length > 4) throw new Error('Informe Temas: com 2 a 4 temas separados por vírgula.');
   const slug = slugify(title);
   const source = dirname(path);
   const imgDir = join(root, 'assets', 'img', 'blog', slug);
@@ -133,6 +135,7 @@ async function convert(file) {
     `titulo: ${q(title)}`,
     `subtitulo: ${q(subtitle || '')}`,
     `categoria: ${q(meta.categoria || 'Blog')}`,
+    `temas: ${q(themes)}`,
     `autor: ${q(meta.autor || 'Igreja Kemuel')}`, // nunca inventar autor
     `data: ${meta.data ? isoDate(meta.data) : today()}`,
     `referencia: ${q(meta.referencia || '')}`,

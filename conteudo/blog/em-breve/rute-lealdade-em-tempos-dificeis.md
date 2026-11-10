@@ -10,4 +10,5 @@ capa_legenda: "Rute recolhendo espigas nos campos de Boaz, iluminura de William 
 capa_credito: "William de Brailes, Rute encontra Boaz, W.106, fol. 18r, c. 1250. Walters Art Museum. Domínio público, via Wikimedia Commons."
 exemplo: true
 em_breve: true
+temas: ["luto", "consolo", "esperança", "amor ao próximo"]
 ---

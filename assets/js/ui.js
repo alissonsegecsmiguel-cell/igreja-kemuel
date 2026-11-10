@@ -814,67 +814,6 @@
     reduced.addEventListener('change', () => { if (reduced.matches) animations.forEach(animation => animation.finish()); });
   });
 
-  // Portal: índice público gerado; HTML estático continua legível se a busca falhar.
-  document.querySelectorAll('[data-blog-portal]').forEach(async portal => {
-    const form = portal.querySelector('[data-portal-search]');
-    const input = portal.querySelector('[data-portal-input]');
-    const count = portal.querySelector('[data-portal-count]');
-    const empty = portal.querySelector('[data-portal-empty]');
-    const more = portal.querySelector('[data-portal-more]');
-    const tabs = [...portal.querySelectorAll('[data-portal-category]')];
-    const rows = [...portal.querySelectorAll('[data-portal-slug]')];
-    const normalize = value => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-    const categoryKey = value => normalize(value).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-    let posts, category = 'todos', limit = parseInt(tokens.getPropertyValue('--blog-page-size'), 10);
-    const pageSize = limit;
-    function render(save = false) {
-      if (!posts) return;
-      const term = input.value.trim();
-      const terms = normalize(term).split(/\s+/).filter(Boolean);
-      const matching = posts.filter(post => (category === 'todos' || categoryKey(post.categoria) === category) && terms.every(t => normalize([post.titulo, post.subtitulo, post.categoria, post.referencia].join(' ')).includes(t)));
-      const shown = new Set(matching.slice(0, limit).map(p => p.slug));
-      rows.forEach(row => { row.hidden = !shown.has(row.dataset.portalSlug); });
-      portal.querySelector('[data-portal-highlights]').hidden = Boolean(term) || category !== 'todos';
-      portal.querySelector('[data-portal-clear]').hidden = !term;
-      tabs.forEach(tab => tab.setAttribute('aria-pressed', String(tab.dataset.portalCategory === category)));
-      count.textContent = `${matching.length} ${matching.length === 1 ? 'resultado' : 'resultados'}${term ? ` para '${term}'` : ''}${category !== 'todos' ? ` em ${tabs.find(tab => tab.dataset.portalCategory === category)?.textContent.trim() || category}` : ''}`;
-      empty.hidden = matching.length !== 0;
-      empty.querySelector('[data-portal-empty-text]').textContent = `Nada encontrado para '${term || category}'. Tente outra palavra ou veja todos os artigos.`;
-      more.hidden = matching.length <= limit;
-      if (save) {
-        const hash = term && category !== 'todos' ? `#${new URLSearchParams({ busca: term, categoria: category })}` : term ? `#${encodeURIComponent(term)}` : category !== 'todos' ? `#categoria=${encodeURIComponent(category)}` : '';
-        history.replaceState(null, '', location.pathname + location.search + hash);
-      }
-    }
-    function fromHash() {
-      const raw = location.hash.slice(1);
-      const params = new URLSearchParams(raw);
-      const known = tabs.some(tab => tab.dataset.portalCategory === raw);
-      category = params.get('categoria') || (known ? raw : 'todos');
-      if (!tabs.some(tab => tab.dataset.portalCategory === category)) category = 'todos';
-      try { input.value = params.has('busca') ? params.get('busca') : params.has('categoria') || known ? '' : decodeURIComponent(raw); } catch { input.value = ''; }
-      limit = pageSize; render();
-    }
-    form.addEventListener('submit', event => { event.preventDefault(); limit = pageSize; render(true); });
-    input.addEventListener('input', () => { limit = pageSize; render(true); });
-    tabs.forEach(tab => tab.addEventListener('click', () => { category = tab.dataset.portalCategory; limit = pageSize; render(true); }));
-    portal.querySelectorAll('[data-portal-suggestion]').forEach(button => button.addEventListener('click', () => { input.value = button.dataset.portalSuggestion; category = 'todos'; limit = pageSize; render(true); input.focus(); }));
-    portal.querySelector('[data-portal-clear]').addEventListener('click', () => { input.value = ''; limit = pageSize; render(true); input.focus(); });
-    portal.querySelector('[data-portal-reset]').addEventListener('click', () => { input.value = ''; category = 'todos'; limit = pageSize; render(true); input.focus(); });
-    more.addEventListener('click', () => { limit += pageSize; render(); });
-    addEventListener('hashchange', fromHash);
-    try {
-      const response = await fetch(portal.dataset.postsUrl, { credentials: 'omit' });
-      if (!response.ok) throw new Error('Índice indisponível');
-      posts = await response.json();
-      fromHash();
-    } catch {
-      const message = portal.querySelector('[data-portal-failure]');
-      message.hidden = false; message.textContent = 'A busca está indisponível no momento. Todos os artigos continuam listados abaixo.';
-      more.hidden = true; input.disabled = true; tabs.forEach(tab => { tab.disabled = true; });
-    }
-  });
-
   // Post do blog: barra de progresso de leitura (só transform) e cópia do link.
   const readingBar = document.querySelector('[data-reading-progress] span');
   const article = document.querySelector('.k-article');

@@ -10,6 +10,7 @@ capa_legenda: "Lamparina romana de barro do século I, parecida com as usadas na
 capa_credito: "Lamparina de terracota, século I d.C. The Metropolitan Museum of Art. CC0, via Wikimedia Commons."
 exemplo: true
 recomendado: false
+temas: ["fé", "Escrituras", "esperança", "força"]
 ---
 Quando falta energia em casa à noite, ninguém sai procurando um holofote. A gente acende a lanterna do celular e vai, devagar, até a cozinha. A luz é pequena, mas é suficiente para não tropeçar.
 

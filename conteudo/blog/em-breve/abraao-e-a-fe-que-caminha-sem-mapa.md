@@ -10,4 +10,5 @@ capa_legenda: "Abraão e Isaac em iluminura medieval; detalhe de Gênesis 22, n�
 capa_credito: "Bíblia Morgan, M.638, fol. 3r, c. 1250, detalhe de Abraão e Isaac (Gênesis 22). The Morgan Library & Museum. Domínio público (PD-Art), via Wikimedia Commons."
 exemplo: true
 em_breve: true
+temas: ["fé", "confiança", "chamado"]
 ---

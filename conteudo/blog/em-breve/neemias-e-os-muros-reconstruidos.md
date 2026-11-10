@@ -10,4 +10,5 @@ capa_legenda: "Reconstrução e defesa dos muros de Jerusalém na Bíblia de Alb
 capa_credito: "Reconstrução dos muros de Jerusalém, Bíblia de Alba, 1430. Coleção Casa de Alba. Domínio público (PD-Art), via Wikimedia Commons."
 exemplo: true
 em_breve: true
+temas: ["recomeço", "oração", "generosidade"]
 ---

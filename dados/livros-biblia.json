@@ -1,0 +1,580 @@
+[
+  {
+    "nome": "Gênesis",
+    "sem_acento": "genesis",
+    "abreviacoes": [
+      "Gn",
+      "Gên",
+      "Gen"
+    ]
+  },
+  {
+    "nome": "Êxodo",
+    "sem_acento": "exodo",
+    "abreviacoes": [
+      "Êx",
+      "Ex",
+      "Exo"
+    ]
+  },
+  {
+    "nome": "Levítico",
+    "sem_acento": "levitico",
+    "abreviacoes": [
+      "Lv",
+      "Lev"
+    ]
+  },
+  {
+    "nome": "Números",
+    "sem_acento": "numeros",
+    "abreviacoes": [
+      "Nm",
+      "Núm",
+      "Num"
+    ]
+  },
+  {
+    "nome": "Deuteronômio",
+    "sem_acento": "deuteronomio",
+    "abreviacoes": [
+      "Dt",
+      "Deut"
+    ]
+  },
+  {
+    "nome": "Josué",
+    "sem_acento": "josue",
+    "abreviacoes": [
+      "Js",
+      "Jos"
+    ]
+  },
+  {
+    "nome": "Juízes",
+    "sem_acento": "juizes",
+    "abreviacoes": [
+      "Jz",
+      "Juíz",
+      "Jui"
+    ]
+  },
+  {
+    "nome": "Rute",
+    "sem_acento": "rute",
+    "abreviacoes": [
+      "Rt",
+      "Rut"
+    ]
+  },
+  {
+    "nome": "1 Samuel",
+    "sem_acento": "1 samuel",
+    "abreviacoes": [
+      "1Sm",
+      "1 Sm",
+      "I Samuel",
+      "1 Sam"
+    ]
+  },
+  {
+    "nome": "2 Samuel",
+    "sem_acento": "2 samuel",
+    "abreviacoes": [
+      "2Sm",
+      "2 Sm",
+      "II Samuel",
+      "2 Sam"
+    ]
+  },
+  {
+    "nome": "1 Reis",
+    "sem_acento": "1 reis",
+    "abreviacoes": [
+      "1Rs",
+      "1 Rs",
+      "I Reis",
+      "1 Re"
+    ]
+  },
+  {
+    "nome": "2 Reis",
+    "sem_acento": "2 reis",
+    "abreviacoes": [
+      "2Rs",
+      "2 Rs",
+      "II Reis",
+      "2 Re"
+    ]
+  },
+  {
+    "nome": "1 Crônicas",
+    "sem_acento": "1 cronicas",
+    "abreviacoes": [
+      "1Cr",
+      "1 Cr",
+      "I Crônicas",
+      "1 Cron"
+    ]
+  },
+  {
+    "nome": "2 Crônicas",
+    "sem_acento": "2 cronicas",
+    "abreviacoes": [
+      "2Cr",
+      "2 Cr",
+      "II Crônicas",
+      "2 Cron"
+    ]
+  },
+  {
+    "nome": "Esdras",
+    "sem_acento": "esdras",
+    "abreviacoes": [
+      "Ed",
+      "Esd"
+    ]
+  },
+  {
+    "nome": "Neemias",
+    "sem_acento": "neemias",
+    "abreviacoes": [
+      "Ne",
+      "Nee"
+    ]
+  },
+  {
+    "nome": "Ester",
+    "sem_acento": "ester",
+    "abreviacoes": [
+      "Et",
+      "Est"
+    ]
+  },
+  {
+    "nome": "Jó",
+    "sem_acento": "jo",
+    "abreviacoes": [
+      "Jó",
+      "Jo",
+      "Job"
+    ]
+  },
+  {
+    "nome": "Salmos",
+    "sem_acento": "salmos",
+    "abreviacoes": [
+      "Sl",
+      "Slm",
+      "Sal",
+      "Salmo"
+    ]
+  },
+  {
+    "nome": "Provérbios",
+    "sem_acento": "proverbios",
+    "abreviacoes": [
+      "Pv",
+      "Prov",
+      "Pr"
+    ]
+  },
+  {
+    "nome": "Eclesiastes",
+    "sem_acento": "eclesiastes",
+    "abreviacoes": [
+      "Ec",
+      "Ecl"
+    ]
+  },
+  {
+    "nome": "Cantares",
+    "sem_acento": "cantares",
+    "abreviacoes": [
+      "Ct",
+      "Cant",
+      "Cântico dos Cânticos",
+      "Cânticos"
+    ]
+  },
+  {
+    "nome": "Isaías",
+    "sem_acento": "isaias",
+    "abreviacoes": [
+      "Is",
+      "Isa"
+    ]
+  },
+  {
+    "nome": "Jeremias",
+    "sem_acento": "jeremias",
+    "abreviacoes": [
+      "Jr",
+      "Jer"
+    ]
+  },
+  {
+    "nome": "Lamentações",
+    "sem_acento": "lamentacoes",
+    "abreviacoes": [
+      "Lm",
+      "Lam"
+    ]
+  },
+  {
+    "nome": "Ezequiel",
+    "sem_acento": "ezequiel",
+    "abreviacoes": [
+      "Ez",
+      "Ezeq"
+    ]
+  },
+  {
+    "nome": "Daniel",
+    "sem_acento": "daniel",
+    "abreviacoes": [
+      "Dn",
+      "Dan"
+    ]
+  },
+  {
+    "nome": "Oseias",
+    "sem_acento": "oseias",
+    "abreviacoes": [
+      "Os",
+      "Oséias",
+      "Osé"
+    ]
+  },
+  {
+    "nome": "Joel",
+    "sem_acento": "joel",
+    "abreviacoes": [
+      "Jl",
+      "Joel"
+    ]
+  },
+  {
+    "nome": "Amós",
+    "sem_acento": "amos",
+    "abreviacoes": [
+      "Am",
+      "Amós"
+    ]
+  },
+  {
+    "nome": "Obadias",
+    "sem_acento": "obadias",
+    "abreviacoes": [
+      "Ob",
+      "Obd",
+      "Abdias"
+    ]
+  },
+  {
+    "nome": "Jonas",
+    "sem_acento": "jonas",
+    "abreviacoes": [
+      "Jn",
+      "Jon"
+    ]
+  },
+  {
+    "nome": "Miqueias",
+    "sem_acento": "miqueias",
+    "abreviacoes": [
+      "Mq",
+      "Miq",
+      "Miquéias"
+    ]
+  },
+  {
+    "nome": "Naum",
+    "sem_acento": "naum",
+    "abreviacoes": [
+      "Na",
+      "Naum"
+    ]
+  },
+  {
+    "nome": "Habacuque",
+    "sem_acento": "habacuque",
+    "abreviacoes": [
+      "Hc",
+      "Hab"
+    ]
+  },
+  {
+    "nome": "Sofonias",
+    "sem_acento": "sofonias",
+    "abreviacoes": [
+      "Sf",
+      "Sof"
+    ]
+  },
+  {
+    "nome": "Ageu",
+    "sem_acento": "ageu",
+    "abreviacoes": [
+      "Ag",
+      "Age"
+    ]
+  },
+  {
+    "nome": "Zacarias",
+    "sem_acento": "zacarias",
+    "abreviacoes": [
+      "Zc",
+      "Zac"
+    ]
+  },
+  {
+    "nome": "Malaquias",
+    "sem_acento": "malaquias",
+    "abreviacoes": [
+      "Ml",
+      "Mal"
+    ]
+  },
+  {
+    "nome": "Mateus",
+    "sem_acento": "mateus",
+    "abreviacoes": [
+      "Mt",
+      "Mat"
+    ]
+  },
+  {
+    "nome": "Marcos",
+    "sem_acento": "marcos",
+    "abreviacoes": [
+      "Mc",
+      "Mar"
+    ]
+  },
+  {
+    "nome": "Lucas",
+    "sem_acento": "lucas",
+    "abreviacoes": [
+      "Lc",
+      "Luc"
+    ]
+  },
+  {
+    "nome": "João",
+    "sem_acento": "joao",
+    "abreviacoes": [
+      "Jo",
+      "Joã",
+      "Joa"
+    ]
+  },
+  {
+    "nome": "Atos",
+    "sem_acento": "atos",
+    "abreviacoes": [
+      "At",
+      "Atos dos Apóstolos"
+    ]
+  },
+  {
+    "nome": "Romanos",
+    "sem_acento": "romanos",
+    "abreviacoes": [
+      "Rm",
+      "Rom"
+    ]
+  },
+  {
+    "nome": "1 Coríntios",
+    "sem_acento": "1 corintios",
+    "abreviacoes": [
+      "1Co",
+      "1 Co",
+      "I Coríntios",
+      "1 Cor"
+    ]
+  },
+  {
+    "nome": "2 Coríntios",
+    "sem_acento": "2 corintios",
+    "abreviacoes": [
+      "2Co",
+      "2 Co",
+      "II Coríntios",
+      "2 Cor"
+    ]
+  },
+  {
+    "nome": "Gálatas",
+    "sem_acento": "galatas",
+    "abreviacoes": [
+      "Gl",
+      "Gál",
+      "Gal"
+    ]
+  },
+  {
+    "nome": "Efésios",
+    "sem_acento": "efesios",
+    "abreviacoes": [
+      "Ef",
+      "Efés"
+    ]
+  },
+  {
+    "nome": "Filipenses",
+    "sem_acento": "filipenses",
+    "abreviacoes": [
+      "Fp",
+      "Fil"
+    ]
+  },
+  {
+    "nome": "Colossenses",
+    "sem_acento": "colossenses",
+    "abreviacoes": [
+      "Cl",
+      "Col"
+    ]
+  },
+  {
+    "nome": "1 Tessalonicenses",
+    "sem_acento": "1 tessalonicenses",
+    "abreviacoes": [
+      "1Ts",
+      "1 Ts",
+      "I Tessalonicenses",
+      "1 Tess"
+    ]
+  },
+  {
+    "nome": "2 Tessalonicenses",
+    "sem_acento": "2 tessalonicenses",
+    "abreviacoes": [
+      "2Ts",
+      "2 Ts",
+      "II Tessalonicenses",
+      "2 Tess"
+    ]
+  },
+  {
+    "nome": "1 Timóteo",
+    "sem_acento": "1 timoteo",
+    "abreviacoes": [
+      "1Tm",
+      "1 Tm",
+      "I Timóteo",
+      "1 Tim"
+    ]
+  },
+  {
+    "nome": "2 Timóteo",
+    "sem_acento": "2 timoteo",
+    "abreviacoes": [
+      "2Tm",
+      "2 Tm",
+      "II Timóteo",
+      "2 Tim"
+    ]
+  },
+  {
+    "nome": "Tito",
+    "sem_acento": "tito",
+    "abreviacoes": [
+      "Tt",
+      "Tit"
+    ]
+  },
+  {
+    "nome": "Filemom",
+    "sem_acento": "filemom",
+    "abreviacoes": [
+      "Fm",
+      "Flm",
+      "Filemon"
+    ]
+  },
+  {
+    "nome": "Hebreus",
+    "sem_acento": "hebreus",
+    "abreviacoes": [
+      "Hb",
+      "Heb"
+    ]
+  },
+  {
+    "nome": "Tiago",
+    "sem_acento": "tiago",
+    "abreviacoes": [
+      "Tg",
+      "Tia"
+    ]
+  },
+  {
+    "nome": "1 Pedro",
+    "sem_acento": "1 pedro",
+    "abreviacoes": [
+      "1Pe",
+      "1 Pe",
+      "I Pedro",
+      "1 Ped"
+    ]
+  },
+  {
+    "nome": "2 Pedro",
+    "sem_acento": "2 pedro",
+    "abreviacoes": [
+      "2Pe",
+      "2 Pe",
+      "II Pedro",
+      "2 Ped"
+    ]
+  },
+  {
+    "nome": "1 João",
+    "sem_acento": "1 joao",
+    "abreviacoes": [
+      "1Jo",
+      "1 Jo",
+      "I João",
+      "1 Jn"
+    ]
+  },
+  {
+    "nome": "2 João",
+    "sem_acento": "2 joao",
+    "abreviacoes": [
+      "2Jo",
+      "2 Jo",
+      "II João",
+      "2 Jn"
+    ]
+  },
+  {
+    "nome": "3 João",
+    "sem_acento": "3 joao",
+    "abreviacoes": [
+      "3Jo",
+      "3 Jo",
+      "III João",
+      "3 Jn"
+    ]
+  },
+  {
+    "nome": "Judas",
+    "sem_acento": "judas",
+    "abreviacoes": [
+      "Jd",
+      "Jud"
+    ]
+  },
+  {
+    "nome": "Apocalipse",
+    "sem_acento": "apocalipse",
+    "abreviacoes": [
+      "Ap",
+      "Apoc"
+    ]
+  }
+]

@@ -10,4 +10,5 @@ capa_legenda: "José vendido por seus irmãos, Bíblia Morgan, século XIII."
 capa_credito: "Bíblia Morgan, M.638, fol. 5r, c. 1250. The Morgan Library & Museum. Domínio público (PD-Art), via Wikimedia Commons."
 exemplo: true
 em_breve: true
+temas: ["perdão", "recomeço", "consolo"]
 ---

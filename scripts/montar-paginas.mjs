@@ -9,6 +9,7 @@ import { loadPosts, postPage, postsIndex, blogFeature } from './blog.mjs';
 import { loadMaterials, materialsHome, materialsPage } from './materiais.mjs';
 import { blogPortal } from './blog-portal.mjs';
 import { loadGoals, giveSections } from './contribua.mjs';
+import { searchIndex } from './busca.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const read = file => readFileSync(file, 'utf8').replace(/\r\n/g, '\n');
@@ -50,7 +51,7 @@ function symbols(html, file) {
 
 function shared(html, file) {
   if (html.includes('<!-- give-section:start -->')) html = apply(html, 'give-section', giveSections(goals, church, file.startsWith('assets/') ? '' : 'assets/', file.startsWith('assets/') ? 'demo-give' : 'contribua', file === 'contribua.html' ? 1 : 2), file);
-  if (html.includes('<!-- blog-portal:start -->')) html = apply(html, 'blog-portal', blogPortal(posts, verse, file.startsWith('assets/') ? '' : 'assets/'), file);
+  if (html.includes('<!-- blog-portal:start -->')) html = apply(html, 'blog-portal', blogPortal(posts, verse, file.startsWith('assets/') ? '' : 'assets/', church), file);
   if (html.includes('<!-- materiais-catalogo:start -->')) html = apply(html, 'materiais-catalogo', materialsPage(materials, '', 2, 'demo-materiais'), file);
   if (html.includes('<!-- materiais-home:start -->')) html = apply(html, 'materiais-home', materialsHome(materials), file);
   if (html.includes('<!-- materiais-pagina:start -->')) html = apply(html, 'materiais-pagina', materialsPage(materials), file);
@@ -97,6 +98,8 @@ for (const post of posts.filter(post => post.em_breve !== true)) {
 }
 const index = 'dados/posts.json';
 outputs.push({ file: index, before: existsSync(join(root, index)) ? read(join(root, index)) : '', html: postsIndex(posts) });
+const searchFile = 'dados/busca.json';
+outputs.push({ file: searchFile, before: existsSync(join(root, searchFile)) ? read(join(root, searchFile)) : '', html: searchIndex(posts) });
 mkdirSync(join(root, 'blog'), { recursive: true });
 
 // Valida todos os marcadores antes de escrever qualquer página.

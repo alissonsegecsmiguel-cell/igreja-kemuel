@@ -2,6 +2,8 @@
 
 ## 1. Última sessão
 
+- 10/11/2026 (fila 10): busca acolhedora do /blog implementada com módulo próprio, sem biblioteca, índice normalizado e texto público sem HTML, carregados na primeira interação. Temas nos quinze posts, sinônimos, 66 livros, erros de digitação/prefixos, sugestões acessíveis, atalhos “Como você está hoje?”, trechos destacados e saída humana em caso vazio. Testes locais 1440x900/390x844, teclado/toque, rede negada, sem JS e manual passaram; resposta no navegador abaixo de 8ms. Montagem idempotente; inicial, materiais, Contribua, discipulado e cinco posts preservados. Lighthouse móvel mediano antes/depois (3 rodadas): 91→98, LCP 1.753→1.875ms, TBT 353→66ms, CLS 0; variação ampla de CPU, sem atribuir ganho garantido. Conferência pública após push no relatório local 10.
+
 - 10/11/2026 (encerramento da retomada identificada): 06, 07 e 09 concluídas e publicadas, commits 89830e5, 9a50719 e 3635061. Testes locais e publicados nos quatro tamanhos, manual e montagem idempotente concluídos. Busca e índice público funcionando; demais dados, originais e arquivos de trabalho retornam 404 no deploy. Backlog dessas tarefas resolvido. Mantidos apostila 01 real, dobra 05, posts 04, hero e demais dobras; continuam exemplos/marcadores e noindex até aprovação. Resumo, inventários, fontes/licenças, tokens, métricas e decisões para revisão em relatorios/fila/RESUMO.md, local e fora do Git.
 
 - 10/11/2026 (retomada, fila 09): Contribua refeita em manifesto preto com fotografia histórica licenciada, citação/paráfrases próprias e motivos; projetos/PIX em fundo suave. Metas fictícias marcadas EXEMPLO, percentuais calculados (64/38/12), seleção e instrução do PIX por código, cópia com confirmação e seleção do texto quando negada. Chave/titular/QR continuam marcadores em dados/igreja.json. SVGs próprios, entrada única da moeda e barras, inclinação até 6°, sem loop, com movimento reduzido. Inicial e /contribua, quatro tamanhos, teclado/toque/mouse, variante sem valores, contraste e manual conferidos; sem erros nem rolagem horizontal. Hero, blog e materiais preservados.
@@ -60,6 +62,7 @@
 
 ## 4. Próximas tarefas
 
+1. Quando houver analytics aprovado, medir buscas sem resultado para melhorar temas, sinônimos e conteúdo; nenhuma busca é registrada nesta implementação.
 1. Rever /blog, /materiais e /contribua e as três dobras na inicial. Revisar a apostila e /discipulado; aprovar os exemplos antes do lançamento. As tarefas 06, 07 e 09 estão implementadas; substituir conteúdos e dados provisórios conforme o checklist.
 2. Dobra “Venha nos visitar” com Bíblia 3D: já implementada; aguardando validação. Mantida sem alterações nesta tarefa.
 3. Preencher os marcadores conforme chegarem os dados da igreja e seguir o checklist de lançamento.
@@ -118,6 +121,8 @@
 
 ## 8. Decisões registradas
 
+- 10/11/2026 (fila 10): busca própria em assets/js/blog-search.js e search.mjs, carregada só no portal e na demonstração do manual; dados/busca.json gerado, dados/sinonimos.json e dados/livros-biblia.json públicos por exceções explícitas no .vercelignore. Demais dados e originais continuam fora do deploy. Campos de busca normalizados; texto original público sem HTML conservado apenas para exibir trechos com acentos. Temas de 2 a 4 por post. k-search-suggest (combobox/listbox), k-mood-picker e k-search-empty no design system, novos valores em --search-*. Jo sem acento consulta João e Jó; consultas sem artigo correspondente mostram ajuda, nunca criam conteúdo.
+- 10/11/2026: a ordem solicitada passou a 06→10→07→09 depois de 06/07/09 já publicadas. A execução efetiva foi 06→07→09→10, preservando as entregas e o histórico, sem refazer commits publicados (decidido sem o Alisson, revisar). Filtragem ignora palavras de ligação e “Deus” em expressões com outro termo significativo, para acolher “perdão de Deus”; a busca isolada por Deus continua válida (decidido sem o Alisson, revisar).
 - 10/11/2026 (fila 09): k-give-manifesto, k-give-reasons, k-goal-card, k-progress e novo k-pix documentados no manual/galeria. dados/metas.json contém somente os exemplos autorizados, percentuais calculados na montagem; mostrar_valores false omite valores do HTML. Projeto escolhido pela mensagem/código do PIX; segundo clique desmarca. Três ilustrações próprias em partials/give-*.svg, com malha e brilho derivados da história, sem pessoas. Fotografia da outra face do mesmo prutah de Agrippa I usada em Materiais, licenciada, sem repetir a foto. Paráfrases próprias. Entrada única em 480ms, inclinacão manual até 6°, barras finitas e motivos escalonados, sem novo loop. Preparação do itálico ao se aproximar e título com largura própria, preservando “cada um” junto (decidido sem o Alisson, revisar). Ordem atual: blog → Materiais cinza-pedra → manifesto Contribua preto → metas/PIX suaves → Acompanhe branca.
 
 - 10/11/2026 (fila 07): k-materials-header, k-material-card e k-cover-title no design system; dados/materiais.json é o catálogo único, lido pela montagem. Apostila 01 real sem selo, cinco itens fictícios com EXEMPLO e aviso; curso externo continua exemplo. Imagens naturais, sem colagem/retícula, com crédito expansível e originais fora do deploy. Nova ordem: hero preta → visita branca → primeira visita em papel quente → história preta → blog em papel quente → Materiais em cinza-pedra → Contribua suave → Acompanhe branca → rodapé preto. Faixa de materiais removida de dentro do blog; blog e posts preservados. Preparação de Newsreader a --materials-font-distance (600px, alias do token existente) para evitar 128KB de fontes na hero (decidido sem o Alisson, revisar).
@@ -227,9 +232,9 @@
 1. Primeira vez no computador: npm install --prefix scripts (instala mammoth, marked e sharp, só para desenvolvimento).
 2. Copie o modelo-post.docx (ou um .md com as mesmas convenções) para textos-blog/, preencha e coloque as imagens na mesma pasta ou em textos-blog/imagens/. Confira a licença de cada imagem e registre em dados/creditos-imagens.json.
 3. Converta: node scripts/converter-post.mjs textos-blog/arquivo.docx. Confira conteudo/blog/[slug].md e as imagens em assets/img/blog/[slug]/.
-4. Monte: node scripts/montar-paginas.mjs (gera blog/[slug].html e dados/posts.json; rodar de novo não muda nada).
+4. Informe de 2 a 4 temas no campo Temas: (separados por vírgula) do rascunho ou no array temas do front matter. Monte: node scripts/montar-paginas.mjs (gera blog/[slug].html, dados/posts.json e dados/busca.json; rodar de novo não muda nada).
 5. Abra o post por servidor local, em 1440 px e 390 px, e confira texto, capa, legenda e crédito.
-6. Atualize o HANDOFF e faça commit e push dos arquivos do post (conteudo/, blog/, assets/img/blog/, dados/posts.json e dados/creditos-imagens.json), nunca de textos-blog/.
+6. Atualize o HANDOFF e faça commit e push dos arquivos do post (conteudo/, blog/, assets/img/blog/, dados/posts.json, dados/busca.json e dados/creditos-imagens.json), nunca de textos-blog/.
 
 ## 11. Como publicar um em breve
 
@@ -246,3 +251,10 @@
 3. mostrar_valores true publica valores agregados; false omite valores do HTML e mantém percentuais. A escolha aguarda confirmação.
 4. Combinar codigo com a tesouraria; esse texto será sugerido na mensagem do PIX, não cria direcionamento bancário automático. Ilustrações disponíveis: banda, infantil, garagem.
 5. Chave, titular e QR Code só em dados/igreja.json. Rodar node scripts/montar-paginas.mjs duas vezes, conferir estados/cópia e atualizar HANDOFF antes do commit/push.
+
+## 13. Como manter a busca
+
+1. Cada post completo ou em breve tem 2 a 4 temas coerentes no front matter, como array JSON; a montagem valida. Revisar os temas ao publicar um texto novo e testar os atalhos de momento. Atalho sem post relacionado não aparece.
+2. Acrescentar palavras do dia a dia e seus temas em dados/sinonimos.json, com grafia natural; a busca normaliza. Não incluir dados de visitantes nem registrar consultas. dados/livros-biblia.json contém os 66 livros, nomes sem acento e abreviações; preservar a ambiguidade de Jo e testar capítulos/intervalos ao alterar.
+3. Rodar node scripts/montar-paginas.mjs duas vezes. Nunca editar dados/posts.json ou dados/busca.json à mão. Texto completo só de posts publicados; em breve tem apenas metadados, sem leitura/link. Os três JSONs de busca são públicos e não podem conter rascunhos nem dados privados.
+4. Conferir erro de digitação, sinônimo, passagem e termo só do corpo em 1440/390; teclado nas sugestões (setas, Enter e Esc), caso vazio e WhatsApp de exemplo até número oficial. Publicar somente os arquivos revisados com HANDOFF atualizado.

@@ -10,4 +10,5 @@ capa_legenda: "Davi e Golias na Bíblia Morgan, século XIII."
 capa_credito: "Bíblia Morgan, M.638, fol. 28r, c. 1250. The Morgan Library & Museum. Domínio público (PD-Art), via Wikimedia Commons."
 exemplo: true
 em_breve: true
+temas: ["coragem", "confiança", "força"]
 ---
