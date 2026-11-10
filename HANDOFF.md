@@ -2,6 +2,8 @@
 
 ## 1. Última sessão
 
+- 10/11/2026 (retomada, fila 07): dobra Materiais e /materiais em composição editorial de revista, com imagens históricas licenciadas, três capas desencontradas e scroll-snap na inicial móvel; grade e seis filtros em texto na página, curso em #cursos. Item 01 real preservado integralmente, com download da apostila; exemplos 02–06 e créditos individuais. Montagem idempotente; quatro tamanhos passaram, sem erros/rolagem horizontal, com filtros, selos, avisos e downloads. Newsreader preparada perto da seção. Lighthouse móvel mediano antes/depois final: 98→98, LCP 1.831→1.824ms, TBT 111→114ms, CLS 0; transferência final 335.902 bytes.
+
 - 10/11/2026 (retomada identificada, fila 06): teste único da imagem Morgan fol. 28r com User-Agent IgrejaKemuelSite/1.0 retornou HTTP 200, JPEG 1.662.408 bytes. Portal /blog implementado: versículo ARC exato, busca normalizada com hash, filtros/contagens, destaque, três recomendados manuais, lista paginada e dez em breve sem links/páginas. Licenças e originais conferidos; downloads sequenciais com pausa de 4s. Inicial e cinco posts completos idênticos ao HEAD. Testes locais nos quatro tamanhos e manual 1440/390 passaram. Lighthouse móvel, mediana de três: 99 / LCP 1.771ms / TBT 44ms / CLS 0. Publicação e teste público registrados no relatório 06.
 
 - 10/11/2026 (Codex, encerramento da fila): 01–04 já concluídas pelo Claude Code; 05 retomada, testada e publicada; 08 implementada e publicada, com download real e hash conferidos. 06, 07 e 09 diagnosticadas e no Backlog por fontes de imagem inacessíveis sob as regras autorizadas. Nenhuma alteração parcial dessas tarefas ficou no produto. Relatórios e autoria em relatorios/fila/RESUMO.md, fora do Git/deploy. Revisar primeiro /discipulado e a apostila, depois a dobra de blog da inicial. O site continua em construção e noindex.
@@ -60,9 +62,10 @@
 ## 5. Backlog
 
 - Fila 09 — manifesto Contribua, metas e PIX: pausada antes de implementar. Fotografia Coin of Porcius Festus no Commons tem domínio público confirmado, mas o download respondeu HTTP 403; busca no Met não forneceu alternativa adequada com CC0 verificado. Risco: atribuir licença de outra obra ou reutilizar foto sem acesso permitido. Retomar com fotografia autorizada de moeda de bronze da Judeia do século I e executar 09-contribua.md. Nenhum arquivo de produto alterado ou restauração necessária. Relatório: relatorios/fila/09-relatorio.md.
-- Fila 07 — materiais em estilo de revista: pausada no diagnóstico das imagens. O original do mapa medieval de Jerusalém c. 1200 no Commons respondeu HTTP 403; a Bíblia medieval do Met está acessível, mas não substitui mapa, Gutenberg e moeda. Risco: entregar capas fora dos temas aprovados ou contornar recusa do servidor. Retomar com originais dos temas e licenças por acesso permitido; então aplicar 07-materiais.md. Sem alterações de produto para desfazer. Relatório: relatorios/fila/07-relatorio.md. A apostila 08 pode ser publicada antes.
 
 ## 6. Pendências que dependem de pessoas
+
+- Lista real de materiais/PDFs para substituir exemplos 02–05; plataforma e link do curso do item 06. Preservar a apostila real 01.
 
 - Escrever/aprovar os dez artigos em breve. Avaliar Vercel Web Analytics para uma futura lista “Mais lidas”; por enquanto os Recomendados são escolha editorial manual, sem rastreamento.
 
@@ -106,6 +109,8 @@
 - Organização dos quatro estudos locais: primeiro nível com design system renomeado, notas.md e arquivos/; cópias de segurança e diagnóstico preservados localmente.
 
 ## 8. Decisões registradas
+
+- 10/11/2026 (fila 07): k-materials-header, k-material-card e k-cover-title no design system; dados/materiais.json é o catálogo único, lido pela montagem. Apostila 01 real sem selo, cinco itens fictícios com EXEMPLO e aviso; curso externo continua exemplo. Imagens naturais, sem colagem/retícula, com crédito expansível e originais fora do deploy. Nova ordem: hero preta → visita branca → primeira visita em papel quente → história preta → blog em papel quente → Materiais em cinza-pedra → Contribua suave → Acompanhe branca → rodapé preto. Faixa de materiais removida de dentro do blog; blog e posts preservados. Preparação de Newsreader a --materials-font-distance (600px, alias do token existente) para evitar 128KB de fontes na hero (decidido sem o Alisson, revisar).
 
 - 10/11/2026 (fila 06): k-blog-search, k-verse, k-blog-feature, k-blog-list-item e k-blog-sidebar documentados no manual; tokens novos só --blog-*. Versículo em dados/versiculos.json; três Recomendados escolhidos no front matter. conteudo/blog/em-breve/ contém apenas front matter; montar-paginas gera dados/posts.json, nunca editado à mão. Exceção mínima no .vercelignore para publicar só dados/posts.json, necessário à busca; demais dados e originais continuam fora do deploy. CSP connect-src self só no portal/manual (decidido sem o Alisson, revisar). Iluminuras de Abraão e Elias são retratos de outras cenas dos mesmos personagens, identificadas corretamente nos créditos; não apresentadas como ilustrações literais de Gênesis 12 ou 1 Reis 19 (decidido sem o Alisson, revisar).
 
@@ -188,6 +193,8 @@
 - O design system nasce com os componentes das 3 fases: hero, menu mobile, bloco de horários, bloco de endereço com mapa, bloco de PIX, botão flutuante de WhatsApp, rodapé, card de post, página de texto longo, card de material, filtro por categoria, card de evento, card de curso.
 
 ## 9. Checklist de lançamento
+
+- [ ] Materiais 02–05 com conteúdo e PDFs reais, curso 06 ligado à plataforma e selos EXEMPLO removidos somente após validação.
 
 - [ ] Substituir assets/materiais/discipulado-basico.pdf pela apostila revisada e aprovada antes de tirar noindex; regenerar as capas e conferir os dados do item 01.
 - [ ] Trocar todos os textos de exemplo e os [ANO] da linha do tempo pela história real aprovada.

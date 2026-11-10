@@ -56,6 +56,26 @@
   /* Discipulado: capa da apostila e ficha das dez lições. */
   --discipleship-cover-width: 24rem;
   --discipleship-lesson-columns: var(--space-5) minmax(0, 1fr);
+  /* Materiais: capas naturais e composição editorial em cinza-pedra. */
+  --materials-surface: #e9e7e2;
+  --materials-title-size: clamp(1.875rem, 5.2vw, 5rem);
+  --materials-title-indent: clamp(2rem, 8vw, 8rem);
+  --materials-title-leading: 1.04;
+  --materials-header-width: 54rem;
+  --materials-copy-width: 38rem;
+  --materials-gap: var(--space-4);
+  --materials-stagger-start: var(--space-4);
+  --materials-stagger-end: var(--space-6);
+  --materials-cover-tall: 3 / 4;
+  --materials-cover-short: 1 / 1;
+  --materials-mobile-card: 66%;
+  --materials-cover-title: clamp(2.125rem, 4vw, 4.25rem);
+  --materials-card-title: clamp(1.375rem, 2vw, 1.875rem);
+  --materials-cover-scrim: linear-gradient(to bottom, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, .82) 65%, rgba(0, 0, 0, .94) 100%);
+  --materials-title-area: 35%;
+  --materials-image-contrast: contrast(1.03);
+  --materials-hover-scale: 1.03;
+  --materials-font-distance: var(--blog-font-distance);
   /* História: capítulos manuais, ilustrações autorizadas do protótipo aprovado. */
   --timeline-columns: minmax(0, 5fr) minmax(0, 6fr);
   --timeline-gap: var(--space-6);

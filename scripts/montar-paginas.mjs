@@ -6,7 +6,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { loadData, fillData, fillHead, jsonLd } from './dados-igreja.mjs';
 import { loadPosts, postPage, postsIndex, blogFeature } from './blog.mjs';
-import { loadMaterials, materialCards } from './materiais.mjs';
+import { loadMaterials, materialsHome, materialsPage } from './materiais.mjs';
 import { blogPortal } from './blog-portal.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -49,7 +49,9 @@ function symbols(html, file) {
 
 function shared(html, file) {
   if (html.includes('<!-- blog-portal:start -->')) html = apply(html, 'blog-portal', blogPortal(posts, verse, file.startsWith('assets/') ? '' : 'assets/'), file);
-  if (html.includes('<!-- materiais-catalogo:start -->')) html = apply(html, 'materiais-catalogo', materialCards(materials, file.startsWith('assets/') ? '' : 'assets/'), file);
+  if (html.includes('<!-- materiais-catalogo:start -->')) html = apply(html, 'materiais-catalogo', materialsPage(materials, '', 2, 'demo-materiais'), file);
+  if (html.includes('<!-- materiais-home:start -->')) html = apply(html, 'materiais-home', materialsHome(materials), file);
+  if (html.includes('<!-- materiais-pagina:start -->')) html = apply(html, 'materiais-pagina', materialsPage(materials), file);
   // Dobra de blog gerada a partir dos posts; no manual, os caminhos partem de assets/.
   if (html.includes('<!-- blog-destaque:start -->')) html = apply(html, 'blog-destaque', file.startsWith('assets/') ? blogFeature(posts, '', 'demo-blog') : blogFeature(posts), file);
   // As cenas têm fonte única; templates inertes evitam montar SVGs fora da dobra.

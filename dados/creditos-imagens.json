@@ -150,6 +150,51 @@
       "fonte": "Wikimedia Commons",
       "credito": "História de Jonas, Saltério de Paris, BnF Grec 139, fol. 431v, século X. Bibliothèque nationale de France. Domínio público (PD-Art), via Wikimedia Commons.",
       "recorte": "Apenas a cena relevante; sem colagem. Ver relatório 06."
+    },
+    {
+      "arquivo": "assets/img/materiais/originais/02-gutenberg.jpg",
+      "obra": "Página de Gênesis da Bíblia de Gutenberg, século XV.",
+      "url_origem": "https://commons.wikimedia.org/wiki/File:Gutenberg_Bible_B42_Genesis.JPG",
+      "licenca": "Domínio público (PD-Art ou dedicação indicada na página)",
+      "credito": "Bíblia de Gutenberg, Gênesis, exemplar da Staatsbibliothek zu Berlin, c. 1455. Domínio público (PD-Art), via Wikimedia Commons.",
+      "fonte": "Wikimedia Commons",
+      "tratamento": "Cor natural; contraste estático 1.03 no componente; sem colagem e sem retícula."
+    },
+    {
+      "arquivo": "assets/img/materiais/originais/03-moeda-agrippa.jpg",
+      "obra": "Moeda de bronze da Judeia, prutah de Agrippa I, século I.",
+      "url_origem": "https://commons.wikimedia.org/wiki/File:Monnaie_-_Prutah,_bronze,_J%C3%A9rusalem,_Jud%C3%A9e,_H%C3%A9rode_Agrippa_I_-_btv1b10307930j_(1_of_2).jpg",
+      "licenca": "Domínio público (PD-Art ou dedicação indicada na página)",
+      "credito": "Prutah de bronze de Agrippa I, século I, BnF, AA.GR.12966, fotografia da face com três espigas. Domínio público, via Wikimedia Commons.",
+      "fonte": "Wikimedia Commons",
+      "tratamento": "Cor natural; contraste estático 1.03 no componente; sem colagem e sem retícula."
+    },
+    {
+      "arquivo": "assets/img/materiais/originais/04-jerusalem-medieval.jpg",
+      "obra": "Mapa medieval idealizado de Jerusalém, cerca de 1200.",
+      "url_origem": "https://commons.wikimedia.org/wiki/File:Plan_of_Jerusalem,_12th_Century._ca._1200.jpg",
+      "licenca": "Domínio público (PD-Art ou dedicação indicada na página)",
+      "credito": "Mapa de Jerusalém c. 1200, KB 76 F 5. Koninklijke Bibliotheek. Domínio público (PD-Art), via Wikimedia Commons. Imagem medieval, não reconstituição da cidade do século I.",
+      "fonte": "Wikimedia Commons",
+      "tratamento": "Cor natural; contraste estático 1.03 no componente; sem colagem e sem retícula."
+    },
+    {
+      "arquivo": "assets/img/materiais/originais/05-lindisfarne.jpg",
+      "obra": "Página de abertura do Evangelho de Lucas, Evangeliário de Lindisfarne.",
+      "url_origem": "https://commons.wikimedia.org/wiki/File:Lindisfarne_Gospels_folio_139r.jpg",
+      "licenca": "Domínio público (PD-Art ou dedicação indicada na página)",
+      "credito": "Evangeliário de Lindisfarne, fol. 139r, c. 700–720. British Library, Cotton MS Nero D.iv. Domínio público (PD-Art), via Wikimedia Commons.",
+      "fonte": "Wikimedia Commons",
+      "tratamento": "Cor natural; contraste estático 1.03 no componente; sem colagem e sem retícula."
+    },
+    {
+      "arquivo": "assets/img/materiais/originais/06-biblia-met.jpg",
+      "obra": "Página de Bíblia francesa iluminada, c. 1250–1275.",
+      "url_origem": "https://www.metmuseum.org/art/collection/search/466297",
+      "licenca": "CC0 / Met Open Access",
+      "credito": "Bíblia francesa, c. 1250–1275, The Metropolitan Museum of Art, 1997.320. CC0 / Met Open Access. Imagem da página oficial da coleção 466297.",
+      "fonte": "The Metropolitan Museum of Art",
+      "tratamento": "Cor natural; contraste estático 1.03 no componente; sem colagem e sem retícula."
     }
   ]
 }

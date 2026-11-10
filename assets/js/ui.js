@@ -155,7 +155,7 @@
   document.querySelectorAll('[data-example]').forEach(element => {
     element.addEventListener('click', event => {
       event.preventDefault();
-      announce('Exemplo de interface. Nenhum serviço externo foi aberto e nenhum dado foi enviado.');
+      announce(element.hasAttribute('data-material-example') ? 'Material de exemplo. O arquivo real será publicado em breve.' : 'Exemplo de interface. Nenhum serviço externo foi aberto e nenhum dado foi enviado.');
     });
   });
   document.querySelectorAll('[aria-disabled="true"]').forEach(element => {
@@ -688,6 +688,31 @@
       });
       if (count) count.textContent = String(shown).padStart(2, '0');
       if (status) status.textContent = `${shown} ${shown === 1 ? 'reflexão' : 'reflexões'}${value === 'todos' ? '' : ' em ' + chip.querySelector('span').textContent}.`;
+    }));
+  });
+
+  document.querySelectorAll('.k-materials-section[data-reveal]').forEach(section => {
+    const prepare = () => {
+      const family = tokens.getPropertyValue('--editorial-font').split(',')[0].trim();
+      const size = getComputedStyle(section).fontSize;
+      Promise.all([document.fonts.load(`300 ${size} ${family}`), document.fonts.load(`italic 300 ${size} ${family}`)])
+        .then(() => section.classList.add('is-materials-ready'));
+    };
+    if ('IntersectionObserver' in window) {
+      const nearby = new IntersectionObserver(entries => { if (entries.some(entry => entry.isIntersecting)) { prepare(); nearby.disconnect(); } }, { rootMargin: tokens.getPropertyValue('--materials-font-distance').trim() });
+      nearby.observe(section);
+    } else prepare();
+  });
+
+  document.querySelectorAll('[data-materials]').forEach(group => {
+    const filters = [...group.querySelectorAll('[data-material-filter]')];
+    const cards = [...group.querySelectorAll('[data-material-category]')];
+    filters.forEach(button => button.addEventListener('click', () => {
+      let count = 0;
+      filters.forEach(filter => filter.setAttribute('aria-pressed', String(filter === button)));
+      cards.forEach(card => { card.hidden = button.dataset.materialFilter !== 'todos' && card.dataset.materialCategory !== button.dataset.materialFilter; if (!card.hidden) count++; });
+      group.querySelectorAll('[data-material-section]').forEach(section => { section.hidden = ![...section.querySelectorAll('[data-material-category]')].some(card => !card.hidden); });
+      group.querySelector('[data-material-count]').textContent = `${count} ${count === 1 ? 'material' : 'materiais'}`;
     }));
   });
 
