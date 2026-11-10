@@ -49,7 +49,7 @@ export function postsIndex(posts) {
   return JSON.stringify(posts.map(p => ({
     slug: p.slug, url: p.url, titulo: p.titulo, subtitulo: p.subtitulo, categoria: p.categoria, autor: p.autor, data: p.data,
     referencia: p.referencia, leitura: p.leitura, exemplo: p.exemplo === true,
-    capa: p.capa ? { 960: `/assets/img/blog/${p.slug}/capa-960.webp`, 1600: `/assets/img/blog/${p.slug}/capa-1600.webp`, legenda: p.capa_legenda, credito: p.capa_credito } : null
+    capa: p.capa ? { 480: `/assets/img/blog/${p.slug}/capa-480.webp`, 960: `/assets/img/blog/${p.slug}/capa-960.webp`, 1600: `/assets/img/blog/${p.slug}/capa-1600.webp`, legenda: p.capa_legenda, credito: p.capa_credito } : null
   })), null, 2) + '\n';
 }
 
@@ -136,4 +136,40 @@ x
 </body>
 </html>
 `;
+}
+
+const slug = text => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+const pad = n => String(n).padStart(2, '0');
+
+// Dobra "Para sua caminhada": cabeçalho, filtros, nota e cards. Contagens ignoram posts em_breve.
+// prefixo: caminho até assets/ ("assets/" na raiz, "" dentro de assets/); id: prefixo único de ids.
+export function blogFeature(posts, prefixo = 'assets/', id = 'caminhada') {
+  const live = posts.filter(p => p.em_breve !== true);
+  const ordered = [...live].sort((a, b) => a.data.localeCompare(b.data) || a.slug.localeCompare(b.slug));
+  const categories = [...new Map(ordered.map(p => [slug(p.categoria), p.categoria])).entries()];
+  const chip = (key, label, count, active) => `<button class="k-blog-filter__chip" type="button" data-blog-filter="${key}" aria-pressed="${active}"><span>${esc(label)}</span><span class="k-blog-filter__count">${count}</span></button>`;
+  const filters = chip('todos', 'Todos', live.length, true) + categories.map(([key, label]) => chip(key, label, live.filter(p => slug(p.categoria) === key).length, false)).join('');
+  const variants = ['arch', 'torn', 'arch k-collage-cover--dark', 'torn k-collage-cover--dark', 'arch'];
+  const cards = ordered.map((p, i) => {
+    const img = `${prefixo}img/blog/${p.slug}/capa`;
+    const cover = p.capa ? `<img class="k-collage-cover__image" src="${img}-480.webp" srcset="${img}-480.webp 480w, ${img}-960.webp 960w" sizes="(min-width: 56.25rem) 18vw, 66vw" width="480" height="320" alt="" loading="lazy" decoding="async">` : '';
+    return `<li class="k-blog-card" data-blog-category="${slug(p.categoria)}"><a class="k-blog-card__link" href="${p.url}">`
+      + `<span class="k-collage-cover k-collage-cover--${variants[i % variants.length]}"><span class="k-collage-cover__tag">${esc(p.categoria)}</span>${p.exemplo === true ? '<span class="k-collage-cover__badge">Exemplo</span>' : ''}<span class="k-collage-cover__circle" aria-hidden="true"></span>${cover}<span class="k-collage-cover__block" aria-hidden="true"></span></span>`
+      + `<span class="k-blog-card__meta"><span>Nº ${pad(i + 1)}</span><span>${p.data.slice(0, 4)}</span></span>`
+      + `<h3 class="k-blog-card__title">${esc(p.titulo)}</h3>`
+      + `<p class="k-blog-card__summary">${esc(p.subtitulo)} <span class="k-blog-card__time">${p.leitura} min de leitura</span></p>`
+      + `<span class="k-blog-card__arrow" aria-hidden="true"><svg class="k-icon"><use href="#k-arrow"/></svg></span></a></li>`;
+  }).join('');
+  return `        <div class="k-blog" data-blog>
+          <header class="k-blog-header">
+            <h2 class="k-blog-header__title" id="${id}-titulo">Reflexões para levar a fé aos <em>outros dias</em> da <em>semana</em><span class="k-blog-header__dot">.</span></h2>
+            <div class="k-blog-header__aside">
+              <div class="k-blog-filter" role="group" aria-label="Filtrar reflexões por tema">${filters}</div>
+              <p class="k-blog-note"><span class="k-blog-note__count" data-blog-count>${pad(live.length)}</span><span class="k-blog-note__text"><strong>Reflexões para começar</strong><span>Escolha um tema e leia em poucos minutos</span></span></p>
+            </div>
+          </header>
+          <ol class="k-blog-grid" aria-label="Reflexões do blog">${cards}</ol>
+          <p class="k-sr-only" data-blog-status role="status" aria-live="polite"></p>
+          <a class="k-link" href="/blog">Ver todos os posts<svg class="k-icon k-icon--small" aria-hidden="true"><use href="#k-arrow"/></svg></a>
+        </div>`;
 }

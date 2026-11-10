@@ -659,6 +659,38 @@
   if (document.readyState === 'complete') deferBibles();
   else addEventListener('load', deferBibles, { once: true });
 
+  // Dobra de blog: filtro por tema; atualiza cards, nota e aviso para leitores de tela.
+  document.querySelectorAll('[data-blog]').forEach(blog => {
+    const prepareFont = () => {
+      const family = tokens.getPropertyValue('--editorial-font').split(',')[0].trim();
+      document.fonts.load(`italic ${tokens.getPropertyValue('--weight-regular').trim()} ${getComputedStyle(blog).fontSize} ${family}`)
+        .then(() => blog.classList.add('is-blog-ready'));
+    };
+    if ('IntersectionObserver' in window) {
+      const nearby = new IntersectionObserver(entries => {
+        if (entries.some(entry => entry.isIntersecting)) { prepareFont(); nearby.disconnect(); }
+      }, { rootMargin: tokens.getPropertyValue('--blog-font-distance').trim() });
+      nearby.observe(blog);
+    } else prepareFont();
+    const chips = [...blog.querySelectorAll('[data-blog-filter]')];
+    const cards = [...blog.querySelectorAll('[data-blog-category]')];
+    const count = blog.querySelector('[data-blog-count]');
+    const status = blog.querySelector('[data-blog-status]');
+    chips.forEach(chip => chip.addEventListener('click', () => {
+      const value = chip.dataset.blogFilter;
+      chips.forEach(item => item.setAttribute('aria-pressed', String(item === chip)));
+      let shown = 0;
+      cards.forEach(card => {
+        const visible = value === 'todos' || card.dataset.blogCategory === value;
+        card.hidden = !visible;
+        card.classList.remove('is-entering');
+        if (visible) { shown++; if (!reduced.matches) { void card.offsetWidth; card.classList.add('is-entering'); } }
+      });
+      if (count) count.textContent = String(shown).padStart(2, '0');
+      if (status) status.textContent = `${shown} ${shown === 1 ? 'reflexão' : 'reflexões'}${value === 'todos' ? '' : ' em ' + chip.querySelector('span').textContent}.`;
+    }));
+  });
+
   // Post do blog: barra de progresso de leitura (só transform) e cópia do link.
   const readingBar = document.querySelector('[data-reading-progress] span');
   const article = document.querySelector('.k-article');

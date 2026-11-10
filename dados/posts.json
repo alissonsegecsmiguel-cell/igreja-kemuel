@@ -11,6 +11,7 @@
     "leitura": 2,
     "exemplo": true,
     "capa": {
+      "480": "/assets/img/blog/quem-e-o-meu-proximo/capa-480.webp",
       "960": "/assets/img/blog/quem-e-o-meu-proximo/capa-960.webp",
       "1600": "/assets/img/blog/quem-e-o-meu-proximo/capa-1600.webp",
       "legenda": "Iluminura do século VI mostra a história do bom samaritano, que cuida do homem ferido à beira da estrada.",
@@ -29,6 +30,7 @@
     "leitura": 2,
     "exemplo": true,
     "capa": {
+      "480": "/assets/img/blog/deixaram-as-redes/capa-480.webp",
       "960": "/assets/img/blog/deixaram-as-redes/capa-960.webp",
       "1600": "/assets/img/blog/deixaram-as-redes/capa-1600.webp",
       "legenda": "Pintura de Duccio mostra Jesus na margem chamando os irmãos Pedro e André, que estão no barco com a rede.",
@@ -47,6 +49,7 @@
     "leitura": 2,
     "exemplo": true,
     "capa": {
+      "480": "/assets/img/blog/o-que-os-manuscritos-do-mar-morto-nos-contam/capa-480.webp",
       "960": "/assets/img/blog/o-que-os-manuscritos-do-mar-morto-nos-contam/capa-960.webp",
       "1600": "/assets/img/blog/o-que-os-manuscritos-do-mar-morto-nos-contam/capa-1600.webp",
       "legenda": "Colunas do Grande Rolo de Isaías, um dos Manuscritos do Mar Morto, com o texto do profeta copiado à mão em hebraico.",
@@ -65,6 +68,7 @@
     "leitura": 2,
     "exemplo": true,
     "capa": {
+      "480": "/assets/img/blog/uma-lampada-para-os-meus-pes/capa-480.webp",
       "960": "/assets/img/blog/uma-lampada-para-os-meus-pes/capa-960.webp",
       "1600": "/assets/img/blog/uma-lampada-para-os-meus-pes/capa-1600.webp",
       "legenda": "Lamparina romana de barro do século I, parecida com as usadas nas casas da época de Jesus.",
@@ -83,6 +87,7 @@
     "leitura": 2,
     "exemplo": true,
     "capa": {
+      "480": "/assets/img/blog/quando-a-tempestade-nao-passa/capa-480.webp",
       "960": "/assets/img/blog/quando-a-tempestade-nao-passa/capa-960.webp",
       "1600": "/assets/img/blog/quando-a-tempestade-nao-passa/capa-1600.webp",
       "legenda": "Iluminura de cerca de 1020 mostra Jesus no barco com os discípulos durante a tempestade.",

@@ -5,7 +5,7 @@ import { readdirSync, readFileSync, writeFileSync, existsSync, mkdirSync } from 
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { loadData, fillData, fillHead, jsonLd } from './dados-igreja.mjs';
-import { loadPosts, postPage, postsIndex } from './blog.mjs';
+import { loadPosts, postPage, postsIndex, blogFeature } from './blog.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const read = file => readFileSync(file, 'utf8').replace(/\r\n/g, '\n');
@@ -46,6 +46,8 @@ function symbols(html, file) {
 }
 
 function shared(html, file) {
+  // Dobra de blog gerada a partir dos posts; no manual, os caminhos partem de assets/.
+  if (html.includes('<!-- blog-destaque:start -->')) html = apply(html, 'blog-destaque', file.startsWith('assets/') ? blogFeature(posts, '', 'demo-blog') : blogFeature(posts), file);
   // As cenas têm fonte única; templates inertes evitam montar SVGs fora da dobra.
   if (html.includes('<!-- story-scenes:start -->')) html = apply(html, 'story-scenes', partial('story-scenes.html'), file);
   html = apply(html, 'symbols', symbols(html, file), file);
@@ -55,6 +57,7 @@ function shared(html, file) {
   return fillData(html, church, file);
 }
 
+const posts = await loadPosts(root);
 const pages = readdirSync(root).filter(file => file.endsWith('.html'));
 const outputs = [];
 for (const file of pages) {
@@ -73,7 +76,6 @@ const before = read(join(root, manual));
 outputs.push({ file: manual, before, html: shared(before, manual) });
 
 // Posts: conteudo/blog/*.md → blog/[slug].html, com os mesmos partials; ícones com caminho ../ por estarem numa pasta.
-const posts = await loadPosts(root);
 for (const post of posts) {
   const file = `blog/${post.slug}.html`;
   const before = existsSync(join(root, file)) ? read(join(root, file)) : '';

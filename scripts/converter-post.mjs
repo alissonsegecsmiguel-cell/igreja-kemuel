@@ -99,7 +99,7 @@ async function convert(file) {
     if (!candidate) throw new Error(`Imagem não encontrada em textos-blog: ${name}`);
     return candidate;
   };
-  // Capa 3:2 em 960 e 1600 px, recortada em volta do "Foco da capa" (x% y%, padrão no centro).
+  // Capa 3:2 em 480, 960 e 1600 px, recortada em volta do "Foco da capa" (x% y%, padrão no centro).
   // Imagens internas com 960 px de largura, proporção original.
   if (meta.capa) {
     const src = findImage(meta.capa);
@@ -108,7 +108,7 @@ async function convert(file) {
     const cw = Math.min(w, Math.round(h * 3 / 2)), ch = Math.round(cw * 2 / 3);
     const left = Math.round(Math.min(w - cw, Math.max(0, fx * w - cw / 2)));
     const top = Math.round(Math.min(h - ch, Math.max(0, fy * h - ch / 2)));
-    for (const width of [960, 1600]) {
+    for (const width of [480, 960, 1600]) { // 480 nas listas, 960 e 1600 no post
       await sharp(src).extract({ left, top, width: cw, height: ch }).resize({ width, height: Math.round(width * 2 / 3) }).webp({ quality: 80, effort: 6 }).toFile(join(imgDir, `capa-${width}.webp`));
     }
   }
