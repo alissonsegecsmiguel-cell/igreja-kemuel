@@ -659,6 +659,33 @@
   if (document.readyState === 'complete') deferBibles();
   else addEventListener('load', deferBibles, { once: true });
 
+  // Post do blog: barra de progresso de leitura (só transform) e cópia do link.
+  const readingBar = document.querySelector('[data-reading-progress] span');
+  const article = document.querySelector('.k-article');
+  if (readingBar && article) {
+    let pending = false;
+    const updateReading = () => {
+      pending = false;
+      const box = article.getBoundingClientRect();
+      const total = box.height - innerHeight;
+      const ratio = total > 0 ? Math.min(1, Math.max(0, -box.top / total)) : 1;
+      readingBar.style.transform = `scaleX(${ratio})`;
+    };
+    addEventListener('scroll', () => { if (!pending) { pending = true; requestAnimationFrame(updateReading); } }, { passive: true });
+    addEventListener('resize', updateReading);
+    updateReading();
+  }
+  document.querySelectorAll('[data-share-copy]').forEach(button => {
+    button.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(button.dataset.url || location.href);
+        announce('Link copiado.');
+      } catch {
+        announce('Não foi possível copiar. Copie o endereço na barra do navegador.');
+      }
+    });
+  });
+
   /* Manual vivo: estas rotinas só são executadas na documentação. */
   if (!document.body.hasAttribute('data-design-system')) return;
   const stateNames = { normal: 'Normal', hover: 'Hover', active: 'Ativo', focus: 'Foco', disabled: 'Desabilitado' };

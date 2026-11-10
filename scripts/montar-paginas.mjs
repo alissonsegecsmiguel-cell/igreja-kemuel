@@ -1,10 +1,11 @@
 // Aplica partials/ nas páginas .html da raiz e os blocos comuns no manual.
 // Rodar antes do commit: node scripts/montar-paginas.mjs
 // O resultado é HTML estático; a Vercel não executa este script.
-import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { readdirSync, readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { loadData, fillData, fillHead, jsonLd } from './dados-igreja.mjs';
+import { loadPosts, postPage, postsIndex } from './blog.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const read = file => readFileSync(file, 'utf8').replace(/\r\n/g, '\n');
@@ -48,7 +49,8 @@ function shared(html, file) {
   // As cenas têm fonte única; templates inertes evitam montar SVGs fora da dobra.
   if (html.includes('<!-- story-scenes:start -->')) html = apply(html, 'story-scenes', partial('story-scenes.html'), file);
   html = apply(html, 'symbols', symbols(html, file), file);
-  html = apply(html, 'whatsapp', partial('whatsapp.html'), file);
+  // Posts não têm o botão flutuante: o bloco só entra onde houver marcador.
+  if (html.includes('<!-- whatsapp:start -->')) html = apply(html, 'whatsapp', partial('whatsapp.html'), file);
   html = apply(html, 'toast', partial('toast.html'), file);
   return fillData(html, church, file);
 }
@@ -69,6 +71,20 @@ for (const file of pages) {
 const manual = 'assets/design_system.html';
 const before = read(join(root, manual));
 outputs.push({ file: manual, before, html: shared(before, manual) });
+
+// Posts: conteudo/blog/*.md → blog/[slug].html, com os mesmos partials; ícones com caminho ../ por estarem numa pasta.
+const posts = await loadPosts(root);
+for (const post of posts) {
+  const file = `blog/${post.slug}.html`;
+  const before = existsSync(join(root, file)) ? read(join(root, file)) : '';
+  let html = apply(postPage(post, posts, church), 'icons', partial('head-icons.html').replaceAll('"assets/', '"../assets/'), file);
+  html = apply(html, 'header', header('blog'), file);
+  html = apply(html, 'footer', partial('footer.html'), file);
+  outputs.push({ file, before, html: shared(html, file) });
+}
+const index = 'dados/posts.json';
+outputs.push({ file: index, before: existsSync(join(root, index)) ? read(join(root, index)) : '', html: postsIndex(posts) });
+mkdirSync(join(root, 'blog'), { recursive: true });
 
 // Valida todos os marcadores antes de escrever qualquer página.
 for (const { file, before, html } of outputs) {

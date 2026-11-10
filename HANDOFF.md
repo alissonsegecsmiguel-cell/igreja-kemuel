@@ -2,6 +2,8 @@
 
 ## 1. Última sessão
 
+- 09/11/2026 (fila 04): modelo de post no estilo de leitura do NYT (k-article), fluxo de conversão e 5 posts de exemplo. Rascunhos em textos-blog/ (privado) convertidos por scripts/converter-post.mjs (.md e .docx, ignorando o texto cinza do modelo) em conteudo/blog/*.md e imagens .webp; scripts/montar-paginas.mjs gera blog/[slug].html e dados/posts.json. Capa em colagem (k-collage-cover) criada para as listas. Testes por servidor local nos 5 posts em 1440x900 e 390x844: coluna de cerca de 65 caracteres, Newsreader 20/18 px, barra de progresso, legenda e crédito, aviso de exemplo, copiar link e WhatsApp, Leia também, contraste AA, só a barra em vermelho, sem erros.
+
 - 09/11/2026 (fila 03): logo redesenhado em vetor (provisório), com versões horizontal, empilhada e símbolo, claras e escuras, em assets/brand/, e PNG 1200x630 para og:image. Aplicado no cabeçalho (SVG interno, tinta segue a cor do cabeçalho: branco sobre a hero, preto no sólido, troca de 140ms), no rodapé (empilhado claro) e nos ícones de 180, 192 e 512 px. Nenhum “LOGO” restante. Seção “Logo” no design system com versões, respiro, tamanho mínimo, fundos e usos proibidos. Folha de comparação em relatorios/kemuel-logo/. Testes por servidor local em 1440x900, 1366x768, 390x844 e 360x740 e primeira dobra em 14 telas: sem erros, logo nas duas variantes, rodapé empilhado.
 
 - 09/11/2026 (fila 02): links oficiais do Instagram (@igrejakemueliguatu) e do YouTube (@Igreja.kemuelsede) aplicados a partir de dados/igreja.json: dobra “Acompanhe” com três cards (Instagram, YouTube, Blog), ícones no rodapé de todas as páginas e sameAs no JSON-LD. Ícones k-instagram e k-youtube desenhados no padrão de traço do sistema, sem logotipos coloridos. Testes por servidor local em 1366x768 e 390x844 nas seis páginas: links, nova aba com aviso acessível, alvo de 44px, foco visível, JSON-LD e console sem erros.
@@ -47,6 +49,7 @@
 
 ## 6. Pendências que dependem de pessoas
 
+- Aprovação do pastor sobre os 5 textos de exemplo do blog.
 - Número do endereço da sede (hoje [número] visível no site).
 - Confirmar se há congregações em outras cidades.
 - Corrigir a ficha do Google da igreja, se algum dado estiver diferente.
@@ -86,6 +89,11 @@
 
 ## 8. Decisões registradas
 
+- 09/11/2026: fluxo do blog: textos-blog/ (privado, fora do Git e do deploy) → conteudo/blog/[slug].md (Git) → blog/[slug].html (Git e site); dados/posts.json gerado a partir dos front matters, nunca editado à mão. Convenções do modelo-post.docx: campos no topo, Título 1, subtítulo em itálico, Título 2, CITAÇÃO:, IMAGEM: arquivo | legenda | crédito, texto cinza ignorado, autor padrão Igreja Kemuel, data padrão hoje. Campo opcional “Foco da capa” para o recorte 3:2 (acrescentado sem o Alisson, revisar).
+- 09/11/2026: Newsreader com uso ampliado para títulos e texto dos posts e palavras de destaque em itálico em títulos editoriais, além de visita editorial, Bíblia e citações. Nenhuma família nova.
+- 09/11/2026: imagens do blog só de Wikimedia Commons (domínio público ou PD-Art) e acervos CC0 (Met Open Access), com licença conferida antes do download e registrada em dados/creditos-imagens.json e no crédito da capa. Post 04 usa a pintura de Duccio (obra em domínio público, reprodução CC0 da National Gallery of Art), porque a versão PD-Art tinha só 850 px; a API do Met estava fora (HTTP 410), então a lamparina do Met veio pelo Commons (decidido sem o Alisson, revisar).
+- 09/11/2026: versículos nos posts só por referência, explicados com palavras próprias; nenhum texto de tradução copiado.
+- 09/11/2026: dependências de desenvolvimento (mammoth, marked, sharp) em scripts/package.json, dentro de scripts/, que está fora do deploy, para a Vercel não instalar nada; node_modules/ ignorado (decidido sem o Alisson, revisar). Na página do post, o único vermelho da área de leitura é a barra de progresso; cabeçalho, logo e foco de teclado seguem o sistema (decidido sem o Alisson, revisar).
 - 09/11/2026: exceção ampliada pelo Alisson: o logo completo (símbolo, “IGREJA” e “Kemuel”) foi redesenhado em contornos, como aproximação PROVISÓRIA até o original aparecer; aprovação visual pendente. Arquivos em assets/brand/; regras de uso na seção “Logo” do design system. Palavras a partir da Outfit (600 em Kemuel, 350 em IGREJA), encaixadas letra por letra nas caixas medidas da referência; Λ desenhado à parte.
 - 09/11/2026: no site, o logo é SVG interno com classes k-logo__ink (currentColor) e k-logo__ring (--color-red), para a cor vir dos tokens e trocar com o cabeçalho; os arquivos de imagem têm as cores gravadas. logo-simbolo.svg (cruz branca) e logo-simbolo-escuro.svg (cruz preta) em dois arquivos (decidido sem o Alisson, revisar). Favicon de 16/32 px mantém a simplificação de legibilidade; ícones grandes usam o símbolo refinado. Estilos e tokens do antigo espaço “LOGO” removidos.
 - 09/11/2026: redes oficiais em dados/igreja.json (bloco redes), aplicadas por data-dado-href. Dobra “Acompanhe” com Instagram, YouTube e Blog, cada card com uma ação secundária. Marcador do WhatsApp sai da dobra e do rodapé e fica só no botão flutuante, como exemplo (rodapé sem WhatsApp: decidido sem o Alisson, revisar).
@@ -168,4 +176,14 @@
 - [ ] Links reais de WhatsApp, redes e mapa conferidos.
 - [ ] Dobra "Para sua caminhada" só visível com pelo menos 3 posts e 3 materiais reais.
 - [ ] Só ficam no menu as páginas com conteúdo real. Páginas ainda provisórias saem do menu no lançamento e voltam quando tiverem conteúdo.
+- [ ] Aprovar ou substituir os 5 posts de exemplo e remover os avisos e os selos EXEMPLO.
 - [ ] Teste completo em 1440 px e 390 px.
+
+## 10. Como publicar um post novo
+
+1. Primeira vez no computador: npm install --prefix scripts (instala mammoth, marked e sharp, só para desenvolvimento).
+2. Copie o modelo-post.docx (ou um .md com as mesmas convenções) para textos-blog/, preencha e coloque as imagens na mesma pasta ou em textos-blog/imagens/. Confira a licença de cada imagem e registre em dados/creditos-imagens.json.
+3. Converta: node scripts/converter-post.mjs textos-blog/arquivo.docx. Confira conteudo/blog/[slug].md e as imagens em assets/img/blog/[slug]/.
+4. Monte: node scripts/montar-paginas.mjs (gera blog/[slug].html e dados/posts.json; rodar de novo não muda nada).
+5. Abra o post por servidor local, em 1440 px e 390 px, e confira texto, capa, legenda e crédito.
+6. Atualize o HANDOFF e faça commit e push dos arquivos do post (conteudo/, blog/, assets/img/blog/, dados/posts.json e dados/creditos-imagens.json), nunca de textos-blog/.

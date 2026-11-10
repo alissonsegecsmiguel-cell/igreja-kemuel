@@ -1,0 +1,55 @@
+{
+  "_aviso": "Gerado na montagem do blog. Só Wikimedia Commons (domínio público ou PD-Art) e acervos CC0.",
+  "imagens": [
+    {
+      "arquivo": "textos-blog/imagens/tempestade-hitda.jpg",
+      "obra": "Cristo acalma a tempestade, Códice de Hitda (Evangeliário de Hitda de Meschede), fol. 117r",
+      "data": "c. 1020",
+      "acervo": "Universitäts- und Landesbibliothek Darmstadt, Hs. 1640",
+      "url_origem": "https://commons.wikimedia.org/wiki/File:HitdaMeschedeDarmstadtCod1640fol117r.jpg",
+      "licenca": "Domínio público (PD-Art)",
+      "licenca_commons": "Public domain",
+      "fonte": "Wikimedia Commons"
+    },
+    {
+      "arquivo": "textos-blog/imagens/lamparina-met.jpg",
+      "obra": "Lamparina romana de terracota",
+      "data": "século I d.C.",
+      "acervo": "The Metropolitan Museum of Art",
+      "url_origem": "https://commons.wikimedia.org/wiki/File:Terracotta_oil_lamp_MET_DP860.jpg",
+      "licenca": "CC0 (Met Open Access)",
+      "licenca_commons": "CC0",
+      "fonte": "Wikimedia Commons"
+    },
+    {
+      "arquivo": "textos-blog/imagens/rolo-de-isaias-cap53.jpg",
+      "obra": "Grande Rolo de Isaías (1QIsa), trecho com o capítulo 53, Manuscritos do Mar Morto; fotografia de Ardon Bar Hama",
+      "data": "c. século II a.C.",
+      "acervo": "Museu de Israel, Jerusalém (Santuário do Livro)",
+      "url_origem": "https://commons.wikimedia.org/wiki/File:Great_Isaiah_Scroll_Ch53.jpg",
+      "licenca": "Domínio público",
+      "licenca_commons": "Public domain",
+      "fonte": "Wikimedia Commons"
+    },
+    {
+      "arquivo": "textos-blog/imagens/chamado-duccio.jpg",
+      "obra": "Duccio di Buoninsegna, O chamado dos apóstolos Pedro e André",
+      "data": "1308-1311",
+      "acervo": "National Gallery of Art, Washington",
+      "url_origem": "https://commons.wikimedia.org/wiki/File:Duccio_di_Buoninsegna,_The_Calling_of_the_Apostles_Peter_and_Andrew,_1308-1311,_NGA_282.jpg",
+      "licenca": "Obra em domínio público; reprodução CC0 (National Gallery of Art Open Access)",
+      "licenca_commons": "CC0",
+      "fonte": "Wikimedia Commons"
+    },
+    {
+      "arquivo": "textos-blog/imagens/samaritano-rossano.jpg",
+      "obra": "O Bom Samaritano, Evangelhos de Rossano (Codex Purpureus Rossanensis), fol. 7v",
+      "data": "século VI",
+      "acervo": "Museo Diocesano, Rossano",
+      "url_origem": "https://commons.wikimedia.org/wiki/File:RossanoGospelsFolio007vGoodSamaritan.jpg",
+      "licenca": "Domínio público (PD-Art)",
+      "licenca_commons": "Public domain",
+      "fonte": "Wikimedia Commons"
+    }
+  ]
+}

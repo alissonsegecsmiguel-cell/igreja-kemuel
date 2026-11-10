@@ -1,0 +1,92 @@
+[
+  {
+    "slug": "quem-e-o-meu-proximo",
+    "url": "/blog/quem-e-o-meu-proximo",
+    "titulo": "Quem é o meu próximo?",
+    "subtitulo": "Um especialista na lei quis uma definição. Jesus respondeu com uma história que ainda tira a gente do lugar.",
+    "categoria": "Amor ao próximo",
+    "autor": "Igreja Kemuel",
+    "data": "2026-11-02",
+    "referencia": "Lucas 10.25-37",
+    "leitura": 2,
+    "exemplo": true,
+    "capa": {
+      "960": "/assets/img/blog/quem-e-o-meu-proximo/capa-960.webp",
+      "1600": "/assets/img/blog/quem-e-o-meu-proximo/capa-1600.webp",
+      "legenda": "Iluminura do século VI mostra a história do bom samaritano, que cuida do homem ferido à beira da estrada.",
+      "credito": "O Bom Samaritano, Evangelhos de Rossano, fol. 7v, século VI. Museo Diocesano, Rossano. Domínio público, via Wikimedia Commons."
+    }
+  },
+  {
+    "slug": "deixaram-as-redes",
+    "url": "/blog/deixaram-as-redes",
+    "titulo": "Deixaram as redes",
+    "subtitulo": "Jesus chamou pescadores no meio do expediente. O chamado de Deus costuma chegar assim, no meio da vida comum.",
+    "categoria": "Chamado",
+    "autor": "Igreja Kemuel",
+    "data": "2026-10-26",
+    "referencia": "Mateus 4.18-22",
+    "leitura": 2,
+    "exemplo": true,
+    "capa": {
+      "960": "/assets/img/blog/deixaram-as-redes/capa-960.webp",
+      "1600": "/assets/img/blog/deixaram-as-redes/capa-1600.webp",
+      "legenda": "Pintura de Duccio mostra Jesus na margem chamando os irmãos Pedro e André, que estão no barco com a rede.",
+      "credito": "Duccio di Buoninsegna, O chamado dos apóstolos Pedro e André, 1308-1311. National Gallery of Art, Washington. Obra em domínio público, reprodução CC0, via Wikimedia Commons."
+    }
+  },
+  {
+    "slug": "o-que-os-manuscritos-do-mar-morto-nos-contam",
+    "url": "/blog/o-que-os-manuscritos-do-mar-morto-nos-contam",
+    "titulo": "O que os Manuscritos do Mar Morto nos contam",
+    "subtitulo": "Uma descoberta feita por pastores no deserto ajudou a mostrar o cuidado com que a Bíblia foi copiada ao longo dos séculos.",
+    "categoria": "Escrituras",
+    "autor": "Igreja Kemuel",
+    "data": "2026-10-19",
+    "referencia": "",
+    "leitura": 2,
+    "exemplo": true,
+    "capa": {
+      "960": "/assets/img/blog/o-que-os-manuscritos-do-mar-morto-nos-contam/capa-960.webp",
+      "1600": "/assets/img/blog/o-que-os-manuscritos-do-mar-morto-nos-contam/capa-1600.webp",
+      "legenda": "Colunas do Grande Rolo de Isaías, um dos Manuscritos do Mar Morto, com o texto do profeta copiado à mão em hebraico.",
+      "credito": "Grande Rolo de Isaías (1QIsa), trecho do capítulo 53, fotografia de Ardon Bar Hama. Museu de Israel, Jerusalém. Domínio público, via Wikimedia Commons."
+    }
+  },
+  {
+    "slug": "uma-lampada-para-os-meus-pes",
+    "url": "/blog/uma-lampada-para-os-meus-pes",
+    "titulo": "Uma lâmpada para os meus pés",
+    "subtitulo": "A Bíblia não promete iluminar a estrada inteira de uma vez. Ela ilumina o próximo passo, e isso já é muito.",
+    "categoria": "Palavra",
+    "autor": "Igreja Kemuel",
+    "data": "2026-10-12",
+    "referencia": "Salmo 119.105",
+    "leitura": 2,
+    "exemplo": true,
+    "capa": {
+      "960": "/assets/img/blog/uma-lampada-para-os-meus-pes/capa-960.webp",
+      "1600": "/assets/img/blog/uma-lampada-para-os-meus-pes/capa-1600.webp",
+      "legenda": "Lamparina romana de barro do século I, parecida com as usadas nas casas da época de Jesus.",
+      "credito": "Lamparina de terracota, século I d.C. The Metropolitan Museum of Art. CC0, via Wikimedia Commons."
+    }
+  },
+  {
+    "slug": "quando-a-tempestade-nao-passa",
+    "url": "/blog/quando-a-tempestade-nao-passa",
+    "titulo": "Quando a tempestade não passa",
+    "subtitulo": "Há dias em que a gente ora e o vento continua forte. Uma noite no mar da Galileia mostra onde fica a nossa paz.",
+    "categoria": "Fé",
+    "autor": "Igreja Kemuel",
+    "data": "2026-10-05",
+    "referencia": "Marcos 4.35-41",
+    "leitura": 2,
+    "exemplo": true,
+    "capa": {
+      "960": "/assets/img/blog/quando-a-tempestade-nao-passa/capa-960.webp",
+      "1600": "/assets/img/blog/quando-a-tempestade-nao-passa/capa-1600.webp",
+      "legenda": "Iluminura de cerca de 1020 mostra Jesus no barco com os discípulos durante a tempestade.",
+      "credito": "Códice de Hitda, fol. 117r, c. 1020. Universitäts- und Landesbibliothek Darmstadt. Domínio público, via Wikimedia Commons."
+    }
+  }
+]
