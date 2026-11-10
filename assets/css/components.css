@@ -22,6 +22,13 @@ button { touch-action: manipulation; }
 .k-section { padding-block: var(--space-section); }
 .k-section--soft { background: var(--color-surface-soft); }
 .k-page { margin-top: var(--header-height); }
+/* Discipulado reutiliza container, grid, ficha, botões e FAQ do sistema. */
+.k-discipleship-cover { display: block; width: min(100%, var(--discipleship-cover-width)); height: auto; margin-inline: auto; box-shadow: var(--shadow-soft); }
+.k-material-card__cover { display: block; width: 100%; height: auto; }
+.k-lesson-list { list-style: none; margin: 0; padding: 0; }
+.k-lesson-list__item { display: grid; grid-template-columns: var(--discipleship-lesson-columns); gap: var(--space-2); padding-block: var(--space-3); border-bottom: var(--border-width) solid var(--color-border); }
+.k-lesson-list__number { color: var(--color-red-hover); font: var(--weight-semibold) var(--text-h5)/var(--leading-heading) var(--font-heading); }
+.k-lesson-list__topics { margin-top: var(--space-1); font-family: var(--editorial-font); font-size: var(--text-body-lg); color: var(--color-text-muted); }
 .k-dark { color: var(--color-on-dark); background: var(--color-surface-dark); }
 .k-section--black { background: var(--color-black); }
 .k-dark .k-muted { color: var(--color-on-dark-muted); }

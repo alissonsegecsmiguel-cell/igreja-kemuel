@@ -2,6 +2,7 @@
 
 ## 1. Última sessão
 
+- 10/11/2026 (Codex, fila 08): Discipulado Básico publicado como versão de exemplo autorizada. PDF original preservado byte a byte (63 páginas, 855.027 bytes), capa renderizada em WebP 640/1280, página /discipulado com ficha, dez lições, FAQ e downloads. dados/materiais.json criado com item 01 real (exemplo: false), aplicado pela montagem na faixa atual da inicial, /materiais e manual, sem selo de arquivo fictício. Montagem idempotente; download com nome correto e SHA-256 conferido nas três páginas, em 1366x768 e 390x844; sem erros nem rolagem horizontal.
 - 10/11/2026 (Codex, fila 07): referência visual e pré-requisitos conferidos. A imagem CC0 da Bíblia medieval do Met é acessível (HTTP 200), mas o mapa medieval de Jerusalém, com licença PD-Art confirmada no Commons, recusou o download (HTTP 403). Não há conjunto autorizado disponível para os temas exigidos; nenhum componente ou página foi alterado parcialmente. Tarefa no Backlog; seguir para 08, expressamente independente da 07.
 - 10/11/2026 (Codex, fila 06): diagnóstico confirmou fluxo de posts, cinco textos completos, k-article, índice gerado, créditos e componentes da dobra 05. Portal não alterado: downloads de dois originais distintos da Bíblia Morgan no Wikimedia Commons responderam HTTP 403; busca de obras do Met respondeu HTTP 410. Licenças públicas dos dois arquivos conferidas nas páginas do Commons. Sem contornar recusas, sem imagens substitutas inadequadas e sem mudanças de produto para descartar. Tarefa registrada no Backlog; fila continua pela 07, independente.
 - 10/11/2026 (retomada Codex, fila 05): concluída a implementação da dobra editorial de blog deixada sem commit pelo Claude Code. k-blog-header, k-blog-filter, k-blog-card e k-blog-note, cinco cards estáticos gerados dos posts, filtros por categoria, contagens que ignoram em_breve, capas 480/960 com lazy/srcset e faixa com scroll-snap no celular. Corrigida sobreposição entre categoria e selo; primeira dobra e faixa de materiais preservadas. Montagem idempotente e testes de mouse, toque, Enter/Espaço, foco por Tab, links, selos, contraste AA e ausência de erros/rolagem horizontal nos quatro tamanhos solicitados.
@@ -34,7 +35,7 @@
 ## 2. Estado atual
 
 - Repositório conectado ao GitHub, só branch main. Todo push vai para o ar.
-- Blog, Materiais e cursos e Discipulado existem como páginas provisórias, no menu.
+- Blog e Materiais e cursos ainda têm partes provisórias, no menu. /discipulado contém dez lições, FAQ pendente de confirmação e apostila de exemplo para download; o catálogo já tem o item 01 real.
 - No ar: a página principal em construção, com marcadores entre colchetes e noindex. O design system permanece excluído do deploy por .vercelignore.
 - Design system oficial criado; logo oficial pendente e vermelho provisório. Tokens, componentes, JavaScript e fontes ficam em arquivos compartilhados em assets/.
 - Dobra de visita editorial com Bíblia em CSS 3D, duas duplas de páginas e tabela de cultos/endereço sempre disponível. Dados não confirmados seguem como marcadores.
@@ -57,6 +58,7 @@
 
 ## 6. Pendências que dependem de pessoas
 
+- Revisão da apostila: a lição 10 traz história e doutrinas da Comunidade Batista Cristã, de Vila Velha, ES; substituir pela história e posições da Kemuel. Confirmar crédito ou autorização do texto de origem e crédito ou permissão das traduções RC e BLH. Confirmar dia/horário dos encontros e as três respostas do “Como funciona”.
 - Aprovação do pastor sobre os 5 textos de exemplo do blog.
 - Número do endereço da sede (hoje [número] visível no site).
 - Confirmar se há congregações em outras cidades.
@@ -97,6 +99,7 @@
 
 ## 8. Decisões registradas
 
+- 10/11/2026 (fila 08): publicação da apostila como está, em versão de exemplo, autorizada pelo Alisson ciente do histórico público; conteúdo do PDF não alterado. Item 01 de dados/materiais.json é real (exemplo: false), sem selo de download fictício. A montagem aplica o catálogo e valida os arquivos locais. Enquanto a 07 está bloqueada, o item real substitui os marcadores da faixa atual e da lista de PDFs, usando k-card/k-material-card; cursos e layout de revista aguardam a 07 (decidido sem o Alisson, revisar). Novos componentes k-lesson-list e k-discipleship-cover documentados no manual, tokens --discipleship-cover-width (24rem) e --discipleship-lesson-columns (space-5 e coluna flexível), sem novas cores/fontes/durações. Capa principal 1280 em discipulado-basico-capa.webp e variante -640.webp.
 - 10/11/2026 (fila 05): k-blog-header, k-blog-filter, k-blog-card e k-blog-note documentados no design system. Layout, hierarquia e ritmo observados na referência de colagem; imagens e textos próprios do fluxo já existente. A faixa de materiais permanece nesta tarefa. Reserva de largura para o selo e preparação de Newsreader itálica a 600px da tela para evitar carregá-la com a hero (decidido sem o Alisson, revisar).
 - 09/11/2026: fluxo do blog: textos-blog/ (privado, fora do Git e do deploy) → conteudo/blog/[slug].md (Git) → blog/[slug].html (Git e site); dados/posts.json gerado a partir dos front matters, nunca editado à mão. Convenções do modelo-post.docx: campos no topo, Título 1, subtítulo em itálico, Título 2, CITAÇÃO:, IMAGEM: arquivo | legenda | crédito, texto cinza ignorado, autor padrão Igreja Kemuel, data padrão hoje. Campo opcional “Foco da capa” para o recorte 3:2 (acrescentado sem o Alisson, revisar).
 - 09/11/2026: Newsreader com uso ampliado para títulos e texto dos posts e palavras de destaque em itálico em títulos editoriais, além de visita editorial, Bíblia e citações. Nenhuma família nova.
@@ -175,6 +178,7 @@
 
 ## 9. Checklist de lançamento
 
+- [ ] Substituir assets/materiais/discipulado-basico.pdf pela apostila revisada e aprovada antes de tirar noindex; regenerar as capas e conferir os dados do item 01.
 - [ ] Trocar todos os textos de exemplo e os [ANO] da linha do tempo pela história real aprovada.
 - [ ] Decidir entre ilustrações e fotos reais autorizadas por capítulo; se usar fotos, instalar os arquivos e preencher alt descritivo antes de ativar data-story-photo.
 - [ ] Nenhum marcador [ ] restante nas páginas.

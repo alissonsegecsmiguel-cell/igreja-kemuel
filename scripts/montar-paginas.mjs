@@ -6,6 +6,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { loadData, fillData, fillHead, jsonLd } from './dados-igreja.mjs';
 import { loadPosts, postPage, postsIndex, blogFeature } from './blog.mjs';
+import { loadMaterials, materialCards } from './materiais.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const read = file => readFileSync(file, 'utf8').replace(/\r\n/g, '\n');
@@ -46,6 +47,7 @@ function symbols(html, file) {
 }
 
 function shared(html, file) {
+  if (html.includes('<!-- materiais-catalogo:start -->')) html = apply(html, 'materiais-catalogo', materialCards(materials, file.startsWith('assets/') ? '' : 'assets/'), file);
   // Dobra de blog gerada a partir dos posts; no manual, os caminhos partem de assets/.
   if (html.includes('<!-- blog-destaque:start -->')) html = apply(html, 'blog-destaque', file.startsWith('assets/') ? blogFeature(posts, '', 'demo-blog') : blogFeature(posts), file);
   // As cenas têm fonte única; templates inertes evitam montar SVGs fora da dobra.
@@ -58,6 +60,7 @@ function shared(html, file) {
 }
 
 const posts = await loadPosts(root);
+const materials = loadMaterials(root);
 const pages = readdirSync(root).filter(file => file.endsWith('.html'));
 const outputs = [];
 for (const file of pages) {

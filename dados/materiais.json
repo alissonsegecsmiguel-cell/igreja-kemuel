@@ -1,0 +1,23 @@
+{
+  "materiais": [
+    {
+      "numero": "01",
+      "tipo": "GUIA",
+      "titulo": "Discipulado Básico",
+      "titulo_capa": "discipulado",
+      "descricao": "Dez lições sobre as bases da fé cristã, para novos na fé.",
+      "formato": "PDF",
+      "paginas": 63,
+      "tamanho": "835 KB",
+      "imagem": "assets/img/materiais/discipulado-basico-capa.webp",
+      "imagem_640": "assets/img/materiais/discipulado-basico-capa-640.webp",
+      "imagem_largura": 1280,
+      "imagem_altura": 1812,
+      "credito": "Capa da apostila fornecida pela igreja. Versão de exemplo, revisão pendente.",
+      "arquivo": "assets/materiais/discipulado-basico.pdf",
+      "nome_download": "Discipulado-Basico-Igreja-Kemuel.pdf",
+      "exemplo": false,
+      "versao": "exemplo a revisar"
+    }
+  ]
+}

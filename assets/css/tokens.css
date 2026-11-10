@@ -53,6 +53,9 @@
 }
 
 :root {
+  /* Discipulado: capa da apostila e ficha das dez lições. */
+  --discipleship-cover-width: 24rem;
+  --discipleship-lesson-columns: var(--space-5) minmax(0, 1fr);
   /* História: capítulos manuais, ilustrações autorizadas do protótipo aprovado. */
   --timeline-columns: minmax(0, 5fr) minmax(0, 6fr);
   --timeline-gap: var(--space-6);
