@@ -2,6 +2,10 @@
 
 ## 1. Última sessão
 
+- Validação de Quem somos (10/11/2026): oito casos locais (1440×900, 1024×768, 760×900 e 390×844, normal/reduzido) passaram, sem erros de console/rede ou rolagem horizontal. Setas/Home/End movem foco, Enter/Espaço ativam, Tab alcança o tabpanel; toque, seleção rápida, resize 760/761/390/1024 e painel único conferidos. Visão comparada integralmente ao PDF; três parágrafos de princípios e horários da fonte única validados. Pausa fora da dobra e visibilitychange, redução dinâmica e fallback sem JS passaram; manual em 1440/390, prints e restante da home idêntico ao commit anterior. Corrigido o arredondamento de min-width:760.01px que escondia o painel em 760px: CSS agora usa width > 760px, complementar ao JS. Montagem repetida sem diff; publicado anterior ao push conferido em 1440/390 sem erros. Evidências locais em relatorios/kemuel-timeline/RELATORIO.md.
+
+- 10/11/2026 (Quem somos): linha do tempo reestruturada como leitura à esquerda e seleção à direita (55/45, acima de 760px). k-timeline-panel reúne rótulo/título/prosa/ilustração; sticky no computador, mesmo painel dentro do card ativo até 760px. Cards só têm título/resumo em duas linhas e “Ler capítulo”. Abas com seleção manual por Enter/Espaço, setas movendo foco; acordeão móvel com aria-expanded, um aberto. Crossfade simultâneo 400ms/8px, easing único; cenas existentes preservadas e pausáveis, redução de movimento estática. Fonte única em partials/timeline.html, aplicada também ao manual. Newsreader só na prosa 400/18–19px; títulos Outfit 600, interface Public Sans. Fundação permanece marcador; princípios em três parágrafos da lição 10/p.59, visão integral da p.56, convite ao serviço da lição 9/pp.52–54. História de outra comunidade não foi usada. Horários do resumo e do painel gerados de dados/igreja.json.
+
 - Validação da Primeira visita (10/11/2026): 1440×900, 1366×768, 390×844 e 360×740 passaram, com mouse/toque/Enter/Espaço, primeira aberta, aria/foco, pulso único, ondas pausando/retomando fora da dobra e em visibilitychange, redução de movimento dinâmica estática e sem JS. Manual 1440/390 também passou; sem erros de console/rede ou rolagem horizontal. Prints antes/depois nos quatro tamanhos. Contrastes conservadores: rótulos 5,951:1; pergunta/corpo 14,312:1; aberta 16,764:1; eyebrow 4,730:1; botão 4,612:1. Montagem duas vezes idêntica; HTML fora desta dobra igual ao HEAD anterior. Lighthouse móvel, três rodadas antes/depois: medianas 77→97, LCP 1843→1833ms, TBT 906→127ms, CLS 0→0; grande variação de CPU, sem atribuir ganho garantido ao componente. Conferência pública anterior ao push também passou; relatório completo em relatorios/kemuel-radiate/RELATORIO.md (ignorado).
 
 - 10/11/2026 (Primeira visita): colagem e etiquetas substituídas por k-radiate, painel preto com símbolo existente de cruz branca e três ondas vermelhas. Perguntas em Outfit 600/h5 à esquerda, rótulos Public Sans 600/caption cinza acima, resposta Public Sans 400/body até 60ch, círculo +/− e marcador aberto vermelho. Cinco perguntas/respostas, título, abertura e WhatsApp preservados. CSS/JS/manual documentados; tokens novos em --faq-*. Colagem/etiquetas e tokens exclusivos removidos, sem outro uso. Pendência da foto/etiquetas encerrada. Medida anterior a 1440px: container 1280px e perguntas 672,33px; depois, perguntas 707,72px. Azul/laranja não reproduzidos: local e publicado tinham os cinco rótulos #555555; nova origem explícita --faq-label-color, sem atribuir causa não comprovada. Demais dobras intactas. Evidências/prints/Lighthouse locais em relatorios/kemuel-radiate/.
@@ -76,7 +80,7 @@
 - No ar: a página principal em construção, com marcadores entre colchetes e noindex. O design system permanece excluído do deploy por .vercelignore.
 - Design system oficial criado; logo oficial pendente e vermelho provisório. Tokens, componentes, JavaScript e fontes ficam em arquivos compartilhados em assets/.
 - Dobra de visita editorial com Bíblia em CSS 3D, duas duplas de páginas e tabela de cultos/endereço sempre disponível. Dados não confirmados seguem como marcadores.
-- Dobra Quem somos em capítulos interativos, com história e ilustrações de exemplo a substituir/validar antes do lançamento.
+- Dobra Quem somos com painel de leitura sticky/abas no computador e acordeão até 760px; conteúdo da apostila, fundação ainda como marcador e ilustrações de exemplo. Princípios batistas aguardam confirmação pastoral.
 
 ## 3. Em andamento
 
@@ -109,7 +113,9 @@
 - Número do endereço da sede (hoje [número] visível no site).
 - Confirmar se há congregações em outras cidades.
 - Corrigir a ficha do Google da igreja, se algum dado estiver diferente.
-- História real da igreja em capítulos: ano, título e 2 a 4 frases por capítulo; fotos por capítulo, se houver; aprovação pastoral. Decidir entre manter as ilustrações ou usar fotos reais autorizadas em cada capítulo.
+- História real da fundação: ano, quem começou, primeiros encontros e chegada à Av. Dr. José Holanda Montenegro. Capítulo 01 mantém [ANO] e texto reservado visível, aguardando o pastor.
+- Confirmar com o pastor que a Kemuel adota os sete princípios batistas da lição 10 da apostila antes do lançamento. Revisar a síntese de três parágrafos e o convite ao serviço.
+- Decidir entre ilustrações e fotos reais autorizadas por capítulo, se houver.
 - Visita editorial: confirmar endereço completo e observação de estacionamento/acesso.
 - Texto curto sobre como é o culto e validação da frase “Sem roupa certa, sem cobrança na porta.”
 - Versículo e tradução autorizada, somente se a igreja decidir incluir uma citação na Bíblia; nenhum texto bíblico foi publicado.
@@ -143,6 +149,9 @@
 - Organização dos quatro estudos locais: primeiro nível com design system renomeado, notas.md e arquivos/; cópias de segurança e diagnóstico preservados localmente.
 
 ## 8. Decisões registradas
+
+- 10/11/2026 (Quem somos): painel completo à esquerda (55%) e cards de seleção à direita (45%) acima de 760px; até 760px o mesmo painel/ilustração entra no card ativo. k-timeline-panel documentado no design system; partial único para home/manual, sem duplicar conteúdo ativo por JS. Desktop usa abas de ativação manual; mobile usa acordeão com apenas um aberto. Troca simultânea de opacidade/translateY 8px em 400ms, easing existente; sem animação com redução de movimento. Cenas e palco 4:3 existentes reaproveitados, sem novo loop.
+- 10/11/2026 (conteúdo de Quem somos): fonte autorizada é a apostila local, visão integral da página 56, sete princípios batistas da página 59 reescritos em três parágrafos, serviço da lição 9/páginas 52–54. Não usar a história de Vila Velha nem as doutrinas específicas dessa comunidade. Fundação aguardando dados reais e adoção dos princípios aguardando confirmação pastoral. Cultos do resumo/linha pós-visão vêm exclusivamente de dados/igreja.json, aplicados pela montagem; nenhum horário digitado no partial.
 
 - 10/11/2026 (Primeira visita, decisão expressa): k-radiate substitui a colagem; usa assets/brand/logo-simbolo.svg sem redesenhar/alterar a marca. Painel quadrado preto, cerca de 40% do container; ficha cerca de 55%; no celular painel a 70%, após WhatsApp. Perguntas Outfit 600/h5 (23,2px em 1440px e 19px no celular), respostas Public Sans/body, todos os rótulos cinza. Nenhuma Newsreader nesta dobra. Cor antiga já calculada em #555555 em todos os itens; azul/laranja não reproduzidos, sem diagnóstico especulativo. Aplicação explícita no componente e token --faq-label-color em todos os estados.
 - 10/11/2026 (movimento autorizado): às exceções da hero e do brilho da história soma-se SOMENTE k-radiate: três anéis em 4,8s, defasagens 0/−1,6/−3,2s, linear existente de atmosfera para expansão uniforme, só transform/opacity; traço constante com vector-effect. Onda extra de 1s ao abrir pergunta, uma vez, com o easing único de interface. Pausa fora da dobra/aba oculta; movimento reduzido entrega três anéis estáticos com opacidades 0,3/0,2/0,1. O brilho é fundo separado, sem filtro no logo. Demais movimentos continuam finitos.
@@ -245,7 +254,7 @@
 - [ ] Materiais 02–05 com conteúdo e PDFs reais, curso 06 ligado à plataforma e selos EXEMPLO removidos somente após validação.
 
 - [ ] Substituir assets/materiais/discipulado-basico.pdf pela apostila revisada e aprovada antes de tirar noindex; regenerar as capas e conferir os dados do item 01.
-- [ ] Trocar todos os textos de exemplo e os [ANO] da linha do tempo pela história real aprovada.
+- [ ] Preencher o [ANO] e a história da fundação do capítulo 01; confirmar com o pastor os princípios batistas do capítulo 02 e aprovar os conteúdos dos capítulos 03/04.
 - [ ] Decidir entre ilustrações e fotos reais autorizadas por capítulo; se usar fotos, instalar os arquivos e preencher alt descritivo antes de ativar data-story-photo.
 - [ ] Nenhum marcador [ ] restante nas páginas.
 - [ ] Logo redesenhado aprovado pelo Alisson ou substituído pelo arquivo original.

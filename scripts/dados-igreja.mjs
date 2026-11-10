@@ -21,6 +21,10 @@ function generators(d) {
     'youtube-usuario': () => d.redes.youtube.usuario,
     'nome-cidade': () => `${d.nome} · ${d.cidade}, ${d.estado}`,
     'cultos-resumo': () => pairs(c => `${c.dia}, ${c.hora}`, ' · '),
+    'cultos-timeline': () => {
+      const text = pairs(c => `${c.diaCurto} ${c.hora}`, ', ');
+      return text[0].toUpperCase() + text.slice(1);
+    },
     // "Quintas às 19h30 e domingos às 18h"
     'cultos-curto': () => {
       const items = d.cultos.map(c => `${c.diaCurto} às ${c.hora}`);

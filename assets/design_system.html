@@ -205,12 +205,14 @@
 </div></section>
         <section class="k-demo k-stack" id="timeline-documentacao" aria-labelledby="timeline-doc-titulo">
           <p class="k-eyebrow">História · capítulos manuais</p><h3 id="timeline-doc-titulo">Um capítulo de cada vez.</h3>
-          <p><code>k-timeline</code> organiza introdução fixa e lista à direita a partir de 900px; abaixo disso, o mesmo palco entra no card ativo, acima do texto completo. <code>k-timeline-card</code> combina botão com aria-expanded/aria-controls, painel associado, marcador e estados normal, ativo, hover, foco e futuro tracejado. Capítulo 01 começa ativo; clique, toque, Enter, Espaço e setas para cima/baixo selecionam. Não há troca automática. <a class="k-link" href="#quem-somos">Experimentar a linha do tempo</a>.</p>
-          <p><code>k-story-stage</code> reserva 4:3, legenda protegida e um único palco movido pelo DOM. <code>k-story-scene</code> separa brilho, malha de pontos e grupos SVG. Os quatro SVGs e textos foram autorizados do protótipo aprovado para esta dobra; CSS e JavaScript foram reescritos para a Kemuel. Fonte canônica em <code>partials/story-scenes.html</code>, aplicada aos marcadores story-scenes pelo script de montagem; não editar os blocos gerados.</p>
-          <p>Para usar de 3 a 6 capítulos, editar somente a lista HTML e escolher <code>data-story-art</code>: sala, predio, portas ou horizonte. A quantidade, os botões e seus destinos são lidos da lista; IDs de instâncias e gradientes ficam únicos. O status aria-live anuncia apenas seleções manuais. Sem JavaScript, todos os textos continuam visíveis e o palco é omitido. Os comentários “O que contar aqui” orientam o conteúdo futuro e não são exibidos.</p>
-          <p>Para uma foto real, instalar <code>assets/img/historia/capitulo-01.webp</code> (ou equivalente) e só então adicionar ao li <code>data-story-photo="img/historia/capitulo-01.webp"</code> e <code>data-story-alt</code> descritivo. O caminho parte de assets/ nas duas páginas. Foto substitui o SVG, recebe preto e branco, contraste estático e a mesma malha; sua entrada usa apenas o zoom curto. Nenhuma foto futura é buscada por suposição.</p>
-          <p class="k-body-sm">Tokens novos somente em <code>--timeline-*</code>: composição, estados, rail/marcadores, palco/legenda, tinta/transparências, malha derivada da hero, movimentos e tratamento de foto. Cards futuros usam texto #9B9B9B, sem reduzir a opacidade do card inteiro. Legenda tem proteção preta de pelo menos 80%, inclusive sobre foto branca. Cores de ação, fontes, badge, eyebrow, foco e revelação vêm do sistema.</p>
-          <p class="k-body-sm">Movimento: troca em 480ms, texto em 260ms, cenas em 1.600ms. Só transform e opacity animam; máscara, filtros, cores e dimensões ficam parados. Cena inicial começa quando o palco entra na tela; cada seleção reinicia a cena escolhida. Fora da tela ou com aba oculta, a cena pausa; a respiração de 12s do brilho também. Com movimento reduzido, estado final imediato, sem zoom, animação própria ou loop. A respiração do brilho da história é a única exceção adicional à atmosfera contínua da hero.</p>
+          <p><code>k-timeline</code> organiza a história em duas colunas 55/45 acima de 760px: painel completo sticky à esquerda e cards com resumo de até duas linhas à direita. <code>k-timeline-panel</code> reúne rótulo cinza com marcador vermelho, título Outfit 600, prosa Newsreader 400 (18–19px, entrelinha 1,6, até 60ch) e ilustração. Base Outfit/Public Sans; Newsreader só como voz de leitura, sem títulos em itálico. <a class="k-link" href="#quem-somos">Experimentar os capítulos</a>.</p>
+          <p>Abas no computador: lista com role=tablist e orientação vertical, botão com role=tab, aria-selected, aria-controls e foco móvel. Setas (incluindo esquerda/direita), Home e End movem o foco; Enter/Espaço ou clique ativam. Só o painel ativo tem role=tabpanel visível, ligado ao botão e acessível por Tab. “Ler capítulo →” faz parte do mesmo botão de seleção, sem link aninhado. O card ativo mantém fundo e marcador do sistema.</p>
+          <p>Até 760px, o painel esquerdo é omitido e o mesmo conteúdo entra no card ativo: ilustração acima da prosa, apenas um aberto. O padrão muda para botões de acordeão com aria-expanded/aria-controls e regiões associadas, sem misturar estados de abas e acordeão. Redimensionar preserva o capítulo e não reinicia sua cena. Sem JavaScript, todos os textos continuam disponíveis, sem duplicação, e o palco é omitido.</p>
+          <p>Fonte única da dobra em <code>partials/timeline.html</code>, aplicada aos marcadores timeline na home e no manual por <code>scripts/montar-paginas.mjs</code>. SVGs permanecem em <code>partials/story-scenes.html</code>, nos marcadores internos; não editar os blocos gerados. A lista aceita de 3 a 6 capítulos, com IDs únicos por instância. Datas da fundação permanecem [ANO]; a visão foi copiada integralmente da lição 10, página 56; os sete princípios vêm da página 59, em três parágrafos; o convite ao serviço sintetiza a lição 9, páginas 52–54. Não usar a história de outra comunidade nem suas doutrinas específicas.</p>
+          <p><code>k-story-stage</code> e <code>k-story-scene</code> preservam o palco 4:3, legenda protegida, quatro cenas finitas, malha e brilho. Para foto real futura, instalar o arquivo e só então preencher no li data-story-photo e data-story-alt: mesma malha e tratamento em preto e branco, só zoom de entrada. Nenhum arquivo ausente é solicitado.</p>
+          <p class="k-body-sm">Horários nunca são digitados no partial: data-dado="cultos-timeline" preenche o resumo e data-dado="cultos-frase" preenche a linha depois da visão, a partir de dados/igreja.json. Pendências editoriais: história da fundação e confirmação pastoral dos princípios batistas da apostila. O site mantém noindex.</p>
+          <p class="k-body-sm">Tokens em --timeline-*: colunas 55/45, breakpoint 760px, leitura 18–19px/60ch, duas linhas de resumo e troca de painel em 400ms com 8px de translateY. Crossfade de saída/entrada simultâneas, usando o easing único cubic-bezier(.22,1,.36,1); o painel que sai fica inerte e oculto para tecnologia assistiva. Cancelamento seguro ao selecionar rapidamente. Cenas e zoom conservam os tempos existentes. Só transform e opacity animam. A fonte de leitura é preparada quando a dobra entra na tela.</p>
+          <p class="k-body-sm">A cena e o brilho pausam quando a dobra sai da tela ou a aba fica oculta. prefers-reduced-motion entrega a troca imediata e as cenas paradas. Não há seleção automática. A respiração do brilho continua uma das exceções autorizadas de atmosfera, junto à hero e a k-radiate; nenhum novo loop foi criado.</p>
         </section>
         <section class="k-demo k-stack" id="spec-documentacao" aria-labelledby="spec-doc-titulo">
           <p class="k-eyebrow">Ficha editorial · componentes</p><h3 id="spec-doc-titulo">Informação clara, ritmo de ficha.</h3>
@@ -450,13 +452,61 @@
       </div>
     </section>
 
+    <!-- timeline:start -->
     <section class="k-section k-section--black k-dark k-timeline" id="quem-somos" data-timeline aria-labelledby="quem-somos-titulo">
-      <div class="k-container k-timeline__layout">
-        <div class="k-timeline__intro">
-          <p class="k-eyebrow k-timeline__eyebrow" data-reveal>NOSSA HISTÓRIA</p>
-          <h2 class="k-timeline__title" id="quem-somos-titulo" data-reveal>Quem somos</h2>
-          <p class="k-timeline__lead" data-reveal>Uma comunidade de fé de portas abertas. <strong>Cada capítulo conta um pedaço do caminho até aqui.</strong></p>
-          <div class="k-timeline__stage-home" data-story-home>
+      <div class="k-container k-stack--large">
+        <header class="k-section-heading"><p class="k-eyebrow">NOSSA HISTÓRIA</p><h2 id="quem-somos-titulo">Quem somos</h2></header>
+        <div class="k-timeline__layout">
+          <div class="k-timeline__chapters">
+            <ol class="k-timeline__list" aria-label="Capítulos da história da igreja" data-story-chapters>
+            <li class="k-timeline-card is-active" data-story-chapter data-story-art="sala">
+              <span class="k-timeline-card__marker" aria-hidden="true"></span>
+              <button class="k-timeline-card__button" type="button" id="historia-botao-01" aria-controls="historia-texto-01"><span class="k-timeline-card__top"><span class="k-label k-timeline-card__label">Capítulo 01 · [ANO]</span></span><span class="k-timeline-card__title">Como tudo começou</span><span class="k-timeline-card__summary">Como a Kemuel nasceu em Iguatu e quem deu o primeiro passo.</span><span class="k-timeline-card__cta">Ler capítulo <span aria-hidden="true">→</span></span></button>
+              <!-- Fundação: conteúdo a substituir pela história real aprovada. -->
+              <article class="k-timeline-panel" id="historia-texto-01" aria-labelledby="historia-botao-01" data-story-panel>
+                <header class="k-timeline-panel__header"><p class="k-eyebrow k-timeline-panel__eyebrow">Capítulo 01 · Como tudo começou</p><h3 class="k-timeline-panel__title">Como tudo começou</h3></header>
+                <div class="k-timeline-panel__body"><p>[História da fundação: ano, quem começou, onde aconteciam os primeiros encontros e como a igreja chegou à Av. Dr. José Holanda Montenegro. Aguardando dados do pastor.]</p></div>
+                <div data-story-slot class="k-timeline-panel__stage"></div>
+              </article>
+            </li>
+            <li class="k-timeline-card" data-story-chapter data-story-art="predio">
+              <span class="k-timeline-card__marker" aria-hidden="true"></span>
+              <button class="k-timeline-card__button" type="button" id="historia-botao-02" aria-controls="historia-texto-02"><span class="k-timeline-card__top"><span class="k-label k-timeline-card__label">Capítulo 02</span></span><span class="k-timeline-card__title">No que cremos</span><span class="k-timeline-card__summary">A Bíblia como única regra de fé e uma igreja feita de gente transformada.</span><span class="k-timeline-card__cta">Ler capítulo <span aria-hidden="true">→</span></span></button>
+              <!-- Síntese da lição 10: adoção dos princípios batistas aguarda confirmação pastoral. -->
+              <article class="k-timeline-panel" id="historia-texto-02" aria-labelledby="historia-botao-02" data-story-panel>
+                <header class="k-timeline-panel__header"><p class="k-eyebrow k-timeline-panel__eyebrow">Capítulo 02 · No que cremos</p><h3 class="k-timeline-panel__title">No que cremos</h3></header>
+                <div class="k-timeline-panel__body"><p>A Bíblia é a nossa única regra de fé e prática. Entendemos a igreja como uma comunidade formada por pessoas regeneradas e batizadas por imersão, que vivem a fé em Jesus Cristo.</p><p>A igreja local é autônoma e tem governo democrático. Reconhecemos a competência de cada alma diante de Deus, com liberdade de consciência religiosa, e defendemos a separação entre igreja e Estado.</p><p>Cremos no sacerdócio universal dos crentes: cada pessoa pode se aproximar de Deus e participar do serviço cristão. Caminhamos em cooperação com outras igrejas de mesma fé e ordem, somando esforços na missão.</p></div>
+                <div data-story-slot class="k-timeline-panel__stage"></div>
+              </article>
+            </li>
+            <li class="k-timeline-card" data-story-chapter data-story-art="portas">
+              <span class="k-timeline-card__marker" aria-hidden="true"></span>
+              <button class="k-timeline-card__button" type="button" id="historia-botao-03" aria-controls="historia-texto-03"><span class="k-timeline-card__top"><span class="k-label k-timeline-card__label">Capítulo 03 · HOJE</span><span class="k-badge k-timeline-card__badge">HOJE</span></span><span class="k-timeline-card__title">Quem somos hoje</span><span class="k-timeline-card__summary">Uma igreja bíblica, acolhedora e presente em Iguatu. <span data-dado="cultos-timeline">Quintas 19h30, domingos 18h</span>.</span><span class="k-timeline-card__cta">Ler capítulo <span aria-hidden="true">→</span></span></button>
+              <!-- Visão integral da lição 10, página 56. Horários aplicados de dados/igreja.json. -->
+              <article class="k-timeline-panel" id="historia-texto-03" aria-labelledby="historia-botao-03" data-story-panel>
+                <header class="k-timeline-panel__header"><p class="k-eyebrow k-timeline-panel__eyebrow">Capítulo 03 · Quem somos hoje</p><h3 class="k-timeline-panel__title">Quem somos hoje</h3></header>
+                <div class="k-timeline-panel__body"><p>“Somos uma igreja bíblica, acolhedora, contemporânea, presente na cidade, evangelística. Queremos levar o evangelho da salvação às famílias perdidas e a mensagem de consolo aos cansados e oprimidos. E, como parte da Igreja de Cristo, vê-la restaurada em toda a sua plenitude, sob a autoridade do Espírito Santo, nestes tempos proféticos…”</p><p>Hoje nos reunimos <span data-dado="cultos-frase">às quintas-feiras, às 19h30, e aos domingos, às 18h</span>.</p></div>
+                <div data-story-slot class="k-timeline-panel__stage"></div>
+              </article>
+            </li>
+            <li class="k-timeline-card k-timeline-card--future" data-story-chapter data-story-art="horizonte">
+              <span class="k-timeline-card__marker" aria-hidden="true"></span>
+              <button class="k-timeline-card__button" type="button" id="historia-botao-04" aria-controls="historia-texto-04"><span class="k-timeline-card__top"><span class="k-label k-timeline-card__label">Capítulo 04</span></span><span class="k-timeline-card__title">O próximo capítulo</span><span class="k-timeline-card__summary">A próxima página dessa história pode ter o seu nome.</span><span class="k-timeline-card__cta">Ler capítulo <span aria-hidden="true">→</span></span></button>
+              <!-- Síntese da lição 9, páginas 52–54; sem promessa de cargo ou nomeação. -->
+              <article class="k-timeline-panel" id="historia-texto-04" aria-labelledby="historia-botao-04" data-story-panel>
+                <header class="k-timeline-panel__header"><p class="k-eyebrow k-timeline-panel__eyebrow">Capítulo 04 · O próximo capítulo</p><h3 class="k-timeline-panel__title">O próximo capítulo</h3></header>
+                <div class="k-timeline-panel__body"><p>Na Kemuel, há lugar para servir como membro, voluntário, líder, obreiro e pastor, conforme os dons e o chamado de cada pessoa, com preparo e acompanhamento da igreja. Esse caminho começa no Discipulado: aprender a fé, crescer em comunidade e descobrir como servir a Deus servindo pessoas.</p><div class="k-row"><a class="k-button" href="/discipulado">Conhecer o Discipulado</a><a class="k-button k-button--secondary" href="#visite">Planeje sua visita</a></div></div>
+                <div data-story-slot class="k-timeline-panel__stage"></div>
+              </article>
+            </li>
+            </ol>
+            <p class="k-timeline__hint">Use as setas para escolher um capítulo. Pressione Enter ou Espaço para ler.</p>
+            <p class="k-sr-only" role="status" aria-live="polite" aria-atomic="true" data-story-status></p>
+            <noscript><p class="k-timeline__hint">Sem JavaScript, todos os capítulos ficam disponíveis para leitura.</p></noscript>
+          </div>
+          <div class="k-timeline__reader"><div class="k-timeline__panel-home" data-story-home></div></div>
+        </div>
+        <div class="k-timeline__stage-storage" data-story-storage>
             <figure class="k-story-stage" data-story-stage>
               <div class="k-story-stage__canvas" data-story-canvas></div>
               <figcaption class="k-story-stage__caption"><strong data-story-title>Como tudo começou</strong><span data-story-number>Capítulo 01</span></figcaption>
@@ -521,47 +571,12 @@
     </svg></div>
   </div>
 </template>
-              <!-- story-scenes:end -->
+<!-- story-scenes:end -->
             </figure>
-          </div>
-        </div>
-        <div data-reveal>
-          <ol class="k-timeline__list" aria-label="Capítulos da história da igreja" data-story-chapters>
-            <li class="k-timeline-card is-active" data-story-chapter data-story-art="sala">
-              <!-- conteúdo a substituir pela história real. O que contar aqui: quem começou, onde se reuniam, como foi o primeiro culto. -->
-              <!-- Foto real futura: após instalar assets/img/historia/capitulo-01.webp, adicionar data-story-photo="img/historia/capitulo-01.webp" e data-story-alt descritivo a este li. -->
-              <span class="k-timeline-card__marker" aria-hidden="true"></span>
-              <button class="k-timeline-card__button" type="button" id="historia-botao-01" aria-expanded="true" aria-controls="historia-texto-01"><span class="k-timeline-card__top"><span class="k-eyebrow k-timeline-card__label">CAPÍTULO 01 · [ANO]</span></span><span class="k-timeline-card__title">Como tudo começou</span><span class="k-timeline-card__summary">Uma sala, algumas famílias e muita fé.</span></button>
-              <div class="k-timeline-card__panel" id="historia-texto-01" role="region" aria-labelledby="historia-botao-01"><div data-story-slot class="k-timeline-card__slot"></div><p class="k-timeline-card__text">Texto de exemplo: tudo começou com algumas famílias reunidas numa sala emprestada, com cadeiras de plástico e uma vontade grande de buscar a Deus juntas.</p></div>
-            </li>
-            <li class="k-timeline-card" data-story-chapter data-story-art="predio">
-              <!-- conteúdo a substituir pela história real. O que contar aqui: mudanças de lugar, a origem do nome Kemuel, os primeiros marcos. -->
-              <!-- Foto real futura: data-story-photo="img/historia/capitulo-02.webp" e data-story-alt descritivo, apenas depois de instalar o arquivo autorizado. -->
-              <span class="k-timeline-card__marker" aria-hidden="true"></span>
-              <button class="k-timeline-card__button" type="button" id="historia-botao-02" aria-expanded="true" aria-controls="historia-texto-02"><span class="k-timeline-card__top"><span class="k-eyebrow k-timeline-card__label">CAPÍTULO 02 · [ANO]</span></span><span class="k-timeline-card__title">Primeiros passos</span><span class="k-timeline-card__summary">Um lugar próprio e um nome para chamar de casa.</span></button>
-              <div class="k-timeline-card__panel" id="historia-texto-02" role="region" aria-labelledby="historia-botao-02"><div data-story-slot class="k-timeline-card__slot"></div><p class="k-timeline-card__text">Texto de exemplo: a igreja cresceu, mudou de endereço e ganhou o nome que carrega até hoje. Vieram os primeiros batismos e o louvor tomou forma.</p></div>
-            </li>
-            <li class="k-timeline-card" data-story-chapter data-story-art="portas">
-              <!-- conteúdo a substituir pela história real; horários confirmados preservados. O que contar aqui: os ministérios, o que marca a igreja hoje, como é estar com a gente. -->
-              <!-- Foto real futura: data-story-photo="img/historia/capitulo-03.webp" e data-story-alt descritivo, apenas depois de instalar o arquivo autorizado. -->
-              <span class="k-timeline-card__marker" aria-hidden="true"></span>
-              <button class="k-timeline-card__button" type="button" id="historia-botao-03" aria-expanded="true" aria-controls="historia-texto-03"><span class="k-timeline-card__top"><span class="k-eyebrow k-timeline-card__label">CAPÍTULO 03 · HOJE</span><span class="k-badge k-timeline-card__badge">HOJE</span></span><span class="k-timeline-card__title">Quem somos hoje</span><span class="k-timeline-card__summary"><span data-dado="cultos-curto">Quintas às 19h30 e domingos às 18h</span>, de portas abertas.</span></button>
-              <div class="k-timeline-card__panel" id="historia-texto-03" role="region" aria-labelledby="historia-botao-03"><div data-story-slot class="k-timeline-card__slot"></div><p class="k-timeline-card__text">Hoje nos reunimos <span data-dado="cultos-frase">às quintas-feiras, às 19h30, e aos domingos, às 18h</span>. Texto de exemplo: uma comunidade que recebe quem chega como família.</p></div>
-            </li>
-            <li class="k-timeline-card k-timeline-card--future" data-story-chapter data-story-art="horizonte">
-              <!-- conteúdo a substituir pela história real. O que contar aqui: os sonhos e os próximos passos da igreja. -->
-              <!-- Foto real futura: data-story-photo="img/historia/capitulo-04.webp" e data-story-alt descritivo, apenas depois de instalar o arquivo autorizado. -->
-              <span class="k-timeline-card__marker" aria-hidden="true"></span>
-              <button class="k-timeline-card__button" type="button" id="historia-botao-04" aria-expanded="true" aria-controls="historia-texto-04"><span class="k-timeline-card__top"><span class="k-eyebrow k-timeline-card__label">CAPÍTULO 04 · O QUE VEM PELA FRENTE</span></span><span class="k-timeline-card__title">O próximo capítulo</span><span class="k-timeline-card__summary">Ainda está sendo escrito.</span></button>
-              <div class="k-timeline-card__panel" id="historia-texto-04" role="region" aria-labelledby="historia-botao-04"><div data-story-slot class="k-timeline-card__slot"></div><p class="k-timeline-card__text">O próximo capítulo ainda está sendo escrito. E ele pode ter você.</p></div>
-            </li>
-          </ol>
-          <p class="k-timeline__hint">Use o mouse, o toque ou as setas do teclado para trocar de capítulo.</p>
-          <p class="k-sr-only" role="status" aria-live="polite" aria-atomic="true" data-story-status></p>
-          <noscript><p class="k-timeline__hint">Sem JavaScript, os quatro textos ficam disponíveis para leitura. Ilustrações e relatos são exemplos a validar.</p></noscript>
         </div>
       </div>
     </section>
+    <!-- timeline:end -->
 
     <section class="k-section k-section--soft" id="layout" data-reveal aria-labelledby="titulo-layout">
       <div class="k-container k-stack--large"><header class="k-section-heading"><p class="k-section-number">04 / LAYOUT & ESPAÇAMENTO</p><h2 id="titulo-layout">Ritmo consistente.<br>Conteúdo em primeiro lugar.</h2><p class="k-muted">Container de até 1280px. Margens laterais de 20px a 64px. Leitura limitada a 65ch. Seções com 72px a 128px de respiro, sem espaços arbitrários entre os blocos.</p></header>
@@ -593,9 +608,9 @@
       <div class="k-stack"><h3>Galeria · contribuição</h3><div class="k-grid k-grid--3"><div class="k-motion-tile"><h4 class="k-h5">k-give-coin-enter</h4><p class="k-caption k-muted">480ms · easing único · opacidade, subida de 12px e rotação de -5° para 0°. Uma entrada; inclinação por mouse limitada a 6°, sem loop.</p></div><div class="k-motion-tile"><h4 class="k-h5">k-progress</h4><p class="k-caption k-muted">480ms · easing único · atrasos 0/140/280ms. Só scaleX; porcentagem conta até o valor calculado. Uma vez, depois fica parada.</p></div><div class="k-motion-tile"><h4 class="k-h5">k-give-reasons</h4><p class="k-caption k-muted">Revelação do sistema: 480ms · easing único · atrasos 0/140/260ms. Movimento reduzido entrega o estado final. Confirmação de cópia reutiliza o botão do sistema.</p></div></div><a class="k-link" href="#demo-give">Ver a demonstração completa</a></div>
       <div class="k-stack"><h3>Galeria · cenas da história</h3><p class="k-body-sm k-muted">Os controles abaixo usam o mesmo palco e os mesmos SVGs da demonstração. Toda seleção pode ser repetida; nenhum capítulo troca sozinho. Easing de todos os movimentos: cubic-bezier(.22, 1, .36, 1).</p>
         <div class="k-grid k-grid--3">
-          <div class="k-motion-tile"><h4 class="k-h5">Troca e texto</h4><p class="k-caption k-muted">k-story-zoom · 480ms · atraso 0<br>Opacidade entre cenas · 480ms<br>Painel · 260ms · 4px, sem animar altura.</p><button class="k-button k-button--secondary" type="button" data-story-demo="quem-somos" data-story-index="0">Observar a entrada</button></div>
+          <div class="k-motion-tile"><h4 class="k-h5">Troca e texto</h4><p class="k-caption k-muted">k-story-zoom · 480ms · atraso 0<br>Opacidade entre cenas · 480ms<br>Painel · crossfade 400ms · translateY 8px<br>Saída e entrada simultâneas; movimento reduzido: troca imediata.</p><button class="k-button k-button--secondary" type="button" data-story-demo="quem-somos" data-story-index="0">Observar a entrada</button></div>
           <div class="k-motion-tile"><h4 class="k-h5">01 · Sala</h4><p class="k-caption k-muted">k-story-light · 1.600ms · atraso 0<br>k-story-rise nas cadeiras · 480ms<br>Atrasos: 260, 400, 540, 680, 820 e 960ms.<br>Lâmpada acende; cadeiras sobem 12px.</p><button class="k-button k-button--secondary" type="button" data-story-demo="quem-somos" data-story-index="0">Repetir capítulo 01</button></div>
-          <div class="k-motion-tile"><h4 class="k-h5">02 · Primeiros passos</h4><p class="k-caption k-muted">k-story-rise / light · 1.600ms · atraso 0<br>k-story-path · 1.340ms · atraso 260ms<br>Prédio sobe 12px; cruz acende; caminho abre de baixo para cima.</p><button class="k-button k-button--secondary" type="button" data-story-demo="quem-somos" data-story-index="1">Repetir capítulo 02</button></div>
+          <div class="k-motion-tile"><h4 class="k-h5">02 · No que cremos</h4><p class="k-caption k-muted">k-story-rise / light · 1.600ms · atraso 0<br>k-story-path · 1.340ms · atraso 260ms<br>Prédio sobe 12px; cruz acende; caminho abre de baixo para cima.</p><button class="k-button k-button--secondary" type="button" data-story-demo="quem-somos" data-story-index="1">Repetir capítulo 02</button></div>
           <div class="k-motion-tile"><h4 class="k-h5">03 · Portas abertas</h4><p class="k-caption k-muted">k-story-door-left/right · 1.600ms<br>k-story-spread · 1.600ms · atraso 0<br>Portas giram nas dobradiças, com perspectiva; luz se espalha na rua.</p><button class="k-button k-button--secondary" type="button" data-story-demo="quem-somos" data-story-index="2">Repetir capítulo 03</button></div>
           <div class="k-motion-tile"><h4 class="k-h5">04 · Horizonte</h4><p class="k-caption k-muted">k-story-sun · 1.600ms · atraso 0<br>k-story-road · 480ms × 3 · atraso 140ms<br>Sol sobe 42px; faixas avançam 18px, em três passadas finitas. Depois param.</p><button class="k-button k-button--secondary" type="button" data-story-demo="quem-somos" data-story-index="3">Repetir capítulo 04</button></div>
           <div class="k-motion-tile"><h4 class="k-h5">Atmosfera pausável</h4><p class="k-caption k-muted">k-story-breathe · 12s · atraso 0<br>Somente opacity: 0,35 → 0,7 → 0,35.<br>Único loop da história, no brilho atrás dos pontos. Pausa com palco fora da tela ou aba oculta; desligado com movimento reduzido.</p><a class="k-link" href="#quem-somos">Observar o brilho</a></div>

@@ -366,25 +366,59 @@
     });
   });
 
-  /* História: capítulos lidos do HTML, um palco, cenas finitas e brilho pausável. */
+  /* História: painel completo único por capítulo; abas e acordeão responsivos. */
   function setupTimelines() {
     document.querySelectorAll('[data-timeline]').forEach((timeline, scope) => {
-      const chapters = [...timeline.querySelector('[data-story-chapters]').children];
+      const list = timeline.querySelector('[data-story-chapters]');
+      const chapters = [...list.children];
       const stage = timeline.querySelector('[data-story-stage]');
       const home = timeline.querySelector('[data-story-home]');
       const canvas = stage.querySelector('[data-story-canvas]');
       const templates = [...stage.querySelectorAll('template[data-story-scene]')];
       const buttons = chapters.map(chapter => chapter.querySelector('.k-timeline-card__button'));
-      const panels = chapters.map(chapter => chapter.querySelector('.k-timeline-card__panel'));
+      const panels = chapters.map(chapter => chapter.querySelector('[data-story-panel]'));
       const status = timeline.querySelector('[data-story-status]');
-      const mobile = matchMedia(`(max-width: ${parseFloat(tokens.getPropertyValue('--timeline-breakpoint')) - .01}px)`);
-      const cache = new Map(), exits = new Map(), panelAnimations = new Set();
-      let current = 0, currentScene = null, visible = false;
       const value = name => tokens.getPropertyValue('--timeline-' + name).trim();
+      const mobile = matchMedia(`(max-width: ${value('breakpoint')})`);
+      const cache = new Map(), exits = new Map(), panelAnimations = new Map();
+      let current = 0, currentScene = null, visible = false, readingPrepared = false;
       const syncMotion = () => timeline.classList.toggle('is-story-running', visible && !document.hidden && !reduced.matches);
+      function prepareReading() {
+        if (readingPrepared) return;
+        readingPrepared = true;
+        const style = getComputedStyle(panels[current].querySelector('.k-timeline-panel__body'));
+        document.fonts.load(`${style.fontWeight} ${style.fontSize} Newsreader`).then(() => timeline.classList.add('is-timeline-font-ready'), () => {});
+      }
+      function hidePanel(index) {
+        const panel = panels[index];
+        panel.hidden = true;panel.inert = true;panel.classList.remove('is-panel-leaving');
+        panel.setAttribute('aria-hidden', 'true');
+        if (panel.parentNode !== chapters[index]) chapters[index].append(panel);
+      }
+      function settlePanels() {
+        panelAnimations.forEach(animation => animation.cancel());panelAnimations.clear();
+        panels.forEach((panel, index) => { if (index !== current) hidePanel(index); });
+      }
       function placeStage() {
-        const target = mobile.matches ? chapters[current].querySelector('[data-story-slot]') : home;
+        const target = panels[current].querySelector('[data-story-slot]');
         if (stage.parentNode !== target) target.append(stage);
+      }
+      function syncSemantics() {
+        if (mobile.matches) { list.removeAttribute('role');list.removeAttribute('aria-orientation'); }
+        else { list.setAttribute('role', 'tablist');list.setAttribute('aria-orientation', 'vertical'); }
+        chapters.forEach((chapter, i) => {
+          const active = i === current;
+          chapter.classList.toggle('is-active', active);
+          if (mobile.matches) {
+            chapter.removeAttribute('role');buttons[i].removeAttribute('role');buttons[i].removeAttribute('aria-selected');
+            buttons[i].setAttribute('aria-expanded', String(active));buttons[i].tabIndex = 0;
+            panels[i].setAttribute('role', 'region');panels[i].removeAttribute('tabindex');
+          } else {
+            chapter.setAttribute('role', 'presentation');buttons[i].setAttribute('role', 'tab');
+            buttons[i].setAttribute('aria-selected', String(active));buttons[i].removeAttribute('aria-expanded');
+            buttons[i].tabIndex = active ? 0 : -1;panels[i].setAttribute('role', 'tabpanel');panels[i].tabIndex = 0;
+          }
+        });
       }
       function illustration(index) {
         const template = templates.find(item => item.dataset.storyScene === chapters[index].dataset.storyArt);
@@ -439,31 +473,46 @@
         incoming.removeAttribute('aria-hidden');incoming.inert = false;currentScene = incoming;
         syncMotion();
       }
-      function select(index, focus = false, initial = false) {
+      function select(index, initial = false) {
         index = Math.max(0, Math.min(chapters.length - 1, index));
-        panelAnimations.forEach(animation => animation.cancel());panelAnimations.clear();
-        current = index;
-        // Mover antes de recolher evita prender o palco num painel oculto.
-        placeStage();
-        chapters.forEach((chapter, i) => {
-          chapter.classList.toggle('is-active', i === current);
-          buttons[i].setAttribute('aria-expanded', String(i === current));panels[i].hidden = i !== current;
-        });
+        const previous = current;
+        settlePanels();current = index;
+        const incoming = panels[current];
+        const target = mobile.matches ? chapters[current] : home;
+        if (incoming.parentNode !== target) target.append(incoming);
+        incoming.hidden = false;incoming.inert = false;incoming.removeAttribute('aria-hidden');incoming.classList.remove('is-panel-leaving');
+        placeStage();syncSemantics();
         const title = chapters[current].querySelector('.k-timeline-card__title').textContent;
         const number = `Capítulo ${String(current + 1).padStart(2, '0')}`;
-        stage.querySelector('[data-story-title]').textContent = title;
-        stage.querySelector('[data-story-number]').textContent = number;
+        stage.querySelector('[data-story-title]').textContent = title;stage.querySelector('[data-story-number]').textContent = number;
+        const animate = !initial && !reduced.matches;
+        panels.forEach((panel, i) => {
+          if (i === current) return;
+          if (animate && !mobile.matches && i === previous && previous !== current) {
+            panel.hidden = false;panel.inert = true;panel.setAttribute('aria-hidden', 'true');panel.classList.add('is-panel-leaving');
+            const animation = panel.animate([
+              { opacity: 1, transform: 'none' },
+              { opacity: 0, transform: `translateY(calc(${value('panel-shift')} * -1))` }
+            ], { duration: parseFloat(value('panel-duration')), easing });
+            panelAnimations.set(panel, animation);
+            animation.finished.then(() => {
+              if (panelAnimations.get(panel) !== animation) return;
+              if (i !== current) hidePanel(i);
+              panelAnimations.delete(panel);
+            }, () => {});
+          } else hidePanel(i);
+        });
         if (!initial) {
-          showScene(current);status.textContent = `${number}: ${title}.`;
-          if (!reduced.matches) {
-            const animation = panels[current].animate([
+          prepareReading();showScene(current);status.textContent = `${number}: ${title}.`;
+          if (animate) {
+            const animation = incoming.animate([
               { opacity: 0, transform: `translateY(${value('panel-shift')})` },
               { opacity: 1, transform: 'none' }
             ], { duration: parseFloat(value('panel-duration')), easing });
-            panelAnimations.add(animation);animation.finished.then(() => panelAnimations.delete(animation), () => panelAnimations.delete(animation));
+            panelAnimations.set(incoming, animation);
+            animation.finished.then(() => { if (panelAnimations.get(incoming) === animation) panelAnimations.delete(incoming); }, () => {});
           }
         }
-        if (focus) buttons[current].focus({ preventScroll: true });
         if (!initial && mobile.matches) {
           const rect = buttons[current].getBoundingClientRect();
           const top = document.querySelector('.k-header')?.offsetHeight || 0;
@@ -471,19 +520,24 @@
         }
       }
       buttons.forEach((button, index) => {
-        // A quantidade e os destinos vêm da lista; funciona com 3 a 6 capítulos.
         button.id = `${timeline.id}-capitulo-${index + 1}`;panels[index].id = `${button.id}-texto`;
         button.setAttribute('aria-controls', panels[index].id);panels[index].setAttribute('aria-labelledby', button.id);
         button.addEventListener('click', () => select(index));
         button.addEventListener('keydown', event => {
-          if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return;
-          event.preventDefault();select(index + (event.key === 'ArrowDown' ? 1 : -1), true);
+          const steps = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 };
+          let next;
+          if (event.key in steps) next = (index + steps[event.key] + chapters.length) % chapters.length;
+          else if (event.key === 'Home') next = 0;
+          else if (event.key === 'End') next = chapters.length - 1;
+          else return;
+          event.preventDefault();
+          if (!mobile.matches) buttons.forEach((item, i) => { item.tabIndex = i === next ? 0 : -1; });
+          buttons[next].focus({ preventScroll: true });
         });
       });
-      select(0, false, true);timeline.classList.add('is-timeline-ready');
+      select(0, true);timeline.classList.add('is-timeline-ready');
       mobile.addEventListener('change', () => {
-        // Reorganizar a tela não recomeça as animações de capítulo.
-        cache.forEach(scene => scene.classList.remove('is-playing'));placeStage();
+        cache.forEach(scene => scene.classList.remove('is-playing'));select(current, true);
       });
       reduced.addEventListener('change', () => {
         if (reduced.matches) {
@@ -496,17 +550,15 @@
       if ('IntersectionObserver' in window) {
         new IntersectionObserver(entries => {
           visible = entries.at(-1).isIntersecting;
-          if (visible && !currentScene) showScene(current);
+          if (visible) { prepareReading();if (!currentScene) showScene(current); }
           syncMotion();
-        }).observe(stage);
+        }).observe(timeline);
       } else {
-        showScene(current);currentScene?.classList.remove('is-playing');
-      } // Sem observador: cena final, sem loop.
+        prepareReading();showScene(current);currentScene?.classList.remove('is-playing');
+      }
       document.querySelectorAll('[data-story-demo]').forEach(control => {
         if (control.dataset.storyDemo !== timeline.id) return;
-        control.addEventListener('click', () => {
-          select(Number(control.dataset.storyIndex));stage.scrollIntoView({ block: 'center', behavior: 'instant' });
-        });
+        control.addEventListener('click', () => { select(Number(control.dataset.storyIndex));stage.scrollIntoView({ block: 'center', behavior: 'instant' }); });
       });
     });
   }

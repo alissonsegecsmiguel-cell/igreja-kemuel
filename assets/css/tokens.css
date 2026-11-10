@@ -126,12 +126,15 @@
   --give-mobile-breakpoint: 900px;
   --give-font-distance: var(--blog-font-distance);
   /* História: capítulos manuais, ilustrações autorizadas do protótipo aprovado. */
-  --timeline-columns: minmax(0, 5fr) minmax(0, 6fr);
+  --timeline-columns: minmax(0, 55fr) minmax(0, 45fr);
   --timeline-gap: var(--space-6);
   --timeline-sticky-top: calc(var(--header-height) + var(--space-4));
-  --timeline-breakpoint: 900px;
+  --timeline-breakpoint: 760px;
 
-  --timeline-lead-width: 44ch;
+  --timeline-reading-width: 60ch;
+  --timeline-reading-size: clamp(1.125rem, 1.1rem + .1vw, 1.1875rem);
+  --timeline-reading-font: var(--editorial-font);
+  --timeline-summary-lines: 2;
   --timeline-card-pad: var(--space-3);
   --timeline-card-gap: var(--space-3);
   --timeline-card-radius: var(--radius-md);
@@ -148,8 +151,6 @@
   --timeline-marker-top: calc(var(--timeline-card-pad) + var(--size-2xs));
   --timeline-marker-border: var(--border-width);
   --timeline-marker-halo: 0 0 0 5px var(--color-red-a16);
-  --timeline-pill-pad-y: var(--size-xs);
-  --timeline-pill-pad-x: var(--size-md);
   --timeline-stage-ratio: 4 / 3;
   --timeline-stage-bg: var(--color-surface-dark);
   --timeline-stage-radius: var(--radius-md);
@@ -175,8 +176,8 @@
   --timeline-zoom-start: 1.06;
   --timeline-scene-duration: 1600ms;
   --timeline-swap-duration: var(--duration-long);
-  --timeline-panel-duration: var(--duration-medium);
-  --timeline-panel-shift: var(--tooltip-offset);
+  --timeline-panel-duration: 400ms;
+  --timeline-panel-shift: 8px;
   --timeline-scene-rise: var(--enter-offset);
   --timeline-chair-duration: var(--duration-long);
   --timeline-chair-delay: var(--duration-medium);

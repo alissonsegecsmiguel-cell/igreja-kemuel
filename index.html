@@ -210,13 +210,61 @@
         </div>
       </div>
     </section>
+    <!-- timeline:start -->
     <section class="k-section k-section--black k-dark k-timeline" id="quem-somos" data-timeline aria-labelledby="quem-somos-titulo">
-      <div class="k-container k-timeline__layout">
-        <div class="k-timeline__intro">
-          <p class="k-eyebrow k-timeline__eyebrow" data-reveal>NOSSA HISTÓRIA</p>
-          <h2 class="k-timeline__title" id="quem-somos-titulo" data-reveal>Quem somos</h2>
-          <p class="k-timeline__lead" data-reveal>Uma comunidade de fé de portas abertas. <strong>Cada capítulo conta um pedaço do caminho até aqui.</strong></p>
-          <div class="k-timeline__stage-home" data-story-home>
+      <div class="k-container k-stack--large">
+        <header class="k-section-heading"><p class="k-eyebrow">NOSSA HISTÓRIA</p><h2 id="quem-somos-titulo">Quem somos</h2></header>
+        <div class="k-timeline__layout">
+          <div class="k-timeline__chapters">
+            <ol class="k-timeline__list" aria-label="Capítulos da história da igreja" data-story-chapters>
+            <li class="k-timeline-card is-active" data-story-chapter data-story-art="sala">
+              <span class="k-timeline-card__marker" aria-hidden="true"></span>
+              <button class="k-timeline-card__button" type="button" id="historia-botao-01" aria-controls="historia-texto-01"><span class="k-timeline-card__top"><span class="k-label k-timeline-card__label">Capítulo 01 · [ANO]</span></span><span class="k-timeline-card__title">Como tudo começou</span><span class="k-timeline-card__summary">Como a Kemuel nasceu em Iguatu e quem deu o primeiro passo.</span><span class="k-timeline-card__cta">Ler capítulo <span aria-hidden="true">→</span></span></button>
+              <!-- Fundação: conteúdo a substituir pela história real aprovada. -->
+              <article class="k-timeline-panel" id="historia-texto-01" aria-labelledby="historia-botao-01" data-story-panel>
+                <header class="k-timeline-panel__header"><p class="k-eyebrow k-timeline-panel__eyebrow">Capítulo 01 · Como tudo começou</p><h3 class="k-timeline-panel__title">Como tudo começou</h3></header>
+                <div class="k-timeline-panel__body"><p>[História da fundação: ano, quem começou, onde aconteciam os primeiros encontros e como a igreja chegou à Av. Dr. José Holanda Montenegro. Aguardando dados do pastor.]</p></div>
+                <div data-story-slot class="k-timeline-panel__stage"></div>
+              </article>
+            </li>
+            <li class="k-timeline-card" data-story-chapter data-story-art="predio">
+              <span class="k-timeline-card__marker" aria-hidden="true"></span>
+              <button class="k-timeline-card__button" type="button" id="historia-botao-02" aria-controls="historia-texto-02"><span class="k-timeline-card__top"><span class="k-label k-timeline-card__label">Capítulo 02</span></span><span class="k-timeline-card__title">No que cremos</span><span class="k-timeline-card__summary">A Bíblia como única regra de fé e uma igreja feita de gente transformada.</span><span class="k-timeline-card__cta">Ler capítulo <span aria-hidden="true">→</span></span></button>
+              <!-- Síntese da lição 10: adoção dos princípios batistas aguarda confirmação pastoral. -->
+              <article class="k-timeline-panel" id="historia-texto-02" aria-labelledby="historia-botao-02" data-story-panel>
+                <header class="k-timeline-panel__header"><p class="k-eyebrow k-timeline-panel__eyebrow">Capítulo 02 · No que cremos</p><h3 class="k-timeline-panel__title">No que cremos</h3></header>
+                <div class="k-timeline-panel__body"><p>A Bíblia é a nossa única regra de fé e prática. Entendemos a igreja como uma comunidade formada por pessoas regeneradas e batizadas por imersão, que vivem a fé em Jesus Cristo.</p><p>A igreja local é autônoma e tem governo democrático. Reconhecemos a competência de cada alma diante de Deus, com liberdade de consciência religiosa, e defendemos a separação entre igreja e Estado.</p><p>Cremos no sacerdócio universal dos crentes: cada pessoa pode se aproximar de Deus e participar do serviço cristão. Caminhamos em cooperação com outras igrejas de mesma fé e ordem, somando esforços na missão.</p></div>
+                <div data-story-slot class="k-timeline-panel__stage"></div>
+              </article>
+            </li>
+            <li class="k-timeline-card" data-story-chapter data-story-art="portas">
+              <span class="k-timeline-card__marker" aria-hidden="true"></span>
+              <button class="k-timeline-card__button" type="button" id="historia-botao-03" aria-controls="historia-texto-03"><span class="k-timeline-card__top"><span class="k-label k-timeline-card__label">Capítulo 03 · HOJE</span><span class="k-badge k-timeline-card__badge">HOJE</span></span><span class="k-timeline-card__title">Quem somos hoje</span><span class="k-timeline-card__summary">Uma igreja bíblica, acolhedora e presente em Iguatu. <span data-dado="cultos-timeline">Quintas 19h30, domingos 18h</span>.</span><span class="k-timeline-card__cta">Ler capítulo <span aria-hidden="true">→</span></span></button>
+              <!-- Visão integral da lição 10, página 56. Horários aplicados de dados/igreja.json. -->
+              <article class="k-timeline-panel" id="historia-texto-03" aria-labelledby="historia-botao-03" data-story-panel>
+                <header class="k-timeline-panel__header"><p class="k-eyebrow k-timeline-panel__eyebrow">Capítulo 03 · Quem somos hoje</p><h3 class="k-timeline-panel__title">Quem somos hoje</h3></header>
+                <div class="k-timeline-panel__body"><p>“Somos uma igreja bíblica, acolhedora, contemporânea, presente na cidade, evangelística. Queremos levar o evangelho da salvação às famílias perdidas e a mensagem de consolo aos cansados e oprimidos. E, como parte da Igreja de Cristo, vê-la restaurada em toda a sua plenitude, sob a autoridade do Espírito Santo, nestes tempos proféticos…”</p><p>Hoje nos reunimos <span data-dado="cultos-frase">às quintas-feiras, às 19h30, e aos domingos, às 18h</span>.</p></div>
+                <div data-story-slot class="k-timeline-panel__stage"></div>
+              </article>
+            </li>
+            <li class="k-timeline-card k-timeline-card--future" data-story-chapter data-story-art="horizonte">
+              <span class="k-timeline-card__marker" aria-hidden="true"></span>
+              <button class="k-timeline-card__button" type="button" id="historia-botao-04" aria-controls="historia-texto-04"><span class="k-timeline-card__top"><span class="k-label k-timeline-card__label">Capítulo 04</span></span><span class="k-timeline-card__title">O próximo capítulo</span><span class="k-timeline-card__summary">A próxima página dessa história pode ter o seu nome.</span><span class="k-timeline-card__cta">Ler capítulo <span aria-hidden="true">→</span></span></button>
+              <!-- Síntese da lição 9, páginas 52–54; sem promessa de cargo ou nomeação. -->
+              <article class="k-timeline-panel" id="historia-texto-04" aria-labelledby="historia-botao-04" data-story-panel>
+                <header class="k-timeline-panel__header"><p class="k-eyebrow k-timeline-panel__eyebrow">Capítulo 04 · O próximo capítulo</p><h3 class="k-timeline-panel__title">O próximo capítulo</h3></header>
+                <div class="k-timeline-panel__body"><p>Na Kemuel, há lugar para servir como membro, voluntário, líder, obreiro e pastor, conforme os dons e o chamado de cada pessoa, com preparo e acompanhamento da igreja. Esse caminho começa no Discipulado: aprender a fé, crescer em comunidade e descobrir como servir a Deus servindo pessoas.</p><div class="k-row"><a class="k-button" href="/discipulado">Conhecer o Discipulado</a><a class="k-button k-button--secondary" href="#visite">Planeje sua visita</a></div></div>
+                <div data-story-slot class="k-timeline-panel__stage"></div>
+              </article>
+            </li>
+            </ol>
+            <p class="k-timeline__hint">Use as setas para escolher um capítulo. Pressione Enter ou Espaço para ler.</p>
+            <p class="k-sr-only" role="status" aria-live="polite" aria-atomic="true" data-story-status></p>
+            <noscript><p class="k-timeline__hint">Sem JavaScript, todos os capítulos ficam disponíveis para leitura.</p></noscript>
+          </div>
+          <div class="k-timeline__reader"><div class="k-timeline__panel-home" data-story-home></div></div>
+        </div>
+        <div class="k-timeline__stage-storage" data-story-storage>
             <figure class="k-story-stage" data-story-stage>
               <div class="k-story-stage__canvas" data-story-canvas></div>
               <figcaption class="k-story-stage__caption"><strong data-story-title>Como tudo começou</strong><span data-story-number>Capítulo 01</span></figcaption>
@@ -281,47 +329,12 @@
     </svg></div>
   </div>
 </template>
-              <!-- story-scenes:end -->
+<!-- story-scenes:end -->
             </figure>
-          </div>
-        </div>
-        <div data-reveal>
-          <ol class="k-timeline__list" aria-label="Capítulos da história da igreja" data-story-chapters>
-            <li class="k-timeline-card is-active" data-story-chapter data-story-art="sala">
-              <!-- conteúdo a substituir pela história real. O que contar aqui: quem começou, onde se reuniam, como foi o primeiro culto. -->
-              <!-- Foto real futura: após instalar assets/img/historia/capitulo-01.webp, adicionar data-story-photo="img/historia/capitulo-01.webp" e data-story-alt descritivo a este li. -->
-              <span class="k-timeline-card__marker" aria-hidden="true"></span>
-              <button class="k-timeline-card__button" type="button" id="historia-botao-01" aria-expanded="true" aria-controls="historia-texto-01"><span class="k-timeline-card__top"><span class="k-eyebrow k-timeline-card__label">CAPÍTULO 01 · [ANO]</span></span><span class="k-timeline-card__title">Como tudo começou</span><span class="k-timeline-card__summary">Uma sala, algumas famílias e muita fé.</span></button>
-              <div class="k-timeline-card__panel" id="historia-texto-01" role="region" aria-labelledby="historia-botao-01"><div data-story-slot class="k-timeline-card__slot"></div><p class="k-timeline-card__text">Texto de exemplo: tudo começou com algumas famílias reunidas numa sala emprestada, com cadeiras de plástico e uma vontade grande de buscar a Deus juntas.</p></div>
-            </li>
-            <li class="k-timeline-card" data-story-chapter data-story-art="predio">
-              <!-- conteúdo a substituir pela história real. O que contar aqui: mudanças de lugar, a origem do nome Kemuel, os primeiros marcos. -->
-              <!-- Foto real futura: data-story-photo="img/historia/capitulo-02.webp" e data-story-alt descritivo, apenas depois de instalar o arquivo autorizado. -->
-              <span class="k-timeline-card__marker" aria-hidden="true"></span>
-              <button class="k-timeline-card__button" type="button" id="historia-botao-02" aria-expanded="true" aria-controls="historia-texto-02"><span class="k-timeline-card__top"><span class="k-eyebrow k-timeline-card__label">CAPÍTULO 02 · [ANO]</span></span><span class="k-timeline-card__title">Primeiros passos</span><span class="k-timeline-card__summary">Um lugar próprio e um nome para chamar de casa.</span></button>
-              <div class="k-timeline-card__panel" id="historia-texto-02" role="region" aria-labelledby="historia-botao-02"><div data-story-slot class="k-timeline-card__slot"></div><p class="k-timeline-card__text">Texto de exemplo: a igreja cresceu, mudou de endereço e ganhou o nome que carrega até hoje. Vieram os primeiros batismos e o louvor tomou forma.</p></div>
-            </li>
-            <li class="k-timeline-card" data-story-chapter data-story-art="portas">
-              <!-- conteúdo a substituir pela história real; horários confirmados preservados. O que contar aqui: os ministérios, o que marca a igreja hoje, como é estar com a gente. -->
-              <!-- Foto real futura: data-story-photo="img/historia/capitulo-03.webp" e data-story-alt descritivo, apenas depois de instalar o arquivo autorizado. -->
-              <span class="k-timeline-card__marker" aria-hidden="true"></span>
-              <button class="k-timeline-card__button" type="button" id="historia-botao-03" aria-expanded="true" aria-controls="historia-texto-03"><span class="k-timeline-card__top"><span class="k-eyebrow k-timeline-card__label">CAPÍTULO 03 · HOJE</span><span class="k-badge k-timeline-card__badge">HOJE</span></span><span class="k-timeline-card__title">Quem somos hoje</span><span class="k-timeline-card__summary"><span data-dado="cultos-curto">Quintas às 19h30 e domingos às 18h</span>, de portas abertas.</span></button>
-              <div class="k-timeline-card__panel" id="historia-texto-03" role="region" aria-labelledby="historia-botao-03"><div data-story-slot class="k-timeline-card__slot"></div><p class="k-timeline-card__text">Hoje nos reunimos <span data-dado="cultos-frase">às quintas-feiras, às 19h30, e aos domingos, às 18h</span>. Texto de exemplo: uma comunidade que recebe quem chega como família.</p></div>
-            </li>
-            <li class="k-timeline-card k-timeline-card--future" data-story-chapter data-story-art="horizonte">
-              <!-- conteúdo a substituir pela história real. O que contar aqui: os sonhos e os próximos passos da igreja. -->
-              <!-- Foto real futura: data-story-photo="img/historia/capitulo-04.webp" e data-story-alt descritivo, apenas depois de instalar o arquivo autorizado. -->
-              <span class="k-timeline-card__marker" aria-hidden="true"></span>
-              <button class="k-timeline-card__button" type="button" id="historia-botao-04" aria-expanded="true" aria-controls="historia-texto-04"><span class="k-timeline-card__top"><span class="k-eyebrow k-timeline-card__label">CAPÍTULO 04 · O QUE VEM PELA FRENTE</span></span><span class="k-timeline-card__title">O próximo capítulo</span><span class="k-timeline-card__summary">Ainda está sendo escrito.</span></button>
-              <div class="k-timeline-card__panel" id="historia-texto-04" role="region" aria-labelledby="historia-botao-04"><div data-story-slot class="k-timeline-card__slot"></div><p class="k-timeline-card__text">O próximo capítulo ainda está sendo escrito. E ele pode ter você.</p></div>
-            </li>
-          </ol>
-          <p class="k-timeline__hint">Use o mouse, o toque ou as setas do teclado para trocar de capítulo.</p>
-          <p class="k-sr-only" role="status" aria-live="polite" aria-atomic="true" data-story-status></p>
-          <noscript><p class="k-timeline__hint">Sem JavaScript, os quatro textos ficam disponíveis para leitura. Ilustrações e relatos são exemplos a validar.</p></noscript>
         </div>
       </div>
     </section>
+    <!-- timeline:end -->
     <section class="k-section k-blog-section" id="caminhada" data-reveal aria-labelledby="caminhada-titulo">
       <div class="k-container k-stack--large">
         <!-- blog-destaque:start -->
