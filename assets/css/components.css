@@ -125,7 +125,8 @@ h6, .k-h6 { font-size: var(--text-small); }
 .k-hero-led__title::before { content: ""; position: absolute; z-index: -1; inset-block: var(--hero-led-title-shade-bleed); left: var(--hero-led-center); width: var(--hero-led-text-shade-width); transform: translateX(var(--hero-led-center-shift)); background: var(--hero-led-title-shade); pointer-events: none; }
 .k-hero-led__title { position: relative; isolation: isolate; width: var(--hero-led-fill); font-size: var(--text-display); font-weight: var(--weight-heavy); line-height: var(--leading-heading); letter-spacing: var(--tracking-display); }
 .k-hero-led__title .k-lettering { font-size: var(--text-display); line-height: var(--leading-heading); margin-top: var(--space-1); }
-.k-hero-led__copy .k-hero__intro { margin: 0; font-size: var(--text-body-lg); line-height: var(--leading-label); }
+.k-hero-led__copy .k-hero__intro { margin: 0; color: var(--hero-led-subtitle-color); font-size: var(--text-body-lg); line-height: var(--leading-label); }
+.k-hero-led__title, .k-hero-led__title .k-lettering, .k-hero-led__copy .k-hero__intro { text-shadow: var(--hero-led-text-glow); }
 .k-hero-led__actions { justify-content: center; flex-wrap: nowrap; }
 .k-hero-led__actions .k-button { white-space: nowrap; }
 .k-hero-led__title .k-lettering { white-space: nowrap; }

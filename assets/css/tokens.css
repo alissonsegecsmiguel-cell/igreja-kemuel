@@ -624,7 +624,9 @@
   --hero-led-dot-feather: .3px;
   --hero-led-mesh-opacity: 1;
   --hero-led-scrim: rgba(0, 0, 0, .15); /* Leve: a proteção do texto é a sombra localizada. */
-  --hero-led-text-shade: radial-gradient(ellipse farthest-corner, rgba(0, 0, 0, .74) 0%, rgba(0, 0, 0, .64) 65%, rgba(0, 0, 0, .2) 90%, rgba(0, 0, 0, 0) 100%);
+  --hero-led-text-shade: radial-gradient(ellipse closest-side, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .32) 40%, rgba(0, 0, 0, .14) 70%, rgba(0, 0, 0, .04) 88%, rgba(0, 0, 0, 0) 100%);
+  --hero-led-text-glow: 0 2px 24px rgba(0, 0, 0, .65), 0 1px 3px rgba(0, 0, 0, .5);
+  --hero-led-subtitle-color: var(--color-on-dark); /* Branco do sistema: AA durante a passagem do âmbar. */
   --hero-led-text-shade-width: clamp(44rem, 74vw, 70rem);
   --hero-led-text-shade-bleed: var(--space-6);
   --hero-led-title-shade-bleed: calc(var(--text-display) * -.6);
