@@ -9,7 +9,8 @@ export function loadMaterials(root) {
   const { materiais } = JSON.parse(readFileSync(file, 'utf8'));
   if (!Array.isArray(materiais)) throw new Error('materiais.json: materiais precisa ser uma lista');
   for (const item of materiais) {
-    if (!item.titulo || !item.imagem || (!item.exemplo && (!item.arquivo || !item.nome_download))) throw new Error('Material sem título, capa ou download real');
+    if (!item.titulo || !item.imagem || (item.arquivo && !item.nome_download)) throw new Error('Material sem título, capa ou nome de download');
+    if (item.pagina && !item.chamada) throw new Error('Material com página precisa de chamada');
     for (const path of [item.imagem, item.imagem_640, item.arquivo].filter(Boolean)) {
       if (!/^assets\/[a-z0-9/_-]+\.(webp|pdf)$/.test(path) || !existsSync(join(root, path))) throw new Error(`Material: arquivo local inválido ou ausente: ${path}`);
     }
@@ -22,10 +23,24 @@ export function materialCards(materials, prefix = 'assets/', home = false) {
   const local = path => escape(path.replace(/^assets\//, prefix));
   return `<div class="k-materials-grid${home ? ' k-materials-grid--home' : ''}">${materials.map(item => {
     const course = item.formato === 'Curso externo';
-    const action = course ? 'Acessar curso' : 'Baixar PDF';
-    const url = item.exemplo ? course ? 'https://example.invalid/curso' : 'https://example.invalid/material' : local(item.arquivo);
-    const attrs = item.exemplo ? `data-example data-material-example${course ? ' target="_blank" rel="noopener noreferrer"' : ''}` : `download="${escape(item.nome_download)}"`;
-    return `<article class="k-material-card" data-material-category="${typeKey(item.tipo)}"><a class="k-material-card__link" href="${url}" ${attrs} aria-label="${action}: ${escape(item.titulo)}${item.exemplo ? ', material de exemplo' : ''}${course ? ', plataforma externa de exemplo' : ''}"><div class="k-material-card__art"><img class="k-material-card__cover" src="${local(item.imagem_640 || item.imagem)}" srcset="${local(item.imagem_640 || item.imagem)} 640w, ${local(item.imagem)} 1280w" sizes="(min-width: 56.25rem) 30vw, ${home ? '66vw' : '90vw'}" width="${item.imagem_largura}" height="${item.imagem_altura}" loading="lazy" decoding="async" alt="${escape(item.imagem_alt || 'Capa da apostila ' + item.titulo)}"><span class="k-cover-title">${escape(item.titulo_capa)}</span>${item.exemplo ? '<span class="k-material-card__badge k-badge k-badge--neutral">Exemplo</span>' : ''}</div><div class="k-material-card__body"><p class="k-label">${escape(item.tipo)} · Nº ${escape(item.numero)}</p><h3 class="k-material-card__title">${escape(item.titulo)}</h3><p class="k-body-sm k-muted">${escape(item.descricao)}</p><span class="k-material-card__action">${action}<svg class="k-icon k-icon--small" aria-hidden="true"><use href="#${course ? 'k-external' : 'k-download'}"/></svg><span class="k-caption k-muted">${escape(item.formato)}${item.tamanho ? ' · '+escape(item.tamanho) : ''}</span></span></div></a><details class="k-material-card__credits"><summary class="k-caption">Crédito da imagem</summary><p class="k-caption k-muted">${escape(item.credito)}</p></details></article>`;
+    const image = `<img class="k-material-cover__image" src="${local(item.imagem_640 || item.imagem)}" srcset="${local(item.imagem_640 || item.imagem)} 640w, ${local(item.imagem)} 1280w" sizes="(min-width: 56.25rem) 30vw, ${home ? '80vw' : '90vw'}" width="${item.imagem_largura}" height="${item.imagem_altura}" loading="lazy" decoding="async" alt="${escape(item.imagem_alt || 'Capa da apostila ' + item.titulo)}">`;
+    // Capa real (apostila já diagramada) vai inteira; as demais seguem o modelo de capa de apostila.
+    const cover = item.capa_real
+      ? `<div class="k-material-cover k-material-cover--real">${image}</div>`
+      : `<div class="k-material-cover"><div class="k-material-cover__top"><img class="k-material-cover__logo" src="${local('assets/brand/logo-horizontal-escuro.svg')}" alt="" width="120" height="44"><span class="k-material-cover__type">${escape(item.tipo)}</span></div><div class="k-material-cover__window">${image}</div><div class="k-material-cover__bottom"><span class="k-material-cover__title">${escape(item.titulo_capa)}</span><span class="k-material-cover__number">Nº ${escape(item.numero)}</span></div></div>`;
+    // Metadados só com os campos existentes; nada de páginas ou tamanho inventados.
+    const parts = item.metadados ? [item.metadados] : [item.formato, item.paginas ? `${item.paginas} páginas` : '', item.tamanho || ''].filter(Boolean);
+    const meta = `<p class="k-material-card__meta"><svg class="k-icon k-icon--small" aria-hidden="true"><use href="#k-document"/></svg><span>${parts.map(escape).join(' · ')}${item.exemplo ? ' · <span class="k-material-card__example">Exemplo</span>' : ''}</span></p>`;
+    const text = `<h3 class="k-material-card__title">${escape(item.titulo)}</h3><p class="k-material-card__description">${escape(item.descricao)}</p>`;
+    const credits = `<details class="k-material-card__credits"><summary class="k-caption">Crédito da imagem</summary><p class="k-caption k-muted">${escape(item.credito)}</p></details>`;
+    const category = `data-material-category="${typeKey(item.tipo)}"`;
+    if (item.pagina) {
+      return `<article class="k-material-card k-material-card--page" ${category}><a class="k-material-card__link" href="${escape(item.pagina)}">${cover}${meta}${text}<span class="k-button k-button--secondary k-material-card__button">${escape(item.chamada)}<svg class="k-icon" aria-hidden="true"><use href="#k-arrow"/></svg></span></a>${credits}</article>`;
+    }
+    const action = item.arquivo
+      ? `<a class="k-button k-button--secondary k-material-card__button" href="${local(item.arquivo)}" download="${escape(item.nome_download)}">Baixar PDF<svg class="k-icon" aria-hidden="true"><use href="#k-download"/></svg><span class="k-sr-only">: ${escape(item.titulo)}</span></a>`
+      : `<button class="k-button k-button--secondary k-material-card__button" type="button" aria-disabled="true">Em breve<span class="k-sr-only">: ${escape(item.titulo)}${course ? ', curso' : ''}</span></button>`;
+    return `<article class="k-material-card" ${category}>${cover}${meta}${text}${action}${credits}</article>`;
   }).join('')}</div>`;
 }
 

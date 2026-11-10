@@ -66,21 +66,25 @@
   /* Materiais: capas naturais e composição editorial em cinza-pedra. */
   --materials-surface: #e9e7e2;
 
-  --materials-title-indent: var(--space-4);
   --materials-title-leading: var(--leading-heading);
   --materials-header-width: 54rem;
   --materials-copy-width: 38rem;
   --materials-gap: var(--space-4);
-  --materials-stagger-start: var(--space-4);
-  --materials-stagger-end: var(--space-6);
-  --materials-cover-tall: 3 / 4;
-  --materials-cover-short: 1 / 1;
-  --materials-mobile-card: 66%;
+  --materials-mobile-card: 80%;
+  --materials-cover-ratio: 1 / 1.414; /* Folha A4 em pé, igual em todos os cards. */
+  --materials-cover-paper: var(--paper-warm);
+  --materials-cover-pad: var(--space-3);
+  --materials-cover-window: 55%;
+  --materials-cover-logo: var(--size-xl);
+  --materials-sheet-offset: 4px; /* Bordas finas deslocadas: páginas empilhadas. */
+  --materials-sheet-rule: var(--border-width) solid var(--color-border-control);
+  --materials-cover-shadow: 0 4px 10px rgba(0, 0, 0, .12);
+  --materials-cover-shadow-hover: 0 10px 22px rgba(0, 0, 0, .16);
+  --materials-cover-lift: 4px;
+  --materials-hover-duration: 400ms; /* Pedido da tarefa 14 para o hover da capa. */
+  --materials-description-lines: 2;
 
-  --materials-cover-scrim: linear-gradient(to bottom, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, .82) 65%, rgba(0, 0, 0, .94) 100%);
-  --materials-title-area: 45%;
   --materials-image-contrast: contrast(1.03);
-  --materials-hover-scale: 1.03;
   --materials-font-distance: var(--blog-font-distance);
   /* Contribua: atmosfera restrita à fotografia e metas declaradamente fictícias. */
 
