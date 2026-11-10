@@ -2,6 +2,8 @@
 
 ## 1. Última sessão
 
+- 09/11/2026 (fila 04, ajuste): conteudo/ fora do deploy. Os .md dos posts estavam sendo servidos em /conteudo/blog/; vão só para o Git, e o site publica apenas blog/*.html.
+
 - 09/11/2026 (fila 04): modelo de post no estilo de leitura do NYT (k-article), fluxo de conversão e 5 posts de exemplo. Rascunhos em textos-blog/ (privado) convertidos por scripts/converter-post.mjs (.md e .docx, ignorando o texto cinza do modelo) em conteudo/blog/*.md e imagens .webp; scripts/montar-paginas.mjs gera blog/[slug].html e dados/posts.json. Capa em colagem (k-collage-cover) criada para as listas. Testes por servidor local nos 5 posts em 1440x900 e 390x844: coluna de cerca de 65 caracteres, Newsreader 20/18 px, barra de progresso, legenda e crédito, aviso de exemplo, copiar link e WhatsApp, Leia também, contraste AA, só a barra em vermelho, sem erros.
 
 - 09/11/2026 (fila 03): logo redesenhado em vetor (provisório), com versões horizontal, empilhada e símbolo, claras e escuras, em assets/brand/, e PNG 1200x630 para og:image. Aplicado no cabeçalho (SVG interno, tinta segue a cor do cabeçalho: branco sobre a hero, preto no sólido, troca de 140ms), no rodapé (empilhado claro) e nos ícones de 180, 192 e 512 px. Nenhum “LOGO” restante. Seção “Logo” no design system com versões, respiro, tamanho mínimo, fundos e usos proibidos. Folha de comparação em relatorios/kemuel-logo/. Testes por servidor local em 1440x900, 1366x768, 390x844 e 360x740 e primeira dobra em 14 telas: sem erros, logo nas duas variantes, rodapé empilhado.
