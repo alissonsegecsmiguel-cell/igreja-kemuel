@@ -2,6 +2,7 @@
 
 ## 1. Última sessão
 
+- 10/11/2026 (Codex, fila 06): diagnóstico confirmou fluxo de posts, cinco textos completos, k-article, índice gerado, créditos e componentes da dobra 05. Portal não alterado: downloads de dois originais distintos da Bíblia Morgan no Wikimedia Commons responderam HTTP 403; busca de obras do Met respondeu HTTP 410. Licenças públicas dos dois arquivos conferidas nas páginas do Commons. Sem contornar recusas, sem imagens substitutas inadequadas e sem mudanças de produto para descartar. Tarefa registrada no Backlog; fila continua pela 07, independente.
 - 10/11/2026 (retomada Codex, fila 05): concluída a implementação da dobra editorial de blog deixada sem commit pelo Claude Code. k-blog-header, k-blog-filter, k-blog-card e k-blog-note, cinco cards estáticos gerados dos posts, filtros por categoria, contagens que ignoram em_breve, capas 480/960 com lazy/srcset e faixa com scroll-snap no celular. Corrigida sobreposição entre categoria e selo; primeira dobra e faixa de materiais preservadas. Montagem idempotente e testes de mouse, toque, Enter/Espaço, foco por Tab, links, selos, contraste AA e ausência de erros/rolagem horizontal nos quatro tamanhos solicitados.
 - Lighthouse 13.6 móvel simulado, medianas de três rodadas: antes 99 / LCP 1.672ms / TBT 53ms; depois final 98 / LCP 1.670ms / TBT 115ms / CLS 0. Primeira medição da implementação retomada: 94 / 1.675ms / 249ms. O carregamento adiado do itálico reduziu a transferência inicial de 378.867 para 312.236 bytes; baseline anterior 296.396 bytes. Variação residual de CPU registrada, sem alegar ganho sobre o baseline. Relatórios em relatorios/fila/.
 
@@ -50,7 +51,7 @@
 
 ## 5. Backlog
 
-- Vazio.
+- Fila 06 — portal do blog e dez capas “em breve”: pausada por indisponibilidade das fontes de imagem autorizadas nesta sessão (originais Morgan no Commons: HTTP 403; API de busca do Met: HTTP 410). Risco: publicar imagens sem download/licença verificável ou trocar por obras que não são iluminuras do tema. Como retomar: obter os dez originais autorizados e suas páginas de licença por acesso permitido, então executar 06-blog-pagina-portal.md; nenhuma implementação parcial ficou no site. Arquivos de diagnóstico em relatorios/fila/06-relatorio.md. Decisão de seguir a próxima independente conforme a regra da fila, sem alterar a dobra 05.
 
 ## 6. Pendências que dependem de pessoas
 
