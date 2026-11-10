@@ -1,16 +1,12 @@
 # Fontes da Igreja Kemuel
 
-Fontes gratuitas sob SIL Open Font License 1.1. Dois WOFF2 variáveis originais do Google Fonts e um derivado estático da Outfit, hospedados localmente. Nenhuma fonte veio de referencias/.
+Opção A, tarefa 11: três famílias locais, SIL OFL 1.1, font-display: swap, sem síntese. Nenhuma fonte veio de referencias/.
 
-- **Outfit**: títulos, pesos variáveis 400–800. Formas geométricas e peso forte aproximam o caráter observado no lettering da marca, sem recriar o logo. Licença completa em outfit-OFL.txt.
-- **Public Sans**: texto e interface, pesos variáveis 400–700. Desenho neutro e diferenciação clara de caracteres para leitura longa e controles. Licença completa em publicsans-OFL.txt.
-- **Outfit Kemuel Static**: derivado da Outfit no mesmo peso 800, somente para o lettering vazado da hero. Os contornos sobrepostos e as auto-interseções foram unidos com fontTools/skia-pathops; as métricas horizontais foram preservadas. Não possui eixos variáveis. Os nomes internos foram alterados para identificar o derivado. Licença completa em outfit-static-OFL.txt, com os avisos de autoria originais preservados.
+- Outfit 600/800: títulos e números; arquivo variável restrito a 600–800, CSS usa somente 600 e 800. Licença outfit-OFL.txt.
+- Public Sans 400/600: texto curto e interface; arquivo restrito a 400–600, CSS usa somente 400 e 600. Licença publicsans-OFL.txt.
+- Newsreader: normal variável 300–600; CSS usa 300/400 e 600 somente nos títulos de post. Itálica estática 400, sem eixo variável. Leitura longa, Bíblia, citações e destaque itálico. Licença newsreader-OFL.txt. opsz preservado em 16.
+- Outfit Kemuel Static 800: derivado com contornos unidos, exclusivamente no lettering vazado da hero; métricas preservadas, licença outfit-static-OFL.txt. É a Outfit, não uma quarta família de identidade.
 
-Subconjunto latino, incluindo os caracteres portugueses. Sem itálico sintetizado. Carregamento por @font-face e font-display: swap em assets/css/tokens.css. Os dois WOFF2 variáveis somam 59.124 bytes; o tamanho e o hash do derivado estático também estão em fontes.json. A fonte estática não é usada no restante da tipografia.
+Os cinco WOFF2 somam 140.532 bytes (antes: seis, 222.220 bytes). Removidas Anton e sua licença; removido arquivo itálico variável da Newsreader, substituído pela instância 400. Variáveis originais reduzidas com fontTools 4.68.0, a partir dos arquivos locais licenciados. Licenças OFL preservadas. Originais e diagnóstico em relatorios/tipografia/, fora do Git/deploy; fontes de pesquisa nunca copiadas.
 
-Origem, respostas CSS e SHA-256 dos binários em fontes.json. Fontes obtidas do serviço oficial Google Fonts, licenças do repositório oficial google/fonts:
-
-- https://github.com/google/fonts/tree/main/ofl/outfit
-- https://github.com/google/fonts/tree/main/ofl/publicsans
-
-O carregamento da página usa exclusivamente os arquivos locais; os endereços acima são documentação de procedência.
+Hashes e eixos em fontes.json. Procedência original: repositório oficial google/fonts, diretórios ofl/outfit, ofl/publicsans e ofl/newsreader. Essas URLs documentam procedência; o site não faz requisições externas de fonte.

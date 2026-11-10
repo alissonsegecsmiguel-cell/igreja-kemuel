@@ -11,7 +11,10 @@ Regras fixas do projeto do site da Igreja Kemuel.
 - A Vercel está conectada à main. Todo push na main vai para o ar em igrejakemuel.com.br.
 - O index.html é a página principal em construção, com marcadores entre colchetes visíveis e meta robots noindex até o lançamento.
 - Os tokens e estilos compartilhados ficam em arquivos próprios (por exemplo assets/css/), nunca só dentro do design_system.html, porque ele não vai para o ar.
-- Famílias autorizadas: Outfit (títulos e números), Public Sans (texto e interface), Anton (terceira família, somente títulos grandes condensados em caixa alta) e Newsreader (quarta família, restrita à visita editorial, às páginas da Bíblia, a citações, aos títulos e ao texto dos posts do blog e a palavras de destaque em itálico em títulos editoriais). A vaga serifada está ocupada; nenhuma quinta família pode entrar. Preservar a Bíblia já publicada.
+- Tipografia oficial (opção A, tarefa 11): Outfit 600/800 para títulos e números; Public Sans 400/600 para texto curto e interface; Newsreader 300/400, itálico 400 e 600 somente nos títulos de post. Lettering vazado: derivado Outfit Kemuel Static 800. Anton removida. Esta decisão substitui as regras anteriores de quatro famílias.
+- Combinação tipográfica: no máximo 2 famílias por dobra, além dos rótulos em caixa alta; no máximo um destaque em itálico por título. Nenhum peso, tamanho ou espaçamento fora dos tokens. Nenhuma família nova sem autorização do Alisson.
+- Ressalva da aplicação da tarefa 11, para revisão: blocos editoriais que exigem simultaneamente título Outfit, apoio Public Sans e citação/Bíblia/destaque Newsreader conservam esses papéis explícitos e podem reunir as três famílias. Não considerar o limite agregado de duas famílias atendido nesses blocos; conflito e escolha registrados no HANDOFF.
+- Escala única: --text-caption, --text-small, --text-body, --text-body-lg, --text-h5, --text-h4, --text-h3, --text-h2, --text-h1 e --text-display (hero/versículo). Rótulos: Public Sans 600, caption, tracking .14em, caixa alta; seções Outfit 800/h2, cards Outfit 600/h5 e números Outfit 800/tabular-nums.
 
 ## Segurança (repositório público)
 

@@ -7,7 +7,7 @@
   font-family: "Outfit";
   src: url("../fonts/outfit-latin-variable.woff2") format("woff2");
   font-style: normal;
-  font-weight: 400 800;
+  font-weight: 600 800;
   font-display: swap;
 }
 @font-face {
@@ -22,37 +22,34 @@
   font-family: "Public Sans";
   src: url("../fonts/publicsans-latin-variable.woff2") format("woff2");
   font-style: normal;
-  font-weight: 400 700;
+  font-weight: 400 600;
   font-display: swap;
 }
 
 /* Newsreader: Google Fonts / Production Type, SIL OFL 1.1. Uso editorial restrito.
-   Subconjunto latino, pesos variáveis 200–800; opsz fixado em 16 para leitura/peso. */
+   Subconjunto latino, normal variável 300–600, itálica estática 400; opsz fixado em 16 para leitura/peso. */
 @font-face {
   font-family: "Newsreader";
   src: url("../fonts/newsreader-latin-variable.woff2") format("woff2");
   font-style: normal;
-  font-weight: 200 800;
+  font-weight: 300 600;
   font-display: swap;
 }
 @font-face {
   font-family: "Newsreader";
-  src: url("../fonts/newsreader-latin-italic-variable.woff2") format("woff2");
+  src: url("../fonts/newsreader-latin-italic-400.woff2") format("woff2");
   font-style: italic;
-  font-weight: 200 800;
-  font-display: swap;
-}
-
-/* Anton: Google Fonts / The Anton Project Authors, SIL OFL 1.1, latino. */
-@font-face {
-  font-family: "Anton";
-  src: url("../fonts/anton-latin.woff2") format("woff2");
-  font-style: normal;
   font-weight: 400;
   font-display: swap;
 }
 
 :root {
+  --weight-light: 300;
+  --case-label: uppercase;
+  --case-natural: none;
+  --hero-led-word-scale: calc(var(--hero-led-word-size) / var(--text-display));
+  --leading-medium: 1.25;
+  --text-small: clamp(.875rem, .84rem + .14vw, 1rem);
   /* Busca própria: resultados, combobox e ajuda; nenhuma nova família/cor. */
   --search-debounce: 120ms; /* Espera de digitação, não animação. */
   --search-suggestions: 5;
@@ -68,9 +65,9 @@
   --discipleship-lesson-columns: var(--space-5) minmax(0, 1fr);
   /* Materiais: capas naturais e composição editorial em cinza-pedra. */
   --materials-surface: #e9e7e2;
-  --materials-title-size: clamp(1.875rem, 5.2vw, 5rem);
-  --materials-title-indent: clamp(2rem, 8vw, 8rem);
-  --materials-title-leading: 1.04;
+
+  --materials-title-indent: var(--space-4);
+  --materials-title-leading: var(--leading-heading);
   --materials-header-width: 54rem;
   --materials-copy-width: 38rem;
   --materials-gap: var(--space-4);
@@ -79,15 +76,14 @@
   --materials-cover-tall: 3 / 4;
   --materials-cover-short: 1 / 1;
   --materials-mobile-card: 66%;
-  --materials-cover-title: clamp(2.125rem, 4vw, 4.25rem);
-  --materials-card-title: clamp(1.375rem, 2vw, 1.875rem);
+
   --materials-cover-scrim: linear-gradient(to bottom, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, .82) 65%, rgba(0, 0, 0, .94) 100%);
-  --materials-title-area: 35%;
+  --materials-title-area: 45%;
   --materials-image-contrast: contrast(1.03);
   --materials-hover-scale: 1.03;
   --materials-font-distance: var(--blog-font-distance);
   /* Contribua: atmosfera restrita à fotografia e metas declaradamente fictícias. */
-  --give-title-size: clamp(2.5rem, 5.8vw, 5.5rem);
+
   --give-title-width: 17ch;
   --give-intro-width: 60rem;
   --give-copy-width: var(--reading);
@@ -104,7 +100,7 @@
   --give-coin-max-tilt: 6;
   --give-coin-glow: radial-gradient(ellipse, rgba(179, 140, 88, .24), rgba(179, 140, 88, 0) 70%);
   --give-coin-glow-inset: -15%;
-  --give-quote-size: clamp(1.75rem, 3.2vw, 3rem);
+
   --give-reason-delay-second: var(--duration-short);
   --give-reason-delay-third: var(--duration-medium);
   --give-goal-radius: var(--radius-md);
@@ -119,13 +115,13 @@
   --give-art-glow-high: 1;
   --give-art-mesh: radial-gradient(circle, var(--color-black) var(--timeline-mesh-radius), transparent calc(var(--timeline-mesh-radius) + var(--timeline-mesh-feather)));
   --give-art-mesh-pitch: var(--timeline-mesh-pitch);
-  --give-percent-size: clamp(2.25rem, 4vw, 3rem);
+
   --give-progress-height: 6px;
   --give-progress-track: var(--color-border);
   --give-progress-tick: var(--color-text-muted);
   --give-progress-duration: var(--duration-long);
   --give-progress-stagger: var(--duration-short);
-  --give-pix-key-size: clamp(1.25rem, 1.8vw, 1.75rem);
+
   --give-copy-feedback-hold: 2400ms; /* Estado de confirmação, não duração de movimento. */
   --give-mobile-breakpoint: 900px;
   --give-font-distance: var(--blog-font-distance);
@@ -134,7 +130,7 @@
   --timeline-gap: var(--space-6);
   --timeline-sticky-top: calc(var(--header-height) + var(--space-4));
   --timeline-breakpoint: 900px;
-  --timeline-title-size: clamp(2.5rem, 5.4vw, 4.25rem);
+
   --timeline-lead-width: 44ch;
   --timeline-card-pad: var(--space-3);
   --timeline-card-gap: var(--space-3);
@@ -201,10 +197,10 @@
   --paper-grain: radial-gradient(circle, rgba(0, 0, 0, .025) .45px, transparent .75px), radial-gradient(circle, rgba(0, 0, 0, .02) .4px, transparent .7px);
   --paper-grain-size: 3px 3px, 5px 5px;
   --paper-grain-position: 0 0, 1px 2px;
-  --spec-font-accent: "Anton", "Arial Narrow", sans-serif;
-  --spec-title-size: clamp(2.125rem, 10vw, 4rem);
-  --spec-title-leading: 1;
-  --spec-title-tracking: -.015em;
+
+
+  --spec-title-leading: var(--leading-heading);
+  --spec-title-tracking: var(--tracking-heading);
   --spec-eyebrow-color: var(--color-red-hover); /* Texto AA sobre papel quente. */
   --spec-label-color: var(--color-text-muted);
   --spec-columns: minmax(0, 45fr) minmax(0, 55fr);
@@ -257,15 +253,13 @@
 
   --editorial-font: "Newsreader", "Georgia", serif;
   --editorial-font-fallback: "Georgia", serif;
-  --editorial-weight-light: 200;
+
   --editorial-weight-body: 300;
   --editorial-weight-normal: var(--weight-regular);
-  --editorial-weight-bold: var(--weight-bold);
-  --editorial-opening-size: clamp(1rem, 1.65vw, 1.5rem);
-  --editorial-phrase-size: clamp(1.875rem, 3.8vw, 3.5rem);
-  --editorial-body-size: clamp(1.125rem, 1.55vw, 1.375rem);
-  --editorial-leading: 1.15;
-  --editorial-body-leading: 1.5;
+
+
+  --editorial-leading: var(--leading-heading);
+  --editorial-body-leading: var(--leading-body);
   --editorial-tracking: -.025em;
   --editorial-columns: minmax(0, .85fr) minmax(0, 1.15fr);
   --editorial-rule-gap: var(--space-3);
@@ -278,8 +272,7 @@
   --bible-page-bg: #faf7ef;
   --bible-page-edge: #d8d0bf;
   --bible-page-rule: #a79d88;
-  --bible-page-title: clamp(2rem, 3.2vw, 3rem);
-  --bible-time-size: clamp(2.75rem, 4vw, 4rem);
+
   --bible-cover: var(--color-surface-dark);
   --bible-cover-edge: var(--color-black);
   --bible-cover-radius: var(--radius-sm);
@@ -365,34 +358,31 @@
   --font-lettering: "Outfit Kemuel Static", "Arial", sans-serif;
   --font-body: "Public Sans", "Arial", sans-serif;
   --weight-regular: 400;
-  --weight-medium: 500;
+
   --weight-semibold: 600;
-  --weight-bold: 700;
+
   --weight-heavy: 800;
-  --text-display: clamp(3.75rem, 8.5vw, 8.5rem);
-  --text-h1: clamp(2.75rem, 5.2vw, 5rem);
-  --text-h2: clamp(2.125rem, 3.8vw, 3.5rem);
-  --text-h3: clamp(1.75rem, 2.5vw, 2.5rem);
-  --text-h4: clamp(1.375rem, 1.9vw, 1.875rem);
-  --text-h5: clamp(1.1875rem, 1.5vw, 1.5rem);
-  --text-h6: clamp(1.0625rem, 1.2vw, 1.125rem);
-  --text-body-lg: clamp(1.125rem, 1.5vw, 1.375rem);
-  --text-body: clamp(1rem, 1.1vw, 1.0625rem);
-  --text-body-sm: clamp(.875rem, 1vw, .9375rem);
-  --text-caption: clamp(.75rem, .9vw, .8125rem);
-  --text-label: clamp(.8125rem, 1vw, .875rem);
-  --text-eyebrow: clamp(.6875rem, .9vw, .75rem);
-  --text-schedule-time: clamp(2.25rem, 3.4vw, 3rem);
-  --text-quote: clamp(1.5rem, 3vw, 2.5rem);
-  --leading-display: 1.02;
-  --leading-heading: 1.12;
-  --leading-body: 1.65;
-  --leading-label: 1.4;
+  --text-display: clamp(2.25rem, min(9vw, 7svh), 5rem);
+  --text-h1: clamp(2rem, 1.5rem + 2vw, 3.75rem);
+  --text-h2: clamp(1.75rem, 1.35rem + 1.65vw, 3rem);
+  --text-h3: clamp(1.625rem, 1.3rem + 1.2vw, 2.5rem);
+  --text-h4: clamp(1.375rem, 1.2rem + .7vw, 1.875rem);
+  --text-h5: clamp(1.1875rem, 1.09rem + .4vw, 1.5rem);
+
+  --text-body-lg: clamp(1.125rem, 1.04rem + .3vw, 1.375rem);
+  --text-body: clamp(1rem, .95rem + .2vw, 1.125rem);
+
+  --text-caption: clamp(.75rem, .70rem + .16vw, .875rem);
+
+  --leading-display: 1.05;
+  --leading-heading: 1.1;
+  --leading-body: 1.6;
+  --leading-label: 1.6;
   --tracking-display: -.015em;
   --tracking-heading: -.035em;
   --tracking-body: 0em;
-  --tracking-label: .06em;
-  --tracking-eyebrow: .18em;
+  --tracking-label: .14em;
+  --tracking-eyebrow: .14em;
 
   --space-1: clamp(.375rem, .5vw, .5rem);
   --space-2: clamp(.75rem, 1vw, 1rem);
@@ -466,22 +456,21 @@
   --card-compact-thumb: 6.5rem; /* Imagem do card horizontal no celular. */
   /* Post do blog (k-article): leitura em coluna, Newsreader no texto. */
   --article-measure: 60ch; /* Na Newsreader, 60ch dá cerca de 65 caracteres por linha (medido). */
-  --article-body-size: clamp(1.125rem, 1.05rem + .35vw, 1.25rem); /* 18 px no celular, 20 px no computador. */
-  --article-leading: 1.6;
+
+  --article-leading: var(--leading-body);
   --article-paragraph-gap: 1.1em;
-  --article-title-size: clamp(2.25rem, 1.55rem + 2.8vw, 3.5rem);
-  --article-title-leading: 1.08;
+
+  --article-title-leading: var(--leading-heading);
   --article-title-tracking: -.01em;
-  --article-dek-size: clamp(1.25rem, 1.12rem + .55vw, 1.5rem);
-  --article-dek-leading: 1.4;
+
+  --article-dek-leading: var(--leading-body);
   --article-dek-color: #3d3d3d; /* Cinza escuro: 11,4:1 sobre branco. */
-  --article-h2-size: clamp(1.375rem, 1.22rem + .7vw, 1.75rem);
-  --article-quote-size: clamp(1.375rem, 1.18rem + .9vw, 1.875rem);
-  --article-quote-leading: 1.35;
+
+  --article-quote-leading: var(--leading-medium);
   --article-block-gap: 1.6em;
   --article-rule: var(--color-border);
   --article-media-bleed: clamp(0rem, 4vw - 1rem, 4rem); /* Capa um pouco mais larga que a coluna. */
-  --article-related-size: clamp(1.125rem, 1.05rem + .3vw, 1.25rem);
+
   --article-progress-height: 2px;
   --article-progress-z: 60; /* Acima do cabeçalho fixo. */
   /* Capa em colagem (k-collage-cover): só nas listas do blog. */
@@ -496,7 +485,7 @@
   --collage-shadow: var(--shadow-soft);
   --collage-tag-max: 52%; /* A etiqueta quebra linha antes de encostar no selo. */
   /* Dobra de blog (k-blog-*): composição editorial da referência de colagem. */
-  --blog-title-size: clamp(2.25rem, 1.3rem + 3.6vw, 4.25rem);
+
   --blog-title-leading: 1.04;
   --blog-title-tracking: -.025em;
   --blog-title-width: 18ch;
@@ -509,7 +498,7 @@
   --blog-columns: 5;
   --blog-gap: var(--space-3);
   --blog-mobile-card: 66%; /* Um card e meio visível no celular. */
-  --blog-card-title: clamp(1.125rem, 1rem + .4vw, 1.375rem);
+
   --blog-arrow-size: 2.25rem;
   --blog-lift: 4px;
   --blog-shift: 6px; /* Deslocamento das formas da colagem no hover. */
@@ -517,7 +506,7 @@
   --blog-badge-reserve: 6rem; /* Selo EXEMPLO e intervalo; categoria nunca passa por baixo. */
   --blog-font-distance: 600px; /* Preparar o itálico fora do carregamento inicial da hero. */
   /* Portal claro: a dobra da inicial conserva seus próprios tokens. */
-  --blog-verse-size: clamp(1.75rem, 1.2rem + 2vw, 3rem);
+
   --blog-verse-width: 47.5rem;
   --blog-search-width: 45rem;
   --blog-search-height: 3.75rem;
@@ -525,7 +514,7 @@
   --blog-portal-columns: minmax(0, 2fr) minmax(0, 1fr);
   --blog-feature-height: clamp(29rem, 44vw, 36rem);
   --blog-feature-scrim: linear-gradient(to bottom, rgba(0, 0, 0, .82), rgba(0, 0, 0, .96));
-  --blog-feature-title: clamp(1.75rem, 1rem + 2vw, 3rem);
+
   --blog-thumb-width: clamp(5.25rem, 13vw, 12rem);
   --blog-recommended-thumb: 6rem;
   --blog-recommended-card: 72%;
@@ -542,14 +531,12 @@
   /* Hero LED: geometria e transparências decorativas; nenhum novo matiz. */
   --hero-led-min-height: 100svh;
   --hero-led-word-size: clamp(4.25rem, 22vw, 24rem); /* KEMUEL mede 4,005em: largura máxima de 88vw. */
-  --hero-led-title-size: clamp(1.5rem, min(9vw, 7svh), 5rem); /* Considera largura e altura. */
-  --hero-led-outline-size: clamp(1.875rem, min(11vw, 9svh), 6.5rem);
-  --hero-led-intro-size: clamp(.9375rem, min(2.2svh, 4vw), 1.375rem);
+
   --hero-led-pad-y: clamp(.5rem, 2.4svh, 2rem);
   --hero-led-gap: clamp(.5rem, 2.2svh, 1.5rem);
   --hero-led-schedule-pad: clamp(.375rem, 1.1svh, .875rem);
   --hero-led-schedule-gap: clamp(.125rem, .5svh, .375rem);
-  --hero-led-schedule-time: clamp(1.375rem, 3.6svh, 2.5rem);
+
   --hero-led-word-top: 38%;
   --hero-led-word-center: var(--hero-led-word-top);
   --hero-led-word-color: rgba(255, 255, 255, .72); /* Cinza dos pontos em repouso. */
@@ -564,7 +551,7 @@
   --hero-led-text-shade: radial-gradient(ellipse farthest-corner, rgba(0, 0, 0, .74) 0%, rgba(0, 0, 0, .64) 65%, rgba(0, 0, 0, .2) 90%, rgba(0, 0, 0, 0) 100%);
   --hero-led-text-shade-width: clamp(44rem, 74vw, 70rem);
   --hero-led-text-shade-bleed: var(--space-6);
-  --hero-led-title-shade-bleed: calc(var(--hero-led-title-size) * -.6);
+  --hero-led-title-shade-bleed: calc(var(--text-display) * -.6);
   --hero-led-title-shade: none; /* A elipse do bloco protege o texto; não empilhar outra sombra no título. */
   --hero-led-button-compact: 2.75rem; /* Botões em telas deitadas e baixas. */
   --hero-led-clear: rgba(0, 0, 0, 0);

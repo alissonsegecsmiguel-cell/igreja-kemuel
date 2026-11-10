@@ -2,22 +2,59 @@
   {
     "family": "Outfit",
     "file": "outfit-latin-variable.woff2",
-    "bytes": 32292,
-    "sha256": "6c18d579fd87c3776be068b762cbc83fde3acb543d49eabd3ade842eb987e887",
+    "bytes": 22880,
+    "sha256": "ed30017c6f1b14fb3b90de60cbe81586c57dc37499af02c4bb01c03b01c06ac1",
     "source": "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2",
-    "css": "https://fonts.googleapis.com/css2?family=Outfit:wght@400..800&display=swap",
     "license_source": "https://raw.githubusercontent.com/google/fonts/main/ofl/outfit/OFL.txt",
-    "face": "@font-face {\n  font-family: 'Outfit';\n  font-style: normal;\n  font-weight: 400 800;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2) format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}"
+    "weight": [
+      600,
+      800
+    ],
+    "style": "normal",
+    "license_file": "outfit-OFL.txt",
+    "derivation": "Instância parcial dos arquivos locais autorizados; somente pesos usados, SIL OFL 1.1.",
+    "original_file": "outfit-latin-variable.woff2"
   },
   {
     "family": "Public Sans",
     "file": "publicsans-latin-variable.woff2",
-    "bytes": 26832,
-    "sha256": "5ed4d31c988e73b258894244f209069ebe77dc7e564861954b21198b6de90d68",
+    "bytes": 23320,
+    "sha256": "ea6ed603d9b386ceb2ecbf6d3cb00697e5a08433f8be988e2e448b8fac43ac0b",
     "source": "https://fonts.gstatic.com/s/publicsans/v21/ijwRs572Xtc6ZYQws9YVwnNGfJ4.woff2",
-    "css": "https://fonts.googleapis.com/css2?family=Public+Sans:wght@400..700&display=swap",
     "license_source": "https://raw.githubusercontent.com/google/fonts/main/ofl/publicsans/OFL.txt",
-    "face": "@font-face {\n  font-family: 'Public Sans';\n  font-style: normal;\n  font-weight: 400 700;\n  font-display: swap;\n  src: url(https://fonts.gstatic.com/s/publicsans/v21/ijwRs572Xtc6ZYQws9YVwnNGfJ4.woff2) format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}"
+    "weight": [
+      400,
+      600
+    ],
+    "style": "normal",
+    "license_file": "publicsans-OFL.txt",
+    "derivation": "Instância parcial dos arquivos locais autorizados; somente pesos usados, SIL OFL 1.1.",
+    "original_file": "publicsans-latin-variable.woff2"
+  },
+  {
+    "family": "Newsreader",
+    "file": "newsreader-latin-variable.woff2",
+    "weight": [
+      300,
+      600
+    ],
+    "style": "normal",
+    "bytes": 54552,
+    "sha256": "736b1c4bafdac3199cb890e8581fbe05a90aedf5807795b1688d059f3376438f",
+    "license_file": "newsreader-OFL.txt",
+    "derivation": "Instância parcial dos arquivos locais autorizados; somente pesos usados, SIL OFL 1.1.",
+    "original_file": "newsreader-latin-variable.woff2"
+  },
+  {
+    "family": "Newsreader",
+    "file": "newsreader-latin-italic-400.woff2",
+    "weight": 400,
+    "style": "italic",
+    "bytes": 25204,
+    "sha256": "2d31b8bf994393d2a4d38707d30c8a107c3943589c4ef8736e72aa846b94c44a",
+    "license_file": "newsreader-OFL.txt",
+    "derivation": "Instância parcial dos arquivos locais autorizados; somente pesos usados, SIL OFL 1.1.",
+    "original_file": "newsreader-latin-italic-variable.woff2"
   },
   {
     "family": "Outfit Kemuel Static",
@@ -32,6 +69,8 @@
     "tools": {
       "fonttools": "4.68.0",
       "skia_pathops": "0.9.2"
-    }
+    },
+    "style": "normal",
+    "original_file": "outfit-static-800.woff2"
   }
 ]

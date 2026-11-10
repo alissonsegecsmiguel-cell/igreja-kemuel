@@ -168,7 +168,7 @@ export function blogFeature(posts, prefixo = 'assets/', id = 'caminhada') {
   }).join('');
   return `        <div class="k-blog" data-blog>
           <header class="k-blog-header">
-            <h2 class="k-blog-header__title" id="${id}-titulo">Reflexões para levar a fé aos <em>outros dias</em> da <em>semana</em><span class="k-blog-header__dot">.</span></h2>
+            <h2 class="k-blog-header__title" id="${id}-titulo">Reflexões para levar a fé aos <em>outros dias da semana</em><span class="k-blog-header__dot">.</span></h2>
             <div class="k-blog-header__aside">
               <div class="k-blog-filter" role="group" aria-label="Filtrar reflexões por tema">${filters}</div>
               <p class="k-blog-note"><span class="k-blog-note__count" data-blog-count>${pad(live.length)}</span><span class="k-blog-note__text"><strong>Reflexões para começar</strong><span>Escolha um tema e leia em poucos minutos</span></span></p>

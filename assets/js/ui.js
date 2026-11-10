@@ -705,7 +705,7 @@
     const prepare = () => {
       const family = tokens.getPropertyValue('--editorial-font').split(',')[0].trim();
       const size = getComputedStyle(section).fontSize;
-      Promise.all([document.fonts.load(`300 ${size} ${family}`), document.fonts.load(`italic 300 ${size} ${family}`)])
+      document.fonts.load(`italic ${tokens.getPropertyValue('--weight-regular').trim()} ${size} ${family}`)
         .then(() => section.classList.add('is-materials-ready'));
     };
     if ('IntersectionObserver' in window) {
@@ -730,7 +730,7 @@
   document.querySelectorAll('[data-give-manifesto]').forEach(section => {
     const prepare = () => {
       const family = tokens.getPropertyValue('--editorial-font').split(',')[0].trim();
-      const weight = tokens.getPropertyValue('--editorial-weight-body').trim();
+      const weight = tokens.getPropertyValue('--weight-regular').trim();
       document.fonts.load(`italic ${weight} ${getComputedStyle(section).fontSize} ${family}`).then(() => section.classList.add('is-give-ready'));
     };
     if ('IntersectionObserver' in window) {
