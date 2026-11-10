@@ -451,7 +451,7 @@
   --header-cta-height: 2.5rem;
   --marker-width: 1.5rem;
   --marker-height: 2px;
-  --schedule-item-min: 7.5rem; /* Abaixo disso, um bloco embaixo do outro. */
+  --schedule-item-min: 7rem; /* Dois horários cabem também na coluna da hero deitada em 568px. */
   --schedule-max-width: 28rem;
   --card-compact-thumb: 6.5rem; /* Imagem do card horizontal no celular. */
   /* Post do blog (k-article): leitura em coluna, Newsreader no texto. */
