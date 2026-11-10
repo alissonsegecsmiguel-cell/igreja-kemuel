@@ -106,6 +106,10 @@ async function convert(file) {
   if (meta.capa) {
     const src = findImage(meta.capa);
     const { width: w, height: h } = await sharp(src).metadata();
+    // Variante limpa dos cards: proporção original, sem ampliação nem filtros.
+    for (const width of [600, 900, 1400]) {
+      await sharp(src).rotate().resize({ width, withoutEnlargement: true }).webp({ quality: 84, effort: 6 }).toFile(join(imgDir, `capa-card-${width}.webp`));
+    }
     const [fx, fy] = (meta.capa_foco || '50% 50%').match(/\d+(\.\d+)?/g).map(v => Number(v) / 100);
     const cw = Math.min(w, Math.round(h * 3 / 2)), ch = Math.round(cw * 2 / 3);
     const left = Math.round(Math.min(w - cw, Math.max(0, fx * w - cw / 2)));

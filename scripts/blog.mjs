@@ -33,7 +33,7 @@ export async function loadPosts(root) {
   const files = readdirSync(dir).filter(f => f.endsWith('.md')).sort();
   const upcoming = join(dir, 'em-breve');
   if (existsSync(upcoming)) files.push(...readdirSync(upcoming).filter(f => f.endsWith('.md')).sort().map(f => `em-breve/${f}`));
-  return files.map(file => {
+  const entries = await Promise.all(files.map(async file => {
     const slug = file.split('/').at(-1).replace(/\.md$/, '');
     const { meta, body } = parse(readFileSync(join(dir, file), 'utf8'), file);
     if (!Array.isArray(meta.temas) || meta.temas.length < 2 || meta.temas.length > 4 || meta.temas.some(t => typeof t !== 'string' || !t.trim()) || new Set(meta.temas).size !== meta.temas.length) throw new Error(`${file}: informe de 2 a 4 temas distintos no front matter`);
@@ -46,8 +46,19 @@ export async function loadPosts(root) {
     const minutes = Math.max(1, Math.ceil((words(body) + words(meta.subtitulo || '') + words(meta.titulo)) / WORDS_PER_MINUTE));
     if (file.startsWith('em-breve/') && meta.em_breve !== true) throw new Error(`${file}: mova o texto completo para conteudo/blog/ antes de publicar`);
     if (meta.slug && meta.slug !== slug) throw new Error(`${file}: slug diferente do nome do arquivo`);
-    return { slug, ...meta, leitura: meta.em_breve ? null : minutes, html, url: meta.em_breve ? null : `/blog/${slug}` };
-  }).sort((a, b) => Number(a.em_breve === true) - Number(b.em_breve === true) || (a.em_breve ? String(a.numero).localeCompare(String(b.numero)) : (b.data || '').localeCompare(a.data || '')) || a.slug.localeCompare(b.slug));
+    let cardCover = null;
+    const cardFile = join(root, 'assets', 'img', 'blog', slug, 'capa-card-600.webp');
+    if (meta.capa && existsSync(cardFile)) {
+      const { default: sharp } = await import('sharp');
+      cardCover = await Promise.all([600, 900, 1400].map(async size => {
+        const file = `capa-card-${size}.webp`;
+        const info = await sharp(join(root, 'assets', 'img', 'blog', slug, file)).metadata();
+        return { size, file, width: info.width, height: info.height };
+      }));
+    }
+    return { slug, ...meta, cardCover, leitura: meta.em_breve ? null : minutes, html, url: meta.em_breve ? null : `/blog/${slug}` };
+  }));
+  return entries.sort((a, b) => Number(a.em_breve === true) - Number(b.em_breve === true) || (a.em_breve ? String(a.numero).localeCompare(String(b.numero)) : (b.data || '').localeCompare(a.data || '')) || a.slug.localeCompare(b.slug));
 }
 
 // Lista gerada para dados/posts.json (nunca editada à mão).
@@ -55,7 +66,7 @@ export function postsIndex(posts) {
   return JSON.stringify(posts.map(p => ({
     slug: p.slug, url: p.url, numero: p.numero, titulo: p.titulo, subtitulo: p.subtitulo || p.resumo, categoria: p.categoria, autor: p.autor, data: p.data,
     referencia: p.referencia, temas: p.temas, leitura: p.leitura, exemplo: p.exemplo === true, em_breve: p.em_breve === true, recomendado: p.recomendado === true,
-    capa: p.capa ? { 480: `/assets/img/blog/${p.slug}/capa-480.webp`, 960: `/assets/img/blog/${p.slug}/capa-960.webp`, ...(!p.em_breve ? { 1600: `/assets/img/blog/${p.slug}/capa-1600.webp` } : {}), legenda: p.capa_legenda, credito: p.capa_credito } : null
+    capa: p.capa ? { 480: `/assets/img/blog/${p.slug}/capa-480.webp`, 960: `/assets/img/blog/${p.slug}/capa-960.webp`, ...(p.cardCover ? Object.fromEntries(p.cardCover.map(v => [v.size, `/assets/img/blog/${p.slug}/${v.file}`])) : {}), ...(!p.em_breve ? { 1600: `/assets/img/blog/${p.slug}/capa-1600.webp` } : {}), legenda: p.capa_legenda, credito: p.capa_credito } : null
   })), null, 2) + '\n';
 }
 
@@ -151,20 +162,30 @@ const pad = n => String(n).padStart(2, '0');
 // prefixo: caminho até assets/ ("assets/" na raiz, "" dentro de assets/); id: prefixo único de ids.
 export function blogFeature(posts, prefixo = 'assets/', id = 'caminhada') {
   const live = posts.filter(p => p.em_breve !== true);
-  const ordered = [...live].sort((a, b) => a.data.localeCompare(b.data) || a.slug.localeCompare(b.slug));
-  const categories = [...new Map(ordered.map(p => [slug(p.categoria), p.categoria])).entries()];
+  const ordered = [...live].sort((a, b) => b.data.localeCompare(a.data) || a.slug.localeCompare(b.slug));
+  // A ordem dos filtros é preservada; a dos cards passa a ser cronológica inversa.
+  const categoryOrder = [...live].sort((a, b) => a.data.localeCompare(b.data) || a.slug.localeCompare(b.slug));
+  const categories = [...new Map(categoryOrder.map(p => [slug(p.categoria), p.categoria])).entries()];
   const chip = (key, label, count, active) => `<button class="k-blog-filter__chip" type="button" data-blog-filter="${key}" aria-pressed="${active}"><span>${esc(label)}</span><span class="k-blog-filter__count">${count}</span></button>`;
   const filters = chip('todos', 'Todos', live.length, true) + categories.map(([key, label]) => chip(key, label, live.filter(p => slug(p.categoria) === key).length, false)).join('');
-  const variants = ['arch', 'torn', 'arch k-collage-cover--dark', 'torn k-collage-cover--dark', 'arch'];
   const cards = ordered.map((p, i) => {
-    const img = `${prefixo}img/blog/${p.slug}/capa`;
-    const cover = p.capa ? `<img class="k-collage-cover__image" src="${img}-480.webp" srcset="${img}-480.webp 480w, ${img}-960.webp 960w" sizes="(min-width: 56.25rem) 18vw, 66vw" width="480" height="320" alt="" loading="lazy" decoding="async">` : '';
-    return `<li class="k-blog-card" data-blog-category="${slug(p.categoria)}"><a class="k-blog-card__link" href="${p.url}">`
-      + `<span class="k-collage-cover k-collage-cover--${variants[i % variants.length]}"><span class="k-collage-cover__tag">${esc(p.categoria)}</span>${p.exemplo === true ? '<span class="k-collage-cover__badge">Exemplo</span>' : ''}<span class="k-collage-cover__circle" aria-hidden="true"></span>${cover}<span class="k-collage-cover__block" aria-hidden="true"></span></span>`
-      + `<span class="k-blog-card__meta"><span>Nº ${pad(i + 1)}</span><span>${p.data.slice(0, 4)}</span></span>`
+    const img = `${prefixo}img/blog/${p.slug}/`;
+    const large = i === 0;
+    // min()/clamp() espelham container/gutter/gap; auto usa a largura real em lazy loading.
+    const frame = 'min(80rem, 100vw - clamp(2.5rem, 8.4vw, 8rem))';
+    const gap = 'clamp(1rem, 1.5vw, 1.5rem)';
+    const sizes = `auto, (max-width: 760px) calc(100vw - clamp(2.5rem, 8.4vw, 8rem)), calc((${frame} - ${large ? gap : `3 * ${gap}`}) / ${large ? 2 : 4})`;
+    const source = p.cardCover?.[0];
+    const srcset = p.cardCover
+      ? [...new Map(p.cardCover.map(v => [v.width, `${img}${v.file} ${v.width}w`])).values()].join(', ')
+      : `${img}capa-480.webp 480w, ${img}capa-960.webp 960w`;
+    const cover = p.capa ? `<img class="k-blog-cover__image" src="${img}${source?.file || 'capa-960.webp'}" srcset="${srcset}" sizes="${sizes}" width="${source?.width || 960}" height="${source?.height || 640}" alt="${esc(p.capa_legenda || '')}" loading="lazy" decoding="async">` : '';
+    return `<li class="k-blog-card${large ? ' k-blog-card--featured' : ''}" data-blog-category="${slug(p.categoria)}"><a class="k-blog-card__link" href="${p.url}">`
+      + `<span class="k-blog-cover">${cover}<span class="k-label k-blog-cover__tag">${esc(p.categoria)}</span></span>`
+      + `<span class="k-blog-card__meta">Nº ${pad(i + 1)} · ${p.data.slice(0, 4)}${p.exemplo === true ? ' · Exemplo' : ''}</span>`
       + `<h3 class="k-blog-card__title">${esc(p.titulo)}</h3>`
-      + `<p class="k-blog-card__summary">${esc(p.subtitulo)} <span class="k-blog-card__time">${p.leitura} min de leitura</span></p>`
-      + `<span class="k-blog-card__arrow" aria-hidden="true"><svg class="k-icon"><use href="#k-arrow"/></svg></span></a></li>`;
+      + `<p class="k-blog-card__summary">${esc(p.subtitulo)}</p>`
+      + `<span class="k-blog-card__time">${p.leitura} min de leitura</span></a></li>`;
   }).join('');
   return `        <div class="k-blog" data-blog>
           <header class="k-blog-header">

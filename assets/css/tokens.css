@@ -498,7 +498,8 @@
   --collage-image-filter: sepia(.18) saturate(.9);
   --collage-shadow: var(--shadow-soft);
   --collage-tag-max: 52%; /* A etiqueta quebra linha antes de encostar no selo. */
-  /* Dobra de blog (k-blog-*): composição editorial da referência de colagem. */
+  --collage-tear-shape: polygon(0 0, 75% 0, 77% 3%, 79% 1%, 81% 4%, 84% 2%, 87% 4%, 91% 1%, 94% 3%, 100% 0, 100% 92%, 97% 94%, 94% 92%, 90% 96%, 87% 94%, 83% 98%, 80% 95%, 77% 99%, 74% 97%, 70% 100%, 0 100%);
+  /* Dobra de blog (k-blog-*): hierarquia editorial, imagens sem ornamentos. */
 
   --blog-title-leading: 1.04;
   --blog-title-tracking: -.025em;
@@ -509,15 +510,18 @@
   --blog-chip-rule: var(--border-width) solid currentColor;
   --blog-note-size: 3rem;
   --blog-note-border: var(--border-width) dashed var(--color-text);
-  --blog-columns: 5;
+  --blog-columns: 4;
   --blog-gap: var(--space-3);
-  --blog-mobile-card: 66%; /* Um card e meio visível no celular. */
 
-  --blog-arrow-size: 2.25rem;
-  --blog-lift: 4px;
-  --blog-shift: 6px; /* Deslocamento das formas da colagem no hover. */
-  --blog-summary-lines: 4;
-  --blog-badge-reserve: 6rem; /* Selo EXEMPLO e intervalo; categoria nunca passa por baixo. */
+  --blog-summary-lines: 3;
+  --blog-cover-ratio: 4 / 3;
+  --blog-feature-cover-ratio: 4 / 5;
+  --blog-cover-radius: var(--radius-md);
+  --blog-cover-zoom: 1.03;
+  --blog-cover-duration: 500ms;
+  --blog-feature-title-size: var(--text-h3);
+  --blog-label-background: var(--color-white);
+  --blog-label-color: var(--color-black);
   --blog-font-distance: 600px; /* Preparar o itálico fora do carregamento inicial da hero. */
   /* Portal claro: a dobra da inicial conserva seus próprios tokens. */
 

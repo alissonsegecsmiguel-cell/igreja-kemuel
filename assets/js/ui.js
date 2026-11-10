@@ -772,15 +772,18 @@
     } else prepareFont();
     const chips = [...blog.querySelectorAll('[data-blog-filter]')];
     const cards = [...blog.querySelectorAll('[data-blog-category]')];
+    const grid = blog.querySelector('.k-blog-grid');
     const count = blog.querySelector('[data-blog-count]');
     const status = blog.querySelector('[data-blog-status]');
     chips.forEach(chip => chip.addEventListener('click', () => {
       const value = chip.dataset.blogFilter;
       chips.forEach(item => item.setAttribute('aria-pressed', String(item === chip)));
       let shown = 0;
+      grid.classList.toggle('is-filtered', value !== 'todos');
       cards.forEach(card => {
         const visible = value === 'todos' || card.dataset.blogCategory === value;
         card.hidden = !visible;
+        card.classList.toggle('k-blog-card--featured', visible && shown === 0);
         card.classList.remove('is-entering');
         if (visible) { shown++; if (!reduced.matches) { void card.offsetWidth; card.classList.add('is-entering'); } }
       });

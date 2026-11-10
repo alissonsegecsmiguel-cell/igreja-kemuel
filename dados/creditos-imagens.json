@@ -9,7 +9,34 @@
       "url_origem": "https://commons.wikimedia.org/wiki/File:HitdaMeschedeDarmstadtCod1640fol117r.jpg",
       "licenca": "Domínio público (PD-Art)",
       "licenca_commons": "Public domain",
-      "fonte": "Wikimedia Commons"
+      "fonte": "Wikimedia Commons",
+      "resolucao_original": {
+        "largura": 1820,
+        "altura": 2506
+      },
+      "sha256_original": "256190ee580aeceb250ebb0115ab0da553596c47f5c01d1909975882a0dd2145",
+      "derivadas_card": [
+        {
+          "arquivo": "assets/img/blog/quando-a-tempestade-nao-passa/capa-card-600.webp",
+          "largura": 600,
+          "altura": 826,
+          "bytes": 137270
+        },
+        {
+          "arquivo": "assets/img/blog/quando-a-tempestade-nao-passa/capa-card-900.webp",
+          "largura": 900,
+          "altura": 1239,
+          "bytes": 250576
+        },
+        {
+          "arquivo": "assets/img/blog/quando-a-tempestade-nao-passa/capa-card-1400.webp",
+          "largura": 1400,
+          "altura": 1928,
+          "bytes": 446756
+        }
+      ],
+      "tratamento_card": "WebP a partir do original local, proporção natural, sem ampliação, filtro de cor ou recorte prévio; enquadramento do card por object-fit: cover.",
+      "licenca_verificada_em": "2026-11-10"
     },
     {
       "arquivo": "textos-blog/imagens/lamparina-met.jpg",
@@ -19,7 +46,34 @@
       "url_origem": "https://commons.wikimedia.org/wiki/File:Terracotta_oil_lamp_MET_DP860.jpg",
       "licenca": "CC0 (Met Open Access)",
       "licenca_commons": "CC0",
-      "fonte": "Wikimedia Commons"
+      "fonte": "Wikimedia Commons",
+      "resolucao_original": {
+        "largura": 2048,
+        "altura": 2048
+      },
+      "sha256_original": "34d9a50f49dce1a8789c76804be7052d5b0a97598236efb32a4d690c8c3fb0fc",
+      "derivadas_card": [
+        {
+          "arquivo": "assets/img/blog/uma-lampada-para-os-meus-pes/capa-card-600.webp",
+          "largura": 600,
+          "altura": 600,
+          "bytes": 25284
+        },
+        {
+          "arquivo": "assets/img/blog/uma-lampada-para-os-meus-pes/capa-card-900.webp",
+          "largura": 900,
+          "altura": 900,
+          "bytes": 47362
+        },
+        {
+          "arquivo": "assets/img/blog/uma-lampada-para-os-meus-pes/capa-card-1400.webp",
+          "largura": 1400,
+          "altura": 1400,
+          "bytes": 96226
+        }
+      ],
+      "tratamento_card": "WebP a partir do original local, proporção natural, sem ampliação, filtro de cor ou recorte prévio; enquadramento do card por object-fit: cover.",
+      "licenca_verificada_em": "2026-11-10"
     },
     {
       "arquivo": "textos-blog/imagens/rolo-de-isaias-cap53.jpg",
@@ -29,7 +83,34 @@
       "url_origem": "https://commons.wikimedia.org/wiki/File:Great_Isaiah_Scroll_Ch53.jpg",
       "licenca": "Domínio público",
       "licenca_commons": "Public domain",
-      "fonte": "Wikimedia Commons"
+      "fonte": "Wikimedia Commons",
+      "resolucao_original": {
+        "largura": 2040,
+        "altura": 2319
+      },
+      "sha256_original": "887d82a23b7291e46d5bebcc4d874ff0ef1838ec28a11f396c362da12923289c",
+      "derivadas_card": [
+        {
+          "arquivo": "assets/img/blog/o-que-os-manuscritos-do-mar-morto-nos-contam/capa-card-600.webp",
+          "largura": 600,
+          "altura": 682,
+          "bytes": 134504
+        },
+        {
+          "arquivo": "assets/img/blog/o-que-os-manuscritos-do-mar-morto-nos-contam/capa-card-900.webp",
+          "largura": 900,
+          "altura": 1023,
+          "bytes": 278030
+        },
+        {
+          "arquivo": "assets/img/blog/o-que-os-manuscritos-do-mar-morto-nos-contam/capa-card-1400.webp",
+          "largura": 1400,
+          "altura": 1591,
+          "bytes": 520508
+        }
+      ],
+      "tratamento_card": "WebP a partir do original local, proporção natural, sem ampliação, filtro de cor ou recorte prévio; enquadramento do card por object-fit: cover.",
+      "licenca_verificada_em": "2026-11-10"
     },
     {
       "arquivo": "textos-blog/imagens/chamado-duccio.jpg",
@@ -39,7 +120,34 @@
       "url_origem": "https://commons.wikimedia.org/wiki/File:Duccio_di_Buoninsegna,_The_Calling_of_the_Apostles_Peter_and_Andrew,_1308-1311,_NGA_282.jpg",
       "licenca": "Obra em domínio público; reprodução CC0 (National Gallery of Art Open Access)",
       "licenca_commons": "CC0",
-      "fonte": "Wikimedia Commons"
+      "fonte": "Wikimedia Commons",
+      "resolucao_original": {
+        "largura": 3840,
+        "altura": 3602
+      },
+      "sha256_original": "f33df9622e1d988f19e1ed565d5b015b5631f4fc361bbf5ecd900f52adb4eb1a",
+      "derivadas_card": [
+        {
+          "arquivo": "assets/img/blog/deixaram-as-redes/capa-card-600.webp",
+          "largura": 600,
+          "altura": 563,
+          "bytes": 60332
+        },
+        {
+          "arquivo": "assets/img/blog/deixaram-as-redes/capa-card-900.webp",
+          "largura": 900,
+          "altura": 844,
+          "bytes": 144096
+        },
+        {
+          "arquivo": "assets/img/blog/deixaram-as-redes/capa-card-1400.webp",
+          "largura": 1400,
+          "altura": 1313,
+          "bytes": 390178
+        }
+      ],
+      "tratamento_card": "WebP a partir do original local, proporção natural, sem ampliação, filtro de cor ou recorte prévio; enquadramento do card por object-fit: cover.",
+      "licenca_verificada_em": "2026-11-10"
     },
     {
       "arquivo": "textos-blog/imagens/samaritano-rossano.jpg",
@@ -49,7 +157,34 @@
       "url_origem": "https://commons.wikimedia.org/wiki/File:RossanoGospelsFolio007vGoodSamaritan.jpg",
       "licenca": "Domínio público (PD-Art)",
       "licenca_commons": "Public domain",
-      "fonte": "Wikimedia Commons"
+      "fonte": "Wikimedia Commons",
+      "resolucao_original": {
+        "largura": 1401,
+        "altura": 1594
+      },
+      "sha256_original": "9de7ea2b8d0096253f7177bddac93acb93a44889cd78ffb928289c3b678ea313",
+      "derivadas_card": [
+        {
+          "arquivo": "assets/img/blog/quem-e-o-meu-proximo/capa-card-600.webp",
+          "largura": 600,
+          "altura": 683,
+          "bytes": 113054
+        },
+        {
+          "arquivo": "assets/img/blog/quem-e-o-meu-proximo/capa-card-900.webp",
+          "largura": 900,
+          "altura": 1024,
+          "bytes": 208878
+        },
+        {
+          "arquivo": "assets/img/blog/quem-e-o-meu-proximo/capa-card-1400.webp",
+          "largura": 1400,
+          "altura": 1593,
+          "bytes": 381208
+        }
+      ],
+      "tratamento_card": "WebP a partir do original local, proporção natural, sem ampliação, filtro de cor ou recorte prévio; enquadramento do card por object-fit: cover.",
+      "licenca_verificada_em": "2026-11-10"
     },
     {
       "arquivo": "assets/img/blog/originais/06-davi-e-golias-quando-o-gigante-parece-maior.jpg",
