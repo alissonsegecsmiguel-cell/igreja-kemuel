@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url';
 import { loadData, fillData, fillHead, jsonLd, pageUrl } from './dados-igreja.mjs';
 import { loadPosts, postPage, postsIndex, blogFeature } from './blog.mjs';
 import { loadVideos, videoSlot, testimonials, closingBackground } from './videos.mjs';
-import { loadMaterials, materialsHome, materialsPage } from './materiais.mjs';
+import { loadMaterials, materialsHome, materialsPage, discipleshipDownload } from './materiais.mjs';
 import { blogPortal } from './blog-portal.mjs';
 import { loadGoals, giveSections } from './contribua.mjs';
 import { searchIndex } from './busca.mjs';
@@ -62,6 +62,7 @@ function shared(html, file) {
   if (html.includes('<!-- give-section:start -->')) html = apply(html, 'give-section', giveSections(goals, church, file.startsWith('assets/') ? '' : 'assets/', file.startsWith('assets/') ? 'demo-give' : 'contribua', file === 'contribua.html' ? 1 : 2), file);
   if (html.includes('<!-- blog-portal:start -->')) html = apply(html, 'blog-portal', blogPortal(posts, verse, file.startsWith('assets/') ? '' : 'assets/', church), file);
   if (html.includes('<!-- materiais-catalogo:start -->')) html = apply(html, 'materiais-catalogo', materialsPage(materials, '', 2, 'demo-materiais'), file);
+  if (html.includes('<!-- apostila-download:start -->')) html = apply(html, 'apostila-download', discipleshipDownload(materials, file.startsWith('assets/') ? '' : 'assets/'), file);
   if (html.includes('<!-- materiais-home:start -->')) html = apply(html, 'materiais-home', materialsHome(materials), file);
   if (html.includes('<!-- materiais-pagina:start -->')) html = apply(html, 'materiais-pagina', materialsPage(materials), file);
   // Dobra de blog gerada a partir dos posts; no manual, os caminhos partem de assets/.

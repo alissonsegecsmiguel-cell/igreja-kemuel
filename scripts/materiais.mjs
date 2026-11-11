@@ -44,6 +44,15 @@ export function materialCards(materials, prefix = 'assets/', home = false, level
   }).join('')}</div>`;
 }
 
+// Fechamento de /discipulado: o ÚNICO link do site para o PDF da apostila.
+export function discipleshipDownload(materials, prefix = 'assets/') {
+  const local = path => escape(path.replace(/^assets\//, prefix));
+  const item = materials.find(m => m.pagina === '/discipulado' && m.arquivo);
+  if (!item) throw new Error('Material do discipulado sem arquivo em dados/materiais.json');
+  const label = [item.formato, item.tamanho].filter(Boolean).join(' · ');
+  return `<div class="k-download-teaser"><img class="k-download-teaser__cover" src="${local(item.imagem_640 || item.imagem)}" srcset="${local(item.imagem_640 || item.imagem)} 640w, ${local(item.imagem)} 1280w" sizes="5rem" width="${item.imagem_largura}" height="${item.imagem_altura}" alt="" loading="lazy" decoding="async"><div class="k-download-teaser__body"><p class="k-download-teaser__question">Quer conhecer a apostila antes?</p><a class="k-button k-button--secondary" href="${local(item.arquivo)}" download="${escape(item.nome_download)}">Baixar a apostila (${escape(label)})<svg class="k-icon" aria-hidden="true"><use href="#k-download"/></svg></a>${item.paginas ? `<p class="k-download-teaser__meta">${item.paginas} páginas${item.exemplo ? ' · versão de exemplo' : ''}</p>` : ''}</div></div>`;
+}
+
 export function materialsHeader(level = 2, id = 'materiais-home') {
   return `<header class="k-materials-header"><p class="k-eyebrow">Materiais</p><h${level} class="k-materials-header__title" id="${id}-titulo"><span>Estude a PALAVRA</span> <span>no seu RITMO.</span></h${level}><div class="k-materials-header__bottom"><p>Guias, estudos e planos de leitura gratuitos para baixar, imprimir e compartilhar.</p><a class="k-link" href="/materiais">Ver todos os materiais<svg class="k-icon k-icon--small" aria-hidden="true"><use href="#k-arrow"/></svg></a></div></header>`;
 }

@@ -546,6 +546,14 @@ textarea.k-input { resize: vertical; min-height: var(--textarea-min-height); }
 .k-closing .k-photo-slot__label { color: var(--color-white); }
 .k-closing__count { color: var(--color-white); font: var(--weight-semibold) var(--text-small)/var(--leading-label) var(--font-body); letter-spacing: var(--tracking-eyebrow); text-transform: uppercase; }
 .k-closing__content h2 { color: var(--color-white); }
+/* k-download-teaser — download discreto sob o botão principal, separado por linha fina. */
+.k-download-teaser { display: flex; align-items: center; max-width: var(--discipleship-intro-width); gap: var(--space-3); margin-top: var(--space-2); padding-top: var(--space-3); border-top: var(--border-width) solid var(--color-border-dark); }
+.k-download-teaser__cover { flex: none; width: var(--discipleship-download-cover); height: auto; border-radius: var(--radius-sm); }
+.k-download-teaser__body { display: grid; justify-items: start; gap: var(--space-1); min-width: 0; }
+.k-download-teaser__question { color: var(--color-white); font: var(--weight-semibold) var(--text-body)/var(--leading-label) var(--font-body); }
+.k-download-teaser__meta { color: var(--color-on-dark-muted); font: var(--weight-regular) var(--text-caption)/var(--leading-label) var(--font-body); }
+.k-download-teaser .k-button { white-space: normal; text-align: left; }
+.k-gift__more { color: var(--color-text-muted); font: var(--weight-regular) var(--text-small)/var(--leading-body) var(--font-body); }
 @media (min-width: 56.25rem) {
   .k-testimonials { grid-auto-flow: row; grid-template-columns: repeat(3, minmax(0, 1fr)); overflow: visible; scroll-snap-type: none; }
   .k-gift { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
