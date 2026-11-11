@@ -427,6 +427,22 @@ textarea.k-input { resize: vertical; min-height: var(--textarea-min-height); }
 .k-blog-card__title { font: var(--weight-semibold) var(--text-h5)/var(--leading-heading) var(--font-heading); letter-spacing: var(--tracking-heading); }
 .k-blog-card__summary { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: var(--blog-summary-lines); overflow: hidden; color: var(--color-text-muted); font: var(--text-small)/var(--leading-body) var(--font-body); }
 .k-blog-card__time { display: block; color: var(--color-text-muted); font: var(--weight-regular) var(--text-small)/var(--leading-body) var(--font-body); white-space: nowrap; }
+/* Chamada de leitura comum à home, portal e relacionados; nunca é outro link. */
+.k-post-link { position: relative; isolation: isolate; }
+.k-post-link::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; background: var(--color-black); opacity: 0; transition: opacity var(--blog-card-active-duration) var(--ease); }
+.k-post-link:active::after { opacity: var(--blog-card-active-opacity); }
+.k-post-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--size-xs); width: 100%; margin-top: auto; font: var(--weight-regular) var(--text-caption)/var(--leading-body) var(--font-body); }
+.k-post-cta__time { color: var(--color-text-muted); white-space: nowrap; }
+.k-post-cta__read { display: inline-flex; align-items: center; gap: var(--size-2xs); color: var(--color-red-hover); font-weight: var(--weight-semibold); white-space: nowrap; text-decoration: underline; text-decoration-thickness: var(--border-width); text-underline-offset: var(--size-2xs); }
+.k-post-cta__arrow { display: inline-block; transition: transform var(--duration-short) var(--ease); }
+.k-post-link:is(:hover, :focus-visible) .k-post-cta__arrow { transform: translateX(var(--blog-read-shift)); }
+.k-blog-recommended .k-post-cta { grid-column: 1 / -1; }
+/* Papel sob o vermelho conserva AA no destaque fotográfico escuro. */
+.k-blog-feature .k-post-cta { padding: var(--size-xs) var(--size-sm); background: var(--color-white); border-radius: var(--radius-sm); }
+@media (prefers-reduced-motion: reduce) {
+  .k-post-cta__arrow, .k-post-link::after { transition: none; }
+  .k-post-link:is(:hover, :focus-visible) .k-post-cta__arrow { transform: none; }
+}
 @media (width > 760px) {
   .k-blog-grid { grid-template-columns: repeat(var(--blog-columns), minmax(0, 1fr)); }
   .k-blog-card--featured { grid-column: span 2; grid-row: span 2; }
@@ -757,6 +773,11 @@ textarea.k-input { resize: vertical; min-height: var(--textarea-min-height); }
 .k-whatsapp { position: fixed; z-index: 30; right: var(--space-3); bottom: var(--space-3); display: inline-flex; align-items: center; gap: var(--size-xs); min-height: var(--control-height); padding: var(--size-md) var(--size-lg); color: var(--color-white); background: var(--color-black); border: var(--border-width) solid var(--color-border-dark); border-radius: var(--radius-pill); text-decoration: none; box-shadow: var(--shadow-soft); font-size: var(--text-caption); font-weight: var(--weight-semibold); transition: transform var(--duration-short) var(--ease); }
 .k-whatsapp:hover { transform: translateY(calc(var(--lift-sm) * -1)); }
 .k-whatsapp__label { display: none; }
+@media (max-width: 760px) {
+  .k-whatsapp { width: var(--whatsapp-mobile-size); height: var(--whatsapp-mobile-size); min-height: var(--whatsapp-mobile-size); padding: 0; justify-content: center; }
+  .k-whatsapp__text { display: none; }
+  .k-whatsapp[data-example] { display: none; }
+}
 .k-toast { position: fixed; bottom: var(--toast-offset); right: var(--space-3); z-index: 70; width: min(var(--toast-max-width), calc(100% - var(--space-4))); padding: var(--space-3); background: var(--color-black); color: var(--color-white); border: var(--border-width) solid var(--color-border-dark); border-radius: var(--radius-md); box-shadow: var(--shadow-soft); font-size: var(--text-small); }
 .k-type-row { display: grid; gap: var(--space-3); padding-block: var(--space-4); border-bottom: var(--border-width) solid var(--color-border); }
 .k-type-row__meta { display: grid; gap: var(--size-xs); font-size: var(--text-caption); color: var(--color-text-muted); }

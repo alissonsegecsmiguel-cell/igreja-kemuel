@@ -569,7 +569,7 @@
   function deferTimelines() {
     const timeline = document.querySelector('[data-timeline]');
     if (!timeline) return;
-    if ('IntersectionObserver' in window) {
+    if ('IntersectionObserver' in window && !document.body.hasAttribute('data-design-system')) {
       const nearby = new IntersectionObserver(entries => {
         if (entries.some(entry => entry.isIntersecting)) { nearby.disconnect(); setupTimelines(); }
       }, { rootMargin: tokens.getPropertyValue('--blog-font-distance').trim() });

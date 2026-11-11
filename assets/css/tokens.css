@@ -609,6 +609,10 @@
   --blog-gap: var(--space-3);
 
   --blog-summary-lines: 3;
+  --blog-read-shift: 4px;
+  --blog-card-active-duration: 120ms;
+  --blog-card-active-opacity: .06;
+  --whatsapp-mobile-size: 56px;
   --blog-cover-ratio: 4 / 3;
   --blog-feature-cover-ratio: 4 / 5;
   --blog-cover-radius: var(--radius-md);

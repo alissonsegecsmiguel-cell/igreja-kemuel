@@ -3,6 +3,7 @@
 import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { robots, twitterTags } from './dados-igreja.mjs';
+import { readingCallout } from './blog-callout.mjs';
 
 const esc = text => String(text).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 const CSP = "default-src 'self'; style-src 'self'; script-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'";
@@ -101,7 +102,7 @@ export function postPage(post, posts, church) {
   const share = encodeURIComponent(`${post.titulo} ${url}`);
   const coverHtml = post.capa ? `
       <figure class="k-article__cover"><img src="../assets/img/blog/${post.slug}/capa-960.webp" srcset="../assets/img/blog/${post.slug}/capa-960.webp 960w, ../assets/img/blog/${post.slug}/capa-1600.webp 1600w" sizes="(min-width: 60rem) 52rem, 100vw" width="1600" height="1067" alt="${esc(post.capa_legenda || post.titulo)}" fetchpriority="high" decoding="async"><figcaption>${esc(post.capa_legenda)} <span class="k-article__credit">${esc(post.capa_credito)}</span></figcaption></figure>` : '';
-  const reading = related(post, posts).map(p => `<li><a href="${p.url}"><span class="k-article__category">${esc(p.categoria)}</span><span class="k-article__related-title">${esc(p.titulo)}</span></a></li>`).join('');
+  const reading = related(post, posts).map(p => `<li><a class="k-post-link" href="${p.url}" aria-label="Ler: ${esc(p.titulo)}"><span class="k-article__category">${esc(p.categoria)}</span><span class="k-article__related-title">${esc(p.titulo)}</span>${readingCallout(p)}</a></li>`).join('');
   return `<!doctype html>
 <html lang="pt-BR">
 <head>
@@ -197,12 +198,12 @@ export function blogFeature(posts, prefixo = 'assets/', id = 'caminhada') {
       ? [...new Map(p.cardCover.map(v => [v.width, `${img}${v.file} ${v.width}w`])).values()].join(', ')
       : `${img}capa-480.webp 480w, ${img}capa-960.webp 960w`;
     const cover = p.capa ? `<img class="k-blog-cover__image" src="${img}${source?.file || 'capa-960.webp'}" srcset="${srcset}" sizes="${sizes}" width="${source?.width || 960}" height="${source?.height || 640}" alt="${esc(p.capa_legenda || '')}" loading="lazy" decoding="async">` : '';
-    return `<li class="k-blog-card${large ? ' k-blog-card--featured' : ''}" data-blog-category="${slug(p.categoria)}"><a class="k-blog-card__link" href="${p.url}">`
+    return `<li class="k-blog-card${large ? ' k-blog-card--featured' : ''}" data-blog-category="${slug(p.categoria)}"><a class="k-blog-card__link k-post-link" href="${p.url}" aria-label="Ler: ${esc(p.titulo)}">`
       + `<span class="k-blog-cover">${cover}<span class="k-label k-blog-cover__tag">${esc(p.categoria)}</span></span>`
       + `<span class="k-blog-card__meta">Nº ${pad(i + 1)} · ${p.data.slice(0, 4)}${p.exemplo === true ? ' · Exemplo' : ''}</span>`
       + `<h3 class="k-blog-card__title">${esc(p.titulo)}</h3>`
       + `<p class="k-blog-card__summary">${esc(p.subtitulo)}</p>`
-      + `<span class="k-blog-card__time">${p.leitura} min de leitura</span></a></li>`;
+      + `${readingCallout(p)}</a></li>`;
   }).join('');
   return `        <div class="k-blog" data-blog>
           <header class="k-blog-header">
