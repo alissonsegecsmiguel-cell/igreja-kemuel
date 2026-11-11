@@ -2,6 +2,8 @@
 
 ## 1. Última sessão
 
+- 11/11/2026 (Claude Code, encerramento da fila): tarefas 21 (0b8a79b) e 22 (e1d09bc) concluídas, publicadas e conferidas; nenhuma tarefa no Backlog nesta rodada. Próximo passo: revisão do Alisson das decisões “revisar” e das pendências do item 6.
+
 - Tarefa 22 da fila (Claude Code, 11/11/2026): download da apostila no fim de /discipulado. Componente novo k-download-teaser no fechamento (#participar), abaixo de “Quero fazer o discipulado” e separado por linha fina: miniatura da capa, “Quer conhecer a apostila antes?”, botão secundário “Baixar a apostila (PDF · 835 KB)” com ícone k-download e “63 páginas · versão de exemplo”. Arquivo, nome do download, formato, tamanho e páginas lidos de dados/materiais.json por discipleshipDownload (scripts/materiais.mjs), aplicado pelo marcador apostila-download; é o único link do site para o PDF (o manual tem a demonstração, fora do deploy). Seção da apostila continua sem botão, com a linha “Se quiser conhecer antes, a versão em PDF está no fim desta página.” ligada a #participar. Card do Discipulado em Materiais: “Recebida no Discipulado · 10 lições” e “Conhecer o discipulado →”, card inteiro levando a /discipulado. Header do PDF no vercel.json preservado. Testes em 1440/1024/760/390: bloco só no fechamento, download com nome Discipulado-Basico-Igreja-Kemuel.pdf e SHA-256 88aa79d0…25e2 igual ao registrado, nenhum link para o PDF em home, /materiais, /blog, /contribua, 404 e posts, sem rolagem horizontal nem erros. Otimizador e build rodados duas vezes sem diff. Lighthouse mobile local comparado ao commit anterior: /discipulado 89 → 91, /materiais 96 → 95 (ruído), CLS 0.
 
 - Tarefa 21 da fila (iniciada pelo Codex, concluída pelo Claude Code em 11/11/2026): chamada “Ler agora →” em todos os cards de post publicados (dobra do blog da home, destaque, recomendados e lista do /blog, “Leia também” dos posts), gerada por scripts/blog-callout.mjs. Tempo de leitura à esquerda em cinza; “Ler agora →” em Public Sans 600, vermelho de texto #C1232C (--color-red-hover), sublinhado fino, à direita. A chamada é texto dentro do único link do card, com aria-label “Ler: título”; a seta avança 4px no hover/foco (só transform, easing do projeto, parada com movimento reduzido); toque escurece o card por 120ms (k-post-link). Botão do WhatsApp: até 760px só ícone em círculo de 56px; enquanto o link for de exemplo, oculto no celular; rodapé reserva --whatsapp-clearance. Manual atualizado. Testes: home, /blog e post em 1440/1024/760/390, com e sem movimento reduzido: chamada visível sem hover, cores/fonte, um só link por card e Tab uma vez por card com foco visível, WhatsApp oculto no celular e sem cobrir texto no computador, sem rolagem horizontal nem erros. Otimizador de imagens e build rodados duas vezes sem diff. Lighthouse mobile local em pares alternados com o commit anterior: sem piora (blog 77/78 → 78/79; home 81/79 → 83/81; máquina mais lenta hoje que nas medições de referência).
@@ -111,8 +113,7 @@
 
 ## 3. Em andamento
 
-- Tarefa 20: implementação e testes locais concluídos; conferir métricas publicadas após deploy. Metas restantes estão no Backlog. Tarefa 21 é a próxima da fila.
-- Histórico de retomada da 20: baseline do Claude Code 87/85/97/98/88; houve execução parcial do otimizador sem commit, identificada e concluída sem descartar arquivos. Diagnóstico, capturas anteriores e logs preservados em relatorios/fila/20/.
+- Nada. Fila da rodada 2 (tarefas 12 a 22) encerrada em 11/11/2026; resumo e o que revisar primeiro em relatorios/fila/RESUMO.md (fora do Git). Performance aprovada pelo Alisson em 11/11/2026; metas de 95 encerradas. site.indexar continua false.
 
 ## 4. Próximas tarefas
 
