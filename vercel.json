@@ -5,28 +5,148 @@
     {
       "source": "/assets/materiais/discipulado-basico.pdf",
       "headers": [
-        { "key": "Content-Disposition", "value": "inline; filename=\"Discipulado-Basico-Igreja-Kemuel.pdf\"" }
+        {
+          "key": "Content-Disposition",
+          "value": "inline; filename=\"Discipulado-Basico-Igreja-Kemuel.pdf\""
+        }
+      ]
+    },
+    {
+      "source": "/assets/fonts/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/assets/img/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/assets/icons/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/assets/css/site.:hash([a-f0-9]+).min.css",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/assets/js/:name(ui|blog-search).:hash([a-f0-9]+).min.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     }
   ],
   "redirects": [
-    { "source": "/quem-somos", "destination": "/#quem-somos", "permanent": true },
-    { "source": "/quemsomos", "destination": "/#quem-somos", "permanent": true },
-    { "source": "/sobre", "destination": "/#quem-somos", "permanent": true },
-    { "source": "/historia", "destination": "/#quem-somos", "permanent": true },
-    { "source": "/cursos", "destination": "/materiais#cursos", "permanent": true },
-    { "source": "/materiais-e-cursos", "destination": "/materiais", "permanent": true },
-    { "source": "/discipulo", "destination": "/discipulado", "permanent": true },
-    { "source": "/contribuir", "destination": "/contribua", "permanent": true },
-    { "source": "/dizimo", "destination": "/contribua", "permanent": true },
-    { "source": "/oferta", "destination": "/contribua", "permanent": true },
-    { "source": "/pix", "destination": "/contribua", "permanent": true },
-    { "source": "/inicio", "destination": "/", "permanent": true },
-    { "source": "/home", "destination": "/", "permanent": true },
-    { "source": "/artigos", "destination": "/blog", "permanent": true },
-    { "source": "/reflexoes", "destination": "/blog", "permanent": true },
-    { "source": "/posts", "destination": "/blog", "permanent": true },
-    { "source": "/downloads", "destination": "/materiais", "permanent": true },
-    { "source": "/material", "destination": "/materiais", "permanent": true }
+    {
+      "source": "/quem-somos",
+      "destination": "/#quem-somos",
+      "permanent": true
+    },
+    {
+      "source": "/quemsomos",
+      "destination": "/#quem-somos",
+      "permanent": true
+    },
+    {
+      "source": "/sobre",
+      "destination": "/#quem-somos",
+      "permanent": true
+    },
+    {
+      "source": "/historia",
+      "destination": "/#quem-somos",
+      "permanent": true
+    },
+    {
+      "source": "/cursos",
+      "destination": "/materiais#cursos",
+      "permanent": true
+    },
+    {
+      "source": "/materiais-e-cursos",
+      "destination": "/materiais",
+      "permanent": true
+    },
+    {
+      "source": "/discipulo",
+      "destination": "/discipulado",
+      "permanent": true
+    },
+    {
+      "source": "/contribuir",
+      "destination": "/contribua",
+      "permanent": true
+    },
+    {
+      "source": "/dizimo",
+      "destination": "/contribua",
+      "permanent": true
+    },
+    {
+      "source": "/oferta",
+      "destination": "/contribua",
+      "permanent": true
+    },
+    {
+      "source": "/pix",
+      "destination": "/contribua",
+      "permanent": true
+    },
+    {
+      "source": "/inicio",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/artigos",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/reflexoes",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/posts",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/downloads",
+      "destination": "/materiais",
+      "permanent": true
+    },
+    {
+      "source": "/material",
+      "destination": "/materiais",
+      "permanent": true
+    }
   ]
 }

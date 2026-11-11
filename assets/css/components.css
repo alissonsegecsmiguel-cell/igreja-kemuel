@@ -1090,3 +1090,6 @@ h3, h4, h5, h6, .k-h3, .k-h4, .k-h5, .k-h6 { line-height: var(--leading-medium);
 .k-link { font-family: var(--font-body); font-weight: var(--weight-semibold); font-size: var(--text-small); line-height: var(--leading-body); }
 h1.k-materials-header__title, h1.k-give-title { font-size: var(--text-h1); }
 .k-badge { font-family: var(--font-body); font-weight: var(--weight-semibold); font-size: var(--text-caption); line-height: var(--leading-label); letter-spacing: var(--tracking-label); text-transform: var(--case-label); }
+/* Wrapper de formato alternativo; a caixa continua pertencendo à imagem. */
+picture[data-performance-picture] { display: contents; }
+picture[data-performance-picture] > source { display: none; }

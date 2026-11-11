@@ -8,10 +8,20 @@
 //   2. senão, uma cópia mestre da maior versão publicada, guardada uma única vez em [área]/originais/mestres/
 //      (recortes como a capa 3:2 do post e a moeda quadrada não têm original com a mesma proporção).
 // Metas: até 70 KB abaixo de 700 px, 120 KB abaixo de 1100 px e 200 KB acima. Qualidade 72; se passar da meta, desce até 62.
-import { readdirSync, existsSync, mkdirSync, copyFileSync, statSync, writeFileSync } from 'node:fs';
+import { readdirSync, existsSync, mkdirSync, copyFileSync, statSync, writeFileSync, readFileSync, renameSync } from 'node:fs';
 import { dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
+
+// No Windows o sharp segura o arquivo aberto: tudo é lido para a memória antes de processar.
+sharp.cache(false);
+const load = path => sharp(readFileSync(path));
+const save = (path, data) => {
+  if (existsSync(path) && readFileSync(path).equals(data)) return;
+  const temporary = `${path}.tmp`;
+  writeFileSync(temporary, data);
+  renameSync(temporary, path);
+};
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const img = join(root, 'assets', 'img');
@@ -43,8 +53,15 @@ function original(area, dir, base) {
   if (area === 'materiais' && existsSync(folder)) return readdirSync(folder).filter(f => f.endsWith(`-${base}.jpg`)).map(f => join(folder, f))[0];
   if (area === 'blog' && base === 'capa-card') {
     const slug = dir.split(/[\\/]/).pop();
+    const archived = join(folder, 'mestres', slug, 'capa-card-original.jpg');
+    if (existsSync(archived)) return archived;
     const draft = POST_ORIGINALS[slug] && join(root, 'textos-blog', 'imagens', POST_ORIGINALS[slug]);
-    if (draft && existsSync(draft)) return draft;
+    if (draft && existsSync(draft)) {
+      // Preserva a fonte licenciada também em um clone sem textos-blog/.
+      mkdirSync(dirname(archived), { recursive: true });
+      copyFileSync(draft, archived);
+      return archived;
+    }
     return existsSync(folder) ? readdirSync(folder).filter(f => f.endsWith(`-${slug}.jpg`)).map(f => join(folder, f))[0] : undefined;
   }
   return undefined;
@@ -57,31 +74,32 @@ for (const [area, dirs] of [['materiais', ['']], ['contribua', ['']], ['blog', r
     for (const [base, files] of families(dir)) {
       // Imagens internas dos posts (nome-960.webp) e famílias de um arquivo só sem largura no nome ficam como estão, exceto a capa da apostila.
       if (area === 'blog' && !/^capa(-card)?$/.test(base)) continue;
-      const variants = await Promise.all(files.map(async file => ({ file, ...(await sharp(join(dir, file)).metadata()) })));
+      const variants = await Promise.all(files.map(async file => ({ file, ...(await load(join(dir, file)).metadata()) })));
       variants.sort((a, b) => b.width - a.width);
       const largest = variants[0];
       let source = original(area, dir, base);
       if (source) {
-        const meta = await sharp(source).metadata();
+        const meta = await load(source).metadata();
         if (Math.abs(meta.width / meta.height - largest.width / largest.height) > 0.01) source = undefined;
       }
       if (!source) {
         source = join(img, area, 'originais', 'mestres', sub, largest.file);
         if (!existsSync(source)) { mkdirSync(dirname(source), { recursive: true }); copyFileSync(join(dir, largest.file), source); }
       }
+      const input = readFileSync(source);
       for (const v of variants) {
         const resize = image => image.rotate().resize({ width: v.width, height: v.height, fit: 'cover' });
         let quality = 72, data;
         for (; quality >= 62; quality -= 2) {
-          data = await resize(sharp(source)).webp({ quality, effort: 6 }).toBuffer();
+          data = await resize(sharp(input)).webp({ quality, effort: 6 }).toBuffer();
           if (data.length <= target(v.width)) break;
         }
         quality = Math.max(quality, 62);
-        writeFileSync(join(dir, v.file), data);
+        save(join(dir, v.file), data);
         let avif = '';
         if (AVIF.has(base)) {
-          const out = await resize(sharp(source)).avif({ quality: 50, effort: 6 }).toBuffer();
-          writeFileSync(join(dir, v.file.replace(/\.webp$/, '.avif')), out);
+          const out = await resize(sharp(input)).avif({ quality: 50, effort: 6 }).toBuffer();
+          save(join(dir, v.file.replace(/\.webp$/, '.avif')), out);
           avif = ` · avif ${Math.round(out.length / 1024)} KB`;
         }
         const over = data.length > target(v.width) ? ' · ACIMA DA META' : '';

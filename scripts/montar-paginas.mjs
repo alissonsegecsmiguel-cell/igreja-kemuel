@@ -12,8 +12,10 @@ import { loadMaterials, materialsHome, materialsPage } from './materiais.mjs';
 import { blogPortal } from './blog-portal.mjs';
 import { loadGoals, giveSections } from './contribua.mjs';
 import { searchIndex } from './busca.mjs';
+import { prepareAssets } from './performance.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
+const optimizeDelivery = await prepareAssets(root);
 const read = file => readFileSync(file, 'utf8').replace(/\r\n/g, '\n');
 const partial = name => read(join(root, 'partials', name)).trimEnd();
 // Endereço, horários e dados da igreja vêm só de dados/igreja.json.
@@ -113,6 +115,9 @@ outputs.push({ file: index, before: existsSync(join(root, index)) ? read(join(ro
 const searchFile = 'dados/busca.json';
 outputs.push({ file: searchFile, before: existsSync(join(root, searchFile)) ? read(join(root, searchFile)) : '', html: searchIndex(posts) });
 mkdirSync(join(root, 'blog'), { recursive: true });
+for (const output of outputs) {
+  if (output.file.endsWith('.html')) output.html = optimizeDelivery(output.html, output.file);
+}
 
 // robots.txt libera tudo: quem esconde página é o meta robots (o Google precisa ler a página para ver o noindex).
 outputs.push({ file: 'robots.txt', before: existsSync(join(root, 'robots.txt')) ? read(join(root, 'robots.txt')) : '', html: `User-agent: *\nAllow: /\n\nSitemap: ${church.site.url}/sitemap.xml\n` });

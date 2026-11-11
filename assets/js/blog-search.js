@@ -10,7 +10,8 @@ document.querySelectorAll('[data-blog-portal]').forEach(portal => {
   const picks = [...portal.querySelectorAll('[data-portal-mood]')];
   const tokens = getComputedStyle(document.documentElement);
   const pageSize = parseInt(tokens.getPropertyValue('--blog-page-size'), 10);
-  const delay = parseFloat(tokens.getPropertyValue('--search-debounce'));
+  const debounce = tokens.getPropertyValue('--search-debounce').trim();
+  const delay = parseFloat(debounce) * (debounce.endsWith('ms') ? 1 : 1000);
   const maxSuggestions = parseInt(tokens.getPropertyValue('--search-suggestions'), 10);
   const snippetLength = parseInt(tokens.getPropertyValue('--search-snippet-length'), 10);
   let engine, pending, timer, category = 'todos', mood = '', limit = pageSize, selected = -1, suggestions = [], dismissed = false;

@@ -4,7 +4,12 @@
   const root = document.documentElement;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const tokens = getComputedStyle(root);
-  const duration = name => parseFloat(tokens.getPropertyValue('--duration-' + name));
+  // Ler a altura antes de escrever os atributos SVG evita um segundo layout síncrono.
+  const overHeader = document.querySelector('.k-header--over');
+  const overHeaderHeight = overHeader?.offsetHeight || 0;
+  // CSS minificado pode expressar o mesmo tempo em s ou ms.
+  const milliseconds = value => parseFloat(value) * (value.trim().endsWith('ms') ? 1 : 1000);
+  const duration = name => milliseconds(tokens.getPropertyValue('--duration-' + name));
   const easing = tokens.getPropertyValue('--ease').trim();
   const faqShift = `translateY(calc(${tokens.getPropertyValue('--tooltip-offset').trim()} * -1))`;
   const faqAnimations = new Map();
@@ -81,7 +86,7 @@
     heroes.forEach(hero => atmosphereObserver.observe(hero));
     // Água: filtro só na malha; requestAnimationFrame só enquanto há ondulação.
     const fineMouse = matchMedia('(hover: hover) and (pointer: fine)');
-    const waterToken = name => parseFloat(tokens.getPropertyValue('--hero-led-water-' + name));
+    const waterToken = name => name === 'calm' ? milliseconds(tokens.getPropertyValue('--hero-led-water-' + name)) : parseFloat(tokens.getPropertyValue('--hero-led-water-' + name));
     heroes.forEach(hero => {
       const mesh = hero.querySelector('.k-hero-led__mesh');
       const filter = hero.querySelector('[data-hero-water]');
@@ -134,12 +139,11 @@
     document.addEventListener('visibilitychange', updateAtmospheres);
   }
   // Cabeçalho sobre a hero: sólido assim que a hero sai de trás dele.
-  const overHeader = document.querySelector('.k-header--over');
   if (overHeader) {
     if ('IntersectionObserver' in window && heroes.length) {
       new IntersectionObserver(([entry]) => {
         overHeader.classList.toggle('is-solid', !entry.isIntersecting);
-      }, { rootMargin: `-${overHeader.offsetHeight}px 0px 0px 0px` }).observe(heroes[0]);
+      }, { rootMargin: `-${overHeaderHeight}px 0px 0px 0px` }).observe(heroes[0]);
     } else overHeader.classList.add('is-solid');
   }
   let toastTimer;
@@ -240,7 +244,7 @@
       impulse = pulse.animate([
         { opacity: value('pulse-opacity'), transform: `scale(${value('wave-start')})` },
         { opacity: 0, transform: `scale(${value('wave-end')})` }
-      ], { duration: parseFloat(value('pulse-duration')), easing });
+      ], { duration: milliseconds(value('pulse-duration')), easing });
     });
     update();
   });
@@ -295,7 +299,7 @@
         const message = button.dataset.copyKind === 'key' ? 'Chave copiada' : button.dataset.copyKind === 'code' ? 'Código copiado' : 'Copiado · exemplo';
         if (label) label.textContent = message;
         announce(message);
-        feedbackTimer = setTimeout(() => { button.classList.remove('is-copied'); if (label) label.textContent = originalLabel; }, parseFloat(tokens.getPropertyValue('--give-copy-feedback-hold')));
+        feedbackTimer = setTimeout(() => { button.classList.remove('is-copied'); if (label) label.textContent = originalLabel; }, milliseconds(tokens.getPropertyValue('--give-copy-feedback-hold')));
       } catch {
         clearTimeout(feedbackTimer);
         button.classList.remove('is-copied');
@@ -463,7 +467,7 @@
           leaving.setAttribute('aria-hidden', 'true');leaving.inert = true;
           leaving.classList.remove('is-playing', 'is-current');leaving.classList.add('is-leaving');
           clearTimeout(exits.get(leaving));
-          exits.set(leaving, setTimeout(() => leaving.classList.remove('is-leaving'), reduced.matches ? 0 : parseFloat(value('swap-duration'))));
+          exits.set(leaving, setTimeout(() => leaving.classList.remove('is-leaving'), reduced.matches ? 0 : milliseconds(value('swap-duration'))));
         }
         incoming.classList.remove('is-playing', 'is-leaving');
         // Reinicia apenas por seleção manual, inclusive ao retornar a uma cena vista.
@@ -493,7 +497,7 @@
             const animation = panel.animate([
               { opacity: 1, transform: 'none' },
               { opacity: 0, transform: `translateY(calc(${value('panel-shift')} * -1))` }
-            ], { duration: parseFloat(value('panel-duration')), easing });
+            ], { duration: milliseconds(value('panel-duration')), easing });
             panelAnimations.set(panel, animation);
             animation.finished.then(() => {
               if (panelAnimations.get(panel) !== animation) return;
@@ -508,7 +512,7 @@
             const animation = incoming.animate([
               { opacity: 0, transform: `translateY(${value('panel-shift')})` },
               { opacity: 1, transform: 'none' }
-            ], { duration: parseFloat(value('panel-duration')), easing });
+            ], { duration: milliseconds(value('panel-duration')), easing });
             panelAnimations.set(incoming, animation);
             animation.finished.then(() => { if (panelAnimations.get(incoming) === animation) panelAnimations.delete(incoming); }, () => {});
           }
@@ -563,7 +567,15 @@
     });
   }
   function deferTimelines() {
-    if (!document.querySelector('[data-timeline]')) return;
+    const timeline = document.querySelector('[data-timeline]');
+    if (!timeline) return;
+    if ('IntersectionObserver' in window) {
+      const nearby = new IntersectionObserver(entries => {
+        if (entries.some(entry => entry.isIntersecting)) { nearby.disconnect(); setupTimelines(); }
+      }, { rootMargin: tokens.getPropertyValue('--blog-font-distance').trim() });
+      nearby.observe(timeline);
+      return;
+    }
     if ('requestIdleCallback' in window) requestIdleCallback(setupTimelines, { timeout: duration('short') });
     else setTimeout(setupTimelines, duration('short'));
   }
@@ -573,7 +585,7 @@
   /* Bíblia aberta: quatro páginas únicas, folha 3D e carrossel sem duplicar texto. */
   function setupBibles() {
     const value = name => tokens.getPropertyValue('--bible-' + name).trim();
-    const ms = name => parseFloat(value(name + '-duration'));
+    const ms = name => milliseconds(value(name + '-duration'));
     const mobile = matchMedia(`(max-width: ${value('breakpoint')})`);
     const prepareFont = section => {
       const family = tokens.getPropertyValue('--editorial-font').split(',')[0].trim();
@@ -881,7 +893,7 @@
       const number = card.querySelector('[data-goal-number]');
       const target = Number(bar.getAttribute('aria-valuenow'));
       const fill = bar.querySelector('.k-progress__fill');
-      const animation = fill.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: parseFloat(tokens.getPropertyValue('--give-progress-duration')), delay: index * parseFloat(tokens.getPropertyValue('--give-progress-stagger')), easing, fill: 'both' });
+      const animation = fill.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: milliseconds(tokens.getPropertyValue('--give-progress-duration')), delay: index * milliseconds(tokens.getPropertyValue('--give-progress-stagger')), easing, fill: 'both' });
       animations.add(animation); number.textContent = '0';
       const tick = () => {
         if (reduced.matches) { animation.finish(); number.textContent = target; animations.delete(animation); return; }
@@ -920,7 +932,7 @@
       card.getAnimations({ subtree: true }).forEach(a => { if (a.animationName !== 'k-glint-pulse') { a.cancel(); a.play(); } });
     });
     let timer = 0, visible = true;
-    const interval = parseFloat(tokens.getPropertyValue('--schedule-glint-interval')) * 1000 || 7000;
+    const interval = milliseconds(tokens.getPropertyValue('--schedule-glint-interval')) || 7000;
     const stop = () => { clearInterval(timer); timer = 0; };
     const start = () => {
       if (timer || reduced.matches || document.hidden || !visible) return;
@@ -946,7 +958,7 @@
     const value = counter.querySelector('[data-counter-value]');
     const total = Number(value?.textContent);
     if (!value || !Number.isFinite(total) || reduced.matches || !('IntersectionObserver' in window)) return;
-    const length = parseFloat(tokens.getPropertyValue('--discipleship-counter-duration')) || 1600;
+    const length = milliseconds(tokens.getPropertyValue('--discipleship-counter-duration')) || 1600;
     const observer = new IntersectionObserver(entries => {
       if (!entries.some(entry => entry.isIntersecting)) return;
       observer.disconnect();

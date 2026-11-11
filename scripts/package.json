@@ -4,6 +4,8 @@
   "description": "Ferramentas locais de montagem e conversão. Nada daqui vai para o site (scripts/ está no .vercelignore).",
   "type": "module",
   "devDependencies": {
+    "esbuild": "^0.28.2",
+    "lightningcss": "^1.33.0",
     "mammoth": "^1.13.0",
     "marked": "^18.2.0",
     "sharp": "^0.35.5"
